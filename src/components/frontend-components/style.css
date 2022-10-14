@@ -1,0 +1,8 @@
+.wallet-bg {
+    background-image: url('../../assets/images/hands_and_wallet.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: inherit;
+}
