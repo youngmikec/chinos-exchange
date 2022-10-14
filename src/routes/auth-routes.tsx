@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Home, SignUP, SignIn } from "../pages";
+import { Home, SignUP, SignIn, ForgotPassword } from "../pages";
 import AboutUs from "../pages/about-us";
 import Airtimes from "../pages/airtimes";
 import ContactUs from "../pages/contact-us";
@@ -55,6 +55,10 @@ const authRoutes: RouteType[] = [
     {
         path: '/verify',
         component: <EmailVerificationPage />
+    },
+    {
+      path: '/forgot-password',
+      component:<ForgotPassword />
     },
     // {
     //     path: '*',
