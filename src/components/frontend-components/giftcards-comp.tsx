@@ -8,8 +8,26 @@ import HeroSection from '../../shared/users-frontend/hero-section';
 import { Link } from 'react-router-dom';
 import JoinUs from '../../shared/users-frontend/join-us';
 import Footer from '../../shared/users-frontend/footer';
+import ProductStepComp, { Step } from '../../shared/users-frontend/product-step-comp';
+import vectorTik from '../../assets/images/vector-tick.png';
+
 
 const GiftCardsComp = () => {
+    const steps: Step[] = [
+        {
+            title: 'Create account',
+            subTitle: 'Get started by inputing all your required details provided on the form'
+        },
+        {
+            title: 'Check Rate',
+            subTitle: 'Always check rate before you place an order from your dashboard'
+        },
+        {
+            title: 'Convert ASAP',
+            subTitle: 'Upload a clear picture of the card and get funded immediately after verification'
+        },
+    ]
+
   return (
     <>
         <HeroSection>
@@ -25,6 +43,15 @@ const GiftCardsComp = () => {
                 <div className='wallet-bg'></div>
             </div>
         </HeroSection>
+
+        <div className=''>
+            <ProductStepComp 
+                title='Redeem Giftcards'
+                imageUrl={vectorTik}
+                steps={steps}
+                subTitle='Buy and sell Giftcards from over 20 countries around the world'
+            />
+        </div>
 
         <div className='my-4'>
             <JoinUs />
