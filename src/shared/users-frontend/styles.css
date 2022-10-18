@@ -1,0 +1,28 @@
+.ecllipse {
+    background-image: url('../../assets/images/ecllipse.png');
+    background-repeat: no-repeat;
+    background-size: calc(100% - 3%);
+    background-position: top right;
+    width: 100%;
+    max-height: max-content;
+}
+
+.hero-bg {
+    background-image: url('../../assets/images/homepage_bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    max-height: max-content;
+}
+
+.footer-bg {
+    background-blend-mode: color;
+    background-color: #8652a42f;
+    background-image: url('../../assets/images/footer-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    max-height: max-content;
+}
