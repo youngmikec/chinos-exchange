@@ -1,8 +1,9 @@
-import React from "react";
+import React,{useState} from "react";
 import logo from "../../../assets/images/logo.png";
 import googleIcon from "../../../assets/icons/google-icon.png";
 import { Link } from "react-router-dom";
 const ForgotPasswordComp = () => {
+  
   return (
     <div className="container w-full bg-white  ">
       <img
