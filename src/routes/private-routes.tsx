@@ -10,7 +10,8 @@ const privateRoutes: RouteType[] = [
     // {
     //     path: '*',
     //     component: <NotFoundPage/>
-    // }
+    // },
+    
 ];
 
 export default privateRoutes;
