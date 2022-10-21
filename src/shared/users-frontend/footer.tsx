@@ -88,7 +88,7 @@ const Footer = () => {
                         
                         <div className="my-4">
                             <div className='flex w-full justify-between rounded-3xl border-none bg-white'>
-                                <input type="text" className='w-full rounded-l-3xl border-none bg-white py-3 px-5' />
+                                <input type="text" className='w-full rounded-l-3xl border-none outline-none bg-white py-3 px-5' />
                                 <button className='rounded-r-3xl text-white bg-[#8652A4] py-3 px-6 min-w-max'>
                                     <IoIosSend />
                                 </button>

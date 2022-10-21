@@ -88,7 +88,9 @@ const SignUpComp = () => {
                 <div className='flex-1'>
                     <div className="flex justify-end mb-4">
                         <div>
+                        <Link to='/'>
                             <img src={logo} alt="logo" width="120px" height="120px" />
+                        </Link>
                         </div>
                     </div>
 

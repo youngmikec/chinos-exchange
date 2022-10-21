@@ -36,3 +36,28 @@
     position: absolute;
     margin-left: 28rem;
 }
+
+@media screen and(max-width: 600px) {
+    .small-icon{
+        /* height: 80px; */
+        width: 6px;
+    }
+}
+    .small-icon{
+        /* height: 80px; */
+        width: 11rem;
+    }
+    .social-box{
+        color: rgba(104, 37, 104, 0.87);
+        background-color: white;
+    }
+    .social-box:hover{
+        background-color: rgba(104, 37, 104, 0.87);
+        color: white;
+    }
+    .social-box>h3{
+        color: rgb(49, 49, 49);
+    }
+    .social-box>h3:hover{
+        color: rgb(253, 253, 253);
+    }

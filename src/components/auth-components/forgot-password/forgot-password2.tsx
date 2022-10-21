@@ -70,7 +70,7 @@ const ForgotPassword2 = () => {
   
 
   return (
-    <div className="container w-full bg-white  ">
+    <div className="container w-full bg-white overflow-hidden ">
       <img
         src={logo}
         alt=""

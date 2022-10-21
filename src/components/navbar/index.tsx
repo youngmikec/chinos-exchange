@@ -1,14 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import logo from '../../assets/images/logo.png';
+import logo from '../../assets/images/logo-white.png';
 
 const Navbar = () => {
   return (
     <>
         <div className='w-full py-4 flex justify-between'>
             <div>
+                <Link to='/'>
                 <img src={logo} alt="logo" width="80px" height="80px" />
+                </Link>
             </div>
             <div className='pt-3'>
                 <ul className='list-none inline-flex'>
