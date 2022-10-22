@@ -51,13 +51,23 @@
         color: rgba(104, 37, 104, 0.87);
         background-color: white;
     }
-    .social-box:hover{
+    .social-box-hover{
         background-color: rgba(104, 37, 104, 0.87);
-        color: white;
+        color: white !important;
     }
-    .social-box>h3{
+    .social-box-text{
         color: rgb(49, 49, 49);
     }
-    .social-box>h3:hover{
+    .social-box-hover-text{
         color: rgb(253, 253, 253);
+    }
+    .input-border {
+        border: 1px solid #8652A4;
+        border-left: 6px solid #8652A4;
+    }
+    .button{
+        cursor: pointer;
+        background-color: #8652A4;
+        color: white;
+        padding: 0.5rem 2rem;
     }
