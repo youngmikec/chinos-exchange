@@ -28,38 +28,38 @@ const GiftCardsComp = () => {
         },
     ]
 
-  return (
-    <>
-        <HeroSection>
-            <div className="flex justify-between">
-                <div className='py-4 w-full '>
-                    <h3 className='text-5xl font-bold my-8 text-white'>The Fastest Way To Buy, <br/> Sell And Trade Crypto </h3>
-                    <p className='text-sm font-thin text-justify w-3/4 my-8 text-white'>Join over 100,000 users across the globe to trade your digital asset on a fast and secured platform</p>
+    return (
+        <>
+            <HeroSection>
+                <div className="flex justify-between">
+                    <div className='py-4 w-full '>
+                        <h3 className='text-5xl font-bold my-8 text-white'>The Fastest Way To Buy, <br/> Sell And Trade Crypto </h3>
+                        <p className='text-sm font-thin text-justify w-3/4 my-8 text-white'>Join over 100,000 users across the globe to trade your digital asset on a fast and secured platform</p>
 
-                    <button className='rounded-lg my-4 text-white bg-[#FFAB2E] py-3 px-6 hover:bg-white hover:text-[#FFAB2E]'>
-                        <Link to="/sign-in">Let's Trade</Link>
-                    </button>
+                        <button className='rounded-lg my-4 text-white bg-[#FFAB2E] py-3 px-6 hover:bg-white hover:text-[#FFAB2E]'>
+                            <Link to="/sign-in">Let's Trade</Link>
+                        </button>
+                    </div>
+                    <div className='wallet-bg'></div>
                 </div>
-                <div className='wallet-bg'></div>
+            </HeroSection>
+
+            <div className=''>
+                <ProductStepComp 
+                    title='Redeem Giftcards'
+                    imageUrl={vectorTik}
+                    steps={steps}
+                    subTitle='Buy and sell Giftcards from over 20 countries around the world'
+                />
             </div>
-        </HeroSection>
 
-        <div className=''>
-            <ProductStepComp 
-                title='Redeem Giftcards'
-                imageUrl={vectorTik}
-                steps={steps}
-                subTitle='Buy and sell Giftcards from over 20 countries around the world'
-            />
-        </div>
+            <div className='my-4'>
+                <JoinUs />
+            </div>
 
-        <div className='my-4'>
-            <JoinUs />
-        </div>
-
-        <Footer />
-    </>
-  )
+            <Footer />
+        </>
+    )
 }
 
 export default GiftCardsComp;
