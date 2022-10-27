@@ -3,6 +3,7 @@ import { Home, SignUP, SignIn, ForgotPassword } from "../pages";
 import AboutUs from "../pages/about-us";
 import Airtimes from "../pages/airtimes";
 import ContactUs from "../pages/contact-us";
+import Dashboard from "../users-dashboard/dashboard";
 import Cryptos from "../pages/crytops";
 import EmailVerificationPage from "../pages/email-verification";
 import Faq from "../pages/faq";
@@ -60,6 +61,12 @@ const authRoutes: RouteType[] = [
       path: '/forgot-password',
       component:<ForgotPassword />
     },
+
+
+    {
+        path: '/users-dashboard',
+        component:<Dashboard/>
+    }
     // {
     //     path: '*',
     //     component: <NotFoundPage/>

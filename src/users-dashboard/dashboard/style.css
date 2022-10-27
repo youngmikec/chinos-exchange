@@ -1,0 +1,24 @@
+
+.search{
+    
+   position: absolute;
+   margin-top: -18px; 
+}
+
+.inp-search::placeholder{
+    margin-left: 32px;
+    
+}
+
+.icon-notification{
+    position: absolute;
+    margin-left: 45%;
+    height: 30px;
+    width: 30px;
+}
+
+.inp-search{
+    width: 434px;
+}
+
+
