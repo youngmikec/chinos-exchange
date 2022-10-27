@@ -22,6 +22,7 @@
     width: 100%;
     height: inherit;
 }
+
 .about-bg2{
     background-blend-mode: color;
     background-image: url('../../assets/images/laptop.png');
@@ -70,4 +71,23 @@
         background-color: #8652A4;
         color: white;
         padding: 0.5rem 2rem;
+    }
+
+    @media screen and (max-width:760px) {
+        .small-screen-col{
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 35%;
+            margin-right: auto;
+        }
+    }
+
+    .table{
+        width:70vw;
+        text-align: left !important;
+
+    }
+    .light-purple{
+        background: #8652A440;
+
     }

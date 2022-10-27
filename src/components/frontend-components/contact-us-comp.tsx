@@ -34,13 +34,13 @@ const[toggle2,setToggle2] = useState(true)
                 
             </div>
         </HeroSection>
-        <div>
+        <div className='w-screen container overflow-hidden'>
             <div className="flex justify-center my-14">
                 <h3 className="text-gray-800 font-bold text-xl">
                 24/7 available 
                 </h3>
             </div>
-            <div className=' flex flex-row justify-evenly z-10 my-20' >
+            <div className=' small-screen-col flex flex-row justify-evenly z-10 my-20' >
                 <div 
                 className={toggle? 'flex flex-col justify-center social-box w-2/12 hover:rounded-lg':'flex flex-col justify-center social-box-hover w-2/12 hover:rounded-lg'}
                 onMouseLeave={()=>setToggle(true)} onMouseOver={()=>setToggle(false)}
@@ -96,7 +96,7 @@ const[toggle2,setToggle2] = useState(true)
                 <textarea name="" id="" className='input-border scrollable-none py-5 w-full rounded-md outline-none mt-4'></textarea>
                 </div>
                 <div className='flex w-9/12 justify-end my-10 self-center '>
-                    <input type="button" value=" Send Message"  className='button rounded-md ' />
+                    <input type="button" value="Send Message"  className='button rounded-md ' />
                 </div>
             </div>
         </div>
