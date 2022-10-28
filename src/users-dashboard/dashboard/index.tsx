@@ -27,10 +27,10 @@ useEffect(()=>{
     return (
         <>
             <div>
-                <nav>
-                    <div className='navbar flex flex-row justify-center my-5'>
+                <nav className='flex flex-row '>
+                    <div className=' navbar flex flex-row flex-end  my-4 '>
                         
-                          <ul  className='flex flex-row justify-evenly mr-52'> 
+                          <ul  className='flex flex-row justify-evenly ml-52' id='item'> 
                               <li className='mr-10 flex flex-row'>
                                 Add new post</li>
                                 <AiOutlinePlus className=' self-center'/>
@@ -40,13 +40,13 @@ useEffect(()=>{
                         
                         <div className="">
                               <input type="text" placeholder='Search.....' className='inp-search pl-5' onChange={(e)=>setSearch(e.target.value)}/>
-                              <CiSearch className={toggle ? 'search pl-2 text-white':'search pl-2 text-black '}/>
+                              <CiSearch id='icon' className={toggle ? 'search pl-2 text-white':'search pl-2 text-black'}/>
 
                         </div>
-
-
-                                 <CiBellOn className='icon-notification'/>
-                                <img src={logo} alt="logo" className='absolute  right-5'  />
+                    </div>
+                    <div className='justify-around  flex flex-row'>
+                        <CiBellOn className='icon-notification self-center'/>
+                                <img src={logo} alt="logo" className='' width='width: 36' height='height: 34'  />
                     </div>
                 </nav>
 
