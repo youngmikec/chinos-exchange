@@ -28,9 +28,9 @@ useEffect(()=>{
         <>
             <div>
                 <nav className='flex flex-row '>
-                    <div className=' navbar flex flex-row flex-end  my-4 '>
+                    <div className=' navbar flex flex-row   my-4 '>
                         
-                          <ul  className='flex flex-row justify-evenly ml-52' id='item'> 
+                          <ul  className='flex flex-row justify-evenly ml-52'> 
                               <li className='mr-10 flex flex-row'>
                                 Add new post</li>
                                 <AiOutlinePlus className=' self-center'/>
