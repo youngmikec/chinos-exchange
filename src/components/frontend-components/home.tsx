@@ -56,7 +56,7 @@ const HomeComp = () => {
                         <tr className='flex justify-around mb-2 mt-4'>
                             <td>1</td>
                             <td className='flex flex-row '>
-                            <img src={btc} alt="" />
+                            <img src={btc} alt="" className='hover:animate-ping'/>
                             BTC
                             </td>
                             <td>NGN 8,515,123.90</td>
@@ -132,7 +132,7 @@ const HomeComp = () => {
             </div>
 
             <div className="flex flex-row-reverse justify-center  w-screen">
-                <div className="w-4/12 ml-20">
+                <div className="w-4/12 ml-20 vector-bg1">
                     <img src={airtime} alt="" />
                 </div>
                 <div className='flex-col flex w-5/12 py-20 px-20 mr-10 self-center'>
@@ -143,7 +143,7 @@ const HomeComp = () => {
             </div>
 
             <div className="flex flex-row justify-evenly  w-screen mt-16">
-                <div className="w-4/12 mx-auto">
+                <div className="w-4/12 mx-auto vector-bg2">
                     <img src={giftcard} alt="" />
                 </div>
                 <div className='flex-col flex w-5/12 py-20 px-20 ml-20 self-center '>
