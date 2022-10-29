@@ -22,6 +22,26 @@
     width: 100%;
     height: inherit;
 }
+.vector-bg1{
+    background-image: url('../../assets/icons/vector1.png');
+    background-repeat: no-repeat;
+    /* background-size: cover;
+    background-position: center center; */
+    width: 40%;
+    height: inherit;
+    margin-top: 3em;
+    padding-bottom: 3.5em;
+}
+.vector-bg2{
+    background-image: url('../../assets/icons/vector2.png');
+    background-repeat: no-repeat;
+    /* background-size: cover;
+    background-position: center center; */
+    width: 40%;
+    height: inherit;
+    margin-top: 3em;
+    padding-bottom: 3.5em;
+}
 .about-bg2{
     background-blend-mode: color;
     background-image: url('../../assets/images/laptop.png');
@@ -71,3 +91,23 @@
         color: white;
         padding: 0.5rem 2rem;
     }
+
+    @media screen and (max-width:760px) {
+        .small-screen-col{
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 35%;
+            margin-right: auto;
+        }
+    }
+
+    .table{
+        width:70vw;
+        text-align: left !important;
+
+    }
+    .light-purple{
+        background: #8652A440;
+
+    }
+   
