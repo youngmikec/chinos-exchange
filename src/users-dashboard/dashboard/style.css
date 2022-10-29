@@ -31,3 +31,242 @@
 
 
 
+.wallet{
+ position: absolute;
+width: 230px;
+height: 107px;
+left: 300px;
+top: 163px;
+mix-blend-mode: overlay;
+opacity: 0.76;
+background-color: #8652A4;;
+mix-blend-mode: overlay;
+opacity: 0.76;
+}
+
+.icon-acct{
+    position: absolute;
+    top: 173px;
+    width: 30px;
+    height: 30px;
+    left: 320px;
+    color: #FFFFFF;
+}
+
+.visitor {
+    position: absolute;
+    left: 358px;
+    top: 180px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+   line-height: 22px;
+    color: #FFFFFF;
+
+}
+
+.money{
+position: absolute;
+width: 84px;
+height: 46px;
+left: 370px;
+top: 208px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 32px;
+line-height: 48px;
+color: #FFFFFF;
+}
+
+
+.total-orders{
+    position: absolute;
+    left: 580px;
+    top: 180px;
+    color: #8652A4;
+}
+
+.orders{
+    position: absolute;
+    left: 600px;
+    top: 175px;
+    font-family: 'Poppins';
+   font-style: normal; 
+   font-weight: 500;
+   font-size: 15px; 
+   line-height: 22px;
+   color: #8652A4;
+
+}
+
+.total-amount{
+position: absolute;
+width: 84px;
+height: 46px;
+left: 600px;
+top: 195px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 32px;
+line-height: 48px;
+color: #8652A4;
+}
+
+.pending-orders{
+ position: absolute;
+width: 230px;
+height: 107px;
+left: 730px;
+top: 163px;
+background-color: orange;
+mix-blend-mode: overlay;
+opacity: 0.76;
+}
+
+.pending-visitor{
+    position: absolute;
+    top: 173px;
+    width: 30px;
+    height: 30px;
+    left: 750px;
+    color: #FFFFFF;
+}
+
+.total-prnding{
+    position: absolute;
+width: 159px;
+height: 23px;
+left: 784px;
+top: 184px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+line-height: 22px;
+color: #FFFFFF;
+}
+
+.total_pending-amount{
+    position: absolute;
+width: 84px;
+height: 46px;
+left: 800px;
+top: 208px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 32px;
+line-height: 48px;
+color: #FFFFFF;
+
+}
+
+.total_successful-orders{
+position: absolute;
+width: 169px;
+height: 23px;
+left: 960px;
+top: 180px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+line-height: 22px;
+color: #8652A4;
+}
+
+
+.successful-orders{
+    position: absolute;
+    width: 169px;
+    height: 23px;
+    left: 1060px;
+    top: 181px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 22px;
+    color: #8652A4;
+    
+}
+
+.successful-amount{
+position: absolute;
+width: 80px;
+height: 48px;
+left: 1059px;
+top: 208px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 32px;
+line-height: 48px;
+color: #8652A4;
+
+}
+
+.Recent-order{
+position: absolute;
+width: 157px;
+height: 36px;
+left: 300px;
+top: 330px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 36px;
+color: #8652A4
+}
+
+.customer-table{
+position: absolute;
+top: 450px;
+left: 380px;
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 140%;
+color: #8652A4;
+}
+
+.displaying{
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 140%;
+letter-spacing: 0.02em;
+color: rgba(18, 18, 18, 0.4);
+}
+
+.search-order{
+box-sizing: border-box;
+position: absolute;
+width: 400px;
+height: 38px;
+left: 380px;
+top: 2px;
+background: rgba(252, 254, 255, 0.7);
+border: 0.3px solid rgba(18, 18, 18, 0.6);
+border-radius: 6px;
+}
+
+
+
+button{
+position: absolute;
+left: 720px;
+right: 65px;
+top: 2px;
+background-color: #8652A4;
+border-radius: 6px;
+width: 90px;
+height: 38px;
+color: #FFFFFF;
+}
