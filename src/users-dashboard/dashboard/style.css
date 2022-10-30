@@ -1,4 +1,6 @@
-
+.navbar{
+    position: sticky;
+}
 .search{
     
    position: absolute;
@@ -12,6 +14,8 @@
 
 .inp-search{
     margin-left: 55%;
+    background: rgba(252, 254, 255, 0.7);
+    border: 0.3px solid rgba(18, 18, 18, 0.6);
 
 }
 
@@ -255,9 +259,8 @@ top: 2px;
 background: rgba(252, 254, 255, 0.7);
 border: 0.3px solid rgba(18, 18, 18, 0.6);
 border-radius: 6px;
+color: #000;
 }
-
-
 
 button{
 position: absolute;
@@ -269,4 +272,25 @@ border-radius: 6px;
 width: 90px;
 height: 38px;
 color: #FFFFFF;
+}
+
+
+
+
+#table{
+    margin-top: 500px;
+    margin-left: 280px;
+    color: rgba(18, 18, 18, 0.4);
+}
+
+.HiOutlineTrash{
+    width: 25px;
+    height: 25px;
+    left: 457px;
+    border-radius: 50px;
+    background-color: gray;
+}
+
+.completed{
+    color: #71DD37;
 }

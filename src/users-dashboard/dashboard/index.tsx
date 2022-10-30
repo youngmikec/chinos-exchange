@@ -11,7 +11,8 @@ import {AiOutlinePlus} from 'react-icons/ai';
 import{CiSearch} from 'react-icons/ci';
 import {CiBellOn} from 'react-icons/ci';
 import {HiUsers} from 'react-icons/hi'
-import{BiMenuAltRight} from 'react-icons/bi'
+import{BiMenuAltRight} from 'react-icons/bi';
+import{HiOutlineTrash} from 'react-icons/hi'
 
 // style 
 
@@ -86,16 +87,73 @@ useEffect(()=>{
                             <p className='displaying'>Displaying 3 of 3  User(s)</p>
                         <input type="text" className='search-order' />
                         <button>search</button>
-
-                        <div className='table'>
-                            <tbody>
-                                <tr>
-                                    <td>me</td>
-                                </tr>
-                            </tbody>
-
                         </div>
-                        </div>
+
+
+
+                        <div>
+
+                        <table className='table mx-auto  px-5 my-16' id='table'>
+                                <thead className='text-left'>
+                                    <tr className='flex justify-around'>
+                                        <th>Action(s)</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th className='pl-20'>Created at</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    <hr/>
+                                </thead>
+                                    <tbody className='w-10/12 text-sm '>
+                                        <tr className='flex justify-around mb-2 mt-4 pl-12	'>
+                                            <td><HiOutlineTrash className='HiOutlineTrash'/></td>
+                                            <td className='pl-12'>princess amaka</td>
+                                            <td>princesobinan@gmail.com</td>
+                                            <td>2021-12-08 19:50:00</td>
+                                            <td className='completed'>Completed</td>
+
+                                        </tr>
+                                        <hr />
+                                             <tr className='flex justify-around mb-2 mt-4 pl-12' >
+                                                  <td><HiOutlineTrash className='HiOutlineTrash'/></td>
+                                                  <td className='pl-12'>princess amaka</td>
+                                                  <td>princesobinan@gmail.com</td>
+                                                  <td>2021-12-08 19:50:00</td>
+                                                  <td className='completed'>Completed</td>
+                                            </tr>
+                                            <hr />
+                                                     <tr className='flex justify-around mb-2 mt-4 pl-12'>
+                                                     <td className='HiOutlineTrash'><HiOutlineTrash className='HiOutlineTrash'/></td>
+                                                     <td className='pl-12'>princess amaka</td>
+                                                     <td>princesobinan@gmail.com</td>
+                                                     <td>2021-12-08 19:50:00</td>
+                                                     <td className='completed'>Completed</td>
+                                                 </tr>
+                                                 <hr />
+
+                                                 <tr className='flex justify-around mb-2 mt-4 pl-12'>
+                                                     <td className='HiOutlineTrash'><HiOutlineTrash className='HiOutlineTrash'/></td>
+                                                     <td className='pl-12'>princess amaka</td>
+                                                     <td>princesobinan@gmail.com</td>
+                                                     <td>2021-12-08 19:50:00</td>
+                                                     <td className='completed'>Completed</td>
+                                                 </tr>
+                                                 <hr />
+                                </tbody>
+
+                            </table>
+
+         
+                      
+
+
+
+                   
+                         </div>
+
+
+
+                        
 
                     </section>
 
