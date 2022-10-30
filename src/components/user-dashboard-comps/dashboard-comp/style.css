@@ -1,40 +1,3 @@
-.navbar{
-    position: sticky;
-}
-.search{
-    
-   position: absolute;
-   margin-top: -18px; 
-}
-
-.inp-search::placeholder{
-    margin-left: 32px;
-    
-}
-
-.inp-search{
-    margin-left: 55%;
-    background: rgba(252, 254, 255, 0.7);
-    border: 0.3px solid rgba(18, 18, 18, 0.6);
-
-}
-
-
-.icon-notification{
-   margin-left: 280px;   
-}
-
-#icon{
-    margin-left: 235px;
-}
-
-
-.inp-search{
-    width: 434px;
-}
-
-
-
 .wallet{
  position: absolute;
 width: 230px;
@@ -228,7 +191,7 @@ color: #8652A4
 }
 
 .customer-table{
-position: absolute;
+position: relative;
 top: 450px;
 left: 380px;
 font-family: 'Raleway';

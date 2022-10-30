@@ -8,6 +8,8 @@ import Cryptos from "../pages/crytops";
 import EmailVerificationPage from "../pages/email-verification";
 import Faq from "../pages/faq";
 import GiftCards from "../pages/giftcards";
+import Airtime from "../users-dashboard/airtime";
+import SellCrypto from "../users-dashboard/sell-crypto";
 
 
 export type RouteType = {
@@ -66,6 +68,14 @@ const authRoutes: RouteType[] = [
     {
         path: '/users-dashboard',
         component:<Dashboard/>
+    },
+    {
+        path: '/airtime',
+        component:<Airtime />
+    },
+    {
+        path: '/sell-crypto',
+        component:<SellCrypto />
     }
     // {
     //     path: '*',
