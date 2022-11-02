@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../../assets/images/logo.png';
 
 type Props = {
     sidebarMenus?: any[]
@@ -10,6 +11,9 @@ const Sidebar = ({sidebarMenus}: Props) => {
     return (
         <>
             <div className="bg-white min-h-screen max-h-fit px-4 py-5">
+                <div className="my-5 px-4">
+                    <img src={logo} alt="logo" width="100px" height="100px" />
+                </div>
                 <ul className="list-none">
                     <li className='my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white' title="Dashboard">
                         <Link to="/dashboard">
@@ -23,11 +27,16 @@ const Sidebar = ({sidebarMenus}: Props) => {
                     </li>
                     <li className='my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white' title="Dashboard">
                         <Link to="/sell-crypto">
-                            Trade Crypto       
+                            Sell Crypto       
                         </Link>
                     </li>
                     <li className='my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white' title="Dashboard">
-                        <Link to="/dashboard">
+                        <Link to="/sell-crypto">
+                            Buy Crypto       
+                        </Link>
+                    </li>
+                    <li className='my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white' title="Dashboard">
+                        <Link to="/trade-giftcard">
                             Trade Giftcard       
                         </Link>
                     </li>
@@ -37,7 +46,7 @@ const Sidebar = ({sidebarMenus}: Props) => {
                         </Link>
                     </li>
                     <li className='my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white' title="Dashboard">
-                        <Link to="/dashboard">
+                        <Link to="/history">
                             Order History      
                         </Link>
                     </li>

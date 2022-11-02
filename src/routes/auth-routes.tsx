@@ -10,6 +10,7 @@ import Faq from "../pages/faq";
 import GiftCards from "../pages/giftcards";
 import Airtime from "../users-dashboard/airtime";
 import SellCrypto from "../users-dashboard/sell-crypto";
+import TradeGiftcard from "../users-dashboard/trade-giftcard";
 
 
 export type RouteType = {
@@ -76,6 +77,10 @@ const authRoutes: RouteType[] = [
     {
         path: '/sell-crypto',
         component:<SellCrypto />
+    },
+    {
+        path: '/trade-giftcard',
+        component:<TradeGiftcard />
     }
     // {
     //     path: '*',

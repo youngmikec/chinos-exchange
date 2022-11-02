@@ -9,6 +9,7 @@ import logo from '../../assets/images/arash.png';
 import {AiOutlinePlus} from 'react-icons/ai';
 import{CiSearch} from 'react-icons/ci';
 import {CiBellOn} from 'react-icons/ci';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const[ toggle, setToggle] = useState(true);
@@ -25,25 +26,38 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className='flex flex-row '>
-                <div className=' navbar flex flex-row   my-4 '>
-                    
-                    <ul  className='flex flex-row justify-evenly ml-52'> 
-                        <li className='mr-10 flex flex-row'>
-                        Add new post</li>
-                        <AiOutlinePlus className=' self-center'/>
-                        <li>Add content</li>     
-                    </ul>
+            <nav className='bg-white flex justify-between py-4 mb-4'>
+                <div className='flex justify-between w-4/12'>
+                    <div className="text-[#8652A4] text-sm font-semibold">
+                        <span>
+                            <Link to="/users-dashboard">Home</Link>
+                        </span>
+                    </div>
+                    <div className="text-[#8c8c8c] text-sm font-semibold">
+                        <span>
+                            <Link to="/users-dashboard">How to trade</Link>
+                        </span>
+                    </div>
+                    <div className="text-[#8c8c8c] text-sm font-semibold">
+                        <span>
+                            <Link to="/users-dashboard">chat</Link>
+                        </span>
+                    </div>
 
                     
-                    <div className="">
-                        <input type="text" placeholder='Search.....' className='inp-search pl-5' onChange={(e)=>setSearch(e.target.value)}/>
-                        <CiSearch id='icon' className={toggle ? 'search pl-2 text-white':'search pl-2 text-black'}/>
-                    </div>
                 </div>
-                <div className='justify-around  flex flex-row'>
-                    <CiBellOn className='icon-notification self-center'/>
-                    <img src={logo} alt="logo" className='' width='width: 36' height='height: 34'  />
+
+                <div className='flex justify-end ml-4'>
+                    <div className="flex justify-start border-2 border-[#f0f0f0] rounded-md">
+                        <CiSearch className="text-xl my-auto text-[#8c8c8c] ml-2 mr-4" />
+                        <input type="text" placeholder='Search.....' className='w-80' onChange={(e)=>setSearch(e.target.value)}/>
+                    </div>
+                    <div className="mx-4 my-auto">
+                        <CiBellOn className='inline-flex text-xl font-semibold my-auto text-[#8c8c8c]'/>
+                    </div>
+                    <div className="inline-flex rounded-full bg-[#b1bbdf]">
+                        <img src={logo} alt="logo" className='' width='40px' height='40px'  />
+                    </div>
                 </div>
             </nav>
         </>
