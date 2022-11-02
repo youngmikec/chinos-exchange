@@ -1,19 +1,19 @@
 import React from 'react';
+import SellCryptoComp from '../../components/user-dashboard-comps/sell-crypto-comp';
 
 import UserLayout from '../../shared/layouts/user-layout';
-import DashboardComp from '../../components/user-dashboard-comps/dashboard-comp';
 // style link end 
 
-const Dashboard = () => {
+const SellCrypto = () => {
 
     return (
 
         <UserLayout>
-            <DashboardComp />
+            <SellCryptoComp />
         </UserLayout>
     )
 }
 
-export default Dashboard;
+export default SellCrypto;
 
 
