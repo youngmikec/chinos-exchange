@@ -3,13 +3,14 @@ import { Home, SignUP, SignIn, ForgotPassword } from "../pages";
 import AboutUs from "../pages/about-us";
 import Airtimes from "../pages/airtimes";
 import ContactUs from "../pages/contact-us";
-import Dashboard from "../users-dashboard/dashboard";
+import Dashboard from "../pages/users-dashboard/dashboard";
 import Cryptos from "../pages/crytops";
 import EmailVerificationPage from "../pages/email-verification";
 import Faq from "../pages/faq";
 import GiftCards from "../pages/giftcards";
-import Airtime from "../users-dashboard/airtime";
-import SellCrypto from "../users-dashboard/sell-crypto";
+import Airtime from "../pages/users-dashboard/airtime";
+import SellCrypto from "../pages/users-dashboard/sell-crypto";
+import BuyCrypto from "../pages/users-dashboard/buy-crypto";
 
 
 export type RouteType = {
@@ -76,6 +77,10 @@ const authRoutes: RouteType[] = [
     {
         path: '/sell-crypto',
         component:<SellCrypto />
+    },
+    {
+        path: '/buy-crypto',
+        component:<BuyCrypto />
     }
     // {
     //     path: '*',
