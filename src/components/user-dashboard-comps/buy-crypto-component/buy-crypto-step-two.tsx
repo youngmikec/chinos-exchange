@@ -19,12 +19,13 @@ const BuyCryptoStepTwo = () => {
             <div className='border-2 border-gray-100 rounded-md mt-2'>
             <input type="number" placeholder='$1000 ' name="amount" className='w-full px-4 py-2 '/>
             </div>
+            <p className="text-sm text-[#7F7F80] "> Minimuim we sell is 1,0000</p>
         </div>
 
 
        
         <div className='my-8 flex justify-center'>
-            <button className='rounded-md bg-[#8652A4] text-white px-6 py-3'>Proceed</button>
+            <button className='rounded-md bg-[#8652A4] text-white px-6 py-3'>Submit</button>
         </div>
     </div>
 </>

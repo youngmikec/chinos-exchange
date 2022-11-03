@@ -4,6 +4,8 @@ import Card from '../../../shared/card';
 import StepHeader from '../../../shared/step-header';
 import BuyCryptoStepOne from './buy-crypto-step-one';
 import BuyCryptoStepTwo from './buy-crypto-step-two';
+import BuyCryptoStepThree from './buy-crypto-step-three';
+import BuyCryptoStepFour from './buy-crypto-step-four';
 
 const BuyCryptoComp = () => {
     const steps: Step[] = [
@@ -45,7 +47,8 @@ const BuyCryptoComp = () => {
                         {/* airtime steps */}
                         <BuyCryptoStepOne />
                         <BuyCryptoStepTwo />
-
+                        <BuyCryptoStepThree />
+                        <BuyCryptoStepFour />
                         {/* airtime steps */}
                     </Card>
                 </div>
