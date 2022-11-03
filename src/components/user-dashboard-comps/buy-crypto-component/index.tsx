@@ -6,6 +6,7 @@ import BuyCryptoStepOne from './buy-crypto-step-one';
 import BuyCryptoStepTwo from './buy-crypto-step-two';
 import BuyCryptoStepThree from './buy-crypto-step-three';
 import BuyCryptoStepFour from './buy-crypto-step-four';
+import BuyCryptoStepFive from './buy-crytpo-step-five';
 
 const BuyCryptoComp = () => {
     const steps: Step[] = [
@@ -49,6 +50,7 @@ const BuyCryptoComp = () => {
                         <BuyCryptoStepTwo />
                         <BuyCryptoStepThree />
                         <BuyCryptoStepFour />
+                        <BuyCryptoStepFive />
                         {/* airtime steps */}
                     </Card>
                 </div>
