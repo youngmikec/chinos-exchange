@@ -8,17 +8,12 @@ import Cryptos from "../pages/crytops";
 import EmailVerificationPage from "../pages/email-verification";
 import Faq from "../pages/faq";
 import GiftCards from "../pages/giftcards";
-<<<<<<< HEAD
-import Airtime from "../users-dashboard/airtime";
 import SellCrypto from "../users-dashboard/sell-crypto";
 import TradeGiftcard from "../users-dashboard/trade-giftcard";
 import Account from "../users-dashboard/account";
 import OrderHistory from "../users-dashboard/order-history";
-=======
-import Airtime from "../pages/users-dashboard/airtime";
-import SellCrypto from "../pages/users-dashboard/sell-crypto";
 import BuyCrypto from "../pages/users-dashboard/buy-crypto";
->>>>>>> 22cf69d2a503a9b365f44d1647e279feb7df6f32
+import Airtime from "../users-dashboard/airtime";
 
 
 export type RouteType = {
@@ -91,17 +86,16 @@ const authRoutes: RouteType[] = [
         component:<SellCrypto />
     },
     {
-<<<<<<< HEAD
         path: '/trade-giftcard',
         component:<TradeGiftcard />
     },
     {
         path: '/history',
         component:<OrderHistory />
-=======
+    },
+    {
         path: '/buy-crypto',
         component:<BuyCrypto />
->>>>>>> 22cf69d2a503a9b365f44d1647e279feb7df6f32
     }
     // {
     //     path: '*',

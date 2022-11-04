@@ -31,7 +31,7 @@ const Sidebar = ({sidebarMenus}: Props) => {
                         </Link>
                     </li>
                     <li className='my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white' title="Dashboard">
-                        <Link to="/sell-crypto">
+                        <Link to="/buy-crypto">
                             Buy Crypto       
                         </Link>
                     </li>
