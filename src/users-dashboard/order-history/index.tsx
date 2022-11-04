@@ -1,19 +1,19 @@
 import React from 'react';
+import OrderHistoryComp from '../../components/user-dashboard-comps/order-history';
 
 import UserLayout from '../../shared/layouts/user-layout';
-import DashboardComp from '../../components/user-dashboard-comps/dashboard-comp';
 // style link end 
 
-const Dashboard = () => {
+const OrderHistory = () => {
 
     return (
 
         <UserLayout>
-            <DashboardComp />
+            <OrderHistoryComp />
         </UserLayout>
     )
 }
 
-export default Dashboard;
+export default OrderHistory;
 
 

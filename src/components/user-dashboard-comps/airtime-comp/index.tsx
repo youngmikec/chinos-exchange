@@ -49,6 +49,7 @@ const AirtimeComp = () => {
 
                     <div className='my-4'>
                         <h3 className="mb-3 text-[#7F7F80]">Select Provider</h3>
+        
                         <Card type="lg">
                             <div className="flex justify-start">
                                 <div className='border-2 border-gray-100 rounded-md relative mx-4 px-4 py-2'>

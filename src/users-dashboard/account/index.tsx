@@ -1,18 +1,18 @@
 import React from 'react';
-import AirtimeComp from '../../components/user-dashboard-comps/airtime-comp';
 
 import UserLayout from '../../shared/layouts/user-layout';
+import AccountComp from '../../components/user-dashboard-comps/account-comps';
 
-const Airtime = () => {
+const Account = () => {
 
     return (
 
         <UserLayout>
-            <AirtimeComp />
+            <AccountComp />
         </UserLayout>
     )
 }
 
-export default Airtime;
+export default Account;
 
 
