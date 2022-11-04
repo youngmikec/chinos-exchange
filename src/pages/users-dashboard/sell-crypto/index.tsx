@@ -1,7 +1,7 @@
 import React from 'react';
-import SellCryptoComp from '../../components/user-dashboard-comps/sell-crypto-comp';
+import SellCryptoComp from '../../../components/user-dashboard-comps/sell-crypto-comp';
 
-import UserLayout from '../../shared/layouts/user-layout';
+import UserLayout from '../../../shared/layouts/user-layout';
 // style link end 
 
 const SellCrypto = () => {
