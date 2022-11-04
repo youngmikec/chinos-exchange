@@ -3,7 +3,7 @@ import React from 'react';
 // icons
 import {HiUsers} from 'react-icons/hi'
 import{BiMenuAltRight} from 'react-icons/bi';
-import{HiOutlineTrash} from 'react-icons/hi'
+import{HiOutlineTrash} from 'react-icons/hi';
 
 // image
 import image from '../../../assets/images/account-balance-bg.png';

@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
+//  icons
+import{CiSearch} from 'react-icons/ci';
+import {CiBellOn} from 'react-icons/ci';
+
 
 // styles
 import './style.css';
-// logo
-import logo from '../../assets/images/arash.png';
 
-//  icons
-import {AiOutlinePlus} from 'react-icons/ai';
-import{CiSearch} from 'react-icons/ci';
-import {CiBellOn} from 'react-icons/ci';
-import { Link } from "react-router-dom";
+// logo
+import profile from '../../assets/images/arash.png';
+
 
 const Navbar = () => {
     const[ toggle, setToggle] = useState(true);
@@ -56,7 +58,9 @@ const Navbar = () => {
                         <CiBellOn className='inline-flex text-xl font-semibold my-auto text-[#8c8c8c]'/>
                     </div>
                     <div className="inline-flex rounded-full bg-[#b1bbdf]">
-                        <img src={logo} alt="logo" className='' width='40px' height='40px'  />
+                        <Link to="/account">
+                            <img src={profile} alt="profile" className='' width='40px' height='40px'  />
+                        </Link>
                     </div>
                 </div>
             </nav>

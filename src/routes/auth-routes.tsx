@@ -11,6 +11,8 @@ import GiftCards from "../pages/giftcards";
 import Airtime from "../users-dashboard/airtime";
 import SellCrypto from "../users-dashboard/sell-crypto";
 import TradeGiftcard from "../users-dashboard/trade-giftcard";
+import Account from "../users-dashboard/account";
+import OrderHistory from "../users-dashboard/order-history";
 
 
 export type RouteType = {
@@ -75,12 +77,20 @@ const authRoutes: RouteType[] = [
         component:<Airtime />
     },
     {
+        path: '/account',
+        component:<Account />
+    },
+    {
         path: '/sell-crypto',
         component:<SellCrypto />
     },
     {
         path: '/trade-giftcard',
         component:<TradeGiftcard />
+    },
+    {
+        path: '/history',
+        component:<OrderHistory />
     }
     // {
     //     path: '*',

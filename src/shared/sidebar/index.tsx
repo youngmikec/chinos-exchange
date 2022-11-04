@@ -16,7 +16,7 @@ const Sidebar = ({sidebarMenus}: Props) => {
                 </div>
                 <ul className="list-none">
                     <li className='my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white' title="Dashboard">
-                        <Link to="/dashboard">
+                        <Link to="/users-dashboard">
                             Dashboard       
                         </Link>
                     </li>
@@ -51,7 +51,7 @@ const Sidebar = ({sidebarMenus}: Props) => {
                         </Link>
                     </li>
                     <li className='my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white' title="Dashboard">
-                        <Link to="/dashboard">
+                        <Link to="/account">
                             Account Settings     
                         </Link>
                     </li>
