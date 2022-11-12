@@ -1,7 +1,12 @@
-import React,{useEffect,useState} from 'react'
-import logo from "../../../assets/images/logo.png";
-import googleIcon from "../../../assets/icons/google-icon.png";
+import React, {useEffect, useState, useRef} from 'react'
 import { Link } from "react-router-dom";
+import { AxiosResponse } from 'axios';
+
+import { getItem, setItem } from '../../../utils';
+import { ApiResponse } from '../../../common';
+import logo from "../../../assets/images/logo.png";
+import { VERIFY_RESET_CODE } from '../../../services';
+import googleIcon from "../../../assets/icons/google-icon.png";
  
   type inputProps={
     type:string,
@@ -10,33 +15,40 @@ import { Link } from "react-router-dom";
     value:string,
     id:Number
   }
+  type Props = {
+    changeStep: (data: number) => any
+  }
   
   
-const ForgotPassword2 = () => {
+const ForgotPassword2 = ( { changeStep }: Props) => {
+    const inputRef = useRef<any>();
+    let code: string = '';
+    const [loading, setLoading] = useState<boolean>(false);
+    const [resetCode, setResetCode] = useState<string>('');
 
-
-    const [inputs,setInput]=useState<inputProps[]>([
-      {type:'text',placeholder:'0',focus:false,value:'',id:0},
-      {type:'text',placeholder:'0',focus:true,value:'',id:1},
-      {type:'text',placeholder:'0',focus:false,value:'',id:2},
-      {type:'text',placeholder:'0',focus:false,value:'',id:3},
-      {type:'text',placeholder:'0',focus:false,value:'',id:4}
+    const [inputs, setInput] = useState<inputProps[]> ([
+      {type:'text', placeholder:'0', focus: true, value:'', id: 0},
+      {type:'text', placeholder:'0', focus: false, value:'', id: 1},
+      {type:'text', placeholder:'0', focus: false, value:'', id: 2},
+      {type:'text', placeholder:'0', focus: false, value:'', id: 3},
+      {type:'text', placeholder:'0', focus: false, value:'', id: 4}
     ])
-     const [currentFocus,setCurrentFocus]=useState<Number|undefined>();
+     const [currentFocus, setCurrentFocus]=useState<Number|undefined>();
 
-    const changeFocuse=(id:Number)=>{
+    const changeFocuse = (id:Number) => {
       setCurrentFocus(undefined);
-      const focusInput:inputProps[]=[...inputs];
-      focusInput.map((e,i)=>{
-         if(e.id==id){
-          e.focus=true;
+      const focusInput: inputProps[] = [...inputs];
+      focusInput.map((e,i) => {
+         if(e.id === id){
+          e.focus = true;
          }
       })
       setInput(focusInput);
     }
 
-    const changeInput=(id:Number,value:string)=>{
-      
+    const changeInput=(id:Number, value:string)=>{
+      code = `${code}${value}`;
+      console.log('resetcode', code);
       setCurrentFocus(id);
       const tempInput:inputProps[]=[...inputs];
       //  const currentObjec=tempInput.find((e:inputProps)=>e.id=id);
@@ -54,19 +66,28 @@ const ForgotPassword2 = () => {
          
     }
 
+    const handleVerifyCode = () => {
+      if(!!code){
+        setLoading(true);
+        const id = getItem('xxid');
+        const data = { id, resetCode: code };
+        VERIFY_RESET_CODE(data).then((res: AxiosResponse<ApiResponse>) => {
+          setLoading(false);
+          setItem('clientD', res.data.payload)
+          changeStep(3)
+        }).catch((err: any) => {
+          setLoading(false);
+          changeStep(2)
+          console.log(err);
+        })
+    }
+    }
+
    useEffect(()=>{
     if(currentFocus){
       changeFocuse(currentFocus&&currentFocus);
     }
    },[inputs])
-
-  // let otp = document.querySelector('input') as HTMLInputElement;
-
-  // otp.oninput = function() {
-  //         if(otp.nextElementSibling && otp !== null) {
-  //             otp.nextElementSibling.focus();
-  //         }
-  //     }
   
 
   return (
@@ -91,11 +112,13 @@ const ForgotPassword2 = () => {
             {inputs.map((e,i)=>{
                 return(
                   <input
-                  type={e.type} 
+                  key={i}
+                  type='text'
                   maxLength={1}
+                  ref={e.focus ? inputRef : null}
                   autoFocus={e.focus}
                   placeholder={e.placeholder}
-                  onChange={(b)=>changeInput(e.id,b.target.value)}
+                  onChange={(b)=> { console.log(code += b.target.value)}}
                   className="  rounded-md w-1/5 h-14 text-center ml-2 my-6  outline-none border-gray-400 border-solid border"
                 />
                 )
@@ -115,13 +138,15 @@ const ForgotPassword2 = () => {
         </div>
 
         <div className="w-8/12 my-4 mx-auto text-center">
-          <button className="bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-4">
-            Verify
+          <button 
+            onClick={() => handleVerifyCode()}
+            className="bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-4">
+            { loading ? 'Verifying' : 'Verify' }
           </button>
 
           <p className="text-[#8652a48f] text-sm block my-4">
             Already have an account?
-            <span className="text-[#8652A4] font-bold">
+            <span className="text-[#8652A4] font-bold mx-2">
               <Link to="/sign-in">Sign in</Link>
             </span>
           </p>

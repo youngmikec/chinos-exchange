@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
-import axios from 'axios';
+import { Link, Navigate, useLocation, useNavigation, useHref } from 'react-router-dom';
+import { AxiosResponse } from 'axios';
 
+import './style.css';
+import { setItem } from '../../utils';
+import { ApiResponse } from '../../common';
+import { LOGIN_USER } from '../../services';
 import logo from '../../assets/images/logo.png';
 import googleIcon from '../../assets/icons/google-icon.png';
-import './style.css';
 
 const SignInComp = () => {
-    const url: any = process.env.REACT_APP_BASE_URL || '';
+
+    const [loading, setLoading] = useState<boolean>(false);
     const [email, setEmail] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [password, setPassword] = useState<{value: string, error: boolean}>({value: '', error: false});
 
@@ -29,14 +33,18 @@ const SignInComp = () => {
     }
 
     const handleLogin = () => {
+        setLoading(true);
         if(inputCheck()){
             const data = { email: email.value, password: password.value};
-
-            axios.post(`${url}/login`, data).then((res: any) => {
-                console.log(res);
-                <Navigate to="/dashboard" />
-            }).catch((err: any) => {
-                console.log(err)
+            LOGIN_USER(data).then((res: AxiosResponse<ApiResponse>) => {
+                setLoading(false);
+                const { token, user } = res.data.payload;
+                setItem('clientToken', token);
+                setItem('clientD', user);
+                window.location.href = '/users-dashboard';
+            }).catch(err => {
+                setLoading(false);
+                console.log(err);
             })
         }
     }
@@ -107,7 +115,7 @@ const SignInComp = () => {
                                 onClick={() => handleLogin() } 
                                 className='bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-4'
                             >
-                                Sign in
+                                { loading ? 'processing' : 'Sign in' }
                             </button>
                             <p className='text-[#8652a48f] text-sm block my-4'>Don't have an account?    
                                 <span className='text-[#8652A4] font-bold'><Link to="/sign-up">  Sign Up</Link></span>
