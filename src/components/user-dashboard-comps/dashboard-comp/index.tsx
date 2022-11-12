@@ -7,6 +7,7 @@ import{HiOutlineTrash} from 'react-icons/hi';
 
 // image
 import image from '../../../assets/images/account-balance-bg.png';
+import airtime from '../../../assets/images/aitime_to_cash.png'
 
 // style
 import "./style.css";
@@ -17,39 +18,62 @@ const DashboardComp = () => {
     <>
         <div>    
             {/* FIRST SECTION STARTS HERE */}
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3'>
+                <div>
+                    <div className='w-full' >
+                    <img src={image} alt="" className=' bg-[#8652A4]' id='bg'/> 
+                    <p className=' absolute -mt-56 ml-8 font-medium text-white'>Account Balance</p> 
+                    <div>
+                           <h1 className='absolute -mt-36 ml-8 font-bold text-white'>NGN 0.00</h1>
+                    </div>
+                    <div className='flex justify-between'>
+                        <div> 
+                        <button className='bg-[#CFBADB] text-white rounded-lg absolute -my-14 ml-4 w-36'>Found</button> 
+
+                        </div>
+                        <div>
+                        <button className='bg-[#CFBADB] text-white rounded-lg  absolute -my-14 -ml-40 w-36'>Withdraw</button>
+
+                        </div>
+        
+
+                    </div>
+                    </div>           
+                </div>
+
+                <div className='shadow-sm'></div>
+
+                <div>
+                    <img src={image} alt=""  className=' bg-[#FFAB2E]' id='bg'/>
+
+                </div>
+            </div>
 
             <div className='section-1'>
-                <section>
-                    <img src={image} alt="img" className='wallet' />
-                    <HiUsers className='icon-acct'/>
-                    <p className='visitor'>Total Visitor</p>
-                    <h1 className='money'>1,123</h1>
-                    <BiMenuAltRight className='total-orders'/>
-                    <p className='orders'>Total Orders</p>
-                    <h1 className='total-amount'>1,000</h1>
-                    <img src={image} alt="" className='pending-orders'/>
-                    <HiUsers className='pending-visitor'/>
-                    <p className='total-prnding'>Total pending orders</p>
-                    <h1 className='total_pending-amount'>1,123</h1>
-                    <BiMenuAltRight className='total_successful-orders'/>
-                    <p className='successful-orders'>Total Orders</p>
-                    <h1 className='successful-amount'>1,000</h1>
-                
-                    <div className='Recent-order'>
-                    Recent order
-                    </div>
-                </section>
+           
 
                 <section className='section-2'>
-                    <div className='customer-table'>
-                        <h2>Customers Table</h2>
-                        <p className='displaying'>Displaying 3 of 3  User(s)</p>
-                        <input type="text" className='search-order' />
-                        <button>search</button>
-                    </div>
+                   
 
                     <div>
-                        <h3 className='text-[#121212]'>Recent Transanctions</h3>
+                        <h3 className='text-[#121212] my-16'>What we offer</h3>
+
+                        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4'>
+                            <p>Airtime to Cash</p>
+
+                            <p>Trade Giftcard</p>
+                            
+                            <p>Buy Crypto</p>
+                            <p>Sell Crypto</p>
+
+
+
+
+
+                        </div>
+
+
+
                         <Card type='lg'>
                         <table className='table mx-auto  px-5 my-16' id='table'>
                             <thead className='text-left'>
