@@ -7,7 +7,11 @@ import{HiOutlineTrash} from 'react-icons/hi';
 
 // image
 import image from '../../../assets/images/account-balance-bg.png';
-import airtime from '../../../assets/images/aitime_to_cash.png'
+import airtime from '../../../assets/images/aitime_to_cash.png';
+import crypto from '../../../assets/images/buy_crypto.png';
+import trade from '../../../assets/images/trade-giftcard.png';
+import sell from '../../../assets/images/sell_crypto.png'
+
 
 // style
 import "./style.css";
@@ -59,72 +63,148 @@ const DashboardComp = () => {
                         <h3 className='text-[#121212] my-16'>What we offer</h3>
 
                         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4'>
-                            <p>Airtime to Cash</p>
+                                 <div>
+                                     <p className=''>Airtime to Cash</p>
+                                     <h5 className='font-normal'>Convert your airtime to cash</h5>
 
-                            <p>Trade Giftcard</p>
-                            
-                            <p>Buy Crypto</p>
-                            <p>Sell Crypto</p>
+                                     <img src={airtime} alt="" />
+                                      <button className='bg-[#8652A4] w-36 rounded-lg text-white absolute my-4 '>Convert</button>
+                                </div>
 
 
+                            <div>
+                                <p className=''>Trade Giftcard</p>
+                                <h5 className='font-normal'>Redeem your giftcard with us</h5>
+                                <img src={trade} alt="" />
+                                <button className='bg-[#8652A4] w-36 rounded-lg text-white ab absolute my-4'>Convert</button>
 
+                            </div>  
+
+                            <div>
+                                <p className=''>Buy Crypto</p>
+                                <h5 className='font-normal'>Buy your crypto currency</h5>
+                                <img src={crypto} alt="" />
+                                <button className='bg-[#8652A4] w-36 rounded-lg text-white absolute my-4'>Buy</button>
+
+                            </div>   
+                            <div>
+                                <p className=''>Sell Crypto</p>
+                                <h5 className='font-normal'>Sell your crypto currency</h5>
+                                <img src={sell} alt="" />
+                                <button className='bg-[#8652A4] w-36 rounded-lg text-white absolute my-4'>Sell</button>
+
+                            </div>                            
 
 
                         </div>
 
+                        <div>
+                            <h4>Recent Transactions</h4>
+                        </div>
 
 
-                        <Card type='lg'>
-                        <table className='table mx-auto  px-5 my-16' id='table'>
+
+                        <table className='table mx-auto   my-16'>
                             <thead className='text-left'>
                                 <tr className='flex justify-around'>
-                                    <th>Action(s)</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th className='pl-20'>Created at</th>
+                                    <th>#</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th className='text-center'>Type</th>
+                                    <th className=''>Amount</th>
                                     <th>Status</th>
                                 </tr>
                                 <hr/>
                             </thead>
                             <tbody className='w-10/12 text-sm '>
-                                <tr className='flex justify-around mb-2 mt-4 pl-12	'>
-                                    <td><HiOutlineTrash className='HiOutlineTrash'/></td>
-                                    <td className='pl-12'>princess amaka</td>
-                                    <td>princesobinan@gmail.com</td>
-                                    <td>2021-12-08 19:50:00</td>
-                                    <td className='completed'>Completed</td>
+                                <tr className='flex justify-around mb-2 mt-4 	'>
+                                    <td>1</td>
+                                    <td className=''>10-02/2022</td>
+                                    <td className='text-left'>10mins : 57secs</td>
+                                    <td>Buy Crypto</td>
+                                    <td className=''>$200</td>
+                                    <td className=''>Success</td>
 
                                 </tr>
-                                <hr />
-                                <tr className='flex justify-around mb-2 mt-4 pl-12' >
-                                    <td><HiOutlineTrash className='HiOutlineTrash'/></td>
-                                    <td className='pl-12'>princess amaka</td>
-                                    <td>princesobinan@gmail.com</td>
-                                    <td>2021-12-08 19:50:00</td>
-                                    <td className='completed'>Completed</td>
-                                </tr>
-                                <hr />
-                                <tr className='flex justify-around mb-2 mt-4 pl-12'>
-                                <td className='HiOutlineTrash'><HiOutlineTrash className='HiOutlineTrash'/></td>
-                                <td className='pl-12'>princess amaka</td>
-                                <td>princesobinan@gmail.com</td>
-                                <td>2021-12-08 19:50:00</td>
-                                <td className='completed'>Completed</td>
-                                </tr>
-                                <hr />
 
-                                <tr className='flex justify-around mb-2 mt-4 pl-12'>
-                                    <td className='HiOutlineTrash'><HiOutlineTrash className='HiOutlineTrash'/></td>
-                                    <td className='pl-12'>princess amaka</td>
-                                    <td>princesobinan@gmail.com</td>
-                                    <td>2021-12-08 19:50:00</td>
-                                    <td className='completed'>Completed</td>
+                                <tr className='flex justify-around mb-2 mt-4 	'>
+                                    <td>2</td>
+                                    <td className='text-right'>10-02/2022</td>
+                                    <td>10mins : 57secs</td>
+                                    <td>Sell Crypto</td>
+                                    <td className=''>$200</td>
+                                    <td className=''>Success</td>
+
+
                                 </tr>
-                                <hr />
+                                
+                                <tr className='flex justify-around mb-2 mt-4 	'>
+                                    <td>3</td>
+                                    <td className=''>10-02/2022</td>
+                                    <td className='text-right'>10mins : 57secs</td>
+                                    <td>Giftcard</td>
+                                    <td className=''>$200</td>
+                                    <td className=''>Success</td>
+
+
+                                </tr>
+                                
+                                <tr className='flex justify-around mb-2 mt-4 	'>
+                                    <td>4</td>
+                                    <td className=''>10-02/2022</td>
+                                    <td>10mins : 57secs</td>
+                                    <td>Airtime</td>
+                                    <td className=''>$200</td>
+                                    <td className=''>Success</td>
+
+
+                                </tr>
+
+                                <tr className='flex justify-around mb-2 mt-4 	'>
+                                    <td>5</td>
+                                    <td className=''>10-02/2022</td>
+                                    <td>10mins : 57secs</td>
+                                    <td>Giftcard</td>
+                                    <td className=''>$200</td>
+                                    <td className=''>Success</td>
+
+
+                                </tr>
+                                <tr className='flex justify-around mb-2 mt-4 	'>
+                                    <td>6</td>
+                                    <td className=''>10-02/2022</td>
+                                    <td>10mins : 57secs</td>
+                                    <td>Airtime</td>
+                                    <td className=''>$200</td>
+                                    <td className=''>Success</td>
+
+
+                                </tr>
+
+                                <tr className='flex justify-around mb-2 mt-4 	'>
+                                    <td>7</td>
+                                    <td className=''>10-02/2022</td>
+                                    <td>10mins : 57secs</td>
+                                    <td>Buy Crypto</td>
+                                    <td className=''>$200</td>
+                                    <td className=''>Success</td>
+
+
+                                </tr>
+
+                                <tr className='flex justify-around mb-2 mt-4 	'>
+                                    <td>8</td>
+                                    <td className=''>10-02/2022</td>
+                                    <td>10mins : 57secs</td>
+                                    <td>Buy Crypto</td>
+                                    <td className=''>$200</td>
+                                    <td className=''>Success</td>
+
+
+                                </tr>
                             </tbody>
 
                         </table>
-                        </Card>
                     </div>
                 </section>
             </div>
