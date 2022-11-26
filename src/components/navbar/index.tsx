@@ -20,8 +20,7 @@ const Navbar = () => {
                     <li className='mx-4 text-white font-semibold hover:border-b-2 hover:border-b-white'>
                         <div
                             className="relative mx-1 pt-0 pb-2 group  mb-1 md:mb-0"
-                            id="button_pm"
-                        >
+                            id="button_pm">
                         <Link to="/services">Services</Link>
                             {/* <span className="firstlevel hover:text-red-500 whitespace-no-wrap text-gray-600 hover:text-blue-800">
                             <BiEditAlt className="text-blue hover:cursor-pointer inline" />
