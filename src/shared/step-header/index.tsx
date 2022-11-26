@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiFillExclamationCircle } from 'react-icons/ai';
 import { Step } from '../../common';
 
 type Props = {
     title: string;
     info: string;
-    steps: Step[]
+    steps: Step[];
+    step?: number;
 }
 
-const StepHeader = ({ title, info, steps }: Props) => {
+const StepHeader = ({ title, info, steps, step }: Props) => {
+    const [stepsArray, setStepArray] = useState<Step[]>([]);
+
+    useEffect(() => {
+        setStepArray(steps);
+    }, []);
+
+    useEffect(() => {
+        steps.forEach((item, idx) => {
+            ((idx + 1) === step) ? item.isActive = true : item.isActive = false;
+        })
+        setStepArray(steps);
+    }, [step]);
+
     return (
         <>
             <div className="w-full">
@@ -16,8 +30,8 @@ const StepHeader = ({ title, info, steps }: Props) => {
 
                 <div className="w-full flex justify-start">
                     {
-                        steps.length > 0 && 
-                        steps.map((step: Step, key: number) => {
+                        stepsArray.length > 0 && 
+                        stepsArray.map((step: Step, key: number) => {
                             return <div className='text-center' key={key}>
                             <p className='text-[#7F7F80] text-lg'>Step {key + 1} </p>
                             <p className={`px-6 py-3 capitalize text-sm ${ step.isActive ? 'bg-[#8652A4] text-white' : 'bg-[#D9D9D9] text-[#7F7F80]'}`}>{ step.name }</p>

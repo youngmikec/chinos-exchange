@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+type Props = {
+    changeStep: (data: number) => any
+}
 
-const AirtimeStepThree = () => {
+const AirtimeStepThree = ({ changeStep }: Props) => {
     return (
         <>
             <div className='w-full'>

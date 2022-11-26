@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import Card from '../../../shared/card';
 
-const AirtimeStepFour = () => {
+type Props = {
+    changeStep: (data: number) => any,
+}
+
+const AirtimeStepFour = ({ changeStep }: Props) => {
     return (
         <>
             <div className='w-full'>
