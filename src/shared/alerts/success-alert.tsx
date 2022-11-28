@@ -15,11 +15,11 @@ const SuccessAlert = ({ title, subTitle, msg }: Props) => {
                 <img src={successIcon} alt="success icon" width="100px" height="100px" />
             </div>
             <div className='my-4 text-center'>
-                <h3 className='text-2xl font-semibold text-[#24C751] my-4'>{ title }</h3>
+                <h3 className='text-2xl font-semibold text-[#24C751] my-3'>{ title }</h3>
                 {
-                    subTitle && <h4 className='text-lg font-semibold text-[#8c8c8c] my-2'>{ subTitle }</h4>
+                    subTitle && <h4 className='text-lg font-semibold text-[#8c8c8c] my-1'>{ subTitle }</h4>
                 }
-                <h3 className='text-sm text-[#8c8c8c] my-2'>{ msg }</h3>
+                <h3 className='text-sm text-[#8c8c8c] my-1'>{ msg }</h3>
             </div>
         </div>
     </>

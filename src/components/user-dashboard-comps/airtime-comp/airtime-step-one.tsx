@@ -1,6 +1,8 @@
-import { AxiosResponse } from 'axios';
 import React, { useState, useEffect } from 'react';
-import { Airtime, ApiResponse } from '../../../common';
+import { useDispatch, useSelector } from 'react-redux';
+import { Airtime } from '../../../common';
+import { RootState } from '../../../store';
+import { APPEND_TO_AIRTIME_ORDER } from '../../../store/orders';
 
 type Props = {
     changeStep: (data: number) => any,
@@ -8,6 +10,9 @@ type Props = {
 }
 
 const AirtimeStepOne = ({ changeStep, product }: Props) => {
+    const airtimeOrderState = useSelector((state: RootState) => state.AirtimeOrderSlice.value);
+    const dispatch = useDispatch();
+
     const [rate, setRate] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(false);
     const [amount, setAmount] = useState<{value: number, error: boolean}>({value: 0, error: false});
@@ -47,25 +52,30 @@ const AirtimeStepOne = ({ changeStep, product }: Props) => {
     const handleProcceede = () => {
         setLoading(true);
         if(inputCheck()){
+            const data = { 
+                amount: amount.value, 
+                amountReceivable: receivable.value,
+                sendersPhone: senderPhone.value,
+            };
+            dispatch(APPEND_TO_AIRTIME_ORDER(data))
             changeStep(2)
-            // const data = { amount: amount.value, password: password.value};
-            // LOGIN_USER(data).then((res: AxiosResponse<ApiResponse>) => {
-            //     setLoading(false);
-            //     const { token, user } = res.data.payload;
-                
-            // }).catch(err => {
-            //     setLoading(false);
-            //     console.log(err);
-            // })
         }
     }
 
     useEffect(() => {
         if(product) {
             setRate(product.rate);
-            setPercentage({...percentage, value: product.rate})
+            setPercentage({...percentage, value: product.rate});
+            dispatch(APPEND_TO_AIRTIME_ORDER({ airtime: product }))
         }
     }, [product]);
+    // useEffect(() => {
+    //     if(airtimeOrderState !== null){
+    //         setAmount({value: airtimeOrderState.amount, error: false});
+    //         setReceivable({value: airtimeOrderState.amountReceivable, error: false});
+    //         setSenderPhone({value: airtimeOrderState.sendersPhone, error: false});
+    //     }
+    // }, []);
     useEffect(() => {
         if(product) {
             const discount: number = (percentage.value /100) * amount.value; 

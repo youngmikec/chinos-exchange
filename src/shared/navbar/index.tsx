@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 //  icons
-import{CiSearch} from 'react-icons/ci';
-import {CiBellOn} from 'react-icons/ci';
+import{ CiSearch } from 'react-icons/ci';
+import { CiBellOn } from 'react-icons/ci';
 
 
 // styles
@@ -15,7 +15,7 @@ import profile from '../../assets/images/arash.png';
 
 const Navbar = () => {
     const[ toggle, setToggle] = useState(true);
-    const [search,setSearch]=useState('');
+    const [search, setSearch] = useState('');
 
     useEffect(()=>{
         if(!search){
@@ -45,8 +45,6 @@ const Navbar = () => {
                             <Link to="/users-dashboard">chat</Link>
                         </span>
                     </div>
-
-                    
                 </div>
 
                 <div className='flex justify-end ml-4'>
