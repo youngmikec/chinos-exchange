@@ -1,5 +1,10 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { AiOutlineSetting, AiOutlineDollar } from 'react-icons/ai';
+import { RiDashboardFill } from 'react-icons/ri';
+import { IoCardOutline, IoCopyOutline } from 'react-icons/io5';
+import { MdOutlineDashboardCustomize } from 'react-icons/md';
+
 import logo from '../../assets/images/logo.png';
 
 type Props = {
@@ -15,29 +20,38 @@ const Sidebar = ({sidebarMenus}: Props) => {
                 <div className="my-5 px-4">
                     <img src={logo} alt="logo" width="100px" height="100px" />
                 </div>
-                <ul className="list-none">
+                <ul className="list-none text-[#8c8c8c]">
                     <li 
                         className={`${ pathname === '/users-dashboard' && 'bg-[#8652A4] text-white' } my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` } 
                         title="Dashboard"
                     >
                         <Link to="/users-dashboard">
-                            Dashboard       
+                            <div className='flex justify-start'>
+                                <div><span><RiDashboardFill className='text-xl'/></span></div>
+                                <div className='mx-2'>Dashboard</div>
+                            </div>     
                         </Link>
                     </li>
-                    <li 
+                    {/* <li 
                         className={`${ pathname === '/dashboard' && 'bg-[#8652A4] text-white' } my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
                         title="wallet"
                     >
                         <Link to="/dashboard">
-                            Wallet       
+                            <div className='flex justify-start'>
+                                <div><span><RiDashboardFill className='text-xl'/></span></div>
+                                <div className='mx-2'>Wallet</div>
+                            </div>     
                         </Link>
-                    </li>
+                    </li> */}
                     <li 
                         className={`${ pathname === '/sell-crypto' && 'bg-[#8652A4] text-white' } my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
                         title="sell crypto"
                     >
                         <Link to="/sell-crypto">
-                            Sell Crypto       
+                            <div className='flex justify-start'>
+                                <div><span><AiOutlineDollar className='text-xl'/></span></div>
+                                <div className='mx-2'>Sell Crypto</div>
+                            </div>           
                         </Link>
                     </li>
                     <li 
@@ -45,7 +59,10 @@ const Sidebar = ({sidebarMenus}: Props) => {
                         title="buy crypto"
                     >
                         <Link to="/buy-crypto">
-                            Buy Crypto       
+                            <div className='flex justify-start'>
+                                <div><span><AiOutlineDollar className='text-xl'/></span></div>
+                                <div className='mx-2'>Buy Crypto</div>
+                            </div>                
                         </Link>
                     </li>
                     <li 
@@ -53,7 +70,10 @@ const Sidebar = ({sidebarMenus}: Props) => {
                         title="trade giftcard"
                     >
                         <Link to="/trade-giftcard">
-                            Trade Giftcard       
+                            <div className='flex justify-start'>
+                                <div><span><IoCardOutline  className='text-xl'/></span></div>
+                                <div className='mx-2'>Trade Giftcard</div>
+                            </div>                       
                         </Link>
                     </li>
                     <li 
@@ -61,7 +81,10 @@ const Sidebar = ({sidebarMenus}: Props) => {
                         title="airtime"
                     >
                         <Link to="/airtime">
-                            Airtime to Cash      
+                            <div className='flex justify-start'>
+                                <div><span><IoCopyOutline className='text-xl'/></span></div>
+                                <div className='mx-2'>Airtime to cash</div>
+                            </div>                             
                         </Link>
                     </li>
                     <li 
@@ -69,7 +92,10 @@ const Sidebar = ({sidebarMenus}: Props) => {
                         title="Order history"
                     >
                         <Link to="/history">
-                            Order History      
+                            <div className='flex justify-start'>
+                                <div><span><MdOutlineDashboardCustomize className='text-xl'/></span></div>
+                                <div className='mx-2'>Order History</div>
+                            </div>                                   
                         </Link>
                     </li>
                     <li 
@@ -77,7 +103,10 @@ const Sidebar = ({sidebarMenus}: Props) => {
                         title="Account setting"
                     >
                         <Link to="/account">
-                            Account Settings     
+                            <div className='flex justify-start'>
+                                <div><span><AiOutlineSetting className='text-xl'/></span></div>
+                                <div className='mx-2'>Account Settings</div>
+                            </div>                                   
                         </Link>
                     </li>
 
