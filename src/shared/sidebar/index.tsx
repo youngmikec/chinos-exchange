@@ -32,17 +32,7 @@ const Sidebar = ({sidebarMenus}: Props) => {
                             </div>     
                         </Link>
                     </li>
-                    {/* <li 
-                        className={`${ pathname === '/dashboard' && 'bg-[#8652A4] text-white' } my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
-                        title="wallet"
-                    >
-                        <Link to="/dashboard">
-                            <div className='flex justify-start'>
-                                <div><span><RiDashboardFill className='text-xl'/></span></div>
-                                <div className='mx-2'>Wallet</div>
-                            </div>     
-                        </Link>
-                    </li> */}
+            
                     <li 
                         className={`${ pathname === '/sell-crypto' && 'bg-[#8652A4] text-white' } my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
                         title="sell crypto"
