@@ -51,7 +51,7 @@ const AirtimeComp = () => {
         const queryString: string = `?sort=name`;
         RETREIVE_AIRTIME(queryString).then((res: AxiosResponse<ApiResponse>) => {
             setLoading(false);
-            const { message, success, payload } = res.data;
+            const { payload } = res.data;
             setAirtimeRecords(payload);
         }).catch(err => {
             setLoading(false);

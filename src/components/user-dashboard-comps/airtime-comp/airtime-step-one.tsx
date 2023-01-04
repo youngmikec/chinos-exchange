@@ -69,13 +69,7 @@ const AirtimeStepOne = ({ changeStep, product }: Props) => {
             dispatch(APPEND_TO_AIRTIME_ORDER({ airtime: product }))
         }
     }, [product]);
-    // useEffect(() => {
-    //     if(airtimeOrderState !== null){
-    //         setAmount({value: airtimeOrderState.amount, error: false});
-    //         setReceivable({value: airtimeOrderState.amountReceivable, error: false});
-    //         setSenderPhone({value: airtimeOrderState.sendersPhone, error: false});
-    //     }
-    // }, []);
+    
     useEffect(() => {
         if(product) {
             const discount: number = (percentage.value /100) * amount.value; 

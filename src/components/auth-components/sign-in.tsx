@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Link, Navigate, useLocation, useNavigation, useHref } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { AxiosResponse } from 'axios';
 
 import './style.css';
@@ -32,6 +34,20 @@ const SignInComp = () => {
         return isValid;
     }
 
+    const notify = (type: string, msg: string) => {
+        if (type === "success") {
+          toast.success(msg, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+    
+        if (type === "error") {
+          toast.error(msg, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+    };
+
     const handleLogin = () => {
         setLoading(true);
         if(inputCheck()){
@@ -41,10 +57,14 @@ const SignInComp = () => {
                 const { token, user } = res.data.payload;
                 setItem('clientToken', token);
                 setItem('clientD', user);
-                window.location.href = '/users-dashboard';
+                notify('success', "Login successful");
+                setTimeout(() => {
+                    window.location.href = '/users-dashboard';
+                }, 2500);
             }).catch(err => {
                 setLoading(false);
-                console.log(err);
+                const { message } = err.response.data;
+                notify('error', message);
             })
         }
     }
@@ -124,6 +144,8 @@ const SignInComp = () => {
                     </div>
                 </div>
             </div>
+
+            <ToastContainer />
         </>
     )
 }
