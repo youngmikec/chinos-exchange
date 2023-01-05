@@ -20,10 +20,10 @@ const TradeGiftcardStepTwo = ({changeStep, changeStatus}: Props) => {
 
     const [loading, setLoading] = useState<boolean>(false);
     const [cardNumber, setCardNumber] = useState<{value: string, error: boolean}>({value: '', error: false});
-    const [proofImage, setProofImage] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [bankName, setBankName] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [accountName, setAccountName] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [accountNumber, setAccountNumber] = useState<{value: string, error: boolean}>({value: '', error: false});
+    const [proofImage, setProofImage] = useState<{value: string, error: boolean}>({value: '', error: false});
     const fileRef = useRef<HTMLInputElement>(null);
 
     const openFile = () => {

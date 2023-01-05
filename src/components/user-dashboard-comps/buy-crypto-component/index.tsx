@@ -60,7 +60,7 @@ const BuyCryptoComp = () => {
     return (
         <>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2'>
-                <div className='w-12/12'>
+                <div className='w-full'>
                     <StepHeader 
                         title='Buy Crypto'
                         steps={steps}
@@ -71,8 +71,8 @@ const BuyCryptoComp = () => {
                 </div>
             </div>
 
-            <div className='flex flex-row my-4'>
-                <div className='w-8/12 ml-auto mr-8'>
+            <div className='flex flex-col sm:flex-row md:flex-row lg:flex-row my-4'>
+                <div className='w-full sm:w-11/12 md:w-9/12 lg:w-8/12 m-0 sm:mr-3 lg:ml-auto lg:mr-8'>
                     {/* <h3 className="mb-3 text-[#7F7F80]">Select Provider</h3> */}
                     <Card type="lg">
                         {/* airtime steps */}
@@ -111,7 +111,7 @@ const BuyCryptoComp = () => {
                     </Card>
                 </div>
 
-                <div className='w-4/12'>
+                <div className='w-full md:mx-3 my-4 md:my-0 lg:my-0 sm:w-6/12 md:w-5/12 lg:w-4/12'>
                     <Card type="lg">
                         {/* Crypto rates */}
                         

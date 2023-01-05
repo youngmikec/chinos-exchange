@@ -15,7 +15,6 @@ const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
     const [selectedNetwork, setSelectedNetwork] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [amount, setAmount] = useState<{value: number, error: boolean}>({value: 0, error: false});
     const [receivable, setReceivable] = useState<{value: number, error: boolean}>({value: 0, error: false});
-    const [walletAddress, setWalletAddress] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [rate, setRate] = useState<number | undefined>(0);
     const [networks, setNetworks] = useState<any[] | any>([]);
 
@@ -61,8 +60,8 @@ const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
         setLoading(true);
         if(inputCheck()){
             const data = { 
+                amount: amount.value,
                 cryptocurrency: selectedCrypto.value, 
-                walletAddress: walletAddress.value,
                 network: selectedNetwork.value,
                 orderType: "SELL_CRYPTO",
                 amountReceivable: receivable.value,

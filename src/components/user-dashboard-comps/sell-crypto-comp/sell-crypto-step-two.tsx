@@ -8,7 +8,11 @@ import { AiOutlineSave, AiOutlineShareAlt } from 'react-icons/ai';
 import barCode from '../../../assets/images/bar-code.png';
 import { copyTextToClipboard } from '../../../helpers';
 
-const SellCryptoStepTwo = () => {
+type Props = {
+    changeStep: (data: number) => any,
+}
+
+const SellCryptoStepTwo = ({ changeStep }: Props) => {
     const textRef = useRef<HTMLParagraphElement>(null);
     const [walletAddress, setWalletAddress] = useState<string>('');
     
@@ -32,6 +36,10 @@ const SellCryptoStepTwo = () => {
         }).catch(err => {
             notify('error', 'Error copying wallet Address');
         })
+    }
+
+    const handleProceed = () => {
+        changeStep(3)
     }
 
     useEffect(() => {
@@ -77,7 +85,10 @@ const SellCryptoStepTwo = () => {
                 </div>
 
                 <div className='my-4 flex justify-center'>
-                    <button className='rounded-md bg-[#8652A4] text-white px-6 py-3'>Mark Paid</button>
+                    <button 
+                        className='rounded-md bg-[#8652A4] text-white px-6 py-3'
+                        onClick={() => handleProceed()}
+                    >Proceed</button>
                 </div>
             </div>
 
