@@ -1,5 +1,8 @@
-import React from 'react';
-import { Step } from '../../../common';
+import { AxiosResponse } from 'axios';
+import React, { useState, useEffect } from 'react';
+
+import { ApiResponse, CryptoCurrency, Step } from '../../../common';
+import { RETREIVE_CRYPTO } from '../../../services';
 import Card from '../../../shared/card';
 import StepHeader from '../../../shared/step-header';
 import SellCryptoStepFive from './sell-crypto-step-five';
@@ -28,6 +31,29 @@ const SellCryptoComp = () => {
         },
     ]
 
+    const [step, setStep] = useState<number>(1);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [cryptoRecords, setCryptoRecords] = useState<CryptoCurrency[]>([])
+
+    const retreiveCryptos = () => {
+        setLoading(true);
+        const queryString: string = `?sort=name`;
+        RETREIVE_CRYPTO(queryString).then((res: AxiosResponse<ApiResponse>) => {
+            setLoading(false);
+            const { payload } = res.data;
+            setCryptoRecords(payload);
+        }).catch(err => {
+            setLoading(false);
+            console.log(err);
+        })
+
+    }
+
+    useEffect(() => {
+        retreiveCryptos();
+    }, [])
+
+
     return (
         <>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2'>
@@ -46,11 +72,34 @@ const SellCryptoComp = () => {
                     {/* <h3 className="mb-3 text-[#7F7F80]">Select Provider</h3> */}
                     <Card type="lg">
                         {/* sell crypto steps */}
-                        <SellCryptoStepOne />
-                        <SellCryptoStepTwo />
-                        <SellCryptoStepThree />
-                        <SellCryptoStepFour />
-                        <SellCryptoStepFive />
+                        {
+                            step === 1 &&
+                            <SellCryptoStepOne
+                                changeStep={setStep}
+                                cryptos={cryptoRecords}
+                            />
+                        }
+
+                        {
+                            step === 2 && 
+                            <SellCryptoStepTwo />
+                        }
+
+                        {
+                            step === 3 && 
+                            <SellCryptoStepThree />
+                        }
+
+                        {
+                            step === 4 && 
+                            <SellCryptoStepFour />
+                        }
+
+                        {
+                            step === 5 && 
+                            <SellCryptoStepFive />
+                        }
+
 
                         {/* sell crypto steps */}
                     </Card>
@@ -67,26 +116,25 @@ const SellCryptoComp = () => {
                                 <div><p className='text-[#77777e]'><strong>Name</strong></p></div>
                                 <div><p className='text-[#7F7F80]'><strong>Rate</strong></p></div>
                             </div>
-                            <div className="flex justify-between my-3">
-                                <div><p className='text-[#7F7F80]'><strong>USDT</strong></p></div>
-                                <div><p className='text-[#8652A4] font-thin'><strong>730/$</strong></p></div>
-                            </div>
-                            <div className="flex justify-between my-3">
-                                <div><p className='text-[#7F7F80]'><strong>BNB</strong></p></div>
-                                <div><p className='text-[#8652A4] font-thin'><strong>730/$</strong></p></div>
-                            </div>
-                            <div className="flex justify-between my-3">
-                                <div><p className='text-[#7F7F80]'><strong>ETH</strong></p></div>
-                                <div><p className='text-[#8652A4] font-thin'><strong>730/$</strong></p></div>
-                            </div>
-                            <div className="flex justify-between my-3">
-                                <div><p className='text-[#7F7F80]'><strong>BTC</strong></p></div>
-                                <div><p className='text-[#8652A4] font-thin'><strong>730/$</strong></p></div>
-                            </div>
-                            <div className="flex justify-between my-3">
-                                <div><p className='text-[#7F7F80]'><strong>BTC</strong></p></div>
-                                <div><p className='text-[#8652A4] font-thin'><strong>730/$</strong></p></div>
-                            </div>
+
+                            {
+                                cryptoRecords.length > 0 ? 
+                                cryptoRecords.map((item: CryptoCurrency, idx: number) => {
+                                    return <div className="flex justify-between my-3" key={idx}>
+                                    <div>
+                                        <img src={item?.cryptoImage} width="25px" height="25px" className="rounded-full mx-2 inline-flex" alt="crypto" />
+                                        <p className='text-[#7F7F80] font-thin inline'><strong>{item?.shortName}</strong></p>
+                                    </div>
+                                    <div><p className='text-[#8652A4] font-thin text-sm'><strong>{item?.rate}/$</strong></p></div>
+                                </div>
+                                }) :
+
+                                <div className="flex justify-between my-3">
+                                    <div><p className='text-[#7F7F80]'><strong>No Record found</strong></p></div>
+                                    <div><p className='text-[#8652A4] font-thin'><strong>0/$</strong></p></div>
+                                </div>
+                            }
+                            
                         </div>
                         {/* Crypto rates */}
                     </Card>

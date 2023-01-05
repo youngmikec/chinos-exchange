@@ -1,11 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { MdContentCopy } from 'react-icons/md';
 import { AiOutlineSave, AiOutlineShareAlt } from 'react-icons/ai';
 
 import barCode from '../../../assets/images/bar-code.png';
+import { copyTextToClipboard } from '../../../helpers';
 
-const SellCryptoStepTwo
- = () => {
+const SellCryptoStepTwo = () => {
+    const textRef = useRef<HTMLParagraphElement>(null);
+    const [walletAddress, setWalletAddress] = useState<string>('');
+    
+    const notify = (type: string, msg: string) => {
+        if (type === "success") {
+          toast.success(msg, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+    
+        if (type === "error") {
+          toast.error(msg, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+    };
+
+    const copyWalletAddress = async () => {
+        copyTextToClipboard(walletAddress).then(res => {
+            notify('success', 'Wallet address copied to clipboard');
+        }).catch(err => {
+            notify('error', 'Error copying wallet Address');
+        })
+    }
+
+    useEffect(() => {
+        if(textRef.current){
+            setWalletAddress(textRef.current.innerText)
+        }
+    }, [])
+
     return (
         <>
             <div className='w-full sm:w-10/12 md:w-8/12 lg:w-6/12 mx-auto text-center'>
@@ -16,13 +50,17 @@ const SellCryptoStepTwo
                         <img src={barCode} alt="barcode" width="180px" height="180px" />
                     </div>
                     <div className='text-center my-2'>
-                        <p className='text-sm font-bold'>TSxkmKDFVPzSHQz4DkkcTJutXQR13u5aQ5</p>
+                        <p className='text-sm font-bold' ref={textRef}>TSxkmKDFVPzSHQz4DkkcTJutXQR13u5aQ5</p>
                     </div>
                 </div>
 
                 <div className="flex justify-between my-6 mx-auto w-7/12">
-                    <div className='hover:bg-[#8652A4] hover:text-white p-2 rounded-full border-2 border-[#8652A4]'>
-                        <MdContentCopy className="rotate-180 text-lg" />
+                    <div 
+                        className='hover:bg-[#8652A4] hover:text-white p-2 rounded-full border-2 border-[#8652A4]'
+                    >
+                        <button onClick={() => copyWalletAddress() }>
+                            <MdContentCopy className="rotate-180 text-lg" />
+                        </button>
                     </div>
                     <div className='hover:bg-[#8652A4] hover:text-white p-2 rounded-full border-2 border-[#8652A4]'>
                         <AiOutlineSave className='text-lg' />
@@ -42,6 +80,8 @@ const SellCryptoStepTwo
                     <button className='rounded-md bg-[#8652A4] text-white px-6 py-3'>Mark Paid</button>
                 </div>
             </div>
+
+            <ToastContainer />
         </>
     )
 }

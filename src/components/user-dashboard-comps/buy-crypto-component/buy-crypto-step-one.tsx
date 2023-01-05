@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 
 import { CryptoCurrency } from '../../../common';
-import { APPEND_TO_BUY_GIFTCARD_ORDER } from '../../../store/orders/buy-giftcard-order';
+import { APPEND_TO_BUY_CRYPTO_ORDER } from '../../../store/orders';
 
 type Props = {
     changeStep: (data: number) => any,
@@ -70,12 +69,11 @@ const BuyCryptoStepOne = ({ changeStep, cryptos }: Props) => {
                 orderType: "BUY_CRYPTO",
                 rate
             };
-            dispatch(APPEND_TO_BUY_GIFTCARD_ORDER(data))
+            dispatch(APPEND_TO_BUY_CRYPTO_ORDER(data))
             changeStep(2)
         }
         setLoading(false);
     }
-
 
     return (
         <>
@@ -102,6 +100,7 @@ const BuyCryptoStepOne = ({ changeStep, cryptos }: Props) => {
                     </select>
                 </div>
             </div>
+            
             <div className='my-4'>
                 <label htmlFor="network" className='text-[#7F7F80] text-sm'>Network E.g Bep20</label>
                 <div className='border-2 border-gray-100 rounded-md mt-2'>

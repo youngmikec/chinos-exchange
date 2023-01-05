@@ -1,8 +1,8 @@
-import { AxiosResponse } from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AxiosResponse } from 'axios';
 import moment from "moment";
 
 // icons
@@ -15,7 +15,7 @@ import { INITIALIZE_ORDERS } from '../../../store/orders/orders';
 
 const OrderHistoryComp = () => {
     const dispatch = useDispatch();
-    const ordersState = useSelector((state: RootState) => state.orderState.value);
+    // const ordersState = useSelector((state: RootState) => state.orderState.value);
     
     const [loading, setLoading] = useState<boolean>(false);
     const [orderRecords, setOrderRecords] = useState<Order[] | []>([]);
