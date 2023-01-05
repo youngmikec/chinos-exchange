@@ -1,8 +1,8 @@
-import { AxiosResponse } from 'axios';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AxiosResponse } from 'axios';
 
 
 import { ApiResponse } from '../../../common';
@@ -77,7 +77,7 @@ const AirtimeStepThree = ({ changeStep, changeStatus }: Props) => {
             proofImage: airtimeOrderState?.proofImage || imageString
         }
         CREATE_ORDER(data).then((res: AxiosResponse<ApiResponse>) => {
-            const { success, message, payload } = res.data;
+            const { success, message } = res.data;
             if(success){
                 setLoading(false);
                 notify('success', message);
@@ -92,12 +92,6 @@ const AirtimeStepThree = ({ changeStep, changeStatus }: Props) => {
         })
     }
 
-
-    useEffect(() => {
-        // if(airtimeOrderState !== null){
-        //     setImageString(airtimeOrderState.proofImage);
-        // }
-    }, [])
 
     return (
         <>

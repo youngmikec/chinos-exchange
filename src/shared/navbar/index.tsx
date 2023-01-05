@@ -11,6 +11,7 @@ import './style.css';
 
 // logo
 import profile from '../../assets/images/arash.png';
+import { whatsAppUrl } from "../../constants";
 
 
 const Navbar = () => {
@@ -29,20 +30,20 @@ const Navbar = () => {
     return (
         <>
             <nav className='bg-white flex justify-between py-4 mb-4'>
-                <div className='flex justify-between w-4/12'>
-                    <div className="text-[#8652A4] text-sm font-semibold">
+                <div className='flex justify-start w-4/12'>
+                    <div className="text-[#8c8c8c] hover:text-[#8652A4] text-sm font-semibold mx-4">
                         <span>
-                            <Link to="/users-dashboard">Home</Link>
+                            <Link to="/">Home</Link>
                         </span>
                     </div>
-                    <div className="text-[#8c8c8c] text-sm font-semibold">
+                    {/* <div className="text-[#8c8c8c] text-sm font-semibold">
                         <span>
                             <Link to="/users-dashboard">How to trade</Link>
                         </span>
-                    </div>
-                    <div className="text-[#8c8c8c] text-sm font-semibold">
+                    </div> */}
+                    <div className="text-[#8c8c8c] hover:text-[#8652A4] text-sm font-semibold mx-8">
                         <span>
-                            <Link to="/users-dashboard">chat</Link>
+                            <a href={whatsAppUrl} target="_blank" rel="noopener noreferrer">Chat</a>
                         </span>
                     </div>
                 </div>

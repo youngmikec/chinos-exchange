@@ -16,11 +16,11 @@ const TradeGiftCardsComp = () => {
     const steps: Step[] = [
         {
             name: 'Choose Card Type',
-            isActive: false
+            isActive: true
         },
         {
             name: 'Upload picture',
-            isActive: true
+            isActive: false
         },
         {
             name: 'Status',
@@ -31,6 +31,7 @@ const TradeGiftCardsComp = () => {
     //states
     const [step, setStep] = useState<number>(1);
     const [loading, setLoading] = useState<boolean>(true);
+    const [status, setStatus ] = useState<string>('error');
     const [giftcards, setGiftcards] = useState<GiftCard[]>([]);
 
     const retreiveGiftCards = () => {
@@ -71,18 +72,18 @@ const TradeGiftCardsComp = () => {
                     {/* <h3 className="mb-3 text-[#7F7F80]">Select Provider</h3> */}
                     <Card type="lg">
                         {/* trade giftcard steps */}
-                        {/* {
+                        {
                             step === 1 &&
                             <TradeGiftcardStepOne changeStep={setStep} giftcards={giftcards} />
-                        } */}
-                        {/* {
+                        }
+                        {
                             step === 2 &&
-                            <TradeGiftcardStepTwo />
+                            <TradeGiftcardStepTwo changeStep={setStep} changeStatus={setStatus} />
                         }
                         {
                             step === 3 &&
-                            <TradeGiftcardStepThree />
-                        } */}
+                            <TradeGiftcardStepThree changeStep={setStep} status={status} />
+                        }
                         {/* trade giftcard steps */}
                     </Card>
                 </div>

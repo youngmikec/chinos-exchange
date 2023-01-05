@@ -79,7 +79,7 @@ const DashboardComp = () => {
                                 <h5 className='font-normal'>Redeem your giftcard with us</h5>
                                 <img src={trade} alt="" />
                                 <button className='bg-[rgb(134,82,164)] w-36 rounded-lg text-white ab absolute my-4'>
-                                    <Link to="/airtime">Convert</Link>
+                                    <Link to="/trade-giftcard">Convert</Link>
                                 </button>
 
                             </div>  
@@ -111,108 +111,109 @@ const DashboardComp = () => {
                         </div>
 
 
+                        <div className='overflow-scroll'>
+                            <table className='table table-auto w-full mx-auto border-spacing-y-4'>
+                                <thead className='text-left'>
+                                    <tr className='border-spacing-y-4'>
+                                        <th className='table-caption text-left'>#</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Type</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    <hr/>
+                                </thead>
+                                <tbody className='w-10/12 text-sm '>
+                                    <tr className='flex justify-around mb-2 mt-4 	'>
+                                        <td>1</td>
+                                        <td className=''>10-02/2022</td>
+                                        <td className='text-left'>10mins : 57secs</td>
+                                        <td>Buy Crypto</td>
+                                        <td className=''>$200</td>
+                                        <td className=''>Success</td>
 
-                        <table className='table mx-auto   my-16'>
-                            <thead className='text-left'>
-                                <tr className='flex justify-around'>
-                                    <th>#</th>
-                                    <th>Date</th>
-                                    <th>Time</th>
-                                    <th className='text-center'>Type</th>
-                                    <th className=''>Amount</th>
-                                    <th>Status</th>
-                                </tr>
-                                <hr/>
-                            </thead>
-                            <tbody className='w-10/12 text-sm '>
-                                <tr className='flex justify-around mb-2 mt-4 	'>
-                                    <td>1</td>
-                                    <td className=''>10-02/2022</td>
-                                    <td className='text-left'>10mins : 57secs</td>
-                                    <td>Buy Crypto</td>
-                                    <td className=''>$200</td>
-                                    <td className=''>Success</td>
+                                    </tr>
 
-                                </tr>
-
-                                <tr className='flex justify-around mb-2 mt-4 	'>
-                                    <td>2</td>
-                                    <td className='text-right'>10-02/2022</td>
-                                    <td>10mins : 57secs</td>
-                                    <td>Sell Crypto</td>
-                                    <td className=''>$200</td>
-                                    <td className=''>Success</td>
-
-
-                                </tr>
-                                
-                                <tr className='flex justify-around mb-2 mt-4 	'>
-                                    <td>3</td>
-                                    <td className=''>10-02/2022</td>
-                                    <td className='text-right'>10mins : 57secs</td>
-                                    <td>Giftcard</td>
-                                    <td className=''>$200</td>
-                                    <td className=''>Success</td>
+                                    <tr className='flex justify-around mb-2 mt-4 	'>
+                                        <td>2</td>
+                                        <td className='text-right'>10-02/2022</td>
+                                        <td>10mins : 57secs</td>
+                                        <td>Sell Crypto</td>
+                                        <td className=''>$200</td>
+                                        <td className=''>Success</td>
 
 
-                                </tr>
-                                
-                                <tr className='flex justify-around mb-2 mt-4 	'>
-                                    <td>4</td>
-                                    <td className=''>10-02/2022</td>
-                                    <td>10mins : 57secs</td>
-                                    <td>Airtime</td>
-                                    <td className=''>$200</td>
-                                    <td className=''>Success</td>
+                                    </tr>
+                                    
+                                    <tr className='flex justify-around mb-2 mt-4 	'>
+                                        <td>3</td>
+                                        <td className=''>10-02/2022</td>
+                                        <td className='text-right'>10mins : 57secs</td>
+                                        <td>Giftcard</td>
+                                        <td className=''>$200</td>
+                                        <td className=''>Success</td>
 
 
-                                </tr>
-
-                                <tr className='flex justify-around mb-2 mt-4 	'>
-                                    <td>5</td>
-                                    <td className=''>10-02/2022</td>
-                                    <td>10mins : 57secs</td>
-                                    <td>Giftcard</td>
-                                    <td className=''>$200</td>
-                                    <td className=''>Success</td>
-
-
-                                </tr>
-                                <tr className='flex justify-around mb-2 mt-4 	'>
-                                    <td>6</td>
-                                    <td className=''>10-02/2022</td>
-                                    <td>10mins : 57secs</td>
-                                    <td>Airtime</td>
-                                    <td className=''>$200</td>
-                                    <td className=''>Success</td>
+                                    </tr>
+                                    
+                                    <tr className='flex justify-around mb-2 mt-4 	'>
+                                        <td>4</td>
+                                        <td className=''>10-02/2022</td>
+                                        <td>10mins : 57secs</td>
+                                        <td>Airtime</td>
+                                        <td className=''>$200</td>
+                                        <td className=''>Success</td>
 
 
-                                </tr>
+                                    </tr>
 
-                                <tr className='flex justify-around mb-2 mt-4 	'>
-                                    <td>7</td>
-                                    <td className=''>10-02/2022</td>
-                                    <td>10mins : 57secs</td>
-                                    <td>Buy Crypto</td>
-                                    <td className=''>$200</td>
-                                    <td className=''>Success</td>
-
-
-                                </tr>
-
-                                <tr className='flex justify-around mb-2 mt-4 	'>
-                                    <td>8</td>
-                                    <td className=''>10-02/2022</td>
-                                    <td>10mins : 57secs</td>
-                                    <td>Buy Crypto</td>
-                                    <td className=''>$200</td>
-                                    <td className=''>Success</td>
+                                    <tr className='flex justify-around mb-2 mt-4 	'>
+                                        <td>5</td>
+                                        <td className=''>10-02/2022</td>
+                                        <td>10mins : 57secs</td>
+                                        <td>Giftcard</td>
+                                        <td className=''>$200</td>
+                                        <td className=''>Success</td>
 
 
-                                </tr>
-                            </tbody>
+                                    </tr>
+                                    <tr className='flex justify-around mb-2 mt-4 	'>
+                                        <td>6</td>
+                                        <td className=''>10-02/2022</td>
+                                        <td>10mins : 57secs</td>
+                                        <td>Airtime</td>
+                                        <td className=''>$200</td>
+                                        <td className=''>Success</td>
 
-                        </table>
+
+                                    </tr>
+
+                                    <tr className='flex justify-around mb-2 mt-4 	'>
+                                        <td>7</td>
+                                        <td className=''>10-02/2022</td>
+                                        <td>10mins : 57secs</td>
+                                        <td>Buy Crypto</td>
+                                        <td className=''>$200</td>
+                                        <td className=''>Success</td>
+
+
+                                    </tr>
+
+                                    <tr className='flex justify-around mb-2 mt-4 	'>
+                                        <td>8</td>
+                                        <td className=''>10-02/2022</td>
+                                        <td>10mins : 57secs</td>
+                                        <td>Buy Crypto</td>
+                                        <td className=''>$200</td>
+                                        <td className=''>Success</td>
+
+
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
                     </div>
                 </section>
             </div>

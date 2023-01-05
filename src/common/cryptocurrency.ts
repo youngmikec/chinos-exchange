@@ -1,4 +1,4 @@
-import { AIRTIME_STATUS, ORDER_PAYMENT_METHOD, ORDER_STATUS } from "./enums";
+import { AIRTIME_STATUS } from "./enums";
 import { User } from "./user";
 
 export type Network = {
@@ -30,50 +30,4 @@ export type CryptoCurrency = {
     deleted: boolean;
     deletedAt: Date;
     deletedBy: User;
-}
-
-export type  BuyGiftcardOrder = {
-    id: string;
-    sendersPhone: string;
-    status: ORDER_STATUS,
-    paymentMethod: ORDER_PAYMENT_METHOD,
-    walletAddress: string;
-    deleted: boolean,
-    orderType: "BUY_CRYPTO",
-    amount: number,
-    rate: number,
-    amountReceivable: number,
-    network: string,
-    bankName: string,
-    accountName: string,
-    accountNumber: string,
-    cryptocurrency: CryptoCurrency,
-    proofImage: string,
-    createdBy: User,
-    user: User,
-    createdAt: Date,
-    updatedAt: Date,
-}
-
-export type  SellGiftcardOrder = {
-    id: string;
-    sendersPhone: string;
-    status: ORDER_STATUS,
-    paymentMethod: ORDER_PAYMENT_METHOD,
-    walletAddress: string;
-    deleted: boolean,
-    orderType: "SELL_CRYPTO",
-    rate: number,
-    amount: number,
-    amountReceivable: number,
-    network: string,
-    bankName: string,
-    accountName: string,
-    accountNumber: string,
-    cryptocurrency: CryptoCurrency,
-    proofImage: string,
-    createdBy: User,
-    user: User,
-    createdAt: Date,
-    updatedAt: Date,
 }

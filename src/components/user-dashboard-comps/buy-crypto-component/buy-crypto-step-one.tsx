@@ -141,7 +141,7 @@ const BuyCryptoStepOne = ({ changeStep, cryptos }: Props) => {
             </div>
 
             <div className='my-4'>
-                <label htmlFor="sendersPhone" className='text-[#7F7F80] text-sm'>Paste Your Address</label>
+                <label htmlFor="sendersPhone" className='text-[#7F7F80] text-sm'>Your Phone number</label>
                 
                 <div className='border-2 border-gray-100 rounded-md mt-2'>
                     <input 

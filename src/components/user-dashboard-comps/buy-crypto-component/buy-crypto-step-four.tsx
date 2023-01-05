@@ -102,7 +102,7 @@ const BuyCryptoStepFour = ({ changeStep }: Props) => {
 
                 <div className='my-4'>
                     {/* <label htmlFor="accountNumber" className='text-[#7F7F80] text-sm '>Kindly upload a proof your transaction</label> */}
-                    <div className='border-2 border-gray-100 rounded-md mt-2 h-32 w-full flex justify-center'>
+                    <div className='border-2 border-gray-100 py-8 rounded-md mt-2 h-32 w-full flex justify-center'>
                         {
                             imageString ? 
                             <img src={imageString} alt="uploaded" /> :

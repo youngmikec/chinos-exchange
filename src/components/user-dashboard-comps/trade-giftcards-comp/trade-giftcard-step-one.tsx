@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GiftCard } from '../../../common/giftcard';
 import { RootState } from '../../../store';
@@ -10,10 +10,8 @@ type Props = {
 }
 
 const TradeGiftcardStepOne = ({ changeStep, giftcards }: Props) => {
-    const giftcardOrderState = useSelector((state: RootState) => state.BuyGiftcardOrderSlice.value);
     const dispatch = useDispatch();
 
-    const [rate, setRate] = useState<number>(0);
     const [amount, setAmount] = useState<{value: number, error: boolean}>({value: 0, error: false});
     const [receivable, setReceivable] = useState<{value: number, error: boolean}>({value: 0, error: false});
     const [cardType, setCardType] = useState<{value: string, error: boolean}>({value: '', error: false});
@@ -64,13 +62,16 @@ const TradeGiftcardStepOne = ({ changeStep, giftcards }: Props) => {
 
     const calculateReceivable = (id: string) => {
         const card: GiftCard | any = giftcards && giftcards.find(item => item.id === id);
-        const total: number = amount.value * card.rate;
+        const total: number = !Number.isNaN(amount.value * card.rate) ? (amount.value * card.rate) : 0;
         setReceivable({value: total, error: false});
     }
 
-    // useEffect(() => {
-    //     calculateReceivable(giftcard.value)
-    // }, [amount.value, giftcard.value])
+
+    useEffect(() => {
+        if(giftcard.value) {
+            calculateReceivable(giftcard.value);
+        }
+    }, [giftcard.value, amount.value]);
  
     return (
         <>
@@ -90,23 +91,6 @@ const TradeGiftcardStepOne = ({ changeStep, giftcards }: Props) => {
                             <option value="PHYSICAL">Physical</option>
                             <option value="ECODE">Ecode</option>
                         </select>
-                    </div>
-                </div>
-
-                <div className='my-4'>
-                    <label htmlFor="amount" className='text-[#7F7F80] text-sm'>Amount($)</label>
-                    <div className='border-2 border-gray-100 rounded-md mt-2'>
-                        <input 
-                            type="number" 
-                            placeholder='Enter amount you want to sell' 
-                            name="amount" 
-                            className='w-full px-4 py-2'
-                            value={amount.value}
-                            onChange={(e) => {
-                                setAmount({...amount, value: parseInt(e.target.value)})
-                                calculateReceivable(giftcard.value);
-                            }}
-                        />
                     </div>
                 </div>
 
@@ -132,6 +116,23 @@ const TradeGiftcardStepOne = ({ changeStep, giftcards }: Props) => {
                                 })
                             }
                         </select>
+                    </div>
+                </div>
+
+                <div className='my-4'>
+                    <label htmlFor="amount" className='text-[#7F7F80] text-sm'>Amount($)</label>
+                    <div className='border-2 border-gray-100 rounded-md mt-2'>
+                        <input 
+                            type="number" 
+                            placeholder='Enter amount you want to sell' 
+                            name="amount" 
+                            className='w-full px-4 py-2'
+                            value={amount.value}
+                            onChange={(e) => {
+                                setAmount({...amount, value: parseInt(e.target.value)})
+                                calculateReceivable(giftcard.value);
+                            }}
+                        />
                     </div>
                 </div>
 

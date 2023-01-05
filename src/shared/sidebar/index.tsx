@@ -6,6 +6,7 @@ import { IoCardOutline, IoCopyOutline } from 'react-icons/io5';
 import { MdOutlineDashboardCustomize } from 'react-icons/md';
 
 import logo from '../../assets/images/logo.png';
+import { CgLogOff } from 'react-icons/cg';
 
 type Props = {
     sidebarMenus?: any[]
@@ -14,6 +15,16 @@ type Props = {
 const Sidebar = ({sidebarMenus}: Props) => {
     const location = useLocation();
     const { pathname } = location;
+
+    const handleLogout = () => {
+        localStorage.removeItem("auth");
+        localStorage.removeItem("clientId");
+        localStorage.removeItem("clientID");
+        localStorage.removeItem("clientD");
+        localStorage.removeItem("clientToken");
+        window.location.href = "/login";
+    };
+    
     return (
         <>
             <div className="bg-white min-h-screen max-h-fit px-4 py-5">
@@ -98,6 +109,17 @@ const Sidebar = ({sidebarMenus}: Props) => {
                                 <div className='mx-2'>Account Settings</div>
                             </div>                                   
                         </Link>
+                    </li>
+
+                    <li 
+                        className={`${ pathname === '/account' && 'bg-[#8652A4] text-white' } cursor-pointer my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
+                        title="account"
+                        onClick={() => handleLogout()}
+                    >
+                        <div className='flex justify-start'>
+                            <div><span><CgLogOff className='text-xl'/></span></div>
+                            <div className='mx-2'>Log Out</div>
+                        </div>           
                     </li>
 
                    
