@@ -1,9 +1,5 @@
-import React from 'react';
 
 // icons
-import {HiUsers} from 'react-icons/hi'
-import{BiMenuAltRight} from 'react-icons/bi';
-import{HiOutlineTrash} from 'react-icons/hi';
 
 // image
 import image from '../../../assets/images/account-balance-bg.png';
@@ -15,7 +11,6 @@ import sell from '../../../assets/images/sell_crypto.png'
 
 // style
 import "./style.css";
-import Card from '../../../shared/card';
 
 const DashboardComp = () => {
   return (
@@ -106,7 +101,7 @@ const DashboardComp = () => {
 
                         <table className='table mx-auto   my-16'>
                             <thead className='text-left'>
-                                <tr className='flex justify-around'>
+                                <tr className='flex justify-around place-content-center	'>
                                     <th>#</th>
                                     <th>Date</th>
                                     <th>Time</th>
@@ -116,7 +111,7 @@ const DashboardComp = () => {
                                 </tr>
                                 <hr/>
                             </thead>
-                            <tbody className='w-10/12 text-sm '>
+                            <tbody className='w-10/12 text-sm  left-0.5	'>
                                 <tr className='flex justify-around mb-2 mt-4 	'>
                                     <td>1</td>
                                     <td className=''>10-02/2022</td>
@@ -195,7 +190,7 @@ const DashboardComp = () => {
                                 <tr className='flex justify-around mb-2 mt-4 	'>
                                     <td>8</td>
                                     <td className=''>10-02/2022</td>
-                                    <td>10mins : 57secs</td>
+                                    <td className=''>10mins : 57secs</td>
                                     <td>Buy Crypto</td>
                                     <td className=''>$200</td>
                                     <td className=''>Success</td>
