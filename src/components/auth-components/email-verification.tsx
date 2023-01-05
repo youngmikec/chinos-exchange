@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 import logo from '../../assets/images/logo.png';
 import googleIcon from '../../assets/icons/google-icon.png';
 import { Link } from 'react-router-dom';
+import { getItem } from '../../utils';
+import { VERIFY_EMAIL } from '../../services';
+import { ApiResponse } from '../../common';
 
 const EmailVerificationComp = () => {
     const url: any = process.env.REACT_APP_BASE_URL || '';
+    const [loading, setLoading] = useState<boolean>(false);
     const [code, setCode] = useState<{value: string, error: boolean}>({value: '', error: false});
 
     const inputCheck = (): boolean => {
@@ -22,13 +26,15 @@ const EmailVerificationComp = () => {
 
     const handleEmailVerification = () => {
         if(inputCheck()){
-            const data = { code: code.value };
+            const id = getItem('xxid');
+            const data = { id, code: code.value };
 
-            axios.post(`${url}/login`, data).then((res: any) => {
-                console.log(res);
-                // <Navigate to="/dashboard" />
-            }).catch((err: any) => {
-                console.log(err)
+            VERIFY_EMAIL(data).then((res: AxiosResponse<ApiResponse>) => {
+                setLoading(false);
+                window.location.href = '/sign-in';
+            }).catch(err => {
+                setLoading(false);
+                console.log(err);
             })
         }
     }

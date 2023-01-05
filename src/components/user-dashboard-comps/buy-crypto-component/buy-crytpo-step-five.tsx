@@ -1,17 +1,39 @@
-import React from 'react'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import verified from '../../../assets/images/verified.png'
+import SuccessAlert from '../../../shared/alerts/success-alert';
+import { CLEAR_BUY_GIFTCARD_ORDER } from '../../../store/orders';
 
-const BuyCryptoStepFive = () => {
+type Props = {
+  changeStep: (data: number) => any,
+}
+
+const BuyCryptoStepFive = ({ changeStep }: Props) => {
+  const dispatch = useDispatch();
+
+  const clearState = () => {
+    dispatch(CLEAR_BUY_GIFTCARD_ORDER());
+  }
+
   return (
    <>
    <div className="w-full">
-    <div className="self-center flex my-24">
-        <img src={verified} alt="" className='justify-center flex mx-auto ' />
-    </div>
-    <div className='my-8 flex justify-center'>
-            <button className='rounded-md bg-[#8652A4] text-white px-6 py-3'>Check Status</button>
-    </div>
+      <div className="self-center flex my-20">
+        <SuccessAlert 
+          title='Great!' 
+          subTitle='Order Created'
+          msg="expect your money if few minutes"
+        />
+      </div>
+      <div className='my-8 flex justify-center'>
+        <button 
+          onClick={() => { clearState() }}
+          className='rounded-md bg-[#8652A4] text-white px-6 py-3'
+        >
+          <Link to="/history">Check Status</Link>
+        </button>
+      </div>
    </div>
    </>
   )

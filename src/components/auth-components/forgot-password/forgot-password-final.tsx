@@ -1,9 +1,16 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+
+//images
 import logo from "../../../assets/images/logo.png";
 import success from '../../../assets/images/high_five.png'
 import googleIcon from "../../../assets/icons/google-icon.png";
-import { Link } from "react-router-dom";
-const ForgotPassword4 = () => {
+
+type Prop = {
+  changeStep: (data: number) => any
+}
+
+const ForgotPassword4 = ({changeStep}: Prop) => {
   return (
     <div className="container w-screen bg-white  ">
       <img
@@ -37,9 +44,11 @@ const ForgotPassword4 = () => {
         </div>
 
         <div className="w-8/12 my-4 mx-auto text-center">
-          <button className="bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-4">
-            Verify
-          </button>
+          <Link to="/sign-in">
+            <button className="bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-4">
+                Sign in
+            </button>
+          </Link>
 
           <p className="text-[#8652a48f] text-sm block my-4">
             Already have an account?

@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AxiosResponse } from 'axios';
 
+import './style.css';
+import { setItem } from '../../utils';
+import { ApiResponse } from '../../common';
+import { LOGIN_USER } from '../../services';
 import logo from '../../assets/images/logo.png';
 import googleIcon from '../../assets/icons/google-icon.png';
-import './style.css';
 
 const SignInComp = () => {
-    const url: any = process.env.REACT_APP_BASE_URL || '';
+
+    const [loading, setLoading] = useState<boolean>(false);
     const [email, setEmail] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [password, setPassword] = useState<{value: string, error: boolean}>({value: '', error: false});
 
@@ -28,15 +34,37 @@ const SignInComp = () => {
         return isValid;
     }
 
+    const notify = (type: string, msg: string) => {
+        if (type === "success") {
+          toast.success(msg, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+    
+        if (type === "error") {
+          toast.error(msg, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+    };
+
     const handleLogin = () => {
+        setLoading(true);
         if(inputCheck()){
             const data = { email: email.value, password: password.value};
-
-            axios.post(`${url}/login`, data).then((res: any) => {
-                console.log(res);
-                <Navigate to="/dashboard" />
-            }).catch((err: any) => {
-                console.log(err)
+            LOGIN_USER(data).then((res: AxiosResponse<ApiResponse>) => {
+                setLoading(false);
+                const { token, user } = res.data.payload;
+                setItem('clientToken', token);
+                setItem('clientD', user);
+                notify('success', "Login successful");
+                setTimeout(() => {
+                    window.location.href = '/users-dashboard';
+                }, 2500);
+            }).catch(err => {
+                setLoading(false);
+                const { message } = err.response.data;
+                notify('error', message);
             })
         }
     }
@@ -107,7 +135,7 @@ const SignInComp = () => {
                                 onClick={() => handleLogin() } 
                                 className='bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-4'
                             >
-                                Sign in
+                                { loading ? 'processing' : 'Sign in' }
                             </button>
                             <p className='text-[#8652a48f] text-sm block my-4'>Don't have an account?    
                                 <span className='text-[#8652A4] font-bold'><Link to="/sign-up">  Sign Up</Link></span>
@@ -116,6 +144,8 @@ const SignInComp = () => {
                     </div>
                 </div>
             </div>
+
+            <ToastContainer />
         </>
     )
 }

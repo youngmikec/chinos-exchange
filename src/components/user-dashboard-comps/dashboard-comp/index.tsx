@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 // icons
 
@@ -63,7 +65,9 @@ const DashboardComp = () => {
                                      <h5 className='font-normal'>Convert your airtime to cash</h5>
 
                                      <img src={airtime} alt="" />
-                                      <button className='bg-[#8652A4] w-36 rounded-lg text-white absolute my-4 '>Convert</button>
+                                      <button className='bg-[#8652A4] w-36 rounded-lg text-white absolute my-4 '>
+                                        <Link to="/airtime">Convert</Link>
+                                      </button>
                                 </div>
 
 
@@ -71,7 +75,9 @@ const DashboardComp = () => {
                                 <p className=''>Trade Giftcard</p>
                                 <h5 className='font-normal'>Redeem your giftcard with us</h5>
                                 <img src={trade} alt="" />
-                                <button className='bg-[#8652A4] w-36 rounded-lg text-white ab absolute my-4'>Convert</button>
+                                <button className='bg-[rgb(134,82,164)] w-36 rounded-lg text-white ab absolute my-4'>
+                                    <Link to="/airtime">Convert</Link>
+                                </button>
 
                             </div>  
 
@@ -79,14 +85,18 @@ const DashboardComp = () => {
                                 <p className=''>Buy Crypto</p>
                                 <h5 className='font-normal'>Buy your crypto currency</h5>
                                 <img src={crypto} alt="" />
-                                <button className='bg-[#8652A4] w-36 rounded-lg text-white absolute my-4'>Buy</button>
+                                <button className='bg-[#8652A4] w-36 rounded-lg text-white absolute my-4'>
+                                    <Link to="/buy-crypto">Buy</Link>
+                                </button>
 
                             </div>   
                             <div>
                                 <p className=''>Sell Crypto</p>
                                 <h5 className='font-normal'>Sell your crypto currency</h5>
                                 <img src={sell} alt="" />
-                                <button className='bg-[#8652A4] w-36 rounded-lg text-white absolute my-4'>Sell</button>
+                                <button className='bg-[#8652A4] w-36 rounded-lg text-white absolute my-4'>
+                                    <Link to="/sell-crypto">Sell</Link>
+                                </button>
 
                             </div>                            
 
