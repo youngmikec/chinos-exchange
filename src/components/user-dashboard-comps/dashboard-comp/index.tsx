@@ -1,9 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-// icons
-import {HiUsers} from 'react-icons/hi'
-import{BiMenuAltRight} from 'react-icons/bi';
-import{HiOutlineTrash} from 'react-icons/hi';
+import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AxiosResponse } from 'axios';
+import moment from "moment";
 
 // image
 import image from '../../../assets/images/account-balance-bg.png';
@@ -15,211 +14,187 @@ import sell from '../../../assets/images/sell_crypto.png'
 
 // style
 import "./style.css";
+import ServiceCard from '../../service-card';
+import DashboardCard from './dashbord-card';
+import { ApiResponse, Order } from '../../../common';
+import { RETREIVE_ORDERS } from '../../../services';
+import { getItem } from '../../../utils';
 import Card from '../../../shared/card';
 
 const DashboardComp = () => {
-  return (
-    <>
-        <div>    
-            {/* FIRST SECTION STARTS HERE */}
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3'>
-                <div>
-                    <div className='w-full' >
-                    <img src={image} alt="" className=' bg-[#8652A4]' id='bg'/> 
-                    <p className=' absolute -mt-56 ml-8 font-medium text-white'>Account Balance</p> 
+    // const ordersState = useSelector((state: RootState) => state.orderState.value);
+    
+    const [loading, setLoading] = useState<boolean>(false);
+    const [orderRecords, setOrderRecords] = useState<Order[] | []>([]);
+
+    const notify = (type: string, msg: string) => {
+        if (type === "success") {
+          toast.success(msg, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+    
+        if (type === "error") {
+          toast.error(msg, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+    };
+
+    const retreiveOrders = () => {
+        setLoading(true);
+        const userId: string = getItem('clientId');
+        const queryString: string = `?_id=${userId}&sort=-createdAt&populate=airtime,cryptocurrency,giftcard`;
+        RETREIVE_ORDERS(queryString).then((res: AxiosResponse<ApiResponse>) => {
+            setLoading(false);
+            const { success, message, payload } = res.data;
+            if(success){
+                notify('success', `${message} ${payload.length} records found!`);
+                setOrderRecords(payload);
+            }
+        }).catch((err: any) => {
+            setLoading(false);
+            const { message } = err.response.data;
+            notify('error', message);
+        })
+    }
+
+    useEffect(() => {
+        retreiveOrders();
+    }, [])
+
+
+    return (
+        <>
+            <div>    
+                {/* FIRST SECTION STARTS HERE */}
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3'>
                     <div>
-                           <h1 className='absolute -mt-36 ml-8 font-bold text-white'>NGN 0.00</h1>
+                        <DashboardCard image={image} />
                     </div>
-                    <div className='flex justify-between'>
-                        <div> 
-                        <button className='bg-[#CFBADB] text-white rounded-lg absolute -my-14 ml-4 w-36'>Found</button> 
 
-                        </div>
-                        <div>
-                        <button className='bg-[#CFBADB] text-white rounded-lg  absolute -my-14 -ml-40 w-36'>Withdraw</button>
+                    {/* <div className='shadow-sm bg-white lg:h-52'></div>
 
-                        </div>
-        
-
-                    </div>
-                    </div>           
+                    <div className=''>
+                        <img src={image} alt=""  className=' bg-[#FFAB2E] lg:h-52' id='bg'/>
+                    </div> */}
                 </div>
 
-                <div className='shadow-sm'></div>
-
-                <div>
-                    <img src={image} alt=""  className=' bg-[#FFAB2E]' id='bg'/>
-
-                </div>
-            </div>
-
-            <div className='section-1'>
-           
-
-                <section className='section-2'>
-                   
+                {/* service card */}
+                <section>
 
                     <div>
-                        <h3 className='text-[#121212] my-16'>What we offer</h3>
+                        <h3 className='text-[#121212] my-12'>What we offer</h3>
 
-                        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4'>
-                                 <div>
-                                     <p className=''>Airtime to Cash</p>
-                                     <h5 className='font-normal'>Convert your airtime to cash</h5>
-
-                                     <img src={airtime} alt="" />
-                                      <button className='bg-[#8652A4] w-36 rounded-lg text-white absolute my-4 '>
-                                        <Link to="/airtime">Convert</Link>
-                                      </button>
-                                </div>
+                        <div className='grid grid-cols-1 space-y-2
+                            sm:grid-cols-2  sm:space-x-2 sm:space-y-3
+                            md:grid-cols-2  md:space-x-2 md:space-y-3
+                            lg:grid-cols-4  lg:space-x-2 lg:space-y-0
+                            ' 
+                        >
+                            <div>
+                                <ServiceCard
+                                    title="Airtime to Cash"
+                                    subTitle='Convert your airtime to cash'
+                                    link='/airtime'
+                                    linkText='Convert'
+                                    img={airtime}
+                                />
+                            </div>
 
 
                             <div>
-                                <p className=''>Trade Giftcard</p>
-                                <h5 className='font-normal'>Redeem your giftcard with us</h5>
-                                <img src={trade} alt="" />
-                                <button className='bg-[rgb(134,82,164)] w-36 rounded-lg text-white ab absolute my-4'>
-                                    <Link to="/trade-giftcard">Convert</Link>
-                                </button>
-
+                                <ServiceCard
+                                    title="Trade Giftcard"
+                                    subTitle='Redeem your giftcard with us'
+                                    link='/trade-giftcard'
+                                    linkText='Convert'
+                                    img={trade}
+                                />
+                                
                             </div>  
 
                             <div>
-                                <p className=''>Buy Crypto</p>
-                                <h5 className='font-normal'>Buy your crypto currency</h5>
-                                <img src={crypto} alt="" />
-                                <button className='bg-[#8652A4] w-36 rounded-lg text-white absolute my-4'>
-                                    <Link to="/buy-crypto">Buy</Link>
-                                </button>
-
+                                <ServiceCard
+                                    title="Buy Crypto"
+                                    subTitle='Buy your crypto currency'
+                                    link='/buy-crypto'
+                                    linkText='Buy'
+                                    img={crypto}
+                                />
                             </div>   
                             <div>
-                                <p className=''>Sell Crypto</p>
-                                <h5 className='font-normal'>Sell your crypto currency</h5>
-                                <img src={sell} alt="" />
-                                <button className='bg-[#8652A4] w-36 rounded-lg text-white absolute my-4'>
-                                    <Link to="/sell-crypto">Sell</Link>
-                                </button>
+                                <ServiceCard
+                                    title="Sell Crypto"
+                                    subTitle='Sell your crypto currency'
+                                    link='/sell-crypto'
+                                    linkText='Sell'
+                                    img={sell}
+                                />
 
                             </div>                            
 
 
                         </div>
 
-                        <div>
-                            <h4>Recent Transactions</h4>
-                        </div>
+                        <section>
+                            <div className='my-4'>
+                                <h4>Recent Transactions</h4>
+                            </div>
 
+                            <div>
+                                <Card type='sm'>
+                                    <div className='overflow-x-scroll p-4'>
+                                        <table className='table table-auto w-full mx-auto border-spacing-y-4'>
+                                            <thead className=''>
+                                                <tr className='border-spacing-y-4'>
+                                                    <th className='table-caption text-left'>#</th>
+                                                    <th>Date</th>
+                                                    <th>Type</th>
+                                                    <th>Amount</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                                <hr/>
+                                            </thead>
+                                            <tbody>
+                                                {   orderRecords && orderRecords.length > 0 ?
+                                                    orderRecords.map((item: Order, idx: number) => {
+                                                        return <tr key={idx} className='my-4'>
+                                                        <td className="text-left border-spacing-y-4">{ idx + 1 }</td>
+                                                        <td className="text-center py-3">{ moment(item?.createdAt).format("MM-DD-YYYY") }</td>
+                                                        <td className="text-center py-3">{ item?.orderType }</td>
+                                                        <td className="text-center py-3"><span className='line-through'>N</span>{ item?.amountReceivable } </td>
+                                                        <td className="text-center py-3">
+                                                            <span className={
+                                                                (item.status === 'PENDING' || "DECLINED" || 'CANCLED') ? 'text-[#e7451c]' : (
+                                                                    (item.status === 'APPROVED' || "COMPLETED" || 'PROOFEd') ? 'text-[#2CE71C]' : 'text-[#1cd9e7]')
+                                                                
+                                                            }>{ item.status }</span>
+                                                        </td>
 
-                        <div className='overflow-scroll'>
-                            <table className='table table-auto w-full mx-auto border-spacing-y-4'>
-                                <thead className='text-left'>
-                                    <tr className='border-spacing-y-4'>
-                                        <th className='table-caption text-left'>#</th>
-                                        <th>Date</th>
-                                        <th>Time</th>
-                                        <th>Type</th>
-                                        <th>Amount</th>
-                                        <th>Status</th>
-                                    </tr>
-                                    <hr/>
-                                </thead>
-                                <tbody className='w-10/12 text-sm '>
-                                    <tr className='flex justify-around mb-2 mt-4 	'>
-                                        <td>1</td>
-                                        <td className=''>10-02/2022</td>
-                                        <td className='text-left'>10mins : 57secs</td>
-                                        <td>Buy Crypto</td>
-                                        <td className=''>$200</td>
-                                        <td className=''>Success</td>
+                                                    </tr>
+                                                    }) :
 
-                                    </tr>
+                                                    <tr>
+                                                        <td colSpan={5} className="text-center py-3">No Users available</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
 
-                                    <tr className='flex justify-around mb-2 mt-4 	'>
-                                        <td>2</td>
-                                        <td className='text-right'>10-02/2022</td>
-                                        <td>10mins : 57secs</td>
-                                        <td>Sell Crypto</td>
-                                        <td className=''>$200</td>
-                                        <td className=''>Success</td>
+                                        </table>
+                                    </div>
+                                </Card>
+                            </div>
+                        </section>
 
-
-                                    </tr>
-                                    
-                                    <tr className='flex justify-around mb-2 mt-4 	'>
-                                        <td>3</td>
-                                        <td className=''>10-02/2022</td>
-                                        <td className='text-right'>10mins : 57secs</td>
-                                        <td>Giftcard</td>
-                                        <td className=''>$200</td>
-                                        <td className=''>Success</td>
-
-
-                                    </tr>
-                                    
-                                    <tr className='flex justify-around mb-2 mt-4 	'>
-                                        <td>4</td>
-                                        <td className=''>10-02/2022</td>
-                                        <td>10mins : 57secs</td>
-                                        <td>Airtime</td>
-                                        <td className=''>$200</td>
-                                        <td className=''>Success</td>
-
-
-                                    </tr>
-
-                                    <tr className='flex justify-around mb-2 mt-4 	'>
-                                        <td>5</td>
-                                        <td className=''>10-02/2022</td>
-                                        <td>10mins : 57secs</td>
-                                        <td>Giftcard</td>
-                                        <td className=''>$200</td>
-                                        <td className=''>Success</td>
-
-
-                                    </tr>
-                                    <tr className='flex justify-around mb-2 mt-4 	'>
-                                        <td>6</td>
-                                        <td className=''>10-02/2022</td>
-                                        <td>10mins : 57secs</td>
-                                        <td>Airtime</td>
-                                        <td className=''>$200</td>
-                                        <td className=''>Success</td>
-
-
-                                    </tr>
-
-                                    <tr className='flex justify-around mb-2 mt-4 	'>
-                                        <td>7</td>
-                                        <td className=''>10-02/2022</td>
-                                        <td>10mins : 57secs</td>
-                                        <td>Buy Crypto</td>
-                                        <td className=''>$200</td>
-                                        <td className=''>Success</td>
-
-
-                                    </tr>
-
-                                    <tr className='flex justify-around mb-2 mt-4 	'>
-                                        <td>8</td>
-                                        <td className=''>10-02/2022</td>
-                                        <td>10mins : 57secs</td>
-                                        <td>Buy Crypto</td>
-                                        <td className=''>$200</td>
-                                        <td className=''>Success</td>
-
-
-                                    </tr>
-                                </tbody>
-
-                            </table>
-                        </div>
                     </div>
                 </section>
+                {/* service card */}
             </div>
-        </div>
-    </>
-  )
+
+            <ToastContainer />
+        </>
+    )
 }
 
 export default DashboardComp

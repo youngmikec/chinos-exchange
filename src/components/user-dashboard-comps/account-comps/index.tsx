@@ -17,10 +17,6 @@ const AccountComp = () => {
             isActive: true
         },
         {
-            name: 'Bank Settings',
-            isActive: false
-        },
-        {
             name: 'Security',
             isActive: false
         },
@@ -42,7 +38,6 @@ const AccountComp = () => {
                     <div className='mt-8'>
                         <div className='bg-[#d9d9d92d] rounded-b-xl pt-5 pb-8'>
                             <AccountProfile />
-                            <BankDetails />
                             <AccountSecurity />
                             <ActivityLog />
                         </div>

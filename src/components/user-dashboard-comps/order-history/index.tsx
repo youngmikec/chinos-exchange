@@ -6,11 +6,10 @@ import { AxiosResponse } from 'axios';
 import moment from "moment";
 
 // icons
-import transaction from '../../../assets/images/transaction.png';
-import { ApiResponse, Order } from '../../../common';
-import { RETREIVE_ORDERS } from '../../../services';
 import Card from '../../../shared/card';
-import { RootState } from '../../../store';
+import { RETREIVE_ORDERS } from '../../../services';
+import { ApiResponse, Order } from '../../../common';
+import transaction from '../../../assets/images/transaction.png';
 import { INITIALIZE_ORDERS } from '../../../store/orders/orders';
 
 const OrderHistoryComp = () => {
@@ -70,37 +69,41 @@ const OrderHistoryComp = () => {
                 <div>
                     {
                         orderRecords.length > 0 ?
-                        <Card type='lg'>
+                        <Card type='sm'>
                             <div className='overflow-scroll'>
-                                <table className='table table-auto w-full mx-auto border-spacing-y-4 text-[#7F7F80]'>
-                                    <thead className='text-left'>
-                                        <tr className='flex justify-around'>
-                                            <th className='pl-20'>#</th>
-                                            <th className='pl-20'>Date</th>
-                                            <th className='pl-20'>Type</th>
-                                            <th className='pl-20'>Amount</th>
-                                            <th className='pl-20'>Status</th>
+                                <table className='table table-auto w-full mx-auto border-spacing-y-4'>
+                                    <thead className=''>
+                                        <tr className='border-spacing-y-4'>
+                                            <th className='table-caption text-left'>#</th>
+                                            <th>Date</th>
+                                            <th>Type</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
                                         </tr>
                                         <hr/>
                                     </thead>
-                                    <tbody className='w-10/12 text-sm '>
-                                        {
+                                    <tbody>
+                                        {   orderRecords && orderRecords.length > 0 ?
                                             orderRecords.map((item: Order, idx: number) => {
-                                                return <tr key={idx} className='flex justify-around mb-2 mt-4 pl-12	'>
-                                                <td>{ idx + 1 }</td>
-                                                <td className=''>{ moment(item?.createdAt).format("MM-DD-YYYY") }</td>
-                                                <td>{ item?.orderType }</td>
-                                                <td><span className='line-through'>N</span>{ item?.amountReceivable } </td>
-                                                <td>
+                                                return <tr key={idx} className='my-4'>
+                                                <td className="text-left border-spacing-y-4">{ idx + 1 }</td>
+                                                <td className="text-center py-3">{ moment(item?.createdAt).format("MM-DD-YYYY") }</td>
+                                                <td className="text-center py-3">{ item?.orderType }</td>
+                                                <td className="text-center py-3"><span className='line-through'>N</span>{ item?.amountReceivable } </td>
+                                                <td className="text-center py-3">
                                                     <span className={
                                                         (item.status === 'PENDING' || "DECLINED" || 'CANCLED') ? 'text-[#e7451c]' : (
                                                             (item.status === 'APPROVED' || "COMPLETED" || 'PROOFEd') ? 'text-[#2CE71C]' : 'text-[#1cd9e7]')
                                                         
                                                     }>{ item.status }</span>
                                                 </td>
-    
+
                                             </tr>
-                                            })
+                                            }) :
+
+                                            <tr>
+                                                <td colSpan={5} className="text-center py-3">No Users available</td>
+                                            </tr>
                                         }
                                     </tbody>
 

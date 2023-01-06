@@ -18,7 +18,7 @@ const AccountStepHeader = ({ title, steps }: Props) => {
                         {
                             steps.length > 0 && 
                             steps.map((step: Step, key: number) => {
-                                return <div className={`px-6 py-2 mx-2 rounded-md capitalize text-sm hover:cursor-pointer  ${ step.isActive ? 'bg-[#8652A4] text-white' : 'text-[#7F7F80]'}`} key={key}>
+                                return <div className={`px-6 py-2 mx-2 rounded-md capitalize text-sm hover:cursor-pointer text-[#7F7F80]  ${ step.isActive && 'bg-[#8652A4] text-white'}`} key={key}>
                                 <p >{ step.name }</p>
                             </div>
                             })
