@@ -67,7 +67,7 @@ const AirtimeComp = () => {
         <>
             {/* <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2'> */}
             <div className='flex justify-between'>
-                <div className='w-8/12'>
+                <div className='w-full sm:w-10/12 md:w-9/12 lg:w-8/12'>
                     <StepHeader 
                         title='Airtime To Cash'
                         steps={airtimeSteps}
@@ -128,7 +128,7 @@ const AirtimeComp = () => {
                     </div>
                 </div>
 
-                <div>
+                <div className='hidden lg:block'>
                     
                 </div>
             </div>
