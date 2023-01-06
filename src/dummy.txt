@@ -1,0 +1,32 @@
+{/* <div className='w-full my-2 border-b-2 border-[#7f7f8056] py-5 px-5'>
+                    <div className='flex justify-between'>
+                        <div className='mx-3 w-7/12'>
+                            <h3 className='text-sm text-[#7F7F80] font-semibold'>Reset Transaction Pin</h3>
+                            <p className='text-sm text-[#7F7F80]'>someone tampared with your password? reset now to avoid lost of fund</p>
+                        </div>
+
+                        <div className='my-auto w-4/12 text-center'>
+                            <button className='text-[#8652A4] font-semibold'>
+                                Reset now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='w-full border-b-2 border-[#7f7f8056] py-5 px-5'>
+                    <div className='flex justify-between'>
+                        <div className='mx-3 w-7/12'>
+                            <h3 className='text-sm text-[#7F7F80] font-semibold'>2F2</h3>
+                            <p className='text-sm text-[#7F7F80]'>For more security features, please activate</p>
+                        </div>
+
+                        <div className='my-auto w-4/12 text-center'>
+                            <button className='text-[#8652A4] font-semibold'>
+                                Activate
+                            </button>
+                            <div className="flex justify-start w-3/12 rounded-2xl mx-auto border-2 border-[#7F7F80]">
+                                <div className='p-2 rounded-full bg-[#7F7F80] w-2'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> */}

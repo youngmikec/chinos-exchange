@@ -1,30 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Step } from '../../../common';
 import AccountStepHeader from '../../../shared/account-step-header';
 
 // components
+import AccountSecurity from './security';
 import AccountProfile from './account-profile';
 import ActivityLog from './activity-log';
-import BankDetails from './bank-details';
-import AccountSecurity from './security';
 
 
 const AccountComp = () => {
     const accountSettingSteps: Step[] = [
         {
-            name: 'Profile',
+            title: 'Profile',
             isActive: true
         },
         {
-            name: 'Security',
+            title: 'Security',
             isActive: false
         },
         {
-            name: 'Activity log',
+            title: 'Activity log',
             isActive: false
         },
     ]
+    const [steps, setSteps] = useState<any[]>(accountSettingSteps)
+    const [step, setStep] = useState<number>(1);
+
+    const reformatSteps = (step: number) => {
+        accountSettingSteps.forEach((item: any, idx) => {
+            if(idx === (step - 1)){
+                item.isActive = true
+            }else{
+                item.isActive = false;
+            }
+        })
+        setSteps(accountSettingSteps);
+    }
+
+    useEffect(() => {
+        reformatSteps(step);
+    }, [step])
 
     return (
         <>
@@ -32,14 +48,24 @@ const AccountComp = () => {
                 <div className='w-12/12'>
                     <AccountStepHeader 
                         title='Account Settings'
-                        steps={accountSettingSteps}
+                        steps={steps}
+                        changeStep={setStep}
                     />
 
                     <div className='mt-8'>
                         <div className='bg-[#d9d9d92d] rounded-b-xl pt-5 pb-8'>
-                            <AccountProfile />
-                            <AccountSecurity />
-                            <ActivityLog />
+                            {
+                                step === 1 && 
+                                <AccountProfile />
+                            }
+                            {
+                                step === 2 && 
+                                <AccountSecurity />
+                            }
+                            {
+                                step === 3 && 
+                                <ActivityLog />
+                            }
                         </div>
         
                         

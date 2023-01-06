@@ -28,19 +28,19 @@ const AirtimeComp = () => {
 
     const airtimeSteps: Step[] = [
         {
-            name: 'Choose asset',
+            title: 'Choose asset',
             isActive: true
         },
         {
-            name: 'account details',
+            title: 'account details',
             isActive: false
         },
         {
-            name: 'upload proof',
+            title: 'upload proof',
             isActive: false
         },
         {
-            name: 'status',
+            title: 'status',
             isActive: false
         },
     ]

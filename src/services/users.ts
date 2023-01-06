@@ -13,6 +13,14 @@ export const VERIFY_EMAIL = async (data: {[key: string]: any}) => {
     return axios.post(`${url}/users/verify`, data);
 };
 
+export const RETRIEVE_PROFILE = async () => {
+    return axios.get(`${url}/users/me`);
+};
+
+export const UPDATE_PROFILE = async (data: {[key: string]: any}) => {
+    return axios.put(`${url}/user/me/update`, data);
+};
+
 export const VERIFY_RESET_CODE = async (data: {[key: string]: any}) => {
     return axios.post(`${url}/users/resetCode/verify`, data);
 };

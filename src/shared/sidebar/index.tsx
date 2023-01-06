@@ -24,7 +24,7 @@ const Sidebar = ({sidebarMenus}: Props) => {
         localStorage.removeItem("clientToken");
         window.location.href = "/login";
     };
-    
+
     return (
         <>
             <div className="bg-white min-h-screen max-h-fit px-4 py-5">
@@ -112,7 +112,7 @@ const Sidebar = ({sidebarMenus}: Props) => {
                     </li>
 
                     <li 
-                        className={`${ pathname === '/account' && 'bg-[#8652A4] text-white' } cursor-pointer my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
+                        className={"cursor-pointer my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white" }
                         title="account"
                         onClick={() => handleLogout()}
                     >

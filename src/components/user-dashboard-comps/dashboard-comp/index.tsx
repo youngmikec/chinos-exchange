@@ -44,7 +44,7 @@ const DashboardComp = () => {
     const retreiveOrders = () => {
         setLoading(true);
         const userId: string = getItem('clientId');
-        const queryString: string = `?_id=${userId}&sort=-createdAt&populate=airtime,cryptocurrency,giftcard`;
+        const queryString: string = `?_id=${userId}&sort=-createdAt&limit=10&populate=airtime,cryptocurrency,giftcard`;
         RETREIVE_ORDERS(queryString).then((res: AxiosResponse<ApiResponse>) => {
             setLoading(false);
             const { success, message, payload } = res.data;

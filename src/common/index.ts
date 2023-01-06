@@ -9,7 +9,7 @@ export * from './cryptocurrency';
 
 
 export type Step = {
-    name: string;
+    title: string;
     isActive: boolean;
 }
 

@@ -21,19 +21,19 @@ const BuyCryptoComp = () => {
 
     const steps: Step[] = [
         {
-            name: 'Choose asset',
+            title: 'Choose asset',
             isActive: true
         },
         {
-            name: 'amount',
+            title: 'amount',
             isActive: false
         },
         {
-            name: 'account info',
+            title: 'account info',
             isActive: false
         },
         {
-            name: 'upload proof',
+            title: 'upload proof',
             isActive: false
         },
     ]

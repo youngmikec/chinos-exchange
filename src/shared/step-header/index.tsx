@@ -34,7 +34,7 @@ const StepHeader = ({ title, info, steps, step }: Props) => {
                         stepsArray.map((step: Step, key: number) => {
                             return <div className='text-center' key={key}>
                             <p className='text-[#7F7F80] text-lg'>Step {key + 1} </p>
-                            <p className={`px-3 sm:px-4 md:px-5 lg:px-6 py-3 capitalize text-[0.6rem] lg:text-sm ${ step.isActive ? 'bg-[#8652A4] text-white' : 'bg-[#D9D9D9] text-[#7F7F80]'}`}>{ step.name }</p>
+                            <p className={`px-3 sm:px-4 md:px-5 lg:px-6 py-3 capitalize text-[0.6rem] lg:text-sm ${ step.isActive ? 'bg-[#8652A4] text-white' : 'bg-[#D9D9D9] text-[#7F7F80]'}`}>{ step.title }</p>
                         </div>
                         })
                     }

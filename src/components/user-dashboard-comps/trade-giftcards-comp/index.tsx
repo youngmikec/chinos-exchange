@@ -15,15 +15,15 @@ import { GiftCard } from '../../../common/giftcard';
 const TradeGiftCardsComp = () => {
     const steps: Step[] = [
         {
-            name: 'Choose Card Type',
+            title: 'Choose Card Type',
             isActive: true
         },
         {
-            name: 'Upload picture',
+            title: 'Upload picture',
             isActive: false
         },
         {
-            name: 'Status',
+            title: 'Status',
             isActive: false
         }
     ]

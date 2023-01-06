@@ -16,7 +16,6 @@ const ActivityLog = () => {
                                 <th className='pl-20'>Source</th>
                                 <th>Status</th>
                             </tr>
-                            <hr/>
                         </thead>
                         <tbody className='w-10/12 text-sm '>
                             <tr className='flex justify-around mb-2 mt-4 pl-12	'>
@@ -27,7 +26,6 @@ const ActivityLog = () => {
                                 <td className='completed'>Completed</td>
 
                             </tr>
-                            <hr />
                             <tr className='flex justify-around mb-2 mt-4 pl-12	'>
                                 <td>1</td>
                                 <td className='pl-12'>10-02/2022</td>
@@ -36,7 +34,6 @@ const ActivityLog = () => {
                                 <td className='completed'>Completed</td>
 
                             </tr>
-                            <hr />
                             <tr className='flex justify-around mb-2 mt-4 pl-12	'>
                                 <td>1</td>
                                 <td className='pl-12'>10-02/2022</td>
@@ -45,7 +42,6 @@ const ActivityLog = () => {
                                 <td className='completed'>Completed</td>
 
                             </tr>
-                            <hr />
                             <tr className='flex justify-around mb-2 mt-4 pl-12	'>
                                 <td>1</td>
                                 <td className='pl-12'>10-02/2022</td>
@@ -54,7 +50,6 @@ const ActivityLog = () => {
                                 <td className='completed'>Completed</td>
 
                             </tr>
-                            <hr />
                             <tr className='flex justify-around mb-2 mt-4 pl-12	'>
                                 <td>1</td>
                                 <td className='pl-12'>10-02/2022</td>
@@ -63,7 +58,6 @@ const ActivityLog = () => {
                                 <td className='completed'>Completed</td>
 
                             </tr>
-                            <hr />
                         </tbody>
 
                     </table>
