@@ -25,9 +25,9 @@
 .vector-bg1{
     background-image: url('../../assets/icons/vector1.png');
     background-repeat: no-repeat;
-    /* background-size: cover;
-    background-position: center center; */
-    width: 40%;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
     height: inherit;
     margin-top: 3em;
     padding-bottom: 3.5em;
@@ -35,9 +35,10 @@
 .vector-bg2{
     background-image: url('../../assets/icons/vector2.png');
     background-repeat: no-repeat;
-    /* background-size: cover;
-    background-position: center center; */
-    width: 40%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
     height: inherit;
     margin-top: 3em;
     padding-bottom: 3.5em;
