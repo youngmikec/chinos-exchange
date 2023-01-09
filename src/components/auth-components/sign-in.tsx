@@ -71,8 +71,8 @@ const SignInComp = () => {
 
     return (
         <>
-            <div className='flex justify-between'>
-                <div className='auth-bg flex-1'></div>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2'>
+                <div className='hidden md:block lg:block auth-bg flex-1'></div>
 
                 <div className='flex-1'>
                     <div className="flex justify-end mb-4">
@@ -126,7 +126,7 @@ const SignInComp = () => {
 
                         <div className="relative my-6 text-center">
                             <hr className='border-[#8652a48f] w-full' />
-                            <p className='text-[#8652A4] text-sm px-4 bg-white absolute -top-3 left-56 '>or sign in with</p>
+                            <p className='text-[#8652A4] text-sm px-4 bg-white absolute -top-3 left-24 sm:left-60 md:left-32 lg:left-56 xl:left-80 '>or sign in with</p>
                             <img src={googleIcon} className="my-4 mx-auto" alt="google" />
                         </div>
 

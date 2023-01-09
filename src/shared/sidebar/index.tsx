@@ -22,7 +22,7 @@ const Sidebar = ({sidebarMenus}: Props) => {
         localStorage.removeItem("clientID");
         localStorage.removeItem("clientD");
         localStorage.removeItem("clientToken");
-        window.location.href = "/login";
+        window.location.href = "/sign-in";
     };
 
     return (
