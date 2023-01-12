@@ -1,11 +1,10 @@
 export * from './airtime';
 export * from './enums';
+export * from './mail';
 export * from './order';
 export * from './user';
 export * from './giftcard';
 export * from './cryptocurrency';
-
-
 
 
 export type Step = {

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 
 // style
 import './style.css';
 
 //icons and images
-import btc from '../../assets/icons/btc.png'
-import eth from '../../assets/icons/eth.png'
-import bnb from '../../assets/icons/bnb.png'
-import sol from '../../assets/icons/scl.png'
 import bitcon from '../../assets/images/bitcoin.png'
 import airtime from '../../assets/images/airtime.png'
 import phone from '../../assets/images/phone.png'
@@ -105,7 +103,9 @@ const HomeComp = () => {
                         <div className='text-center py-4 my-auto'>
                             <h2 className='text-3xl font-extrabold'>Buy and Sell <br /> Crypto</h2>
                             <p className='my-4 font-light'>Send us crypto and recieve  cash <br />at with instant payment  via your<br /> Bank account</p>
-                            <button className='bg-[#8652A4] w-6/12 text-white font-bold rounded-md py-2 capitalize'> let's trade</button>
+                            <button className='bg-[#8652A4] w-6/12 text-white font-bold rounded-md py-2 capitalize'> 
+                                <Link to="/sign-in">let's trade</Link>
+                            </button>
                         </div>
                     </div>
 
@@ -113,7 +113,9 @@ const HomeComp = () => {
                         <div className='text-center py-8 my-auto'>
                             <h2 className='text-3xl font-extrabold'>Airtime Conversion </h2>
                             <p className='my-4 font-light'>Don’t worry we understand the frustration <br />of excess recharge.  We make it easy for you to <br /> convert airtime on your sim to cash</p>
-                            <button className='bg-[#8652A4] w-6/12 text-white font-bold rounded-md py-2 capitalize'> let's trade</button>
+                            <button className='bg-[#8652A4] w-6/12 text-white font-bold rounded-md py-2 capitalize'>
+                                <Link to="/sign-in">let's trade</Link>
+                            </button>
                         </div>
                         <div className="vector-bg1">
                             <img src={airtime} alt="" />
@@ -127,7 +129,9 @@ const HomeComp = () => {
                         <div className='text-center py-8 my-auto self-center '>
                             <h2 className='text-3xl font-extrabold'>Redeem Giftcards</h2>
                             <p className='my-4 font-light'>Buy and sell Giftcards from <br /> over 20 countries around the world</p>
-                            <button className='bg-[#8652A4] w-6/12 text-white font-bold rounded-md py-2 capitalize'> let's trade</button>
+                            <button className='bg-[#8652A4] w-6/12 text-white font-bold rounded-md py-2 capitalize'>
+                                <Link to="/sign-in">let's trade</Link>
+                            </button>
                         </div>    
                     </div>
 

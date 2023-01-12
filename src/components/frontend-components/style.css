@@ -1,3 +1,13 @@
+.input-border {
+    border: 1px solid #8652A4;
+    border-left: 6px solid #8652A4;
+}
+
+.error-border {
+    border: 1px solid #ec0d63;
+    border-left: 6px solid #ec0d63;
+}
+
 .wallet-bg {
     background-image: url('../../assets/images/hands_and_wallet.png');
     background-repeat: no-repeat;
