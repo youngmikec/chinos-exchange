@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getItem } from '../utils';
 
-export const BASE_URL: string = 'http://localhost:3000/api';
+export const BASE_URL: any = process.env.REACT_APP_BASE_URL;
 const token = getItem('clientToken');
 axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 // axios.defaults.baseURL = 'http://localhost:3000/api';
