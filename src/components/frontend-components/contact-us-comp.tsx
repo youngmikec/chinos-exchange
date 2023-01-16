@@ -114,6 +114,7 @@ const ContactUsComp = () => {
                 notify('error', message);
             })
         }
+        setLoading(false);
     }
 
     return (

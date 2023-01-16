@@ -8,6 +8,7 @@ const url: string | undefined = BASE_URL;
 export const RETREIVE_CRYPTO = async (query: string = '') => {
     return axios.get(`${url}/cryptos/public/${query}`);
 };
+//adding comments
 
 export const CREATE_CRYPTO = async (data: {[key: string]: any}) => {
     return axios.post(`${url}/cryptos`, data);
