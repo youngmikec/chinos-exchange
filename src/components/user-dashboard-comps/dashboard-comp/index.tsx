@@ -16,7 +16,7 @@ import sell from '../../../assets/images/sell_crypto.png'
 import "./style.css";
 import ServiceCard from '../../service-card';
 import DashboardCard from './dashbord-card';
-import { ApiResponse, Order } from '../../../common';
+import { ApiResponse, Order, User } from '../../../common';
 import { RETREIVE_ORDERS } from '../../../services';
 import { getItem } from '../../../utils';
 import Card from '../../../shared/card';
@@ -43,8 +43,8 @@ const DashboardComp = () => {
 
     const retreiveOrders = () => {
         setLoading(true);
-        const userId: string = getItem('clientId');
-        const queryString: string = `?_id=${userId}&sort=-createdAt&limit=10&populate=airtime,cryptocurrency,giftcard`;
+        const userDetail: User = getItem('clientD');
+        const queryString: string = `?createdBy=${userDetail.id}&sort=-createdAt&limit=10&populate=airtime,cryptocurrency,giftcard`;        
         RETREIVE_ORDERS(queryString).then((res: AxiosResponse<ApiResponse>) => {
             setLoading(false);
             const { success, message, payload } = res.data;

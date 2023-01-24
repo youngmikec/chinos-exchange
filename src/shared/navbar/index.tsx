@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 //  icons
-import{ CiSearch } from 'react-icons/ci';
-import { CiBellOn } from 'react-icons/ci';
+import{CiSearch} from 'react-icons/ci';
+import {CiBellOn} from 'react-icons/ci';
+import { FiMenu } from 'react-icons/fi';
+import { FaTimes } from 'react-icons/fa';
+import { CgLogOff } from 'react-icons/cg';
+import { AiOutlineDollar, AiOutlineSetting } from 'react-icons/ai';
+import { RiDashboardFill } from 'react-icons/ri';
 
 
 // styles
@@ -12,11 +17,38 @@ import './style.css';
 // logo
 import profile from '../../assets/images/arash.png';
 import { whatsAppUrl } from "../../constants";
+import { IoCardOutline, IoCopyOutline } from "react-icons/io5";
+import { MdOutlineDashboardCustomize } from "react-icons/md";
 
 
 const Navbar = () => {
-    const[ toggle, setToggle] = useState(true);
+    const location = useLocation();
+    const { pathname } = location;
+    const[ toggle, setToggle] = useState<boolean>(true);
+    const [headPadding, setHeadPadding] = useState<string>('pt-0');
+    const [showSideBar, setShowSidebar] = useState<boolean>(false);
     const [search, setSearch] = useState('');
+
+    const openSidebar = () => {
+        setShowSidebar(true);
+        console.log(showSideBar);
+    }
+    const closeSidebar = () => setShowSidebar(false);
+
+    const customeStyle = {
+        sidebar: {zIndex: 60, left: '-1rem', paddingRight: '1rem', height: '100vh'}
+    }
+
+
+    const handleLogout = () => {
+        localStorage.removeItem("auth");
+        localStorage.removeItem("clientId");
+        localStorage.removeItem("clientID");
+        localStorage.removeItem("clientD");
+        localStorage.removeItem("clientToken");
+        window.location.href = "/sign-in";
+    }
+
 
     useEffect(()=>{
         if(!search){
@@ -31,6 +63,15 @@ const Navbar = () => {
         <>
             <nav className='bg-white flex justify-between py-4 mb-4'>
                 <div className='flex justify-start w-4/12'>
+                    {/* mobile view */}
+                    <div className={`container flex justify-start sm:hidden md:hidden lg:hidden xl:hidden ${headPadding}`}>
+                        <div className="mr-4" onClick={() => openSidebar()}>
+                            <button className="text-3xl text-[#8c8c8c]"  >
+                                <FiMenu />
+                            </button>
+                        </div>
+                    </div>
+                    {/* mobile view */}
                     <div className="text-[#8c8c8c] hover:text-[#8652A4] text-sm font-semibold mx-4">
                         <span>
                             <Link to="/">Home</Link>
@@ -60,6 +101,114 @@ const Navbar = () => {
                         <Link to="/account">
                             <img src={profile} alt="profile" className='' width='40px' height='40px'  />
                         </Link>
+                    </div>
+                </div>
+
+                <div className={`
+                    absolute left-0 top-0 bottom-0 h-full
+                 bg-white text-left w-8/12 px-8 py-4 z-100
+                    ${showSideBar ? 'block' : 'hidden'}
+                 `} style={customeStyle.sidebar}>
+                    <div className='bg-white'>
+                        <div className="container text-right">
+                            <button className="text-black text-xl" onClick={() => closeSidebar()} >
+                                <FaTimes />
+                            </button>
+
+                            <ul className="list-none text-[#8c8c8c]">
+                                <li 
+                                className={`${ pathname === '/users-dashboard' && 'bg-[#8652A4] text-white' } my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
+                                title="Dashboard"
+                            >
+                                    <Link to="/users-dashboard">
+                                        <div className='flex justify-start'>
+                                            <div><span><RiDashboardFill /></span></div>
+                                            <div className='mx-2'>Dashboard</div>
+                                        </div>   
+                                    </Link>
+                                </li>
+
+                                <li 
+                                    className={`${ pathname === '/sell-crypto' && 'bg-[#8652A4] text-white' } my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
+                                    title="sell crypto"
+                                >
+                                    <Link to="/sell-crypto">
+                                        <div className='flex justify-start'>
+                                            <div><span><AiOutlineDollar className='text-xl'/></span></div>
+                                            <div className='mx-2'>Sell Crypto</div>
+                                        </div>           
+                                    </Link>
+                                </li>
+                                <li 
+                                    className={`${ pathname === '/buy-crypto' && 'bg-[#8652A4] text-white' } my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
+                                    title="buy crypto"
+                                >
+                                    <Link to="/buy-crypto">
+                                        <div className='flex justify-start'>
+                                            <div><span><AiOutlineDollar className='text-xl'/></span></div>
+                                            <div className='mx-2'>Buy Crypto</div>
+                                        </div>                
+                                    </Link>
+                                </li>
+                                <li 
+                                    className={`${ pathname === '/trade-giftcard' && 'bg-[#8652A4] text-white' } my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
+                                    title="trade giftcard"
+                                >
+                                    <Link to="/trade-giftcard">
+                                        <div className='flex justify-start'>
+                                            <div><span><IoCardOutline  className='text-xl'/></span></div>
+                                            <div className='mx-2'>Trade Giftcard</div>
+                                        </div>                       
+                                    </Link>
+                                </li>
+                                <li 
+                                    className={`${ pathname === '/airtime' && 'bg-[#8652A4] text-white' } my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
+                                    title="airtime"
+                                >
+                                    <Link to="/airtime">
+                                        <div className='flex justify-start'>
+                                            <div><span><IoCopyOutline className='text-xl'/></span></div>
+                                            <div className='mx-2'>Airtime to cash</div>
+                                        </div>                             
+                                    </Link>
+                                </li>
+                                <li 
+                                    className={`${ pathname === '/history' && 'bg-[#8652A4] text-white' } my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
+                                    title="Order history"
+                                >
+                                    <Link to="/history">
+                                        <div className='flex justify-start'>
+                                            <div><span><MdOutlineDashboardCustomize className='text-xl'/></span></div>
+                                            <div className='mx-2'>Order History</div>
+                                        </div>                                   
+                                    </Link>
+                                </li>
+                                <li 
+                                    className={`${ pathname === '/account' && 'bg-[#8652A4] text-white' } my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
+                                    title="Account setting"
+                                >
+                                    <Link to="/account">
+                                        <div className='flex justify-start'>
+                                            <div><span><AiOutlineSetting className='text-xl'/></span></div>
+                                            <div className='mx-2'>Account Settings</div>
+                                        </div>                                   
+                                    </Link>
+                                </li>
+
+                                <li 
+                                    className={`${ pathname === '/account' && 'bg-[#8652A4] text-white' } cursor-pointer my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
+                                    title="account"
+                                    onClick={() => handleLogout()}
+                                >
+                                    <div className='flex justify-start'>
+                                        <div><span><CgLogOff className='text-xl'/></span></div>
+                                        <div className='mx-2'>Log Out</div>
+                                    </div>           
+                                </li>       
+                                
+                            </ul>
+                        </div>
+
                     </div>
                 </div>
             </nav>

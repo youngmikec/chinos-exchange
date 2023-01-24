@@ -7,8 +7,9 @@ import moment from "moment";
 
 // icons
 import Card from '../../../shared/card';
+import { getItem } from '../../../utils';
 import { RETREIVE_ORDERS } from '../../../services';
-import { ApiResponse, Order } from '../../../common';
+import { ApiResponse, Order, User } from '../../../common';
 import transaction from '../../../assets/images/transaction.png';
 import { INITIALIZE_ORDERS } from '../../../store/orders/orders';
 
@@ -35,8 +36,8 @@ const OrderHistoryComp = () => {
 
     const retreiveOrders = () => {
         setLoading(true);
-        const queryString: string = `?sort=-createdAt&populate=airtime`;
-        RETREIVE_ORDERS(queryString).then((res: AxiosResponse<ApiResponse>) => {
+        const userDetail: User = getItem('clientD');
+        const queryString: string = `?createdBy=${userDetail.id}&sort=-createdAt&limit=10&populate=airtime,cryptocurrency,giftcard`;        RETREIVE_ORDERS(queryString).then((res: AxiosResponse<ApiResponse>) => {
             setLoading(false);
             const { success, message, payload } = res.data;
             if(success){
