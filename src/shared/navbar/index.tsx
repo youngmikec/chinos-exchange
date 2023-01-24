@@ -196,8 +196,8 @@ const Navbar = () => {
                                 </li>
 
                                 <li 
-                                    className={`${ pathname === '/account' && 'bg-[#8652A4] text-white' } cursor-pointer my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
-                                    title="account"
+                                    className={`cursor-pointer my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
+                                    title="log out"
                                     onClick={() => handleLogout()}
                                 >
                                     <div className='flex justify-start'>
