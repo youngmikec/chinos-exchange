@@ -60,11 +60,10 @@ const SignInComp = () => {
                 const { token, user } = res.data.payload;
                 setItem('clientToken', token);
                 setItem('clientD', user);
-                dispatch(ADD_USER_PROFILE(user));
                 notify('success', "Login successful");
                 setTimeout(() => {
-                    // window.location.href = '/users-dashboard';
-                    navigate('/users-dashboard');
+                    window.location.href = '/users-dashboard';
+                    // navigate('/users-dashboard');
                 }, 2500);
             }).catch(err => {
                 setLoading(false);
