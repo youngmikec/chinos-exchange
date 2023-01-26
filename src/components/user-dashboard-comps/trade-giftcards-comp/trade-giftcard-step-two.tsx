@@ -102,9 +102,8 @@ const TradeGiftcardStepTwo = ({changeStep, changeStatus}: Props) => {
     }
 
     const handleSubmit = () => {
-        console.log(inputCheck());
-        setLoading(true);
         if(inputCheck()){
+            setLoading(true);
             const data = {
                 orderType: "GIFTCARD",
                 paymentMethod: 'BANK',
@@ -140,11 +139,13 @@ const TradeGiftcardStepTwo = ({changeStep, changeStatus}: Props) => {
             <div className='w-full'>
                 <div className='my-4'>
                     <label htmlFor="cardNumber" className='text-[#7F7F80] text-sm'>Card Number</label>
-                    <div className='border-2 border-gray-100 rounded-md mt-2'>
+                    <div className={`border-2 ${cardNumber.error ? 'border-red-500' : 'border-gray-100'} rounded-md mt-2`}>
                         <input 
                             type="text" 
                             placeholder='0902233242' 
-                            name='cardNumber' 
+                            name='cardNumber'
+                            minLength={10}
+                            maxLength={15}
                             className='w-full px-4 py-2'
                             value={cardNumber.value}
                             onChange={(e) => setCardNumber({...cardNumber, value: e.target.value})}
@@ -154,7 +155,7 @@ const TradeGiftcardStepTwo = ({changeStep, changeStatus}: Props) => {
 
                 <div className='my-4'>
                     <label htmlFor="bankName" className='text-[#7F7F80] text-sm'>Bank Name</label>
-                    <div className='border-2 border-gray-100 rounded-md mt-2'>
+                    <div className={`border-2 ${bankName.error ? 'border-red-500' : 'border-gray-100'} rounded-md mt-2`}>
                         <input 
                             type="text" 
                             name='bankName' 
@@ -167,7 +168,7 @@ const TradeGiftcardStepTwo = ({changeStep, changeStatus}: Props) => {
 
                 <div className='my-4'>
                     <label htmlFor="accountName" className='text-[#7F7F80] text-sm'>Account Name</label>
-                    <div className='border-2 border-gray-100 rounded-md mt-2'>
+                    <div className={`border-2 ${accountName.error ? 'border-red-500' : 'border-gray-100'} rounded-md mt-2`}>
                         <input 
                             type="text" 
                             name='accountName' 
@@ -180,11 +181,13 @@ const TradeGiftcardStepTwo = ({changeStep, changeStatus}: Props) => {
 
                 <div className='my-4'>
                     <label htmlFor="accountNumber" className='text-[#7F7F80] text-sm'>Account Number</label>
-                    <div className='border-2 border-gray-100 rounded-md mt-2'>
+                    <div className={`border-2 ${accountNumber.error ? 'border-red-500' : 'border-gray-100'} rounded-md mt-2`}>
                         <input 
                             type="text" 
                             placeholder='0902233242' 
-                            name='accountNumber' 
+                            name='accountNumber'
+                            minLength={10}
+                            maxLength={10}
                             className='w-full px-4 py-2'
                             value={accountNumber.value}
                             onChange={(e) => setAccountNumber({...accountNumber, value: e.target.value})}
@@ -194,7 +197,7 @@ const TradeGiftcardStepTwo = ({changeStep, changeStatus}: Props) => {
 
                 <div className='my-4'>
                     <label htmlFor="accountNumber" className='text-[#7F7F80] text-sm'>Kindly upload a proof your transaction</label>
-                    <div className='border-2 border-gray-100 rounded-md mt-2 h-32 w-full flex justify-center'>
+                    <div className={`border-2 ${proofImage.error ? 'border-red-500' : 'border-gray-100'} rounded-md mt-2 h-32 w-full flex justify-center`}>
                         {
                             proofImage.value ? 
                             <img src={proofImage.value} alt="uploaded" /> :

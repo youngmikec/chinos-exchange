@@ -37,7 +37,7 @@ const OrderHistoryComp = () => {
     const retreiveOrders = () => {
         setLoading(true);
         const userDetail: User = getItem('clientD');
-        const queryString: string = `?createdBy=${userDetail.id}&sort=-createdAt&limit=10&populate=airtime,cryptocurrency,giftcard`;        RETREIVE_ORDERS(queryString).then((res: AxiosResponse<ApiResponse>) => {
+        const queryString: string = `?createdBy=${userDetail.id}&sort=-createdAt&populate=airtime,cryptocurrency,giftcard`;        RETREIVE_ORDERS(queryString).then((res: AxiosResponse<ApiResponse>) => {
             setLoading(false);
             const { success, message, payload } = res.data;
             if(success){
@@ -93,9 +93,8 @@ const OrderHistoryComp = () => {
                                                 <td className="text-center py-3"><span className='line-through'>N</span>{ item?.amountReceivable } </td>
                                                 <td className="text-center py-3">
                                                     <span className={
-                                                        (item.status === 'PENDING' || "DECLINED" || 'CANCLED') ? 'text-[#e7451c]' : (
-                                                            (item.status === 'APPROVED' || "COMPLETED" || 'PROOFED') ? 'text-[#2CE71C]' : 'text-[#1cd9e7]')
-                                                        
+                                                        (item.status === "COMPLETED") ? 'text-[#2CE71C]' : 'text-[#1cd9e7]'
+                                                    
                                                     }>{ item.status }</span>
                                                 </td>
 

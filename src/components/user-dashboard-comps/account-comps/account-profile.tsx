@@ -95,7 +95,7 @@ const AccountProfile = () => {
             setLoading(false);
             const { success, message, payload } = res.data;
             if(success){
-                notify('success', `${message} ${payload.length} records found!`);
+                notify('success', `${message}`);
                 setProfile(payload);
             }
         }).catch((err: any) => {
