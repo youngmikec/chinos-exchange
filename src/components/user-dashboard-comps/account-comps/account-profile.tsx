@@ -6,6 +6,7 @@ import { AxiosResponse } from 'axios';
 import { ApiResponse } from '../../../common';
 import profile from '../../../assets/images/arash.png';
 import { RETRIEVE_PROFILE, UPDATE_PROFILE } from '../../../services';
+import { setItem } from '../../../utils';
 
 const AccountProfile = () => {
     const fileRef: any = useRef<HTMLButtonElement>(null)
@@ -62,6 +63,7 @@ const AccountProfile = () => {
             if(success){
                 setUpdating(false);
                 setProfile(payload);
+                setItem('clientD', payload);
                 notify('success', message);
             }
         }).catch(err => {

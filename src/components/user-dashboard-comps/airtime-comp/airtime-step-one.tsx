@@ -87,7 +87,8 @@ const AirtimeStepOne = ({ changeStep, product }: Props) => {
                         <input 
                             type="text" 
                             placeholder='0902233242' 
-                            name='sendersPhone' 
+                            name='sendersPhone'
+                            max={11} 
                             className='w-full px-4 py-2'
                             value={senderPhone.value}
                             onChange={(e) => setSenderPhone({...senderPhone, value: e.target.value})}

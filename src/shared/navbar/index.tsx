@@ -110,7 +110,7 @@ const Navbar = () => {
                     </div>
                     <div className="inline-flex rounded-full bg-[#b1bbdf]">
                         <Link to="/account">
-                            <img src={userProfile ? userProfile.profileImage: profile} alt="profile" className='' width='40px' height='40px'  />
+                            <img src={ userProfile?.profileImage ? userProfile.profileImage : profile } alt="profile" className='' width='40px' height='40px'  />
                         </Link>
                     </div>
                 </div>

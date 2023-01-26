@@ -72,7 +72,9 @@ const AirtimeStepTwo = ({ changeStep }: Props) => {
                     <div className='border-2 border-gray-100 rounded-md mt-2'>
                         <input 
                             type="text" 
-                            name='accountNumber'  
+                            name='accountNumber'
+                            min={10}
+                            max={10}
                             className='w-full px-4 py-2'
                             value={accountNumber.value}
                             onChange={(e) => setAccountNumber({...accountNumber, value: e.target.value})}
