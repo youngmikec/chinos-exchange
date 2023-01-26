@@ -94,8 +94,8 @@ const SignInComp = () => {
                                     type="email" 
                                     value={email.value}
                                     onChange={(e) => setEmail({...email, value: e.target.value})}
-                                    className='w-full border-0 px-4 py-2 text-gray-400' 
-                                    placeholder='please enter your email' 
+                                    className='w-full border-0 px-4 py-2 text-gray-400'
+                                    placeholder='please enter your email'
                                 />
                             </div>
                         </div>

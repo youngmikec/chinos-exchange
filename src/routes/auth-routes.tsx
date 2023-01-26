@@ -58,6 +58,10 @@ const authRoutes: RouteType[] = [
         component: <EmailVerificationPage />
     },
     {
+        path: '/verify/:code',
+        component: <EmailVerificationPage />
+    },
+    {
       path: '/forgot-password',
       component:<ForgotPassword />
     },
