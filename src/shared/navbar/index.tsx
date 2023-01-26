@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
 //  icons
@@ -7,8 +8,8 @@ import {CiBellOn} from 'react-icons/ci';
 import { FiMenu } from 'react-icons/fi';
 import { FaTimes } from 'react-icons/fa';
 import { CgLogOff } from 'react-icons/cg';
-import { AiOutlineDollar, AiOutlineSetting } from 'react-icons/ai';
 import { RiDashboardFill } from 'react-icons/ri';
+import { AiOutlineDollar, AiOutlineSetting } from 'react-icons/ai';
 
 
 // styles
@@ -19,13 +20,18 @@ import profile from '../../assets/images/arash.png';
 import { whatsAppUrl } from "../../constants";
 import { IoCardOutline, IoCopyOutline } from "react-icons/io5";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
+import { User } from "../../common";
+import { RootState } from "../../store";
+import { getItem } from "../../utils";
 
 
 const Navbar = () => {
+    const [userProfile, setUserProfile] = useState<User | null>(null);
+
     const location = useLocation();
     const { pathname } = location;
     const[ toggle, setToggle] = useState<boolean>(true);
-    const [headPadding, setHeadPadding] = useState<string>('pt-0');
+    const headPadding: string = 'pt-0';
     const [showSideBar, setShowSidebar] = useState<boolean>(false);
     const [search, setSearch] = useState('');
 
@@ -58,6 +64,11 @@ const Navbar = () => {
         }
 
     },[search])
+
+    useEffect(() => {
+        let client = getItem('clientD');
+        client && setUserProfile(client);
+    }, [])
 
     return (
         <>
@@ -99,7 +110,7 @@ const Navbar = () => {
                     </div>
                     <div className="inline-flex rounded-full bg-[#b1bbdf]">
                         <Link to="/account">
-                            <img src={profile} alt="profile" className='' width='40px' height='40px'  />
+                            <img src={userProfile ? userProfile.profileImage: profile} alt="profile" className='' width='40px' height='40px'  />
                         </Link>
                     </div>
                 </div>

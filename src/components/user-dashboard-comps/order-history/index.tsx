@@ -94,7 +94,7 @@ const OrderHistoryComp = () => {
                                                 <td className="text-center py-3">
                                                     <span className={
                                                         (item.status === 'PENDING' || "DECLINED" || 'CANCLED') ? 'text-[#e7451c]' : (
-                                                            (item.status === 'APPROVED' || "COMPLETED" || 'PROOFEd') ? 'text-[#2CE71C]' : 'text-[#1cd9e7]')
+                                                            (item.status === 'APPROVED' || "COMPLETED" || 'PROOFED') ? 'text-[#2CE71C]' : 'text-[#1cd9e7]')
                                                         
                                                     }>{ item.status }</span>
                                                 </td>

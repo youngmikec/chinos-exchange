@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AxiosResponse } from 'axios';
@@ -10,9 +11,11 @@ import { ApiResponse } from '../../common';
 import { LOGIN_USER } from '../../services';
 import logo from '../../assets/images/logo.png';
 import googleIcon from '../../assets/icons/google-icon.png';
+import { ADD_USER_PROFILE } from '../../store/user';
 
 const SignInComp = () => {
-
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [loading, setLoading] = useState<boolean>(false);
     const [email, setEmail] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [password, setPassword] = useState<{value: string, error: boolean}>({value: '', error: false});
@@ -57,9 +60,11 @@ const SignInComp = () => {
                 const { token, user } = res.data.payload;
                 setItem('clientToken', token);
                 setItem('clientD', user);
+                dispatch(ADD_USER_PROFILE(user));
                 notify('success', "Login successful");
                 setTimeout(() => {
-                    window.location.href = '/users-dashboard';
+                    // window.location.href = '/users-dashboard';
+                    navigate('/users-dashboard');
                 }, 2500);
             }).catch(err => {
                 setLoading(false);

@@ -154,7 +154,6 @@ const DashboardComp = () => {
                                                     <th>Amount</th>
                                                     <th>Status</th>
                                                 </tr>
-                                                <hr/>
                                             </thead>
                                             <tbody>
                                                 {   orderRecords && orderRecords.length > 0 ?
@@ -166,9 +165,8 @@ const DashboardComp = () => {
                                                         <td className="text-center py-3"><span className='line-through'>N</span>{ item?.amountReceivable } </td>
                                                         <td className="text-center py-3">
                                                             <span className={
-                                                                (item.status === 'PENDING' || "DECLINED" || 'CANCLED') ? 'text-[#e7451c]' : (
-                                                                    (item.status === 'APPROVED' || "COMPLETED" || 'PROOFEd') ? 'text-[#2CE71C]' : 'text-[#1cd9e7]')
-                                                                
+                                                                (item.status === "COMPLETED") ? 'text-[#2CE71C]' : 'text-[#1cd9e7]'
+                                                            
                                                             }>{ item.status }</span>
                                                         </td>
 

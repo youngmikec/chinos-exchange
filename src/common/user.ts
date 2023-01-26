@@ -10,6 +10,7 @@ export type User = {
     transactionPin: string;
     firstName: string;
     lastName: string;
+    profileImage: string;
     gender: 'MALE' | 'FEMALE'
     address: string;
     password: string;
