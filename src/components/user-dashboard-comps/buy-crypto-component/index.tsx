@@ -43,9 +43,9 @@ const BuyCryptoComp = () => {
         const queryString: string = `?sort=name`;
         RETREIVE_CRYPTO(queryString).then((res: AxiosResponse<ApiResponse>) => {
             setLoading(false);
-            const { message, success, payload } = res.data;
+            const { message, payload } = res.data;
             setCryptoRecords(payload);
-            console.log({ cryptoRecords })
+            console.log(message)
         }).catch(err => {
             setLoading(false);
             console.log(err);

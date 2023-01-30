@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import SuccessAlert from '../../../shared/alerts/success-alert';
-import { CLEAR_BUY_GIFTCARD_ORDER } from '../../../store/orders';
+import { CLEAR_BUY_CRYPTO_ORDER } from '../../../store/orders';
 
 type Props = {
   changeStep: (data: number) => any,
@@ -13,7 +13,7 @@ const BuyCryptoStepFive = ({ changeStep }: Props) => {
   const dispatch = useDispatch();
 
   const clearState = () => {
-    dispatch(CLEAR_BUY_GIFTCARD_ORDER());
+    dispatch(CLEAR_BUY_CRYPTO_ORDER());
   }
 
   return (

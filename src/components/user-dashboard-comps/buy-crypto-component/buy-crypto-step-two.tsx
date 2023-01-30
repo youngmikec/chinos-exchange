@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store';
-import { APPEND_TO_BUY_GIFTCARD_ORDER } from '../../../store/orders/buy-giftcard-order';
+import { APPEND_TO_BUY_CRYPTO_ORDER } from '../../../store/orders';
 
 type Props = {
     changeStep: (data: number) => any,
@@ -9,7 +9,7 @@ type Props = {
 
 const BuyCryptoStepTwo = ({ changeStep }: Props) => {
     const dispatch = useDispatch();
-    const buyCryptoState = useSelector((state: RootState) => state.BuyGiftcardOrderSlice.value);
+    const buyCryptoState = useSelector((state: RootState) => state.BuyCryptoOrderSlice.value);
 
     const [amount, setAmount] = useState<{value: number, error: boolean}>({value: 0, error: false});
     const [amountReceivable, setAmountReceivable] = useState<{value: number, error: boolean}>({value: 0, error: false});
@@ -47,21 +47,31 @@ const BuyCryptoStepTwo = ({ changeStep }: Props) => {
                 amount: amount.value, 
                 amountReceivable: amountReceivable.value
             };
-            dispatch(APPEND_TO_BUY_GIFTCARD_ORDER(data))
+            dispatch(APPEND_TO_BUY_CRYPTO_ORDER(data))
             changeStep(3)
         }
     }
 
+
     useEffect(() => {
+        if(rate) {
+            const total: number = calcReceivable(amount.value);
+            setAmountReceivable({value: total, error: false});
+        }
+    }, [rate, amount.value]);
+ 
+
+    useEffect(() => {
+        console.log({ buyCryptoState })
         buyCryptoState?.rate && setRate(buyCryptoState.rate)
-        console.log(buyCryptoState);
+        console.log({rate});
     }, [buyCryptoState])
 
     return (
         <>
         <div className='w-full'>
             <div className='my-4'>
-                <label htmlFor="amount" className='text-[#7F7F80] text-sm'>Amount (N)</label>
+                <label htmlFor="amount" className='text-[#7F7F80] text-sm'>Amount in (NGN)</label>
                 <div className='border-2 border-gray-100 rounded-md mt-2'>
                     <input 
                         type="number" 
@@ -77,7 +87,7 @@ const BuyCryptoStepTwo = ({ changeStep }: Props) => {
                 </div>
             </div>
             <div className='my-4'>
-                <label htmlFor="amountReceivable" className='text-[#7F7F80] text-sm'>You will receive</label>
+                <label htmlFor="amountReceivable" className='text-[#7F7F80] text-sm'>You will receive in</label>
                 <div className='border-2 border-gray-100 rounded-md mt-2'>
                     <input 
                     type="number" 

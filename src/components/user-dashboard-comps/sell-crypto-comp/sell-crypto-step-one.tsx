@@ -137,7 +137,7 @@ const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
                 </div>
 
                 <div className='my-4'>
-                    <label htmlFor="amount" className='text-[#7F7F80] text-sm'>Amount ($)</label>
+                    <label htmlFor="amount" className='text-[#7F7F80] text-sm'>Amount in ($)</label>
                     <div className='border-2 border-gray-100 rounded-md mt-2'>
                         <input 
                             type="number" 
@@ -152,7 +152,7 @@ const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
                 </div>
 
                 <div className='my-4'>
-                    <label htmlFor="receivable" className='text-[#7F7F80] text-sm'>Rate {!Number.isNaN(rate) ? rate : 0} /$ You will receive</label>
+                    <label htmlFor="receivable" className='text-[#7F7F80] text-sm'>Rate is {!Number.isNaN(rate) ? rate : 0} /$. You will receive in NGN</label>
                     <div className='border-2 border-gray-100 rounded-md mt-2'>
                         <input 
                             type="number" 

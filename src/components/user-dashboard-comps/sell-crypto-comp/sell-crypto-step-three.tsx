@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { AxiosResponse } from 'axios';
+
+import { ApiResponse, Bank } from '../../../common';
+import { RETREIVE_BANKS } from '../../../services';
 import { APPEND_TO_SELL_CRYPTO_ORDER } from '../../../store/orders';
 
 type Props = {
@@ -8,6 +12,9 @@ type Props = {
 
 const SellCryptoStepThree = ({ changeStep }: Props) => {
     const dispatch = useDispatch();
+
+    const [banks, setBanks] = useState<Bank[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
     const [bankName, setBankName] = useState<{value: string, error: boolean}>({value: '', error: false})
     const [accountName, setAccountName] = useState<{value: string, error: boolean}>({value: '', error: false})
     const [accountNumber, setAccountNumber] = useState<{value: string, error: boolean}>({value: '', error: false})
@@ -47,19 +54,49 @@ const SellCryptoStepThree = ({ changeStep }: Props) => {
         }
     }
 
+    const retrieveBanks = () => {
+        const queryString: string = `?sort=name`;
+        setLoading(true);
+        RETREIVE_BANKS(queryString).then((res: AxiosResponse<ApiResponse>) => {
+            const { message, success, payload } = res.data;
+            if(success){
+                setLoading(false);
+                setBanks(payload);
+                console.log('message', message);
+            }
+        }).catch((err: any) => {
+            setLoading(false);
+            console.log(err);
+        })
+    }
+
+    useEffect(() => {
+        retrieveBanks();
+    }, [])
+
     return (
         <>
             <div className='w-full'>
                 <div className='my-4'>
                     <label htmlFor="bankName" className='text-[#7F7F80] text-sm'>Bank Name</label>
                     <div className='border-2 border-gray-100 rounded-md mt-2'>
-                        <input 
-                            type="text" 
+
+                        <select 
                             name="bankName" 
-                            className='w-full px-4 py-2'
-                            value={bankName.value}
+                            id="bankName" 
                             onChange={(e) => setBankName({...bankName, value: e.target.value})}
-                        />
+                            className='w-full px-4 py-2'
+                        >
+                            {
+                                banks.length > 0 ? 
+                                banks.map((item: Bank, idx: number) => {
+                                    return (
+                                        <option key={idx} value={item.name}>{ item.name }</option>
+                                    )
+                                }) : 
+                                <option value="">No bank available</option>
+                            }
+                        </select>
                     </div>
                 </div>
 

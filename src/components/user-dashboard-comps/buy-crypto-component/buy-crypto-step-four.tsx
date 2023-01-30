@@ -17,7 +17,7 @@ type Props = {
 
 const BuyCryptoStepFour = ({ changeStep }: Props) => {
     const dispatch = useDispatch();
-    const buyCryptoState = useSelector((state: RootState) => state.BuyGiftcardOrderSlice.value);
+    const buyCryptoState = useSelector((state: RootState) => state.BuyCryptoOrderSlice.value);
     console.log(buyCryptoState);
     
     const [imageString, setImageString] = useState<string>('');

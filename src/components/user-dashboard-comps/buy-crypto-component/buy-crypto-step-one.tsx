@@ -53,7 +53,6 @@ const BuyCryptoStepOne = ({ changeStep, cryptos }: Props) => {
         }else{
             setSendersPhone({...sendersPhone, error: false});
         }
-        console.log(selectedCrypto.value, selectedNetwork.value, walletAddress.value, sendersPhone.value)
         
         return isValid;
     }
@@ -125,7 +124,7 @@ const BuyCryptoStepOne = ({ changeStep, cryptos }: Props) => {
             </div>
 
             <div className='my-4'>
-                <label htmlFor="walletAddress" className='text-[#7F7F80] text-sm'>Paste Your Address</label>
+                <label htmlFor="walletAddress" className='text-[#7F7F80] text-sm'>Paste Your wallet Address</label>
                 
                 <div className='border-2 border-gray-100 rounded-md mt-2'>
                     <input 

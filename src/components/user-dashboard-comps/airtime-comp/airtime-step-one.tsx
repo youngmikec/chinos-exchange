@@ -10,7 +10,6 @@ type Props = {
 }
 
 const AirtimeStepOne = ({ changeStep, product }: Props) => {
-    const airtimeOrderState = useSelector((state: RootState) => state.AirtimeOrderSlice.value);
     const dispatch = useDispatch();
 
     const [rate, setRate] = useState<number>(0);

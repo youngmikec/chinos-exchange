@@ -12,8 +12,7 @@ type Props = {
 
 const BuyCryptoStepThree = ({ changeStep, cryptos }: Props) => {
   const dispatch = useDispatch();
-  const buyCryptoState = useSelector((state: RootState) => state.BuyGiftcardOrderSlice.value);
-  console.log(buyCryptoState);
+  const buyCryptoState = useSelector((state: RootState) => state.BuyCryptoOrderSlice.value);
   const [crypto, setCrypto] = useState<CryptoCurrency | undefined>();
 
   const selectCrypto = (id: any) => {
