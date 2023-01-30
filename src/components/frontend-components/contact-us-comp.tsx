@@ -145,7 +145,7 @@ const ContactUsComp = () => {
                     >
                         <div className='text-center'>
                             <BsWhatsapp className='mx-auto mt-4 text-3xl'/>
-                            <h3 className={toggle ? 'text-center my-8 social-box-text':'text-center my-8 social-box-hover-text'}>+234 703 162 5759</h3>
+                            <h3 className={toggle ? 'text-center my-8 social-box-text':'text-center my-8 social-box-hover-text'}>+2347031625759</h3>
                         </div>
 
                     </div>
@@ -155,7 +155,7 @@ const ContactUsComp = () => {
                         onMouseLeave={()=>setToggle1(true)} onMouseOver={()=>setToggle1(false)}
                     >
                         <BsEnvelopeFill className='mx-auto mt-4 text-3xl'/>
-                        <h3 className={toggle1 ? 'text-center my-8 social-box-text':'text-center my-8 social-box-hover-text'}>chinoexchange@gmail</h3>
+                        <h3 className={toggle1 ? 'text-center my-8 social-box-text':'text-center my-8 social-box-hover-text'}>admin@chinosexchange.com</h3>
                     </div>
 
                     <div
@@ -163,7 +163,7 @@ const ContactUsComp = () => {
                     onMouseLeave={()=>setToggle2(true)} onMouseOver={()=>setToggle2(false)}
                     >
                         <BsTelephoneFill className='mx-auto mt-4 text-3xl'/>
-                        <h3 className={toggle2 ? 'text-center my-8 social-box-text':'text-center my-8 social-box-hover-text'}>+234 703 162 5759</h3>
+                        <h3 className={toggle2 ? 'text-center my-8 social-box-text':'text-center my-8 social-box-hover-text'}>+2347031625759</h3>
                     </div>
 
                 </div>

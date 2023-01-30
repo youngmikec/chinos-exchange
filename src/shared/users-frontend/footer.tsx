@@ -23,18 +23,33 @@ const Footer = () => {
                         <p className='text-justify text-[#666666] my-4 pr-8'>Fastest platform to trade all your digital asset . fast and reliable</p>
                         <ul className='list-none'>
                             <li className='inline-flex mx-3'>
-                                <a href="#" className='p-2 bg-white rounded-full'>
+                                <a 
+                                    href="https://instagram.com/chinos_xchange?igshid=YmMyMTA2M2Y=" 
+                                    target="_blank" 
+                                    rel="noreferrer"
+                                    className='p-2 bg-white rounded-full'
+                                >
                                     <GrFacebookOption className="text-[#8652A4]" />
                                 </a>
                             </li>
                             <li className='inline-flex mx-3'>
-                                <a href="#" className='p-2 bg-white rounded-full'>
+                                <a 
+                                    href="https://instagram.com/chinos_xchange?igshid=YmMyMTA2M2Y=" 
+                                    target="_blank" 
+                                    rel="noreferrer"
+                                    className='p-2 bg-white rounded-full'
+                                >
                                     <CgInstagram className="text-[#8652A4]" />
                                 </a>
                             </li>
 
                             <li className='inline-flex mx-3'>
-                                <a href="#" className='p-2 bg-white rounded-full'>
+                                <a 
+                                    href="https://twitter.com/chinosexchange?s=21&t=4dOwrkpmb6VeRNmlIa0rMQ"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className='p-2 bg-white rounded-full'
+                                >
                                     <GrTwitter className="text-[#8652A4]" />
                                 </a>
                             </li>
@@ -50,16 +65,16 @@ const Footer = () => {
                                 <Link to="/">Home</Link>
                             </li>
                             <li className='my-4 font-light'>
-                                <Link to="/crypto">Buy Crypto</Link>
+                                <Link to="/cryptos">Buy Crypto</Link>
                             </li>
                             <li className='my-4 font-light'>
-                                <Link to="/crypto">Sell Crypto</Link>
+                                <Link to="/cryptos">Sell Crypto</Link>
                             </li>
                             <li className='my-4 font-light'>
-                                <Link to="/faq">FAQS</Link>
+                                <Link to="/faqs">FAQS</Link>
                             </li>
                             <li className='my-4 font-light'>
-                                <Link to="/contact">Contact</Link>
+                                <Link to="/contact-us">Contact</Link>
                             </li>
                         </ul>
                     </div>
@@ -70,10 +85,10 @@ const Footer = () => {
 
                         <ul className='list-none text-[#666666]'>
                             <li className='my-4 font-light'>
-                                +234 8107 3996 17
+                                +2347031625759
                             </li>
                             <li className='my-4 font-light'>
-                                chinosexchange@gmail.com
+                                admin@chinosexchange.com
                             </li>
                             <li className='my-4 font-light'>
                                 24/7 Hours

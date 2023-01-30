@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import './style.css';
 
 //icons and images
+import coin from '../../assets/images/hompage_coin.png';
 import bitcon from '../../assets/images/bitcoin.png'
 import airtime from '../../assets/images/airtime.png'
 import phone from '../../assets/images/phone.png'
@@ -43,10 +44,20 @@ const HomeComp = () => {
     return (
         <>
             <HeroSection>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-                    <div className='py-4 w-full '>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 py-8">
+                    <div className='py-4 w-full relative'>
                         <h3 className='text-5xl font-bold my-8 text-white'>The Fastest Way To Buy, <br/> Sell And Trade Crypto </h3>
-                        <p className='text-sm font-thin text-justify w-3/4 my-8 text-white'>Join over 100,000 users across the globe to trade your digital asset on a fast and secured platform</p>    
+                        <div className='w-3/4 my-8'>
+                            <p className='text-sm font-thin text-justify my-2 text-white'>Join over 100,000 users across the globe to trade</p> 
+                            <p className='text-sm font-thin text-justify my-2 text-white'>your digital asset on a fast and secured platform</p>   
+                        </div>
+
+                        <div className='my-8'>
+                            <button className='rounded-lg mt-4 mb-8 text-white bg-[#FFAB2E] py-4 px-7 hover:bg-white hover:text-[#FFAB2E]'>
+                                <Link to="/sign-in">Let's Trade</Link>
+                            </button>
+                        </div>
+                        <img src={coin} alt="" className='hidden sm:hidden md:block lg:block absolute right-0 bottom-0 '  />
                     </div>
                     <div className='wallet-bg'>
                     </div>
@@ -61,11 +72,13 @@ const HomeComp = () => {
 
                 <div className='my-8 flex justify-center w:11/12'>
                     <div className='overflow-x-scroll'>
-                        <table className='table border w-full'>
+                        <table className='table w-full'>
                             <thead>
                                 <tr className='border-spacing-y-4'>
+                                    <th>#</th>
                                     <th>Image</th>
                                     <th>Name</th>
+                                    <th>Short Name</th>
                                     <th>Rate</th>
                                 </tr>
                             </thead>
@@ -73,13 +86,15 @@ const HomeComp = () => {
                             <tbody className='text-[#7F7F80]'>
                                 {
                                     cryptos.length > 0 ?
-                                    cryptos.map((item: CryptoCurrency) => {
-                                        return <tr key={item.code}>
+                                    cryptos.map((item: CryptoCurrency, i: number) => {
+                                        return <tr className='border-top-2' key={item.code}>
+                                            <td className='text-left py-3'>{ i + 1}</td>
                                             <td className="text-center py-3">
                                                 <img src={item?.cryptoImage } width="25px" height="25px" alt="crypto" />
                                             </td>
-                                            <td className="text-center py-3">{item?.name}</td>
-                                            <td className="text-center py-3">{ item?.rate}</td>
+                                            <td className="text-left py-3">{item?.name}</td>
+                                            <td className="text-left py-3">{item?.shortName}</td>
+                                            <td className="text-left py-3">{ item?.rate} per $</td>
                                         </tr>
                                     }) : 
                                         <tr>
@@ -103,33 +118,42 @@ const HomeComp = () => {
                         <div className='text-center py-4 my-auto'>
                             <h2 className='text-3xl font-extrabold'>Buy and Sell <br /> Crypto</h2>
                             <p className='my-4 font-light'>Send us crypto and recieve  cash <br />at with instant payment  via your<br /> Bank account</p>
-                            <button className='bg-[#8652A4] w-6/12 text-white font-bold rounded-md py-2 capitalize'> 
+                            <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'> 
                                 <Link to="/sign-in">let's trade</Link>
                             </button>
                         </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  w-screen">
-                        <div className='text-center py-8 my-auto'>
+                        <div className='hidden sm:hidden md:block lg:block text-center py-8 my-auto '>
                             <h2 className='text-3xl font-extrabold'>Airtime Conversion </h2>
                             <p className='my-4 font-light'>Don’t worry we understand the frustration <br />of excess recharge.  We make it easy for you to <br /> convert airtime on your sim to cash</p>
-                            <button className='bg-[#8652A4] w-6/12 text-white font-bold rounded-md py-2 capitalize'>
+                            <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'>
                                 <Link to="/sign-in">let's trade</Link>
                             </button>
                         </div>
-                        <div className="vector-bg1">
-                            <img src={airtime} alt="" />
+
+                        <div className="vector-bg1 pull">
+                            <img src={airtime} className='ml-0 md:ml-10 lg:ml-16' alt="airtime" />
+                        </div>
+
+                        <div className='block sm:block md:hidden lg:hidden text-center py-8 my-auto '>
+                            <h2 className='text-3xl font-extrabold'>Airtime Conversion </h2>
+                            <p className='my-4 font-light'>Don’t worry we understand the frustration <br />of excess recharge.  We make it easy for you to <br /> convert airtime on your sim to cash</p>
+                            <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'>
+                                <Link to="/sign-in">let's trade</Link>
+                            </button>
                         </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  w-screen mt-16">
                         <div className="vector-bg2">
-                            <img src={giftcard} alt="" />
+                            <img src={giftcard} className='ml-0 md:ml-16 lg:ml-28' alt="giftcard" />
                         </div>
                         <div className='text-center py-8 my-auto self-center '>
                             <h2 className='text-3xl font-extrabold'>Redeem Giftcards</h2>
                             <p className='my-4 font-light'>Buy and sell Giftcards from <br /> over 20 countries around the world</p>
-                            <button className='bg-[#8652A4] w-6/12 text-white font-bold rounded-md py-2 capitalize'>
+                            <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'>
                                 <Link to="/sign-in">let's trade</Link>
                             </button>
                         </div>    

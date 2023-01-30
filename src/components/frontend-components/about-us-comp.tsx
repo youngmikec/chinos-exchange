@@ -22,7 +22,7 @@ const AboutUsComp = () => {
                 <div className='py-12 w-full relative'>
                     <h3 className='text-5xl font-bold my-8 text-white'>Secured And Easy to <br />Use platform</h3>
                     <p className='text-sm font-thin text-justify w-3/4 my-8 text-white'>We provide you with our best services for Crypto Exchange, Airtime Conversion, Giftcard Redeemtion.</p>
-                    <button className='rounded-lg mt-4 mb-8 text-white bg-[#FFAB2E] py-3 px-6 hover:bg-white hover:text-[#FFAB2E]'>
+                    <button className='rounded-lg mt-4 mb-8 text-white bg-[#FFAB2E] py-4 px-7 hover:bg-white hover:text-[#FFAB2E]'>
                         <Link to="/sign-in">Let's Trade</Link>
                     </button>
                     <img src={coin} alt="" className=' md:block lg:block absolute right-0 bottom-0 '  />

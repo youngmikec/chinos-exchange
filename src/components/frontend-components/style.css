@@ -1,124 +1,121 @@
 .input-border {
-    border: 1px solid #8652A4;
-    border-left: 6px solid #8652A4;
+  border: 1px solid #8652a4;
+  border-left: 6px solid #8652a4;
 }
 
 .error-border {
-    border: 1px solid #ec0d63;
-    border-left: 6px solid #ec0d63;
+  border: 1px solid #ec0d63;
+  border-left: 6px solid #ec0d63;
 }
 
 .wallet-bg {
-    background-image: url('../../assets/images/hands_and_wallet.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    width: 100%;
-    height: inherit;
+  background-image: url("../../assets/images/hands_and_wallet.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: inherit;
 }
-.bg-ellipse{
-    background-image: url('../../assets/icons/Ellipse.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    width: 100%;
-    height: inherit;
+.bg-ellipse {
+  background-image: url("../../assets/icons/Ellipse.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  width: 100%;
+  height: inherit;
 }
-.about-bg{
-    background-image: url('../../assets/images/three-coporate.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    width: 100%;
-    height: inherit;
+.about-bg {
+  background-image: url("../../assets/images/three-coporate.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  width: 100%;
+  height: inherit;
 }
-.vector-bg1{
-    background-image: url('../../assets/icons/vector1.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    width: 100%;
-    height: inherit;
-    margin-top: 3em;
-    padding-bottom: 3.5em;
+.vector-bg1 {
+  background-image: url("../../assets/icons/vector1.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  width: 100%;
+  height: inherit;
+  margin-top: 3em;
+  padding-bottom: 3.5em;
 }
-.vector-bg2{
-    background-image: url('../../assets/icons/vector2.png');
-    background-repeat: no-repeat;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    width: 100%;
-    height: inherit;
-    margin-top: 3em;
-    padding-bottom: 3.5em;
+.vector-bg2 {
+  background-image: url("../../assets/icons/vector2.png");
+  background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  width: 100%;
+  height: inherit;
+  margin-top: 3em;
+  padding-bottom: 3.5em;
 }
-.about-bg2{
-    background-blend-mode: color;
-    background-image: url('../../assets/images/laptop.png');
-    background-color: rgba(0, 0, 0, 0.705);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    width: 100%;
-    height: inherit;
+.about-bg2 {
+  background-blend-mode: color;
+  background-image: url("../../assets/images/laptop.png");
+  background-color: rgba(0, 0, 0, 0.705);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: inherit;
 }
-.coin{
-    position: absolute;
-    margin-left: 28rem;
+.coin {
+  position: absolute;
+  margin-left: 28rem;
 }
 
 @media screen and(max-width: 600px) {
-    .small-icon{
-        /* height: 80px; */
-        width: 6px;
-    }
+  .small-icon {
+    /* height: 80px; */
+    width: 6px;
+  }
 }
-    .small-icon{
-        /* height: 80px; */
-        width: 11rem;
-    }
-    .social-box{
-        color: rgba(104, 37, 104, 0.87);
-        background-color: white;
-    }
-    .social-box-hover{
-        background-color: rgba(104, 37, 104, 0.87);
-        color: white !important;
-    }
-    .social-box-text{
-        color: rgb(49, 49, 49);
-    }
-    .social-box-hover-text{
-        color: rgb(253, 253, 253);
-    }
-    .input-border {
-        border: 1px solid #8652A4;
-        border-left: 6px solid #8652A4;
-    }
-    .button{
-        cursor: pointer;
-        background-color: #8652A4;
-        color: white;
-        padding: 0.5rem 2rem;
-    }
+.small-icon {
+  /* height: 80px; */
+  width: 11rem;
+}
+.social-box {
+  color: rgba(104, 37, 104, 0.87);
+  background-color: white;
+}
+.social-box-hover {
+  background-color: rgba(104, 37, 104, 0.87);
+  color: white !important;
+}
+.social-box-text {
+  color: rgb(49, 49, 49);
+}
+.social-box-hover-text {
+  color: rgb(253, 253, 253);
+}
+.input-border {
+  border: 1px solid #8652a4;
+  border-left: 6px solid #8652a4;
+}
+.button {
+  cursor: pointer;
+  background-color: #8652a4;
+  color: white;
+  padding: 0.5rem 2rem;
+}
 
-    @media screen and (max-width:760px) {
-        .small-screen-col{
-            flex-direction: column;
-            justify-content: center;
-            margin-left: 35%;
-            margin-right: auto;
-        }
-    }
+@media screen and (max-width: 760px) {
+  .small-screen-col {
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 35%;
+    margin-right: auto;
+  }
+}
 
-    .table{
-        width:70vw;
-        text-align: left !important;
-
-    }
-    .light-purple{
-        background: #8652A440;
-
-    }
-   
+.table {
+  width: 70vw;
+  text-align: left !important;
+}
+.light-purple {
+  background: #8652a440;
+}

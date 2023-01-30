@@ -14,7 +14,7 @@ const StepHeader = ({ title, info, steps, step }: Props) => {
 
     useEffect(() => {
         setStepArray(steps);
-    }, []);
+    }, [steps]);
 
     useEffect(() => {
         steps.forEach((item, idx) => {

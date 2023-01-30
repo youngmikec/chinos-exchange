@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
 //  icons
@@ -21,7 +20,6 @@ import { whatsAppUrl } from "../../constants";
 import { IoCardOutline, IoCopyOutline } from "react-icons/io5";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 import { User } from "../../common";
-import { RootState } from "../../store";
 import { getItem } from "../../utils";
 
 

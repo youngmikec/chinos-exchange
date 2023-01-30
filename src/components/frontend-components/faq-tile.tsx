@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 //  images and icons
-import { BsFillCaretUpFill } from "react-icons/bs";
 import { BsFillCaretDownFill } from "react-icons/bs";
 
 type Props = {

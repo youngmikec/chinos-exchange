@@ -1,5 +1,4 @@
 import React from 'react';
-import { AiFillExclamationCircle } from 'react-icons/ai';
 import { Step } from '../../common';
 
 type Props = {
