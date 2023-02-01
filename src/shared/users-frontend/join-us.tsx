@@ -1,6 +1,12 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AxiosResponse } from 'axios';
+
 import './styles.css';
+import { ApiResponse } from '../../common';
+import { CREATE_SUBSCRIBER } from '../../services';
 
 type MarketNumber = {
     title: string;
@@ -14,6 +20,44 @@ const JoinUs = () => {
         { title: "Ticket Resolved", value: "+99%"},
     ];
 
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState<boolean>(false);
+    const [email, setEmail] = useState<string>('');
+
+    const notify = (type: string, msg: string) => {
+        if (type === "success") {
+          toast.success(msg, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+    
+        if (type === "error") {
+          toast.error(msg, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+    };
+
+    const handleSubscribe = () => {
+        setLoading(true);
+        const data = { subscriberEmail: email }
+        CREATE_SUBSCRIBER(data).then((res: AxiosResponse<ApiResponse>) => {
+            const { message, success } = res.data;
+            if(success){
+                setLoading(false);
+                setEmail('');
+                notify('success', message);
+                setTimeout(() => {
+                    navigate('/sign-in');
+                }, 2000);
+            }
+        }).catch((err: any) => {
+            setLoading(false);
+            const { message } = err.response.data;
+            notify('error', message);
+        })
+    }
+
 
     return (
         <>
@@ -23,9 +67,18 @@ const JoinUs = () => {
                     <p className="text-white text-lg font-semibold mb-8">Join Our Growing Community Today</p>
 
                     <div className='flex w-full justify-between rounded-lg border-none bg-white'>
-                        <input type="text" className='w-full rounded-lg border-none bg-white py-3 px-5' />
-                        <button className='rounded-lg text-white bg-[#8652A4] py-3 px-6 min-w-max'>
-                            <Link to="/sign-in">Let's Trade</Link>
+                        <input 
+                            type="email" 
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className='w-full rounded-lg border-none bg-white py-3 px-5' 
+                        />
+                        <button 
+                            onClick={() => handleSubscribe()}
+                            className='rounded-lg text-white bg-[#8652A4] py-3 px-6 min-w-max'
+                        >
+                            {/* <Link to="/sign-in"></Link> */}
+                            { loading ? 'joining...' : "Let's Trade" }
                         </button>
                     </div>
                 </div>
@@ -53,6 +106,7 @@ const JoinUs = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
             {/* Market Numbers */}
         </>
     )
