@@ -42,11 +42,11 @@ const JoinUs = () => {
         setLoading(true);
         const data = { subscriberEmail: email }
         CREATE_SUBSCRIBER(data).then((res: AxiosResponse<ApiResponse>) => {
-            const { message, success } = res.data;
+            const { success } = res.data;
             if(success){
                 setLoading(false);
                 setEmail('');
-                notify('success', message);
+                notify('success', 'successfully subscribed');
                 setTimeout(() => {
                     navigate('/sign-in');
                 }, 2000);

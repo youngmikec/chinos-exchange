@@ -7,11 +7,11 @@ import './style.css';
 
 //icons and images
 import coin from '../../assets/images/hompage_coin.png';
-import bitcon from '../../assets/images/bitcoin.png'
-import airtime from '../../assets/images/airtime.png'
+import phoneCoins from '../../assets/images/phone-coin.svg'
+import giftcards from '../../assets/images/giftcards.svg'
 import phone from '../../assets/images/phone.png'
 import icon from '../../assets/images/customer-satisfaction.png'
-import giftcard from '../../assets/images/redeem.png'
+import networks from '../../assets/images/networks.svg';
 // components
 import HeroSection from '../../shared/users-frontend/hero-section';
 import JoinUs from '../../shared/users-frontend/join-us';
@@ -110,54 +110,54 @@ const HomeComp = () => {
 
 
                 <div className="bg-ellipse">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 light-purple w-screen">
-                        <div className="mx-auto">
-                            <img src={bitcon} alt="bitcoin" />
-                        </div>
+                    <div className="mx-auto w-10/12 bg-white rounded-md shadow-lg my-6 py-6 border-t-2 border-[#BA68C8]">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+                            <div className="px-0 md:px-3 lg:px-3 w-11/12 md:w-full lg:w-full">
+                                <img src={phoneCoins} alt="phoneCoins" />
+                            </div>
 
-                        <div className='text-center py-4 my-auto'>
-                            <h2 className='text-3xl font-extrabold'>Buy and Sell <br /> Crypto</h2>
-                            <p className='my-4 font-light'>Send us crypto and recieve  cash <br />at with instant payment  via your<br /> Bank account</p>
-                            <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'> 
-                                <Link to="/sign-in">let's trade</Link>
-                            </button>
+                            <div className='text-center md:text-left lg:text-left py-4 mt-10 md:my-auto lg:my-auto'>
+                                <h1 className='text-4xl font-semibold text-[#121212]'>Buy and Sell  of<br /> Crypto</h1>
+                                <p className='my-4 font-light'>Send us crypto and recieve  cash <br />at with instant payment  via your<br /> Bank account</p>
+                                <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'> 
+                                    <Link to="/sign-in">let's trade</Link>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  w-screen">
-                        <div className='hidden sm:hidden md:block lg:block text-center py-8 my-auto '>
-                            <h2 className='text-3xl font-extrabold'>Airtime Conversion </h2>
-                            <p className='my-4 font-light'>Don’t worry we understand the frustration <br />of excess recharge.  We make it easy for you to <br /> convert airtime on your sim to cash</p>
-                            <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'>
-                                <Link to="/sign-in">let's trade</Link>
-                            </button>
-                        </div>
+                    <div className="mx-auto w-10/12 bg-white rounded-md shadow-lg my-6 py-6 border-t-2 border-[#FE0808]">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+                            <div className="px-0 md:px-3 lg:px-3 w-11/12 md:w-full lg:w-full">
+                                <img src={giftcards} alt="giftcards" />
+                            </div>
 
-                        <div className="vector-bg1 pull">
-                            <img src={airtime} className='ml-0 md:ml-10 lg:ml-16' alt="airtime" />
-                        </div>
-
-                        <div className='block sm:block md:hidden lg:hidden text-center py-8 my-auto '>
-                            <h2 className='text-3xl font-extrabold'>Airtime Conversion </h2>
-                            <p className='my-4 font-light'>Don’t worry we understand the frustration <br />of excess recharge.  We make it easy for you to <br /> convert airtime on your sim to cash</p>
-                            <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'>
-                                <Link to="/sign-in">let's trade</Link>
-                            </button>
+                            <div className='text-center md:text-left lg:text-left py-4 mt-10 md:my-auto lg:my-auto'>
+                                <h1 className='text-4xl font-semibold text-[#121212]'>Airtime Conversion</h1>
+                                <p className='my-4 font-light'>Don’t worry we understand the frustration <br />of excess recharge.  We make it easy for you to <br /> convert airtime on your sim to cash</p>
+                                <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'> 
+                                    <Link to="/sign-in">let's trade</Link>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  w-screen mt-16">
-                        <div className="vector-bg2">
-                            <img src={giftcard} className='ml-0 md:ml-16 lg:ml-28' alt="giftcard" />
+                    <div className="mx-auto w-10/12 bg-white rounded-md shadow-lg my-6 py-6 border-t-2 border-[#1B24FA]">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+                            <div className="px-0 md:px-3 lg:px-3 w-11/12 md:w-full lg:w-full">
+                                <img src={networks} alt="networks" />
+                            </div>
+
+                            <div className='text-center md:text-left lg:text-left py-4 mt-10 md:my-auto lg:my-auto'>
+                                <h1 className='text-4xl font-semibold text-[#121212]'>Redeem Giftcards</h1>
+                                <p className='my-4 font-light'>Buy and sell Giftcards from <br /> over 20 countries around the world</p>
+                                <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'> 
+                                    <Link to="/sign-in">let's trade</Link>
+                                </button>
+                            </div>
                         </div>
-                        <div className='text-center py-8 my-auto self-center '>
-                            <h2 className='text-3xl font-extrabold'>Redeem Giftcards</h2>
-                            <p className='my-4 font-light'>Buy and sell Giftcards from <br /> over 20 countries around the world</p>
-                            <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'>
-                                <Link to="/sign-in">let's trade</Link>
-                            </button>
-                        </div>    
                     </div>
+
 
                 </div>
 
