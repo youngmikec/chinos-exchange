@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 // icons
 import { FiMenu } from 'react-icons/fi';
 import { CiDollar } from 'react-icons/ci';
-import { MdCardGiftcard } from 'react-icons/md';
+import { MdCancel, MdCardGiftcard } from 'react-icons/md';
+
 import logo from '../../assets/images/logo-white.png';
+import logoDark from '../../assets/images/logo.png';
 
 const Navbar = () => {
     const [show, setShow] = useState(false);
@@ -30,9 +32,7 @@ const Navbar = () => {
                                     className="relative mx-1 pt-0 pb-2 group  mb-1 md:mb-0"
                                     id="button_pm">
                                     <Link to="/services">Services</Link>
-                                    {/* <span className="firstlevel hover:text-red-500 whitespace-no-wrap text-gray-600 hover:text-blue-800">
-                                    <BiEditAlt className="text-blue hover:cursor-pointer inline" />
-                                    </span> */}
+                                    
                                     <ul className="w-max absolute left-0 top-0 mt-10 p-2 rounded-lg shadow-lg bg-[#F6F6F6] z-10 hidden group-hover:block">
                                         <svg
                                             className="block fill-current text-[#F6F6F6] w-4 h-4 absolute left-0 top-0 ml-3 -mt-3 z-0"
@@ -124,197 +124,86 @@ const Navbar = () => {
                                     </span>
                                 
                                     </button>
-                                    {/* <ul
-                                        className={`dropdown-menu
-                                        min-w-6
-                                        absolute
-                                        ${show ? 'block' : 'hidden'}
-                                        bg-white
-                                        text-base
-                                        z-50
-                                        py-2
-                                        list-none
-                                        text-left
-                                        rounded-lg
-                                        shadow-lg
-                                        mt-1
-                                        m-0
-                                        bg-clip-padding
-                                        border-none
-                                        "`}
-                                        aria-labelledby="dropdownMenuButton1"
-                                        id='dropdownMenuButton1'
-                                    >
-                                        <li>
-                                            <a
-                                            className="
-                                            dropdown-item
-                                            text-sm
-                                            py-2
-                                            px-4
-                                            font-normal
-                                            block
-                                            w-full
-                                            whitespace-nowrap
-                                            bg-transparent
-                                            text-[#8652A4]
-                                            hover:bg-gray-100
-                                            "
-                                            href='/'
-                                            >Home</a>
-                                        </li>
-                                        <li className='mx-4 text-white font-semibold hover:border-b-2 hover:border-b-white'><Link to="/">Home</Link></li>
-                                                                                <li>
-                                            <a
-                                            className="
-                                            dropdown-item
-                                            text-sm
-                                            py-2
-                                            px-4
-                                            font-normal
-                                            block
-                                            w-full
-                                            whitespace-nowrap
-                                            bg-transparent
-                                            text-[#8652A4]
-                                            hover:bg-gray-100
-                                            "
-                                            href="/about-us"
-                                            >About us</a>
-                                        </li>
-                                        <li>
-                                            <a
-                                            className="
-                                            dropdown-item
-                                            text-sm
-                                            py-2
-                                            px-4
-                                            font-normal
-                                            block
-                                            w-full
-                                            whitespace-nowrap
-                                            bg-transparent
-                                            text-[#8652A4]
-                                            hover:bg-gray-100
-                                            "
-                                            href='/contact-us'
-                                            >Contact Us</a>
-                                        </li>
-                                        <li>
-                                            <a
-                                            className="
-                                            dropdown-item
-                                            text-sm
-                                            py-2
-                                            px-4
-                                            font-normal
-                                            block
-                                            w-full
-                                            whitespace-nowrap
-                                            bg-transparent
-                                            text-[#8652A4]
-                                            hover:bg-gray-100
-                                            "
-                                            href='/faqs'
-                                            >FAQS</a>
-                                        </li>
-                                        <li>
-                                            <a
-                                            className="
-                                            dropdown-item
-                                            text-sm
-                                            py-2
-                                            px-4
-                                            font-normal
-                                            block
-                                            w-full
-                                            whitespace-nowrap
-                                            bg-transparent
-                                            text-[#8652A4]
-                                            hover:bg-gray-100
-                                            "
-                                            href='/sign-in'
-                                            >Sign In</a>
-                                        </li>
-                                        <li>
-                                            <a
-                                            className="
-                                            dropdown-item
-                                            text-sm
-                                            py-2
-                                            px-4
-                                            font-normal
-                                            block
-                                            w-full
-                                            whitespace-nowrap
-                                            bg-transparent
-                                            text-[#8652A4]
-                                            hover:bg-gray-100
-                                            "
-                                            href='/sign-up'
-                                            >Sign Up</a>
-                                        </li>
-                                    </ul> */}
+                            
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div className={`w-full bg-white px-4 absolute translate ease-in top-0 ${ show ? 'block' : 'hidden' } left-0 h-screen z-40`}>
-                        <div className='flex justify-end p-3'>
-                            <p onClick={() => toggleShowDrowdown()}>X</p>
+                        <div className='flex justify-between p-3'>
+                            <div>
+                                <img src={logoDark} width="50%" alt='logo' />
+                            </div>
+                            <div>
+                                <p onClick={() => toggleShowDrowdown()} className='p-2 rounded-full bg-gray-100'>
+                                    <MdCancel className="text-3xl text-[#8652A4]" />
+                                </p>
+                            </div>
                         </div>
-                        <ul className='list-none'>
-                            <li className='mx-4 my-4 text-[#8652A4] font-semibold hover:border-b-2 hover:border-b-white'><Link to="/">Home</Link></li>
-                            <li className='mx-4 my-4 text-[#8652A4] font-semibold hover:border-b-2 hover:border-b-white'>
-                                <div
-                                    className="relative mx-1 pt-0 pb-2 group  mb-1 md:mb-0"
-                                    id="button_pm">
-                                    <Link to="/">Services</Link>
-                                    {/* <span className="firstlevel hover:text-red-500 whitespace-no-wrap text-gray-600 hover:text-blue-800">
-                                    <BiEditAlt className="text-blue hover:cursor-pointer inline" />
-                                    </span> */}
-                                    <ul className="w-max absolute left-0 top-0 mt-10 p-2 rounded-lg shadow-lg bg-[#F6F6F6] z-10 hidden group-hover:block">
-                                        <svg
-                                            className="block fill-current text-[#F6F6F6] w-4 h-4 absolute left-0 top-0 ml-3 -mt-3 z-0"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                                        </svg>
-                                        <li className="hover:bg-[#8652A4] text-[#8652A4] border-b-2 border-[#f1dbff] hover:cursor-pointer pr-10 p-3 whitespace-no-wrap hover:text-[#8652A4] text-sm md:text-base ">
-                                            <Link to="/cryptos"> 
-                                                <div className="flex justify-start">
-                                                    <div className='mr-2 my-auto h-3'><CiDollar /></div>
-                                                    <div>Trade Crypto</div>
-                                                </div>
-                                            </Link>
-                                        </li>
 
-                                        <li className="hover:bg-[#8652A4] text-[#8652A4] border-b-2 border-[#f1dbff] hover:cursor-pointer pr-10 p-3 whitespace-no-wrap hover:text-[#8652A4] text-sm md:text-base ">
-                                            <Link to="/airtimes"> 
-                                                <div className="flex justify-start">
-                                                    <div className='mr-2 my-auto h-3'><CiDollar /></div>
-                                                    <div>Airtime to Cash</div>
-                                                </div>
-                                            </Link>
-                                        </li>
+                        <div className='my-3 text-center'>
+                            <ul className='list-none'>
+                                <li className='mx-4 my-8 text-[#7F7F80] font-semibold hover:border-b-2 hover:border-b-white'><Link to="/">Home</Link></li>
+                                <li className='mx-4 my-8 text-[#7F7F80] font-semibold hover:border-b-2 hover:border-b-white'>
+                                    <div
+                                        className="relative mx-1 pt-0 pb-2 group  mb-1 md:mb-0"
+                                        id="button_pm">
+                                        <Link to="/">Services</Link>
+                                        {/* <span className="firstlevel hover:text-red-500 whitespace-no-wrap text-gray-600 hover:text-blue-800">
+                                        <BiEditAlt className="text-blue hover:cursor-pointer inline" />
+                                        </span> */}
+                                        <ul className="w-max absolute left-0 top-0 mt-10 p-2 rounded-lg shadow-lg bg-[#F6F6F6] z-10 hidden group-hover:block">
+                                            <svg
+                                                className="block fill-current text-[#F6F6F6] w-4 h-4 absolute left-0 top-0 ml-3 -mt-3 z-0"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                            </svg>
+                                            <li className="hover:bg-[#8652A4] text-[#7F7F80] border-b-2 border-[#f1dbff] hover:cursor-pointer pr-10 p-3 whitespace-no-wrap hover:text-[#7F7F80] text-sm md:text-base ">
+                                                <Link to="/cryptos"> 
+                                                    <div className="flex justify-start">
+                                                        <div className='mr-2 my-auto h-3'><CiDollar /></div>
+                                                        <div>Trade Crypto</div>
+                                                    </div>
+                                                </Link>
+                                            </li>
 
-                                        <li className="hover:bg-[#8652A4] text-[#8652A4] border-b-2 border-[#f1dbff] hover:cursor-pointer pr-10 p-3 whitespace-no-wrap hover:text-[#8652A4] text-sm md:text-base ">
-                                            <Link to="/giftcards"> 
-                                                <div className="flex justify-start">
-                                                    <div className='mr-2 my-auto h-3'><MdCardGiftcard /></div>
-                                                    <div>Trade Giftcard</div>
-                                                </div>
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li className='mx-4 my-4 text-[#8652A4] font-semibold hover:border-b-2 hover:border-b-white'><Link to="/about-us">About Us</Link></li>
-                            <li className='mx-4 my-4 text-[#8652A4] font-semibold hover:border-b-2 hover:border-b-white'><Link to="/contact-us">Contact Us</Link></li>
-                            <li className='mx-4 my-4 text-[#8652A4] font-semibold hover:border-b-2 hover:border-b-white'><Link to="/faqs">Faqs</Link></li>
-                        </ul>
+                                            <li className="hover:bg-[#8652A4] text-[#7F7F80] border-b-2 border-[#f1dbff] hover:cursor-pointer pr-10 p-3 whitespace-no-wrap hover:text-[#7F7F80] text-sm md:text-base ">
+                                                <Link to="/airtimes"> 
+                                                    <div className="flex justify-start">
+                                                        <div className='mr-2 my-auto h-3'><CiDollar /></div>
+                                                        <div>Airtime to Cash</div>
+                                                    </div>
+                                                </Link>
+                                            </li>
+
+                                            <li className="hover:bg-[#8652A4] text-[#7F7F80] border-b-2 border-[#f1dbff] hover:cursor-pointer pr-10 p-3 whitespace-no-wrap hover:text-[#7F7F80] text-sm md:text-base ">
+                                                <Link to="/giftcards"> 
+                                                    <div className="flex justify-start">
+                                                        <div className='mr-2 my-auto h-3'><MdCardGiftcard /></div>
+                                                        <div>Trade Giftcard</div>
+                                                    </div>
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li className='mx-4 my-8 text-[#7F7F80] font-semibold hover:border-b-2 hover:border-b-white'><Link to="/about-us">About Us</Link></li>
+                                <li className='mx-4 my-8 text-[#7F7F80] font-semibold hover:border-b-2 hover:border-b-white'><Link to="/contact-us">Contact Us</Link></li>
+                                <li className='mx-4 my-8 text-[#7F7F80] font-semibold hover:border-b-2 hover:border-b-white'><Link to="/faqs">Faqs</Link></li>
+                                <br />
+                                <br />
+                                <br />
+                                <li className='mx-4 my-8 text-[#7F7F80] font-semibold hover:border-b-2 hover:border-b-white'><Link to="/sign-in">Sign in</Link></li>
+                                <li className='mx-4 my-8 text-[#ffffff] font-semibold hover:border-b-2 hover:border-b-white'>
+                                    <Link to="/sign-up">
+                                        <span className='px-7 py-2 bg-[#FFAB2E] rounded-md'>Sign up</span>
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                 </div>
