@@ -91,7 +91,7 @@ const Navbar = () => {
                         <div className="mt-5" style={{width: '15%'}}>
                             <img src={logo} style={{width: '100%'}} alt="logo" />
                         </div>
-                        <div className="flex justify-center">
+                        <div className="flex justify-right">
                             <div>
                                 <div className='pt-4 dropdown relative'>
                                     <button className="
@@ -130,7 +130,7 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    <div className={`w-full bg-white px-4 absolute translate ease-in top-0 ${ show ? 'block' : 'hidden' } left-0 h-screen z-40`}>
+                    <div className={`w-full bg-white px-4 absolute transition-all ease-in delay-700 top-0 ${ show ? 'block' : 'hidden' } left-0 h-screen z-40`}>
                         <div className='flex justify-between p-3'>
                             <div>
                                 <img src={logoDark} width="50%" alt='logo' />
