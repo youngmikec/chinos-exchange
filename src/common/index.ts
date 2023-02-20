@@ -17,3 +17,9 @@ export type ApiResponse = {
   message: string;
   payload: any;
 };
+
+export type Review = {
+  fullName: string;
+  stars: number;
+  review: string;
+};

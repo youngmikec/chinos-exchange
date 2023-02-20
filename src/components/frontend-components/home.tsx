@@ -19,6 +19,7 @@ import Footer from '../../shared/users-frontend/footer';
 import { AxiosResponse } from 'axios';
 import { ApiResponse, CryptoCurrency } from '../../common';
 import { RETREIVE_CRYPTO } from '../../services';
+import ReviewComp from './review';
 
 const HomeComp = () => {
     const [cryptos, setCryptos] = useState<CryptoCurrency[]>([]);
@@ -193,6 +194,10 @@ const HomeComp = () => {
 
             <div className='my-4'>
                 <JoinUs />
+            </div>
+
+            <div className='my-4'>
+                <ReviewComp />
             </div>
 
             <Footer />

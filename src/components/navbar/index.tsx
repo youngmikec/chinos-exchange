@@ -86,9 +86,9 @@ const Navbar = () => {
 
 
                 {/* mobile view */}
-                <div className="block sm:block md:hidden lg:hidden dropdownmenu mx-auto w-11/12">
+                <div className="block sm:block md:hidden lg:hidden dropdownmenu mx-auto w-full">
                     <div className='flex justify-between'>
-                        <div className="mt-5" style={{width: '15%'}}>
+                        <div className="mt-5" style={{width: '35%'}}>
                             <img src={logo} style={{width: '100%'}} alt="logo" />
                         </div>
                         <div className="flex justify-right">
@@ -119,7 +119,7 @@ const Navbar = () => {
                                         aria-expanded="true"
                                         onClick={() => toggleShowDrowdown()}
                                     >
-                                    <span className='font-lg'>
+                                    <span className='font-lg text-4xl'>
                                         <FiMenu />
                                     </span>
                                 

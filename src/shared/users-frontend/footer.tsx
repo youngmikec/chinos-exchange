@@ -40,7 +40,7 @@ const Footer = () => {
             if(success){
                 setLoading(false);
                 setEmail('');
-                notify('success', message);
+                notify('success', `Newsletter subscription was ${message}`);
             }
         }).catch((err: any) => {
             setLoading(false);
