@@ -45,7 +45,7 @@ const HomeComp = () => {
     return (
         <>
             <HeroSection>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 py-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 py-8 md:ml-32 lg:ml-40">
                     <div className='py-4 w-full relative'>
                         <h3 className='text-5xl font-bold my-8 text-white'>The Fastest Way To Buy, <br/> Sell And Trade Crypto </h3>
                         <div className='w-3/4 my-8'>
@@ -60,6 +60,7 @@ const HomeComp = () => {
                         </div>
                         <img src={coin} alt="" className='hidden sm:hidden md:block lg:block absolute right-0 bottom-0 '  />
                     </div>
+
                     <div className='wallet-bg'>
                     </div>
                 </div>
@@ -134,8 +135,8 @@ const HomeComp = () => {
                             </div>
 
                             <div className='text-center md:text-left lg:text-left py-4 mt-10 md:my-auto lg:my-auto'>
-                                <h1 className='text-4xl font-semibold text-[#7F7F80]'>Airtime Conversion</h1>
-                                <p className='my-4 font-light'>Don’t worry we understand the frustration <br />of excess recharge.  We make it easy for you to <br /> convert airtime on your sim to cash</p>
+                                <h1 className='text-4xl font-semibold text-[#7F7F80]'>Redeem your <br/> Gift card </h1>
+                                <p className='my-4 font-light'>Buy and sell Giftcards from <br /> over 20 countries around the world</p>
                                 <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'> 
                                     <Link to="/sign-in">let's trade</Link>
                                 </button>
@@ -150,8 +151,8 @@ const HomeComp = () => {
                             </div>
 
                             <div className='text-center md:text-left lg:text-left py-4 mt-10 md:my-auto lg:my-auto'>
-                                <h1 className='text-4xl font-semibold text-[#7F7F80]'>Redeem Giftcards</h1>
-                                <p className='my-4 font-light'>Buy and sell Giftcards from <br /> over 20 countries around the world</p>
+                                <h1 className='text-4xl font-semibold text-[#7F7F80]'>Convert Airtime <br/> to Cash</h1>
+                                <p className='my-4 font-light'>Don’t worry we understand the frustration <br />of excess recharge.  We make it easy for you to <br /> convert airtime on your sim to cash</p>
                                 <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'> 
                                     <Link to="/sign-in">let's trade</Link>
                                 </button>
@@ -165,7 +166,7 @@ const HomeComp = () => {
 
                 <div className='flex flex-col w-screen mt-16'>
                     <div className='text-center'>
-                        <h2 className=' font-bold text-black text-xl mb-2 capitalize '>what Makes Us Different</h2>
+                        <h2 className=' font-bold text-black text-xl mb-2 capitalize text-[#7F7F80] '>what Makes Us Different</h2>
                         <p className='text-sm text-gray-600 font-light'>There'are million reasons to use chinos Exchange platform </p>
                     </div>
 

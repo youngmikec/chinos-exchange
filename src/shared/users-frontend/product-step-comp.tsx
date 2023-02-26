@@ -16,6 +16,15 @@ type Props = {
 
 
 const ProductStepComp = ({ title, subTitle, imageUrl, steps }: Props) => {
+
+    const style = {
+        backgroundImage: `url("${imageUrl}")`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'contain',
+        backgroundPosition: 'center center',
+        width: '100%',
+        height: '30rem',
+    }
     
   return (
     <>
@@ -50,8 +59,8 @@ const ProductStepComp = ({ title, subTitle, imageUrl, steps }: Props) => {
                         </div>
                     </div>
 
-                    <div style={{height: 'inherit'}}>
-                        <img src={imageUrl} alt="illustration" className='h-full w-full' />
+                    <div style={style}>
+                        {/* <img src={imageUrl} alt="illustration" width="100%" className='h-full my-auto w-full' /> */}
                     </div>
                 </div>
             </div>

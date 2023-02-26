@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +7,7 @@ import { AxiosResponse } from 'axios';
 import './styles.css';
 import { ApiResponse } from '../../common';
 import { CREATE_SUBSCRIBER } from '../../services';
+import ClientsCard from './clients-card';
 
 type MarketNumber = {
     title: string;
@@ -23,6 +24,10 @@ const JoinUs = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState<boolean>(false);
     const [email, setEmail] = useState<string>('');
+    const [projectsCount, setProjectsCount] = useState<number>(0);
+    const [clientsCount, setClientsCount] = useState<number>(0);
+    const [supportCount, setSupportCount] = useState<number>(0);
+    const [experienceCount, setExperienceCount] = useState<number>(0);
 
     const notify = (type: string, msg: string) => {
         if (type === "success") {
@@ -58,6 +63,32 @@ const JoinUs = () => {
         })
     }
 
+    
+    
+    const countDown = () => {
+        let count = 0;
+        const intervalId = setInterval(() => {
+            count += 2;
+            if(count <= 10){
+                setExperienceCount(count);
+            }
+            if(count <= 500){
+                setSupportCount(count);
+            }
+            if(count <= 800){
+                setClientsCount(count);
+            }
+            setProjectsCount(count);
+            if(count === 1000){
+                clearInterval(intervalId);
+            }
+        }, 40)
+    }
+   
+    useEffect(() => {
+        countDown();
+    }, [])
+
 
     return (
         <>
@@ -91,16 +122,13 @@ const JoinUs = () => {
             {/* Market Numbers */}
             <div className="w-full">
                 <div className="mx-auto w-9/12 my-12">
-                    <p className="text-[#585858] text-lg text-center font-semibold my-8">Our Market Growth Numbers</p>
+                    <p className="text-[#7F7F80] text-xl text-center font-semibold my-8">Our Market Growth Numbers</p>
                     {/* market Cards */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 mg:grid-cols-3 lg:grid-cols-3">
                         {
                             marketNumbers.length > 0 &&
                             marketNumbers.map((item: MarketNumber, key: number) => {
-                                return <div key={key} className="hover:shadow-lg px-2 py-4 text-center">
-                                    <h3 className='my-5 text-[#8652A4] text-3xl font-bold'>{ item.value }</h3>
-                                    <p className='text-[#12121271]'>{ item.title }</p>
-                                </div>
+                                return <ClientsCard value={item.value} title={item.title} />
                             })
                         }
                     </div>

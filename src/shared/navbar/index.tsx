@@ -75,23 +75,23 @@ const Navbar = () => {
                     {/* mobile view */}
                     <div className={`container flex justify-start sm:hidden md:hidden lg:hidden xl:hidden ${headPadding}`}>
                         <div className="mr-4" onClick={() => openSidebar()}>
-                            <button className="text-3xl text-[#8c8c8c]"  >
+                            <button className="text-3xl text-[#7F7F80]"  >
                                 <FiMenu />
                             </button>
                         </div>
                     </div>
                     {/* mobile view */}
-                    <div className="text-[#8c8c8c] hover:text-[#8652A4] text-sm font-semibold mx-4">
+                    <div className="text-[#7F7F80] hover:text-[#8652A4] text-sm font-semibold mx-4">
                         <span>
                             <Link to="/">Home</Link>
                         </span>
                     </div>
-                    {/* <div className="text-[#8c8c8c] text-sm font-semibold">
+                    {/* <div className="text-[#7F7F80] text-sm font-semibold">
                         <span>
                             <Link to="/users-dashboard">How to trade</Link>
                         </span>
                     </div> */}
-                    <div className="text-[#8c8c8c] hover:text-[#8652A4] text-sm font-semibold mx-8">
+                    <div className="text-[#7F7F80] hover:text-[#8652A4] text-sm font-semibold mx-8">
                         <span>
                             <a href={whatsAppUrl} target="_blank" rel="noopener noreferrer">Chat</a>
                         </span>
@@ -100,11 +100,11 @@ const Navbar = () => {
 
                 <div className='flex justify-end ml-4'>
                     <div className="hidden md:flex lg:flex justify-start border-2 border-[#f0f0f0] rounded-md">
-                        <CiSearch className="text-xl my-auto text-[#8c8c8c] ml-2 mr-4" />
+                        <CiSearch className="text-xl my-auto text-[#7F7F80] ml-2 mr-4" />
                         <input type="text" placeholder='Search.....' className='w-80' onChange={(e)=>setSearch(e.target.value)}/>
                     </div>
                     <div className="mx-4 my-auto">
-                        <CiBellOn className='inline-flex text-xl font-semibold my-auto text-[#8c8c8c]'/>
+                        <CiBellOn className='inline-flex text-xl font-semibold my-auto text-[#7F7F80]'/>
                     </div>
                     <div className="inline-flex rounded-full bg-[#b1bbdf]">
                         <Link to="/account">
@@ -124,7 +124,7 @@ const Navbar = () => {
                                 <FaTimes />
                             </button>
 
-                            <ul className="list-none text-[#8c8c8c]">
+                            <ul className="list-none text-[#7F7F80]">
                                 <li 
                                 className={`${ pathname === '/users-dashboard' && 'bg-[#8652A4] text-white' } my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
                                 title="Dashboard"

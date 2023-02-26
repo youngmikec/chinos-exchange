@@ -16,6 +16,34 @@
   width: 100%;
   height: inherit;
 }
+
+.crypto-bg {
+  background-image: url("../../assets/images/bitcoin-in-hands.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  width: 100%;
+  height: 30rem;
+}
+
+.airtime-bg {
+  background-image: url("../../assets/svg/man-and-rocket-1.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  width: 100%;
+  height: 30rem;
+}
+
+.giftcard-bg {
+  background-image: url("../../assets/svg/man-and-rocket-2.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  width: 100%;
+  height: 30rem;
+}
+
 .bg-ellipse {
   background-image: url("../../assets/icons/Ellipse.png");
   background-repeat: no-repeat;
@@ -24,6 +52,7 @@
   width: 100%;
   height: inherit;
 }
+
 .about-bg {
   background-image: url("../../assets/images/three-coporate.png");
   background-repeat: no-repeat;
@@ -32,6 +61,7 @@
   width: 100%;
   height: inherit;
 }
+
 .vector-bg1 {
   background-image: url("../../assets/icons/vector1.png");
   background-repeat: no-repeat;
@@ -42,6 +72,7 @@
   margin-top: 3em;
   padding-bottom: 3.5em;
 }
+
 .vector-bg2 {
   background-image: url("../../assets/icons/vector2.png");
   background-repeat: no-repeat;

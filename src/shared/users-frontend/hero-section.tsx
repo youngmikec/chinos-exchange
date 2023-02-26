@@ -15,7 +15,7 @@ const HeroSection = ({children}: Props) =>  {
                 <Navbar />
             </div>
             
-            <div id="content" className='mx-auto w-11/12 md:w-10/12 lg:w-10/12 mb-8'>
+            <div id="content" className='mx-auto w-11/12 md:w-full lg:w-full mb-8'>
                 { children }
             </div>
         </div>

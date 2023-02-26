@@ -129,9 +129,9 @@ const SignInComp = () => {
                         </div>
 
                         <div className="relative my-6 text-center">
-                            <hr className='border-[#8652a48f] w-full' />
-                            <p className='text-[#8652A4] text-sm px-4 bg-white absolute -top-3 left-24 sm:left-60 md:left-32 lg:left-56 xl:left-80 '>or sign in with</p>
-                            <img src={googleIcon} className="my-4 mx-auto" alt="google" />
+                            <p className='text-[#8652A4] text-lg text-center z-40'><span className='bg-[#ffffff] px-4 py-1'>or sign in with</span></p>
+                            <hr className='border-[#8652a48f] w-full -mt-4' />
+                            <img src={googleIcon} className="my-7 mx-auto" alt="google" />
                         </div>
 
                         <div className="w-8/12 my-4 mx-auto text-center">

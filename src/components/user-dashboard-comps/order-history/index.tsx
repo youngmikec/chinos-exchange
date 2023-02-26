@@ -88,10 +88,10 @@ const OrderHistoryComp = () => {
                                             orderRecords.map((item: Order, idx: number) => {
                                                 return <tr key={idx} className='my-4'>
                                                 <td className="text-left border-spacing-y-4">{ idx + 1 }</td>
-                                                <td className="text-center py-3">{ moment(item?.createdAt).format("MM-DD-YYYY") }</td>
-                                                <td className="text-center py-3">{ item?.orderType }</td>
-                                                <td className="text-center py-3"><span className='line-through'>N</span>{ item?.amountReceivable } </td>
-                                                <td className="text-center py-3">
+                                                <td className="text-left py-3">{ moment(item?.createdAt).format("MM-DD-YYYY") }</td>
+                                                <td className="text-left py-3">{ item?.orderType }</td>
+                                                <td className="text-left py-3"><span className='line-through'>N</span>{ item?.amountReceivable } </td>
+                                                <td className="text-left py-3">
                                                     <span className={
                                                         (item.status === "COMPLETED") ? 'text-[#2CE71C]' : 'text-[#1cd9e7]'
                                                     
@@ -102,7 +102,7 @@ const OrderHistoryComp = () => {
                                             }) :
 
                                             <tr>
-                                                <td colSpan={5} className="text-center py-3">No Users available</td>
+                                                <td colSpan={5} className="text-left py-3">No Users available</td>
                                             </tr>
                                         }
                                     </tbody>

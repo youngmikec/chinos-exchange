@@ -84,7 +84,7 @@ const DashboardComp = () => {
                 <section>
 
                     <div>
-                        <h3 className='text-[#121212] my-12'>What we offer</h3>
+                        <h3 className='text-[#7F7F80] font-semibold my-12'>What we offer</h3>
 
                         <div className='grid grid-cols-1 space-y-2
                             sm:grid-cols-2  sm:space-x-2 sm:space-y-3
@@ -138,8 +138,8 @@ const DashboardComp = () => {
                         </div>
 
                         <section>
-                            <div className='my-4'>
-                                <h4>Recent Transactions</h4>
+                            <div className='my-8'>
+                                <h4 className='text-[#7F7F80] font-semibold'>Recent Transactions</h4>
                             </div>
 
                             <div>
@@ -160,10 +160,10 @@ const DashboardComp = () => {
                                                     orderRecords.map((item: Order, idx: number) => {
                                                         return <tr key={idx} className='my-4'>
                                                         <td className="text-left border-spacing-y-4">{ idx + 1 }</td>
-                                                        <td className="text-center py-3">{ moment(item?.createdAt).format("MM-DD-YYYY") }</td>
-                                                        <td className="text-center py-3">{ item?.orderType }</td>
-                                                        <td className="text-center py-3"><span className='line-through'>N</span>{ item?.amountReceivable } </td>
-                                                        <td className="text-center py-3">
+                                                        <td className="text-left py-3">{ moment(item?.createdAt).format("DD-MM-YYYY") }</td>
+                                                        <td className="text-left py-3">{ item?.orderType }</td>
+                                                        <td className="text-left py-3"><span className='line-through'>N</span>{ item?.amountReceivable } </td>
+                                                        <td className="text-left py-3">
                                                             <span className={
                                                                 (item.status === "COMPLETED") ? 'text-[#2CE71C]' : 'text-[#1cd9e7]'
                                                             
@@ -174,7 +174,7 @@ const DashboardComp = () => {
                                                     }) :
 
                                                     <tr>
-                                                        <td colSpan={5} className="text-center py-3">No Users available</td>
+                                                        <td colSpan={5} className="text-left py-3">No Users available</td>
                                                     </tr>
                                                 }
                                             </tbody>
