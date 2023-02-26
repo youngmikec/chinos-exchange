@@ -2,10 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { AxiosResponse } from 'axios';
 
-import { ApiResponse } from '../../../common';
-import { CREATE_ORDER } from '../../../services';
 import { RootState } from '../../../store';
 import { APPEND_TO_BUY_GIFTCARD_ORDER } from '../../../store/orders';
 
@@ -15,14 +12,10 @@ type Props = {
 }
 
 const TradeGiftcardStepTwo = ({changeStep, changeStatus}: Props) => {
-    const giftcardOrderState = useSelector((state: RootState) => state.BuyGiftcardOrderSlice.value);
     const dispatch = useDispatch();
 
     const [loading, setLoading] = useState<boolean>(false);
     const [cardNumber, setCardNumber] = useState<{value: string, error: boolean}>({value: '', error: false});
-    const [bankName, setBankName] = useState<{value: string, error: boolean}>({value: '', error: false});
-    const [accountName, setAccountName] = useState<{value: string, error: boolean}>({value: '', error: false});
-    const [accountNumber, setAccountNumber] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [proofImage, setProofImage] = useState<{value: string, error: boolean}>({value: '', error: false});
     const fileRef = useRef<HTMLInputElement>(null);
 
@@ -30,19 +23,7 @@ const TradeGiftcardStepTwo = ({changeStep, changeStatus}: Props) => {
         return fileRef.current?.click();
     }
 
-    const notify = (type: string, msg: string) => {
-        if (type === "success") {
-          toast.success(msg, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
-        }
-    
-        if (type === "error") {
-          toast.error(msg, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
-        }
-    };
+
 
     const handleFileRead = async (e: any) => {
         const file = e.target.files[0];
@@ -73,23 +54,11 @@ const TradeGiftcardStepTwo = ({changeStep, changeStatus}: Props) => {
         }else{
             setCardNumber({...cardNumber, error: false});
         }
-        if(bankName.value === '' || undefined || null){
+        if(cardNumber.value.length < 10 || cardNumber.value.length > 15){
             isValid = false;
-            setBankName({...bankName, error: true});
+            setCardNumber({...cardNumber, error: true});
         }else{
-            setBankName({...bankName, error: false});
-        }
-        if(accountName.value === '' || undefined || null){
-            isValid = false;
-            setAccountName({...accountName, error: true});
-        }else{
-            setAccountName({...accountName, error: false});
-        }
-        if(accountNumber.value === '' || undefined || null){
-            isValid = false;
-            setAccountNumber({...accountNumber, error: true});
-        }else{
-            setAccountNumber({...accountNumber, error: false});
+            setCardNumber({...cardNumber, error: false});
         }
         if(proofImage.value === '' || undefined || null){
             isValid = false;
@@ -101,36 +70,14 @@ const TradeGiftcardStepTwo = ({changeStep, changeStatus}: Props) => {
         return isValid;
     }
 
-    const handleSubmit = () => {
+    const handleProcceede = () => {
         if(inputCheck()){
-            setLoading(true);
-            const data = {
-                orderType: "GIFTCARD",
-                paymentMethod: 'BANK',
-                amount: giftcardOrderState?.amount,
-                giftcard: giftcardOrderState?.giftcard,
+            const data = { 
                 cardNumber: cardNumber?.value,
-                cardType: giftcardOrderState?.cardType,
-                amountReceivable: giftcardOrderState?.amountReceivable,
-                proofImage: giftcardOrderState?.proofImage,
-                bankName: bankName.value,
-                accountName: accountName.value,
-                accountNumber: accountNumber.value,
-            }
-            CREATE_ORDER(data).then((res: AxiosResponse<ApiResponse>) => {
-                const { success, message } = res.data;
-                if(success){
-                    setLoading(false);
-                    notify('success', message);
-                    changeStatus('success')
-                    changeStep(3);
-                }
-            }).catch((err: any) => {
-                setLoading(false);
-                const { message } = err.response.data;
-                notify('error', message);
-                changeStatus('error');
-            })
+                proofImage: proofImage.value
+            };
+            dispatch(APPEND_TO_BUY_GIFTCARD_ORDER(data))
+            changeStep(3)
         }
     }
 
@@ -146,51 +93,10 @@ const TradeGiftcardStepTwo = ({changeStep, changeStatus}: Props) => {
                             name='cardNumber'
                             minLength={10}
                             maxLength={15}
-                            className='w-full px-4 py-2'
+                            required
+                            className={`w-full px-4 py-2 ${cardNumber.error ? 'border-2 border-red' : ""}`}
                             value={cardNumber.value}
                             onChange={(e) => setCardNumber({...cardNumber, value: e.target.value})}
-                        />
-                    </div>
-                </div>
-
-                <div className='my-4'>
-                    <label htmlFor="bankName" className='text-[#7F7F80] text-sm'>Bank Name</label>
-                    <div className={`border-2 ${bankName.error ? 'border-red-500' : 'border-gray-100'} rounded-md mt-2`}>
-                        <input 
-                            type="text" 
-                            name='bankName' 
-                            className='w-full px-4 py-2'
-                            value={bankName.value}
-                            onChange={(e) => setBankName({...bankName, value: e.target.value})}
-                        />
-                    </div>
-                </div>
-
-                <div className='my-4'>
-                    <label htmlFor="accountName" className='text-[#7F7F80] text-sm'>Account Name</label>
-                    <div className={`border-2 ${accountName.error ? 'border-red-500' : 'border-gray-100'} rounded-md mt-2`}>
-                        <input 
-                            type="text" 
-                            name='accountName' 
-                            className='w-full px-4 py-2'
-                            value={accountName.value}
-                            onChange={(e) => setAccountName({...accountName, value: e.target.value})}
-                        />
-                    </div>
-                </div>
-
-                <div className='my-4'>
-                    <label htmlFor="accountNumber" className='text-[#7F7F80] text-sm'>Account Number</label>
-                    <div className={`border-2 ${accountNumber.error ? 'border-red-500' : 'border-gray-100'} rounded-md mt-2`}>
-                        <input 
-                            type="text" 
-                            placeholder='0902233242' 
-                            name='accountNumber'
-                            minLength={10}
-                            maxLength={10}
-                            className='w-full px-4 py-2'
-                            value={accountNumber.value}
-                            onChange={(e) => setAccountNumber({...accountNumber, value: e.target.value})}
                         />
                     </div>
                 </div>
@@ -217,7 +123,7 @@ const TradeGiftcardStepTwo = ({changeStep, changeStatus}: Props) => {
                 
                 <div className='my-4 flex justify-center'>
                     <button className='rounded-md bg-[#8652A4] text-white px-6 py-3' 
-                        onClick={() => handleSubmit()}
+                        onClick={() => handleProcceede()}
                     >
                         { loading ? 'Proccessing' : 'Proceed' }
                     </button>

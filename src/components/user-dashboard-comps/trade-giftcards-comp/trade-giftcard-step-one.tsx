@@ -82,7 +82,7 @@ const TradeGiftcardStepOne = ({ changeStep, giftcards }: Props) => {
                         <select 
                             name="cardType" 
                             id="cardType" 
-                            className='w-full px-4 py-2'
+                            className={`w-full px-4 py-2 ${cardType.error ? 'border-2 border-red' : ""}`}
                             onChange={(e) => {
                                 setCardType({...cardType, value: e.target.value})
                             }}
@@ -100,7 +100,7 @@ const TradeGiftcardStepOne = ({ changeStep, giftcards }: Props) => {
                         <select 
                             name="giftcard" 
                             id="giftcard" 
-                            className='w-full px-4 py-2'
+                            className={`w-full px-4 py-2 ${giftcard.error ? 'border-2 border-red' : ""}`}
                             onChange={(e) => {
                                 setGiftcard({...giftcard, value: e.target.value})
                                 calculateReceivable(e.target.value)
@@ -126,7 +126,7 @@ const TradeGiftcardStepOne = ({ changeStep, giftcards }: Props) => {
                             type="number" 
                             placeholder='Enter amount you want to sell' 
                             name="amount" 
-                            className='w-full px-4 py-2'
+                            className={`w-full px-4 py-2 ${amount.error ? 'border-2 border-red' : ""}`}
                             value={amount.value}
                             onChange={(e) => {
                                 setAmount({...amount, value: parseInt(e.target.value)})
@@ -139,7 +139,7 @@ const TradeGiftcardStepOne = ({ changeStep, giftcards }: Props) => {
                 {/* <div className='my-4'>
                     <label htmlFor="recieptType" className='text-[#7F7F80] text-sm'>Recipient Type</label>
                     <div className='border-2 border-gray-100 rounded-md mt-2'>
-                        <select name="recieptType" id="crypto" className='w-full px-4 py-2'>
+                        <select name="recieptType" id="crypto" className={`w-full px-4 py-2 ${accountNumber.error ? 'border-2 border-red' : ""}`}>
                             <option value="amazon">Use Amazon Giftcard receipt</option>
                             <option value="steam">Steam Giftcard</option>
                             <option value="steam">Steam Giftcard</option>
@@ -156,7 +156,7 @@ const TradeGiftcardStepOne = ({ changeStep, giftcards }: Props) => {
                             name='amountReceivalble' 
                             value={receivable.value}
                             onChange={(e) => setReceivable({...receivable, value: parseInt(e.target.value)})}
-                            className='w-full px-4 py-2'
+                            className={`w-full px-4 py-2 ${receivable.error ? 'border-2 border-red' : ""}`}
                         />
                     </div>
                 </div>

@@ -85,7 +85,7 @@ const SellCryptoStepThree = ({ changeStep }: Props) => {
                             name="bankName" 
                             id="bankName" 
                             onChange={(e) => setBankName({...bankName, value: e.target.value})}
-                            className='w-full px-4 py-2'
+                            className={`w-full px-4 py-2 ${bankName.error ? 'border-2 border-red' : ""}`}
                         >
                             {
                                 banks.length > 0 ? 
@@ -106,7 +106,7 @@ const SellCryptoStepThree = ({ changeStep }: Props) => {
                         <input 
                             type="text" 
                             name='accountName' 
-                            className='w-full px-4 py-2'
+                            className={`w-full px-4 py-2 ${accountName.error ? 'border-2 border-red' : ""}`}
                             value={accountName.value}
                             onChange={(e) => setAccountName({...accountName, value: e.target.value})}
                         />
@@ -115,7 +115,7 @@ const SellCryptoStepThree = ({ changeStep }: Props) => {
                 {/* <div className='my-4'>
                     <label htmlFor="confirmAccountNumber" className='text-[#7F7F80] text-sm'>Confirm Account Number</label>
                     <div className='border-2 border-gray-100 rounded-md mt-2'>
-                        <input type="text" name="confirmAccountNumber" className='w-full px-4 py-2'/>
+                        <input type="text" name="confirmAccountNumber" className={`w-full px-4 py-2 ${bankName.error ? 'border-2 border-red' : ""}`}/>
                     </div>
                 </div> */}
                 <div className='my-4'>
@@ -124,7 +124,7 @@ const SellCryptoStepThree = ({ changeStep }: Props) => {
                         <input 
                             type="text" 
                             name='accountNumber' 
-                            className='w-full px-4 py-2'
+                            className={`w-full px-4 py-2 ${accountNumber.error ? 'border-2 border-red' : ""}`}
                             value={accountNumber.value}
                             onChange={(e) => setAccountNumber({...accountNumber, value: e.target.value})}
                         />

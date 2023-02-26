@@ -10,6 +10,7 @@ import TradeGiftcardStepTwo from './trade-giftcard-step-two';
 import TradeGiftcardStepOne from './trade-giftcard-step-one';
 import TradeGiftcardStepThree from './trade-giftcard-step-three';
 import { GiftCard } from '../../../common/giftcard';
+import TradeGiftcardStepFour from './trade-giftcard-step-four';
 
 
 const TradeGiftCardsComp = () => {
@@ -19,7 +20,11 @@ const TradeGiftCardsComp = () => {
             isActive: true
         },
         {
-            title: 'Upload picture',
+            title: 'Upload Image',
+            isActive: false
+        },
+        {
+            title: 'Account Details',
             isActive: false
         },
         {
@@ -82,7 +87,11 @@ const TradeGiftCardsComp = () => {
                         }
                         {
                             step === 3 &&
-                            <TradeGiftcardStepThree changeStep={setStep} status={status} />
+                            <TradeGiftcardStepThree changeStep={setStep} changeStatus={setStatus} />
+                        }
+                        {
+                            step === 4 &&
+                            <TradeGiftcardStepFour changeStep={setStep} status={status} />
                         }
                         {/* trade giftcard steps */}
                     </Card>
