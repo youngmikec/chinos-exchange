@@ -84,11 +84,11 @@ const EmailVerificationComp = () => {
                         </div>
                     </div>
 
-                    <div className="relative my-8 text-center">
+                    {/* <div className="relative my-8 text-center">
                         <hr className='border-[#8652a48f] w-full' />
                         <p className='text-[#8652A4] text-sm px-4 bg-white absolute -top-3 left-56 '>or sign in with</p>
                         <img src={googleIcon} className="my-4 mx-auto" alt="google" />
-                    </div>
+                    </div> */}
 
                     <div className="w-8/12 my-4 mx-auto text-center">
                         <button 

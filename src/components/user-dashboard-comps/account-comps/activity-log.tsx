@@ -1,4 +1,5 @@
 import React from 'react'
+import OrderHistoryComp from '../order-history'
 
 const ActivityLog = () => {
   return (
@@ -7,7 +8,7 @@ const ActivityLog = () => {
             <div className='p-5'>
                 <h3 className='text-[#121212] my-4'>Recent Transanctions</h3>
                 <div className='overflow-scroll'>
-                    <table className='table table-auto w-full mx-auto border-spacing-y-4'>
+                    {/* <table className='table table-auto w-full mx-auto border-spacing-y-4'>
                         <thead className='text-left'>
                             <tr className='flex justify-around'>
                                 <th>#</th>
@@ -60,8 +61,9 @@ const ActivityLog = () => {
                             </tr>
                         </tbody>
 
-                    </table>
-                    
+                    </table> */}
+
+                    <OrderHistoryComp />
                 </div>
             </div>
         </div>

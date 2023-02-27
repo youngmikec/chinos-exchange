@@ -136,22 +136,11 @@ const TradeGiftcardStepOne = ({ changeStep, giftcards }: Props) => {
                     </div>
                 </div>
 
-                {/* <div className='my-4'>
-                    <label htmlFor="recieptType" className='text-[#7F7F80] text-sm'>Recipient Type</label>
-                    <div className='border-2 border-gray-100 rounded-md mt-2'>
-                        <select name="recieptType" id="crypto" className={`w-full px-4 py-2 ${accountNumber.error ? 'border-2 border-red' : ""}`}>
-                            <option value="amazon">Use Amazon Giftcard receipt</option>
-                            <option value="steam">Steam Giftcard</option>
-                            <option value="steam">Steam Giftcard</option>
-                        </select>
-                    </div>
-                </div> */}
-
                 <div className='my-4'>
-                    <label htmlFor="amountReceivalble" className='text-[#7F7F80] text-sm'>Receiving Amount</label>
+                    <label htmlFor="amountReceivalble" className='text-[#7F7F80] text-sm'>Receiving Amount in NGN</label>
                     <div className='border-2 border-gray-100 rounded-md mt-2'>
                         <input 
-                            type="text" 
+                            type="text"
                             disabled={true}
                             name='amountReceivalble' 
                             value={receivable.value}

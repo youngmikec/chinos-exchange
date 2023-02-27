@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Link, } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AxiosResponse } from 'axios';
@@ -10,13 +9,16 @@ import { setItem } from '../../utils';
 import { ApiResponse } from '../../common';
 import { LOGIN_USER } from '../../services';
 import logo from '../../assets/images/logo.png';
-import googleIcon from '../../assets/icons/google-icon.png';
-import { ADD_USER_PROFILE } from '../../store/user';
+// import googleIcon from '../../assets/icons/google-icon.png';
+// import { ADD_USER_PROFILE } from '../../store/user';
+
+//icons
+import { FiEyeOff, FiEye } from 'react-icons/fi';
 
 const SignInComp = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  
     const [loading, setLoading] = useState<boolean>(false);
+    const [pDisplay, setPDisplay] = useState<boolean>(false);
     const [email, setEmail] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [password, setPassword] = useState<{value: string, error: boolean}>({value: '', error: false});
 
@@ -73,6 +75,10 @@ const SignInComp = () => {
         }
     }
 
+    const togglePasswordDisplay = () => {
+        setPDisplay(!pDisplay);
+    }
+
     return (
         <>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2'>
@@ -107,12 +113,20 @@ const SignInComp = () => {
                         <div className='my-6'>
                             <label htmlFor="password" className='font-bold text-gray-400'>Password</label>
                             <div className={password.error ? 'error-border rounded-md' : 'input-border rounded-md'}>
-                                <input 
-                                    type="password" 
-                                    value={password.value}
-                                    onChange={(e) => setPassword({...password, value: e.target.value})}
-                                    className='w-full border-0 px-4 py-2 text-gray-400' 
-                                    placeholder='please enter your password' />
+                                <div className='flex' >
+                                    <input 
+                                        type={ pDisplay ? 'text' : 'password' } 
+                                        value={password.value}
+                                        onChange={(e) => setPassword({...password, value: e.target.value})}
+                                        className='w-full border-none px-4 py-2 text-gray-400 grow' 
+                                        placeholder='please enter your password' 
+                                    />
+                                    <span className='mx-2 p-2 my-auto text-gray-400 text-lg' onClick={() => togglePasswordDisplay() }>
+                                        {
+                                            pDisplay ? <FiEyeOff /> : <FiEye />
+                                        }
+                                    </span>
+                                </div>
                             </div>
                         </div>
 
@@ -128,13 +142,13 @@ const SignInComp = () => {
                             </p>
                         </div>
 
-                        <div className="relative my-6 text-center">
+                        {/* <div className="relative my-6 text-center">
                             <p className='text-[#8652A4] text-lg text-center z-40'><span className='bg-[#ffffff] px-4 py-1'>or sign in with</span></p>
                             <hr className='border-[#8652a48f] w-full -mt-4' />
                             <img src={googleIcon} className="my-7 mx-auto" alt="google" />
-                        </div>
+                        </div> */}
 
-                        <div className="w-8/12 my-4 mx-auto text-center">
+                        <div className="w-8/12 my-8 mx-auto text-center">
                             <button 
                                 onClick={() => handleLogin() } 
                                 className='bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-4'

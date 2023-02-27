@@ -12,6 +12,7 @@ type Props = {
 
 const BuyCryptoStepOne = ({ changeStep, cryptos }: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
+    const [cryptoName, setCryptoName] = useState<string | undefined>('');
     const [selectedCrypto, setSelectedCrypto] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [selectedNetwork, setSelectedNetwork] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [walletAddress, setWalletAddress] = useState<{value: string, error: boolean}>({value: '', error: false});
@@ -24,6 +25,7 @@ const BuyCryptoStepOne = ({ changeStep, cryptos }: Props) => {
     const getNetworks = (id: string) => {
         const currentCrypto: CryptoCurrency | undefined = cryptos?.find((item) => item.id === id);
         setRate(currentCrypto?.rate);
+        setCryptoName(currentCrypto?.shortName);
         setNetworks(currentCrypto?.networks);
     }
 
@@ -60,13 +62,14 @@ const BuyCryptoStepOne = ({ changeStep, cryptos }: Props) => {
     const handleProcceede = () => {
         setLoading(true);
         if(inputCheck()){
-            const data = { 
+            const data = {
                 cryptocurrency: selectedCrypto.value, 
                 walletAddress: walletAddress.value,
                 network: selectedNetwork.value,
                 sendersPhone: sendersPhone.value,
                 orderType: "BUY_CRYPTO",
-                rate
+                rate,
+                cryptoName
             };
             dispatch(APPEND_TO_BUY_CRYPTO_ORDER(data))
             changeStep(2)

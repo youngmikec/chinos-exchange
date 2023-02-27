@@ -62,6 +62,7 @@ const SellCryptoComp = () => {
                     <StepHeader 
                         title='Sell Crypto'
                         steps={steps}
+                        step={step}
                         info="While trading with us, make sure you copy the right address for your deposit to avoid lost of fund. upload a screenshot of your transaction as well."  
                     />
 

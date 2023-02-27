@@ -11,6 +11,7 @@ const BuyCryptoStepTwo = ({ changeStep }: Props) => {
     const dispatch = useDispatch();
     const buyCryptoState = useSelector((state: RootState) => state.BuyCryptoOrderSlice.value);
 
+    const [cryptoName, setCryptoName] = useState<string | undefined>('');
     const [amount, setAmount] = useState<{value: number, error: boolean}>({value: 0, error: false});
     const [amountReceivable, setAmountReceivable] = useState<{value: number, error: boolean}>({value: 0, error: false});
     const [rate, setRate] = useState<number>(0);
@@ -62,9 +63,8 @@ const BuyCryptoStepTwo = ({ changeStep }: Props) => {
  
 
     useEffect(() => {
-        console.log({ buyCryptoState })
-        buyCryptoState?.rate && setRate(buyCryptoState.rate)
-        console.log({rate});
+        buyCryptoState?.rate && setRate(buyCryptoState.rate);
+        buyCryptoState?.cryptoName && setCryptoName(buyCryptoState.cryptoName);
     }, [buyCryptoState])
 
     return (
@@ -87,7 +87,7 @@ const BuyCryptoStepTwo = ({ changeStep }: Props) => {
                 </div>
             </div>
             <div className='my-4'>
-                <label htmlFor="amountReceivable" className='text-[#7F7F80] text-sm'>You will receive in</label>
+                <label htmlFor="amountReceivable" className='text-[#7F7F80] text-sm'>You will receive {amountReceivable.value}$ worth of { cryptoName } </label>
                 <div className='border-2 border-gray-100 rounded-md mt-2'>
                     <input 
                     type="number" 
@@ -98,7 +98,7 @@ const BuyCryptoStepTwo = ({ changeStep }: Props) => {
                     value={amountReceivable.value}
                 />
                 </div>
-                <p className="text-sm text-[#7F7F80] "> Minimuim we sell is 1,0000</p>
+                <p className="text-sm text-[#7F7F80] "> Minimuim we sell is 1,000</p>
             </div>
 
 

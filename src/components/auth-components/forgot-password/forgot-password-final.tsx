@@ -22,10 +22,10 @@ const ForgotPassword4 = ({changeStep}: Prop) => {
       />
       <div className="w-screen flex justify-center ">
         <div className="image ">
-            <img src={success} 
-            alt=""
-            className='mx-auto'
-             />
+          <img src={success} 
+          alt=""
+          className='mx-auto'
+            />
         
         <div className="text-center mb-18">
           <div className=" justify-around text-center text-4xl font-bold mb-2 text-purple-800 ">
@@ -34,14 +34,15 @@ const ForgotPassword4 = ({changeStep}: Prop) => {
           <div className="text-center text-gray-400 mb-4">
             Kindly return to sign in screen
           </div>
-          <div className="relative my-6 text-center">
-          <hr className="border-[#8652a48f] w-full" />
-          <p className="text-[#8652A4] text-sm px-4 bg-white absolute -top-3 left-56">
-            or sign up with
-          </p>
 
-          <img src={googleIcon} className="my-4 mx-auto " alt="google" />
-        </div>
+          {/* <div className="relative my-6 text-center">
+            <hr className="border-[#8652a48f] w-full" />
+            <p className="text-[#8652A4] text-sm px-4 bg-white absolute -top-3 left-56">
+              or sign up with
+            </p>
+
+            <img src={googleIcon} className="my-4 mx-auto " alt="google" />
+          </div> */}
 
         <div className="w-8/12 my-4 mx-auto text-center">
           <Link to="/sign-in">

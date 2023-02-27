@@ -66,6 +66,7 @@ const TradeGiftCardsComp = () => {
                     <StepHeader 
                         title='Trade Giftcard'
                         steps={steps}
+                        step={step}
                         info="While trading with us, make sure you keep your reciept/ invoice used in purchasing the giftcard. Enter your gift card details in each field below to calculate how much naira"  
                     />
 
