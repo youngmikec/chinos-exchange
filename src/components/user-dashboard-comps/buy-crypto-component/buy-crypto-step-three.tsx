@@ -11,7 +11,7 @@ type Props = {
 }
 
 const BuyCryptoStepThree = ({ changeStep, cryptos }: Props) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const buyCryptoState = useSelector((state: RootState) => state.BuyCryptoOrderSlice.value);
   const [crypto, setCrypto] = useState<CryptoCurrency | undefined>();
 

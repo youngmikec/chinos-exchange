@@ -1,20 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useSelector } from 'react-redux';
 
 import { MdContentCopy } from 'react-icons/md';
-import { AiOutlineSave, AiOutlineShareAlt } from 'react-icons/ai';
+// import { AiOutlineSave, AiOutlineShareAlt } from 'react-icons/ai';
 
-import barCode from '../../../assets/images/bar-code.png';
+import { RootState } from '../../../store';
+import { CryptoCurrency } from '../../../common';
 import { copyTextToClipboard } from '../../../helpers';
+import barCode from '../../../assets/images/bar-code.png';
 
 type Props = {
     changeStep: (data: number) => any,
+    cryptos?: CryptoCurrency[]
 }
 
-const SellCryptoStepTwo = ({ changeStep }: Props) => {
+const SellCryptoStepTwo = ({ changeStep, cryptos }: Props) => {
+    const sellCryptoState = useSelector((state: RootState) => state.SellCryptoOrderSlice.value);
     const textRef = useRef<HTMLParagraphElement>(null);
     const [walletAddress, setWalletAddress] = useState<string>('');
+    const [crypto, setCrypto] = useState<CryptoCurrency | undefined>();
+
     
     const notify = (type: string, msg: string) => {
         if (type === "success") {
@@ -42,6 +49,16 @@ const SellCryptoStepTwo = ({ changeStep }: Props) => {
         changeStep(3)
     }
 
+    const selectCrypto = (id: any) => {
+        const retreivedData = cryptos && cryptos.find(item => item.id === id);
+        console.log({ retreivedData });
+        return setCrypto(retreivedData);
+    } 
+
+    useEffect(() => {
+        selectCrypto(sellCryptoState?.cryptocurrency);
+    }, [sellCryptoState]);
+
     useEffect(() => {
         if(textRef.current){
             setWalletAddress(textRef.current.innerText)
@@ -55,10 +72,10 @@ const SellCryptoStepTwo = ({ changeStep }: Props) => {
 
                 <div className='w-full'>
                     <div className='flex justify-center'>
-                        <img src={barCode} alt="barcode" width="180px" height="180px" />
+                        <img src={crypto?.barcode || barCode} alt="barcode" width="180px" height="180px" />
                     </div>
                     <div className='text-center my-2'>
-                        <p className='text-sm font-bold' ref={textRef}>TSxkmKDFVPzSHQz4DkkcTJutXQR13u5aQ5</p>
+                        <p className='text-sm font-bold' ref={textRef}>{crypto?.walletAddress}</p>
                     </div>
                 </div>
 

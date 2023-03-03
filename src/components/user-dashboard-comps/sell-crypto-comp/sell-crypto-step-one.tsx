@@ -11,6 +11,7 @@ type Props = {
 
 const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
+    const [cryptoName, setCryptoName] = useState<string | undefined>('');
     const [selectedCrypto, setSelectedCrypto] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [selectedNetwork, setSelectedNetwork] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [amount, setAmount] = useState<{value: number, error: boolean}>({value: 0, error: false});
@@ -23,6 +24,7 @@ const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
     const getNetworks = (id: string) => {
         const currentCrypto: CryptoCurrency | undefined = cryptos?.find((item) => item.id === id);
         setRate(currentCrypto?.rate);
+        setCryptoName(currentCrypto?.shortName);
         setNetworks(currentCrypto?.networks);
     }
 
@@ -85,6 +87,8 @@ const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
             calculateReceivable(selectedCrypto.value);
         }
     }, [selectedCrypto.value, amount.value]);
+
+    
  
 
     return (
@@ -128,7 +132,7 @@ const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
                             {
                                 networks && networks.length > 0 && 
                                 networks.map((item: any, idx: number) => {
-                                    return <option key={idx} value={item.networkId}>{item.networkId}</option>
+                                    return <option key={idx} value={item.networkName}>{item.networkName}</option>
                                 })
                             }
                             

@@ -86,7 +86,10 @@ const SellCryptoComp = () => {
 
                         {
                             step === 2 && 
-                            <SellCryptoStepTwo changeStep={setStep} />
+                            <SellCryptoStepTwo 
+                                changeStep={setStep} 
+                                cryptos={cryptoRecords} 
+                            />
                         }
 
                         {

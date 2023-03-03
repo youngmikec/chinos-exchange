@@ -62,17 +62,15 @@ const BuyCryptoComp = () => {
 
     return (
         <>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2'>
-                <div className='w-full'>
-                    <StepHeader 
-                        title='Buy Crypto'
-                        steps={steps}
-                        step={step}
-                        changeStep={prevStep}
-                        info="While trading with us, make sure you copy the right address for your deposit to avoid lost of fund. upload a screenshot of your transaction as well."  
-                    />
+            <div className='w-full'>
+                <StepHeader 
+                    title='Buy Crypto'
+                    steps={steps}
+                    step={step}
+                    changeStep={prevStep}
+                    info="While trading with us, make sure you copy the right address for your deposit to avoid lost of fund. upload a screenshot of your transaction as well."  
+                />
 
-                </div>
             </div>
 
             <div className='flex flex-col sm:flex-row md:flex-row lg:flex-row my-4'>

@@ -16,7 +16,7 @@ import TradeGiftcardStepFour from './trade-giftcard-step-four';
 const TradeGiftCardsComp = () => {
     const steps: Step[] = [
         {
-            title: 'Choose Card Type',
+            title: 'Choose Card',
             isActive: true
         },
         {
@@ -35,7 +35,7 @@ const TradeGiftCardsComp = () => {
     const prevStep = () => {
         setStep(prev => prev - 1)
     }
-    
+
     //states
     const [step, setStep] = useState<number>(1);
     const [loading, setLoading] = useState<boolean>(true);
@@ -64,17 +64,15 @@ const TradeGiftCardsComp = () => {
 
     return (
         <>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2'>
-                <div className='w-12/12'>
-                    <StepHeader 
-                        title='Trade Giftcard'
-                        steps={steps}
-                        step={step}
-                        changeStep={prevStep}
-                        info="While trading with us, make sure you keep your reciept/ invoice used in purchasing the giftcard. Enter your gift card details in each field below to calculate how much naira"  
-                    />
+            <div className='w-12/12'>
+                <StepHeader 
+                    title='Trade Giftcard'
+                    steps={steps}
+                    step={step}
+                    changeStep={prevStep}
+                    info="While trading with us, make sure you keep your reciept/ invoice used in purchasing the giftcard. Enter your gift card details in each field below to calculate how much naira"  
+                />
 
-                </div>
             </div>
 
             <div className='flex flex-col sm:flex-row md:flex-row lg:flex-row my-4'>

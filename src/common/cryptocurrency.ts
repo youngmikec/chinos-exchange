@@ -2,8 +2,9 @@ import { AIRTIME_STATUS, ORDER_PAYMENT_METHOD, ORDER_STATUS } from "./enums";
 import { User } from "./user";
 
 export type Network = {
-  networkName: string;
+  _id: string;
   networkId: string;
+  networkName: string;
 };
 
 export type CryptoCurrency = {

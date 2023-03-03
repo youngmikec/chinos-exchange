@@ -48,7 +48,7 @@ const StepHeader = ({ title, info, steps, step, changeStep }: Props) => {
                         stepsArray.map((step: Step, key: number) => {
                             return <div className='text-center flex-1' key={key}>
                             <p className='text-[#7F7F80] text-lg'>Step {key + 1} </p>
-                            <p className={`px-2 sm:px-4 md:px-5 lg:px-6 py-3 capitalize text-[0.5rem] sm:text-[0.6rem] md:text-[0.6rem] lg:text-[0.6rem] ${ step.isActive ? 'bg-[#8652A4] text-white' : 'bg-[#D9D9D9] text-[#7F7F80]'}`}>{ step.title }</p>
+                            <p className={`px-1 sm:px-4 md:px-5 lg:px-6 py-3 capitalize text-[0.5rem] sm:text-[0.6rem] md:text-[0.6rem] lg:text-[0.6rem] ${ step.isActive ? 'bg-[#8652A4] text-white' : 'bg-[#D9D9D9] text-[#7F7F80]'}`}>{ step.title }</p>
                         </div>
                         })
                     }

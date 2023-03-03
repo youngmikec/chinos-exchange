@@ -96,7 +96,7 @@ const HomeComp = () => {
                                             </td>
                                             <td className="text-left py-3">{item?.name}</td>
                                             <td className="text-left py-3">{item?.shortName}</td>
-                                            <td className="text-left py-3">{ item?.rate} per $</td>
+                                            <td className="text-left py-3">{ item?.rate}/$</td>
                                         </tr>
                                     }) : 
                                         <tr>

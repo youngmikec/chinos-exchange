@@ -118,7 +118,7 @@ const BuyCryptoStepOne = ({ changeStep, cryptos }: Props) => {
                         {
                             networks && networks.length > 0 && 
                             networks.map((item: any, idx: number) => {
-                                return <option key={idx} value={item.networkId}>{item.networkId}</option>
+                                return <option key={idx} value={item.networkName}>{item.networkName}</option>
                             })
                         }
                         
