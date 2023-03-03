@@ -11,6 +11,7 @@ import { VERIFY_RESET_CODE } from '../../../services';
 // icons && images
 import { AiFillLeftCircle } from 'react-icons/ai';
 import logo from "../../../assets/images/logo-white.png";
+import logoBlack from "../../../assets/images/logo.png";
 import googleIcon from "../../../assets/icons/google-icon.png";
  
   type inputProps={
@@ -111,25 +112,28 @@ const ForgotPassword2 = ( { changeStep }: Props) => {
   return (
     <>
       <div className="auth-bg py-0 sm:py-8 md:py-8 lg:py-8">
-        <div className='fixed left-8 top-8'>
+        <div className='fixed left-5 md:left-8 lg:left-8 top-6 md:top-8 lg:top-8'>
           <div>
-              <Link to='/'>
+              <Link to='/' className='hidden sm:hidden md:block lg:block'>
                   <img src={logo} alt="logo" width="120px" height="120px" />
+              </Link>
+              <Link to='/' className='block sm:block md:hidden lg:hidden'>
+                  <img src={logoBlack} alt="logo" width="120px" height="120px" />
               </Link>
           </div>
         </div>
 
         <div className='fixed right-8 top-8'>
-          <div className='text-white'>
-              <p className='text-white text-xl inline-flex cursor-pointer' onClick={() => changeStep(1)}>
-                <AiFillLeftCircle className='mr-2 my-auto' />
-                <span>Back</span>
-              </p>
-          </div>
+            <div className='text-[#8652A4] md:text-white lg:text-white'>
+                <p className='text-[#8652A4] md:text-white lg:text-white text-xl inline-flex cursor-pointer' onClick={() => changeStep(1)}>
+                    <AiFillLeftCircle className='mr-2 my-auto' />
+                    <span>Back</span>
+                </p>
+            </div>
         </div>
 
-        <div className="mx-auto w-full sm:w-9/12 md:w-7/12 lg:w-5/12 bg-white h-screen rounded-lg px-8 py-8">
-          <div className='text-center my-10'>
+        <div className="mx-auto w-full sm:w-11/12 md:w-7/12 lg:w-5/12 bg-white h-screen rounded-lg px-8 py-8">
+          <div className='text-center my-20 md:my-10 lg:my-10'>
               <h1 className='text-3xl font-bold mb-4'>Forgot Password</h1>
               <p className='text-gray-400 my-4 text-sm'>Please, Enter the verification code sent to your registered email</p>
           </div> 

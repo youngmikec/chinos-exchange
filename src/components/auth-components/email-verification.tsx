@@ -66,7 +66,7 @@ const EmailVerificationComp = () => {
                     </div>
                 </div>
 
-                <div className="mx-auto w-full sm:w-9/12 md:w-7/12 lg:w-5/12 bg-white h-screen rounded-lg px-8 py-8"> 
+                <div className="mx-auto w-full sm:w-11/12 md:w-7/12 lg:w-5/12 bg-white h-screen rounded-lg px-8 py-8"> 
                     <div className='text-center my-10'>
                         <h1 className='text-4xl font-bold mb-4'>Email Verification</h1>
                         <p className='text-gray-400 my-4 text-sm'>Let's verify your email</p>
