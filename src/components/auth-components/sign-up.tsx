@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { AxiosResponse } from 'axios';
 
 import logo from '../../assets/images/logo-white.png';
+import logoBlack from '../../assets/images/logo.png';
 // import googleIcon from '../../assets/icons/google-icon.png';
 import './style.css';
 import { SIGN_UP_USER } from '../../services';
@@ -141,8 +142,11 @@ const SignUpComp = () => {
             <div className='auth-bg py-0 sm:py-8 md:py-8 lg:py-8'>
                 <div className='fixed left-8 top-8'>
                     <div>
-                        <Link to='/'>
+                        <Link to='/' className='hidden sm:hidden md:block lg:block'>
                             <img src={logo} alt="logo" width="120px" height="120px" />
+                        </Link>
+                        <Link to='/' className='block sm:block md:hidden lg:hidden'>
+                            <img src={logoBlack} alt="logo" width="120px" height="120px" />
                         </Link>
                     </div>
                 </div>
@@ -250,98 +254,111 @@ const SignUpComp = () => {
                                         setIsDefault(false);
                                     }
                                 } } 
-                                className='bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-6'
+                                className='bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-3 sm:py-3 md:py-5 lg:py-6'
                             >
                                 Next
                             </button>
                             <p className='text-[#8652a48f] text-sm block my-4'>Already have an account?   
-                                <span className='text-[#8652A4] font-bold'><Link to="/sign-in">Sign in</Link></span>
+                                <span className='text-[#8652A4] mx-2 font-bold'><Link to="/sign-in">Sign in</Link></span>
                             </p>
                         </div>
                     </div> :
 
-                    <div className="mx-auto w-full sm:w-9/12 md:w-7/12 lg:w-5/12 bg-white h-screen rounded-lg px-8 py-8">  
-                        <div className='text-center my-10'>
-                            <h1 className='text-3xl font-bold mb-4'>Sign UP</h1>
-                            <p className='text-gray-400 my-4 text-sm'>To sign up please enter the following details</p>
-                        </div>
-
-                        <div className='my-8'>
-                            <label htmlFor="email" className='font-bold text-gray-400'>Email</label>
-                            <div className={email.error ? 'error-border rounded-md' : 'input-border rounded-md'}>
-                                <input 
-                                    type="email" 
-                                    value={email.value}
-                                    onChange={(e) => setEmail({...email, value: e.target.value})}
-                                    className='w-full border-0 px-4 py-2 text-gray-400' 
-                                    placeholder='please enter your email' 
-                                />
+                    <div>
+                        <div className='fixed right-8 top-8'>
+                            <div className='text-white'>
+                                <p className='text-white text-xl inline-flex cursor-pointer' onClick={() => setIsDefault(true)}>
+                                    <AiFillLeftCircle className='mr-2 my-auto' />
+                                    <span>Back</span>
+                                </p>
                             </div>
-                            {
-                                email.error &&
-                                <label htmlFor="email" className='text-red-400'>{email.msg}</label>
-                            }
                         </div>
 
-                        <div className='my-8'>
-                            <label htmlFor="password" className='font-bold text-gray-400'>Password</label>
-                            <div className={password.error ? 'error-border rounded-md' : 'input-border rounded-md'}>
-                                <div className='flex' >
+                        <div className="mx-auto w-full sm:w-9/12 md:w-7/12 lg:w-5/12 bg-white h-screen rounded-lg px-8 py-8">  
+                            <div className='text-center my-10'>
+                                <h1 className='text-3xl font-bold mb-4'>Sign UP</h1>
+                                <p className='text-gray-400 my-4 text-sm'>To sign up please enter the following details</p>
+                            </div>
+
+                            <div className='my-8'>
+                                <label htmlFor="email" className='font-bold text-gray-400'>Email</label>
+                                <div className={email.error ? 'error-border rounded-md' : 'input-border rounded-md'}>
                                     <input 
-                                        type={ pDisplay ? 'text' : 'password' } 
-                                        value={password.value}
-                                        onChange={(e) => setPassword({...password, value: e.target.value})}
-                                        className='w-full border-none px-4 py-2 text-gray-400 grow' 
-                                        placeholder='please enter your password' 
+                                        type="email" 
+                                        value={email.value}
+                                        onChange={(e) => setEmail({...email, value: e.target.value})}
+                                        className='w-full border-0 px-4 py-2 text-gray-400' 
+                                        placeholder='please enter your email' 
                                     />
-                                    <span className='mx-2 p-2 my-auto text-gray-400 text-lg' onClick={() => togglePasswordDisplay() }>
-                                        {
-                                            pDisplay ? <FiEyeOff /> : <FiEye />
-                                        }
-                                    </span>
                                 </div>
+                                {
+                                    email.error &&
+                                    <label htmlFor="email" className='text-red-400'>{email.msg}</label>
+                                }
                             </div>
-                            {
-                                password.error &&
-                                <label htmlFor="password" className='text-red-400'>{password.msg}</label>
-                            }
-                        </div>
 
-                        <div className='my-8'>
-                            <label htmlFor="confirmPassword" className='font-bold text-gray-400'>Confirm password</label>
-                            <div className={confirmPassword.error ? 'error-border rounded-md' : 'input-border rounded-md'}>
-                                <input 
-                                    type="password" 
-                                    value={confirmPassword.value}
-                                    onChange={(e) => setConfirmPassword({...confirmPassword, value: e.target.value})}
-                                    className='w-full border-0 px-4 py-2 text-gray-400' 
-                                    placeholder='confirm your password' />
+                            <div className='my-8'>
+                                <label htmlFor="password" className='font-bold text-gray-400'>Password</label>
+                                <div className={password.error ? 'error-border rounded-md' : 'input-border rounded-md'}>
+                                    <div className='flex' >
+                                        <input 
+                                            type={ pDisplay ? 'text' : 'password' } 
+                                            value={password.value}
+                                            onChange={(e) => setPassword({...password, value: e.target.value})}
+                                            className='w-full border-none px-4 py-2 text-gray-400 grow' 
+                                            placeholder='please enter your password' 
+                                        />
+                                        <span className='mx-2 p-2 my-auto text-gray-400 text-lg' onClick={() => togglePasswordDisplay() }>
+                                            {
+                                                pDisplay ? <FiEyeOff /> : <FiEye />
+                                            }
+                                        </span>
+                                    </div>
+                                </div>
+                                {
+                                    password.error &&
+                                    <label htmlFor="password" className='text-red-400'>{password.msg}</label>
+                                }
                             </div>
-                            {
-                                confirmPassword.error &&
-                                <label htmlFor="confirmPassword" className='text-red-400'>{confirmPassword.msg}</label>
-                            }
-                        </div>
+
+                            <div className='my-8'>
+                                <label htmlFor="confirmPassword" className='font-bold text-gray-400'>Confirm password</label>
+                                <div className={confirmPassword.error ? 'error-border rounded-md' : 'input-border rounded-md'}>
+                                    <input 
+                                        type="password" 
+                                        value={confirmPassword.value}
+                                        onChange={(e) => setConfirmPassword({...confirmPassword, value: e.target.value})}
+                                        className='w-full border-0 px-4 py-2 text-gray-400' 
+                                        placeholder='confirm your password' />
+                                </div>
+                                {
+                                    confirmPassword.error &&
+                                    <label htmlFor="confirmPassword" className='text-red-400'>{confirmPassword.msg}</label>
+                                }
+                            </div>
 
 
-                        {/* <div className="relative my-8 text-center">
-                            <hr className='border-[#8652a48f] w-full' />
-                            <p className='text-[#8652A4] text-sm px-4 bg-white absolute -top-3 left-24 sm:left-60 md:left-32 lg:left-56 xl:left-80 '>or sign in with</p>
-                            <img src={googleIcon} className="my-4 mx-auto" alt="google" />
-                        </div> */}
+                            {/* <div className="relative my-8 text-center">
+                                <hr className='border-[#8652a48f] w-full' />
+                                <p className='text-[#8652A4] text-sm px-4 bg-white absolute -top-3 left-24 sm:left-60 md:left-32 lg:left-56 xl:left-80 '>or sign in with</p>
+                                <img src={googleIcon} className="my-4 mx-auto" alt="google" />
+                            </div> */}
 
-                        <div className="w-8/12 my-4 mx-auto text-center">
-                            <button 
-                                onClick={() => handleSignUp() } 
-                                className='bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-6'
-                            >
-                                { loading ? 'processing' : 'Sign up' }
-                            </button>
-                            <p className='text-[#8652a48f] text-sm block mt-4 mb-8'>Already have an account?   
-                                <span className='text-[#8652A4] mx-2 font-bold'><Link to="/sign-in">Sign in</Link></span>
-                            </p>
+                            <div className="w-8/12 my-4 mx-auto text-center">
+                                <button 
+                                    onClick={() => handleSignUp() } 
+                                    className='bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-3 sm:py-3 md:py-5 lg:py-6'
+                                >
+                                    { loading ? 'processing' : 'Sign up' }
+                                </button>
+                                <p className='text-[#8652a48f] text-sm block mt-4 mb-8'>Already have an account?   
+                                    <span className='text-[#8652A4] mx-2 font-bold'><Link to="/sign-in">Sign in</Link></span>
+                                </p>
+                            </div>
                         </div>
                     </div>
+                    
+
                 }
                 
             </div>

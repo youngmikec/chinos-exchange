@@ -32,7 +32,7 @@ const ProductStepComp = ({ title, subTitle, imageUrl, steps }: Props) => {
             <div className="mx-auto w-10/12">
                 <div className="text-center">
                     <h3 className="text-[#585858] text-2xl text-center font-semibold my-5">{ title }</h3>
-                    <p>{ subTitle }</p>
+                    <p className=''>{ subTitle }</p>
                 </div>
 
                 <div className="ecllipse grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 my-12">

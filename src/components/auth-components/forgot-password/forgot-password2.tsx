@@ -157,7 +157,7 @@ const ForgotPassword2 = ( { changeStep }: Props) => {
           <div className="w-8/12 my-4 mx-auto text-center">
             <button 
               onClick={() => handleVerifyCode()}
-              className="bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-4">
+              className="bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-3 sm:py-3 md:py-5 lg:py-6">
               { loading ? 'Verifying' : 'Verify' }
             </button>
 

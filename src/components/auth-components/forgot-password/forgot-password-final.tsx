@@ -49,7 +49,7 @@ const ForgotPassword4 = ({changeStep}: Prop) => {
 
                   <div className="w-8/12 my-4 mx-auto text-center">
                     <Link to="/sign-in">
-                      <button className="bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-4">
+                      <button className="bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-3 sm:py-3 md:py-5 lg:py-6">
                           Sign in
                       </button>
                     </Link>

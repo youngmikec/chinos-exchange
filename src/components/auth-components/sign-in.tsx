@@ -9,6 +9,7 @@ import { setItem } from '../../utils';
 import { ApiResponse } from '../../common';
 import { LOGIN_USER } from '../../services';
 import logo from '../../assets/images/logo-white.png';
+import logoBlack from '../../assets/images/logo.png';
 // import googleIcon from '../../assets/icons/google-icon.png';
 // import { ADD_USER_PROFILE } from '../../store/user';
 
@@ -84,8 +85,11 @@ const SignInComp = () => {
             <div className='auth-bg py-0 sm:py-8 md:py-8 lg:py-8'>
                 <div className='fixed left-8 top-8'>
                     <div>
-                        <Link to='/'>
+                        <Link to='/' className='hidden sm:hidden md:block lg:block'>
                             <img src={logo} alt="logo" width="120px" height="120px" />
+                        </Link>
+                        <Link to='/' className='block sm:block md:hidden lg:hidden'>
+                            <img src={logoBlack} alt="logo" width="120px" height="120px" />
                         </Link>
                     </div>
                 </div>
@@ -150,7 +154,7 @@ const SignInComp = () => {
                     <div className="w-8/12 my-12 mx-auto text-center">
                         <button 
                             onClick={() => handleLogin() } 
-                            className='bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-6'
+                            className='bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-3 sm:py-3 md:py-5 lg:py-6'
                         >
                             { loading ? 'processing' : 'Sign in' }
                         </button>
