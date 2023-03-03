@@ -30,6 +30,9 @@ const SellCryptoComp = () => {
             isActive: false
         },
     ]
+    const prevStep = () => {
+        setStep(prev => prev - 1)
+    }
 
     const [step, setStep] = useState<number>(1);
     const [status, setStatus ] = useState<string>('error');
@@ -57,20 +60,19 @@ const SellCryptoComp = () => {
 
     return (
         <>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2'>
-                <div className='w-12/12'>
-                    <StepHeader 
-                        title='Sell Crypto'
-                        steps={steps}
-                        step={step}
-                        info="While trading with us, make sure you copy the right address for your deposit to avoid lost of fund. upload a screenshot of your transaction as well."  
-                    />
+            <div className='w-full'>
+                <StepHeader 
+                    title='Sell Crypto'
+                    steps={steps}
+                    step={step}
+                    changeStep={prevStep}
+                    info="While trading with us, make sure you copy the right address for your deposit to avoid lost of fund. upload a screenshot of your transaction as well."  
+                />
 
-                </div>
             </div>
 
             <div className='flex flex-col sm:flex-row md:flex-row lg:flex-row my-4'>
-                <div className='w-full sm:w-11/12 md:w-9/12 lg:w-8/12 m-0 sm:mr-3 lg:ml-auto lg:mr-8'>
+                <div className='w-full sm:w-11/12 md:w-9/12 lg:w-8/12 m-0 sm:mr-3 lg:ml-auto lg:mr-4'>
                     {/* <h3 className="mb-3 text-[#7F7F80]">Select Provider</h3> */}
                     <Card type="lg">
                         {/* sell crypto steps */}

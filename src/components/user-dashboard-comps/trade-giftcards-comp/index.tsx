@@ -32,7 +32,10 @@ const TradeGiftCardsComp = () => {
             isActive: false
         }
     ]
-
+    const prevStep = () => {
+        setStep(prev => prev - 1)
+    }
+    
     //states
     const [step, setStep] = useState<number>(1);
     const [loading, setLoading] = useState<boolean>(true);
@@ -67,6 +70,7 @@ const TradeGiftCardsComp = () => {
                         title='Trade Giftcard'
                         steps={steps}
                         step={step}
+                        changeStep={prevStep}
                         info="While trading with us, make sure you keep your reciept/ invoice used in purchasing the giftcard. Enter your gift card details in each field below to calculate how much naira"  
                     />
 

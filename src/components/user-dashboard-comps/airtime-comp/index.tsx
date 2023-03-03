@@ -25,6 +25,9 @@ const AirtimeComp = () => {
     const [status, setStatus ] = useState<string>('error')
     const [selectedAirtime, setSelectedAirtime] = useState<Airtime | null>(null);
 
+    const prevStep = () => {
+        setStep(prev => prev - 1)
+    }
 
     const airtimeSteps: Step[] = [
         {
@@ -66,65 +69,66 @@ const AirtimeComp = () => {
     return (
         <>
             {/* <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2'> */}
-            <div className='flex justify-between'>
-                <div className='w-full sm:w-10/12 md:w-9/12 lg:w-8/12'>
-                    <StepHeader 
-                        title='Airtime To Cash'
-                        steps={airtimeSteps}
-                        step={step}
-                        info="Use USSD Code: Dial *600*Recipient's Number*Amount*PIN#. (Default Pin; 1234). Kindly note that you can only transfer 5,000 at a time and there's a sim daily limit of 100,000."  
-                    />
+            <div className='w-full'>
+                <StepHeader 
+                    title='Airtime To Cash'
+                    steps={airtimeSteps}
+                    step={step}
+                    changeStep={prevStep}
+                    info="Use USSD Code: Dial *600*Recipient's Number*Amount*PIN#. (Default Pin; 1234). Kindly note that you can only transfer 5,000 at a time and there's a sim daily limit of 100,000."  
+                />
 
-                    <div className='flex flex-col sm:flex-row md:flex-row lg:flex-row my-4'>
-                        <div className='w-full sm:w-11/12 md:w-10/12 lg:w-9/12 m-0 sm:mr-3'>
-                            <h3 className="mb-3 text-[#7F7F80]">Select Provider</h3>
-            
-                            <Card type="lg">
-                                <div className="grid grid-cols-4 md:grid-cols-4 lg:grid-cols-4">
-                                    {
-                                        airtimeRecords.length > 0 && 
-                                        airtimeRecords.map((item: Airtime, idx: number) => {
-                                            return (<div 
-                                                        key={idx} 
-                                                        onClick={() => {
-                                                            setSelectedAirtime(item)
-                                                            dispatch(APPEND_TO_AIRTIME_ORDER({ airtime: item }))
-                                                        }}
-                                                        className='border-2 border-gray-100 text-center rounded-md relative mx-4 p-1 lg:px-4 lg:py-2'
-                                                    >
-                                                    <img src={item?.networkImage} className="text-center justify-center" alt={item?.shortName} width="70px" height="50px" />
-                                                    {
-                                                        selectedAirtime && selectedAirtime.id === item.id && 
-                                                        <AiFillCheckCircle className='text-[#8652A4] absolute top-0 right-0' />
-                                                    }
-                                                </div>)
-                                        })
-                                    }    
-                                
-                                </div>
+            </div>
+            <div className='w-full flex justify-between'>
+                <div className='flex-4 flex-col sm:flex-row md:flex-row lg:flex-row my-4'>
+                    <div className='w-full sm:w-11/12 md:w-10/12 lg:w-8/12 m-0 sm:mr-3'>
+                        <h3 className="mb-3 text-[#7F7F80]">Select Provider</h3>
+        
+                        <Card type="lg">
+                            <div className="grid grid-cols-4 md:grid-cols-4 lg:grid-cols-4">
+                                {
+                                    airtimeRecords.length > 0 && 
+                                    airtimeRecords.map((item: Airtime, idx: number) => {
+                                        return (<div 
+                                                    key={idx} 
+                                                    onClick={() => {
+                                                        setSelectedAirtime(item)
+                                                        dispatch(APPEND_TO_AIRTIME_ORDER({ airtime: item }))
+                                                    }}
+                                                    className='border-2 border-gray-100 text-center rounded-md relative mx-4 p-1 lg:px-4 lg:py-2'
+                                                >
+                                                <img src={item?.networkImage} className="text-center justify-center" alt={item?.shortName} width="70px" height="50px" />
+                                                {
+                                                    selectedAirtime && selectedAirtime.id === item.id && 
+                                                    <AiFillCheckCircle className='text-[#8652A4] absolute top-0 right-0' />
+                                                }
+                                            </div>)
+                                    })
+                                }    
+                            
+                            </div>
 
-                                {/* airtime steps */}
+                            {/* airtime steps */}
 
-                                {
-                                    step === 1 && 
-                                    <AirtimeStepOne changeStep={setStep} product={selectedAirtime} />
-                                }
-                                {
-                                    step === 2 && 
-                                    <AirtimeStepTwo changeStep={setStep}/>
-                                }
-                                {
-                                    step === 3 && 
-                                    <AirtimeStepThree changeStep={setStep} changeStatus={setStatus} />
-                                }
-                                {
-                                    step === 4 && 
-                                    <AirtimeStepFour changeStep={setStep} status={status} />
-                                }
+                            {
+                                step === 1 && 
+                                <AirtimeStepOne changeStep={setStep} product={selectedAirtime} />
+                            }
+                            {
+                                step === 2 && 
+                                <AirtimeStepTwo changeStep={setStep}/>
+                            }
+                            {
+                                step === 3 && 
+                                <AirtimeStepThree changeStep={setStep} changeStatus={setStatus} />
+                            }
+                            {
+                                step === 4 && 
+                                <AirtimeStepFour changeStep={setStep} status={status} />
+                            }
 
-                                {/* airtime steps */}
-                            </Card>
-                        </div>
+                            {/* airtime steps */}
+                        </Card>
                     </div>
                 </div>
 

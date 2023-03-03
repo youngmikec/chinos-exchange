@@ -89,6 +89,28 @@ const AirtimeStepTwo = ({ changeStep }: Props) => {
         <>
             <div className='w-full'>
                 <div className='my-4'>
+                    <label htmlFor="bankName" className='text-[#7F7F80] text-sm'>Bank Name</label>
+                    <div className='border-2 border-gray-100 rounded-md mt-2'>
+                        <select 
+                            name="bankName" 
+                            id="bankName" 
+                            onChange={(e) => setBankName({...bankName, value: e.target.value})}
+                            className='w-full px-4 py-2'
+                        >
+                            {
+                                banks.length > 0 ? 
+                                banks.map((item: Bank, idx: number) => {
+                                    return (
+                                        <option key={idx} value={item.name}>{ item.name }</option>
+                                    )
+                                }) : 
+                                <option value="">No bank available</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                
+                <div className='my-4'>
                     <label htmlFor="accountNumber" className='text-[#7F7F80] text-sm'>Account Number</label>
                     <div className='border-2 border-gray-100 rounded-md mt-2'>
                         <input 
@@ -113,28 +135,6 @@ const AirtimeStepTwo = ({ changeStep }: Props) => {
                             value={accountName.value}
                             onChange={(e) => setAccountName({...accountName, value: e.target.value})}
                         />
-                    </div>
-                </div>
-
-                <div className='my-4'>
-                    <label htmlFor="bankName" className='text-[#7F7F80] text-sm'>Bank Name</label>
-                    <div className='border-2 border-gray-100 rounded-md mt-2'>
-                        <select 
-                            name="bankName" 
-                            id="bankName" 
-                            onChange={(e) => setBankName({...bankName, value: e.target.value})}
-                            className='w-full px-4 py-2'
-                        >
-                            {
-                                banks.length > 0 ? 
-                                banks.map((item: Bank, idx: number) => {
-                                    return (
-                                        <option key={idx} value={item.name}>{ item.name }</option>
-                                    )
-                                }) : 
-                                <option value="">No bank available</option>
-                            }
-                        </select>
                     </div>
                 </div>
 

@@ -3,8 +3,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AxiosResponse } from 'axios';
 
-import logo from '../../assets/images/logo.png';
-import googleIcon from '../../assets/icons/google-icon.png';
+import logo from '../../assets/images/logo-white.png';
+// import googleIcon from '../../assets/icons/google-icon.png';
 import { Link, useParams } from 'react-router-dom';
 import { VERIFY_EMAIL } from '../../services';
 import { ApiResponse } from '../../common';
@@ -57,19 +57,21 @@ const EmailVerificationComp = () => {
 
     return (
         <>
-            <div className='w-full'>
-                <div className='mb-6 flex justify-start'>
+            <div className='auth-bg py-0 sm:py-8 md:py-8 lg:py-8'>
+                <div className='fixed left-8 top-8'>
                     <div>
-                        <img src={logo} alt="logo" width="120px" height="120px" />
+                        <Link to='/'>
+                            <img src={logo} alt="logo" width="120px" height="120px" />
+                        </Link>
                     </div>
                 </div>
 
-                <div className="mx-auto w-10/12 sm:w-9/12 md:w-8/12 lg:w-5/12">
-                    <div className='text-center mb-6'>
+                <div className="mx-auto w-full sm:w-9/12 md:w-7/12 lg:w-5/12 bg-white h-screen rounded-lg px-8 py-8"> 
+                    <div className='text-center my-10'>
                         <h1 className='text-4xl font-bold mb-4'>Email Verification</h1>
                         <p className='text-gray-400 my-4 text-sm'>Let's verify your email</p>
                         <p className='text-gray-400 my-4 text-sm'>A six digit code has been sent to your email.</p>
-                    </div>
+                    </div> 
 
                     <div className='my-6'>
                         <label htmlFor="email" className='font-bold text-gray-400 my-5'>Verification Code</label>
@@ -101,11 +103,9 @@ const EmailVerificationComp = () => {
                             <span className='text-[#8652A4] font-bold'><Link to="/sign-in">  Sign In</Link></span>
                         </p>
                     </div>
-
-
                 </div>
-            </div>
 
+            </div>
             <ToastContainer />
         </>
     )

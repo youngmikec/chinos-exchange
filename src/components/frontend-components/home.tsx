@@ -45,7 +45,7 @@ const HomeComp = () => {
     return (
         <>
             <HeroSection>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 py-8 md:ml-32 lg:ml-40">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 py-8 md:ml-32 lg:ml-36">
                     <div className='py-4 w-full relative'>
                         <h3 className='text-5xl font-bold my-8 text-white'>The Fastest Way To Buy, <br/> Sell And Trade Crypto </h3>
                         <div className='w-3/4 my-8'>
@@ -68,8 +68,8 @@ const HomeComp = () => {
 
             <div className="overflow-hidden">
                 <div className="text-center mx-auto my-16">
-                    <h3 className='text-gray-400 font-extrabold text-2xl'>Market Recap</h3>
-                    <p className='text-gray-400 font-light text-sm mx-auto'>For all cryptocurrency</p>
+                    <h3 className='text-gray-400 font-extrabold text-2xl'>Our Current Market Rate</h3>
+                    <p className='text-gray-400 font-light text-sm mx-auto'>For our most trading cryptocurrency</p>
                 </div>
 
                 <div className='my-8 flex justify-center w:11/12'>

@@ -62,20 +62,20 @@ const SellCryptoStepTwo = ({ changeStep }: Props) => {
                     </div>
                 </div>
 
-                <div className="flex justify-between my-6 mx-auto w-7/12">
+                <div className="flex justify-center my-6 mx-auto w-7/12">
                     <div 
-                        className='hover:bg-[#8652A4] hover:text-white p-2 rounded-full border-2 border-[#8652A4]'
+                        className='hover:bg-[#8652A4] hover:text-white py-2 px-3 rounded-full border-2 border-[#8652A4]'
                     >
                         <button onClick={() => copyWalletAddress() }>
                             <MdContentCopy className="rotate-180 text-lg" />
                         </button>
                     </div>
-                    <div className='hover:bg-[#8652A4] hover:text-white p-2 rounded-full border-2 border-[#8652A4]'>
+                    {/* <div className='hover:bg-[#8652A4] hover:text-white p-2 rounded-full border-2 border-[#8652A4]'>
                         <AiOutlineSave className='text-lg' />
                     </div>
                     <div className='hover:bg-[#8652A4] hover:text-white p-2 rounded-full border-2 border-[#8652A4]'>
                         <AiOutlineShareAlt className='text-lg' />
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="text-center">

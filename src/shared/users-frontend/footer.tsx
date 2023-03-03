@@ -9,7 +9,7 @@ import { CgInstagram } from 'react-icons/cg';
 import { GrFacebookOption, GrTwitter } from 'react-icons/gr';
 
 import './styles.css';
-import logo from '../../assets/images/logo.png';
+import logo from '../../assets/images/logo-white.png';
 import { CREATE_SUBSCRIBER } from '../../services';
 import { AxiosResponse } from 'axios';
 import { ApiResponse } from '../../common';
@@ -50,15 +50,15 @@ const Footer = () => {
     }
     return (
         <>
-            <div className='w-full footer-bg py-20'>
+            <div className='w-full footer-bg py-20 bg-[#622F5C] text-white'>
                 <div className="mx-auto w-10/12">
                     <div className="grid lg:space-x-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
                         {/* column1 */}
                         <div>
                             <div className='mb-6'>
-                                <img src={logo} alt="logo" width="80px" height="80px" />
+                                <img src={logo} alt="logo" width="110px" height="110px" />
                             </div>
-                            <p className='text-justify text-[#7F7F80] my-4 pr-8'>Fastest platform to trade all your digital asset . fast and reliable</p>
+                            <p className='text-justify text-white my-4 pr-8'>Fastest platform to trade all your digital asset . fast and reliable</p>
                             <ul className='list-none'>
                                 <li className='inline-flex mx-3'>
                                     <a 
@@ -96,9 +96,9 @@ const Footer = () => {
 
                         {/* column2 */}
                         <div>
-                            <h3 className='text-[#7F7F80] text-3xl font-bold mb-6'>Quick Links</h3>
+                            <h3 className='text-white text-3xl font-bold mb-6'>Quick Links</h3>
 
-                            <ul className='list-none text-[#7F7F80]'>
+                            <ul className='list-none text-white'>
                                 <li className='my-4 font-light'>
                                     <Link to="/">Home</Link>
                                 </li>
@@ -119,9 +119,9 @@ const Footer = () => {
 
                         {/* column3 */}
                         <div>
-                            <h3 className='text-[#7F7F80] text-3xl font-bold mb-6'>Contact Info</h3>
+                            <h3 className='text-white text-3xl font-bold mb-6'>Contact Info</h3>
 
-                            <ul className='list-none text-[#7F7F80]'>
+                            <ul className='list-none text-white'>
                                 <li className='my-4 font-light'>
                                     +2347031625759
                                 </li>
@@ -136,8 +136,8 @@ const Footer = () => {
 
                         {/* column4 */}
                         <div>
-                            <h3 className='text-[#7F7F80] text-3xl font-bold mb-6'>Updates</h3>
-                            <p className='text-justify text-[#7F7F80] my-4'>Stay in touch to keep up with the latest offers from us</p>
+                            <h3 className='text-white text-3xl font-bold mb-6'>Updates</h3>
+                            <p className='text-justify text-white my-4'>Stay in touch to keep up with the latest offers from us</p>
                             
                             <div className="my-4">
                                 <div className='flex w-full justify-between rounded-3xl border-none bg-white'>

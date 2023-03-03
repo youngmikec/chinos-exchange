@@ -37,6 +37,9 @@ const BuyCryptoComp = () => {
             isActive: false
         },
     ]
+    const prevStep = () => {
+        setStep(prev => prev - 1)
+    }
 
     const retreiveCryptos = () => {
         setLoading(true);
@@ -65,6 +68,7 @@ const BuyCryptoComp = () => {
                         title='Buy Crypto'
                         steps={steps}
                         step={step}
+                        changeStep={prevStep}
                         info="While trading with us, make sure you copy the right address for your deposit to avoid lost of fund. upload a screenshot of your transaction as well."  
                     />
 

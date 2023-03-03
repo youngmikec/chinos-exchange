@@ -22,7 +22,7 @@ const Navbar = () => {
                 <div className='hidden sm:hidden md:flex lg:flex w-full py-4 justify-between'>
                     <div>
                         <Link to='/'>
-                            <img src={logo} alt="logo" width="80px" height="80px" />
+                            <img src={logo} alt="logo" width="120px" height="120px" />
                         </Link>
                     </div>
                     <div className='pt-3'>

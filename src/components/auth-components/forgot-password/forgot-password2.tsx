@@ -1,11 +1,16 @@
 import React, {useEffect, useState, useRef} from 'react'
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { AxiosResponse } from 'axios';
 
-import { getItem, setItem } from '../../../utils';
 import { ApiResponse } from '../../../common';
-import logo from "../../../assets/images/logo.png";
+import { getItem, setItem } from '../../../utils';
 import { VERIFY_RESET_CODE } from '../../../services';
+
+// icons && images
+import { AiFillLeftCircle } from 'react-icons/ai';
+import logo from "../../../assets/images/logo-white.png";
 import googleIcon from "../../../assets/icons/google-icon.png";
  
   type inputProps={
@@ -24,7 +29,6 @@ const ForgotPassword2 = ( { changeStep }: Props) => {
     const inputRef = useRef<any>();
     let code: string = '';
     const [loading, setLoading] = useState<boolean>(false);
-    const [resetCode, setResetCode] = useState<string>('');
 
     const [inputs, setInput] = useState<inputProps[]> ([
       {type:'text', placeholder:'0', focus: true, value:'', id: 0},
@@ -33,7 +37,7 @@ const ForgotPassword2 = ( { changeStep }: Props) => {
       {type:'text', placeholder:'0', focus: false, value:'', id: 3},
       {type:'text', placeholder:'0', focus: false, value:'', id: 4}
     ])
-     const [currentFocus, setCurrentFocus]=useState<Number|undefined>();
+    const [currentFocus, setCurrentFocus]=useState<Number|undefined>();
 
     const changeFocuse = (id:Number) => {
       setCurrentFocus(undefined);
@@ -53,7 +57,6 @@ const ForgotPassword2 = ( { changeStep }: Props) => {
       const tempInput:inputProps[]=[...inputs];
       //  const currentObjec=tempInput.find((e:inputProps)=>e.id=id);
      
-
         tempInput.map((e,i)=>{
           if(e.id==id){
             
@@ -66,6 +69,20 @@ const ForgotPassword2 = ( { changeStep }: Props) => {
          
     }
 
+    const notify = (type: string, msg: string) => {
+        if (type === "success") {
+          toast.success(msg, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+    
+        if (type === "error") {
+          toast.error(msg, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+    };
+
     const handleVerifyCode = () => {
       if(!!code){
         setLoading(true);
@@ -77,8 +94,9 @@ const ForgotPassword2 = ( { changeStep }: Props) => {
           changeStep(3)
         }).catch((err: any) => {
           setLoading(false);
+          const { message } = err.response.data;
+          notify('error', message);
           changeStep(2)
-          console.log(err);
         })
     }
     }
@@ -91,69 +109,71 @@ const ForgotPassword2 = ( { changeStep }: Props) => {
   
 
   return (
-    <div className="container w-full bg-white overflow-hidden ">
-      <img
-        src={logo}
-        alt=""
-        width="120px"
-        height="120px"
-        className="ml-8 mt-10"
-      />
-      <div className="flex justify-center  w-screen">
-      <div className=" w-10/12 sm:w-9/12 md:w-9/12 lg:w-5/12 mt-14  ">
-        <div className="text-center mb-18">
-          <div className=" justify-around text-center text-4xl font-bold mb-4 text-black ">
-            Forgot Password
-          </div>
-          <div className="text-center text-gray-400 mb-14">
-          Please, Enter the verification code sent to your registered email
-          </div>
-          <div className="text-center  mx-auto w-9/12 text-gray-400 uppercase flex justify-between otp ">
-            {inputs.map((e,i)=>{
-                return(
-                  <input
-                  key={i}
-                  type='text'
-                  maxLength={1}
-                  ref={e.focus ? inputRef : null}
-                  autoFocus={e.focus}
-                  placeholder={e.placeholder}
-                  onChange={(b)=> { console.log(code += b.target.value)}}
-                  className="  rounded-md w-1/5 h-14 text-center ml-2 my-6  outline-none border-gray-400 border-solid border"
-                />
-                )
-            })}
-          
-          
+    <>
+      <div className="auth-bg py-0 sm:py-8 md:py-8 lg:py-8">
+        <div className='fixed left-8 top-8'>
+          <div>
+              <Link to='/'>
+                  <img src={logo} alt="logo" width="120px" height="120px" />
+              </Link>
           </div>
         </div>
 
-        {/* <div className="relative my-6 text-center">
-          <hr className="border-[#8652a48f] w-full" />
-          <p className="text-[#8652A4] text-sm px-4 bg-white absolute -top-3 left-56">
-            or sign up with
-          </p>
-
-          <img src={googleIcon} className="my-4 mx-auto " alt="google" />
-        </div> */}
-
-        <div className="w-8/12 my-4 mx-auto text-center">
-          <button 
-            onClick={() => handleVerifyCode()}
-            className="bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-4">
-            { loading ? 'Verifying' : 'Verify' }
-          </button>
-
-          <p className="text-[#8652a48f] text-sm block my-4">
-            Already have an account?
-            <span className="text-[#8652A4] font-bold mx-2">
-              <Link to="/sign-in">Sign in</Link>
-            </span>
-          </p>
+        <div className='fixed right-8 top-8'>
+          <div className='text-white'>
+              <p className='text-white text-xl inline-flex cursor-pointer' onClick={() => changeStep(1)}>
+                <AiFillLeftCircle className='mr-2 my-auto' />
+                <span>Back</span>
+              </p>
+          </div>
         </div>
+
+        <div className="mx-auto w-full sm:w-9/12 md:w-7/12 lg:w-5/12 bg-white h-screen rounded-lg px-8 py-8">
+          <div className='text-center my-10'>
+              <h1 className='text-3xl font-bold mb-4'>Forgot Password</h1>
+              <p className='text-gray-400 my-4 text-sm'>Please, Enter the verification code sent to your registered email</p>
+          </div> 
+
+          <div className='my-10'>
+              <div className='my-2 text-center'>
+                {inputs.map((e,i)=>{
+                    return(
+                      <input
+                      key={i}
+                      type='text'
+                      maxLength={1}
+                      ref={e.focus ? inputRef : null}
+                      autoFocus={e.focus}
+                      placeholder={e.placeholder}
+                      onChange={(b)=> { console.log(code += b.target.value)}}
+                      className="rounded-md w-2/12 h-14 text-center ml-2 my-6  outline-none border-gray-400 border-solid border"
+                    />
+                    )
+                })}
+
+              </div>
+          </div>
+
+          <div className="w-8/12 my-4 mx-auto text-center">
+            <button 
+              onClick={() => handleVerifyCode()}
+              className="bg-[#8652A4] text-white mb-6 block w-full rounded-lg py-4">
+              { loading ? 'Verifying' : 'Verify' }
+            </button>
+
+            <p className="text-[#8652a48f] text-sm block my-4">
+              Already have an account?
+              <span className="text-[#8652A4] font-bold mx-2">
+                <Link to="/sign-in">Sign in</Link>
+              </span>
+            </p>
+          </div>
+
+        </div>
+
       </div>
-      </div>
-    </div>
+      <ToastContainer />
+    </>
   )
   
 }

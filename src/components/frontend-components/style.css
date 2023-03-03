@@ -9,16 +9,16 @@
 }
 
 .wallet-bg {
-  background-image: url("../../assets/images/hands_and_wallet.png");
+  background-image: url("../../assets/svg/illustration.svg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: center center;
   width: 100%;
-  height: inherit;
+  height: 30rem;
 }
 
 .crypto-bg {
-  background-image: url("../../assets/images/bitcoin-in-hands.png");
+  background-image: url("../../assets/svg/removebg-preview.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
