@@ -109,7 +109,7 @@ const JoinUs = () => {
                             className='rounded-lg text-white bg-[#8652A4] py-3 px-6 min-w-max'
                         >
                             {/* <Link to="/sign-in"></Link> */}
-                            { loading ? 'joining...' : "Let's Trade" }
+                            { loading ? 'joining...' : "Join" }
                         </button>
                     </div>
                 </div>

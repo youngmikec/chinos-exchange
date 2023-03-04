@@ -138,32 +138,38 @@ const ContactUsComp = () => {
                     </h3>
                 </div>
 
-                <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 z-10 my-20' >
-                    <div 
-                        className={toggle? 'social-box w-max p-4 hover:rounded-lg':'text-center social-box-hover w-max p-4 hover:rounded-lg'}
-                        onMouseLeave={()=>setToggle(true)} onMouseOver={()=>setToggle(false)}
-                    >
-                        <div className='text-center'>
-                            <BsWhatsapp className='mx-auto mt-4 text-3xl'/>
-                            <h3 className={toggle ? 'text-center my-8 social-box-text':'text-center my-8 social-box-hover-text'}>+2347031625759</h3>
+                <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 z-10 my-20 mx-auto' >
+                    <div className="flex justify-center">
+                        <div 
+                            className={`flex justify-center ${toggle? 'social-box w-max p-4 hover:rounded-lg':'text-center social-box-hover w-max p-4 hover:rounded-lg'}`}
+                            onMouseLeave={()=>setToggle(true)} onMouseOver={()=>setToggle(false)}
+                        >
+                            <div className='text-center'>
+                                <BsWhatsapp className='mx-auto mt-4 text-3xl'/>
+                                <h3 className={toggle ? 'text-center my-8 social-box-text':'text-center my-8 social-box-hover-text'}>+2347031625759</h3>
+                            </div>
+
                         </div>
-
                     </div>
 
-                    <div 
-                        className={toggle1? 'social-box w-max p-4 hover:rounded-lg':'text-center social-box-hover w-max p-4 hover:rounded-lg'}
-                        onMouseLeave={()=>setToggle1(true)} onMouseOver={()=>setToggle1(false)}
-                    >
-                        <BsEnvelopeFill className='mx-auto mt-4 text-3xl'/>
-                        <h3 className={toggle1 ? 'text-center my-8 social-box-text':'text-center my-8 social-box-hover-text'}>admin@chinosexchange.com</h3>
+                    <div className='flex justify-center'>
+                        <div 
+                            className={toggle1? 'social-box w-max p-4 hover:rounded-lg':'text-center social-box-hover w-max p-4 hover:rounded-lg'}
+                            onMouseLeave={()=>setToggle1(true)} onMouseOver={()=>setToggle1(false)}
+                        >
+                            <BsEnvelopeFill className='mx-auto mt-4 text-3xl'/>
+                            <h3 className={toggle1 ? 'text-center my-8 social-box-text':'text-center my-8 social-box-hover-text'}>admin@chinosexchange.com</h3>
+                        </div>
                     </div>
 
-                    <div
-                    className={toggle2? 'social-box w-max p-4 hover:rounded-lg':'text-center social-box-hover w-max p-4 hover:rounded-lg'}
-                    onMouseLeave={()=>setToggle2(true)} onMouseOver={()=>setToggle2(false)}
-                    >
-                        <BsTelephoneFill className='mx-auto mt-4 text-3xl'/>
-                        <h3 className={toggle2 ? 'text-center my-8 social-box-text':'text-center my-8 social-box-hover-text'}>+2347031625759</h3>
+                    <div className='flex justify-center'>
+                        <div
+                        className={toggle2? 'social-box w-max p-4 hover:rounded-lg':'text-center social-box-hover w-max p-4 hover:rounded-lg'}
+                        onMouseLeave={()=>setToggle2(true)} onMouseOver={()=>setToggle2(false)}
+                        >
+                            <BsTelephoneFill className='mx-auto mt-4 text-3xl'/>
+                            <h3 className={toggle2 ? 'text-center my-8 social-box-text':'text-center my-8 social-box-hover-text'}>+2347031625759</h3>
+                        </div>
                     </div>
 
                 </div>
