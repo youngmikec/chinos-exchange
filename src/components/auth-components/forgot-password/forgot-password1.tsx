@@ -1,13 +1,15 @@
 import React,{useState} from "react";
-import { AxiosResponse } from "axios";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AxiosResponse } from "axios";
 
 import '../style.css';
 import { ApiResponse } from "../../../common";
 import logo from "../../../assets/images/logo-white.png";
 import logoBlack from "../../../assets/images/logo.png";
 import { SEND_PASSWORD_RESET_CODE } from '../../../services';
-import googleIcon from "../../../assets/icons/google-icon.png";
+// import googleIcon from "../../../assets/icons/google-icon.png";
 import { setItem } from "../../../utils";
 
 type Prop = {
@@ -28,6 +30,20 @@ const ForgotPasswordComp = ({ changeStep }: Prop) => {
       return isValid;
     }
 
+    const notify = (type: string, msg: string) => {
+      if (type === "success") {
+        toast.success(msg, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      }
+  
+      if (type === "error") {
+        toast.error(msg, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      }
+    };
+
     const handleSendResetCode = () => {
       if(inputCheck()){
           setLoading(true);
@@ -39,7 +55,8 @@ const ForgotPasswordComp = ({ changeStep }: Prop) => {
             }).catch(err => {
               setLoading(false);
               changeStep(1)
-              console.log(err);
+              const { message } = err.response.data;
+              notify('error', message);
           })
         }
     }
@@ -94,6 +111,7 @@ const ForgotPasswordComp = ({ changeStep }: Prop) => {
           </div>
 
         </div>
+        <ToastContainer />
       </>
     );
 };

@@ -27,10 +27,9 @@ import googleIcon from "../../../assets/icons/google-icon.png";
   
   
 const ForgotPassword2 = ( { changeStep }: Props) => {
-    const inputRef = useRef<any>();
-    let code: string = '';
+    const inputRef = useRef<HTMLInputElement | null>(null);
+    
     const [loading, setLoading] = useState<boolean>(false);
-
     const [inputs, setInput] = useState<inputProps[]> ([
       {type:'text', placeholder:'0', focus: true, value:'', id: 0},
       {type:'text', placeholder:'0', focus: false, value:'', id: 1},
@@ -38,36 +37,36 @@ const ForgotPassword2 = ( { changeStep }: Props) => {
       {type:'text', placeholder:'0', focus: false, value:'', id: 3},
       {type:'text', placeholder:'0', focus: false, value:'', id: 4}
     ])
-    const [currentFocus, setCurrentFocus]=useState<Number|undefined>();
+    const [codes, setCodes] = useState<string[] | any>([]);
+    let code: string = '';
 
-    const changeFocuse = (id:Number) => {
-      setCurrentFocus(undefined);
-      const focusInput: inputProps[] = [...inputs];
-      focusInput.map((e,i) => {
-         if(e.id === id){
-          e.focus = true;
-         }
-      })
-      setInput(focusInput);
+    const changeFocus = () => {
+      inputRef.current?.focus();
     }
 
     const changeInput=(id:Number, value:string)=>{
-      code = `${code}${value}`;
-      console.log('resetcode', code);
-      setCurrentFocus(id);
-      const tempInput:inputProps[]=[...inputs];
-      //  const currentObjec=tempInput.find((e:inputProps)=>e.id=id);
-     
-        tempInput.map((e,i)=>{
-          if(e.id==id){
-            
-            e.value=value;
-            e.focus=false;
+      const tempInput:inputProps[] = [...inputs];     
+      tempInput.forEach((e, i, a) => {
+        if(e.id === id){
+          if(value !== ''){
+            e.value = value;
+            setCodes((prev: string[]) => [...prev, value]);
+            e.focus = false;
+            if(i < 4){
+              a[i + 1].focus = true
+            }
+            if(i === 4) e.focus = true
+          }else{
+            e.value = '';
+            // setCodes(codes.pop());
+            if(i >= 1 ) {
+              a[i - 1].focus = true;
+              e.focus = false;
+            }
           }
-
-        });
-        setInput(tempInput);
-         
+        }
+      });
+      setInput(tempInput);
     }
 
     const notify = (type: string, msg: string) => {
@@ -91,7 +90,9 @@ const ForgotPassword2 = ( { changeStep }: Props) => {
         const data = { id, resetCode: code };
         VERIFY_RESET_CODE(data).then((res: AxiosResponse<ApiResponse>) => {
           setLoading(false);
+          const { message } = res.data;
           setItem('clientD', res.data.payload)
+          notify('success', message);
           changeStep(3)
         }).catch((err: any) => {
           setLoading(false);
@@ -99,14 +100,13 @@ const ForgotPassword2 = ( { changeStep }: Props) => {
           notify('error', message);
           changeStep(2)
         })
-    }
+      }
     }
 
-   useEffect(()=>{
-    if(currentFocus){
-      changeFocuse(currentFocus&&currentFocus);
-    }
-   },[inputs])
+   useEffect(() => {
+    inputRef && changeFocus();
+    code = inputs.map(i => i.value).join('');
+   },[inputs]);
   
 
   return (
@@ -140,7 +140,7 @@ const ForgotPassword2 = ( { changeStep }: Props) => {
 
           <div className='my-10'>
               <div className='my-2 text-center'>
-                {inputs.map((e,i)=>{
+                {/* {inputs.map((e,i)=>{
                     return(
                       <input
                       key={i}
@@ -150,6 +150,23 @@ const ForgotPassword2 = ( { changeStep }: Props) => {
                       autoFocus={e.focus}
                       placeholder={e.placeholder}
                       onChange={(b)=> { console.log(code += b.target.value)}}
+                      className="rounded-md w-2/12 h-14 text-center ml-2 my-6  outline-none border-gray-400 border-solid border"
+                    />
+                    )
+                })} */}
+
+                {inputs.map((e, i)=>{
+                    return(
+                      <input
+                      key={i}
+                      type='text'
+                      maxLength={1}
+                      ref={e.focus ? inputRef : null}
+                      autoFocus={true}
+                      placeholder="0"
+                      onChange={(e)=> { 
+                        changeInput(i, e.target.value)
+                      }}
                       className="rounded-md w-2/12 h-14 text-center ml-2 my-6  outline-none border-gray-400 border-solid border"
                     />
                     )
