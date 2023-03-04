@@ -18,15 +18,15 @@ const SellCryptoComp = () => {
             isActive: true
         },
         {
+            title: 'copy address',
+            isActive: false
+        },
+        {
             title: 'account details',
             isActive: false
         },
         {
             title: 'upload proof',
-            isActive: false
-        },
-        {
-            title: 'status',
             isActive: false
         },
     ]
