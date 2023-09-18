@@ -22,6 +22,7 @@ const SignUpComp = () => {
     const [loading, setLoading] = useState<boolean>(false);
 
     const [pDisplay, setPDisplay] = useState<boolean>(false);
+    const [cpDisplay, setCPDisplay] = useState<boolean>(false);
     const [isDefault, setIsDefault] = useState<boolean>(true);
     const [firstName, setFirstName] = useState<{value: string, error: boolean, msg: string}>({value: '', error: false, msg: ''});
     const [lastName, setLastName] = useState<{value: string, error: boolean, msg: string}>({value: '', error: false, msg: ''});
@@ -135,6 +136,9 @@ const SignUpComp = () => {
 
     const togglePasswordDisplay = () => {
         setPDisplay(!pDisplay);
+    }
+    const toggleConfirmPassDisplay = () => {
+        setCPDisplay(!cpDisplay);
     }
 
     return (
@@ -324,12 +328,22 @@ const SignUpComp = () => {
                             <div className='my-8'>
                                 <label htmlFor="confirmPassword" className='font-bold text-gray-400'>Confirm password</label>
                                 <div className={confirmPassword.error ? 'error-border rounded-md' : 'input-border rounded-md'}>
-                                    <input 
-                                        type="password" 
-                                        value={confirmPassword.value}
-                                        onChange={(e) => setConfirmPassword({...confirmPassword, value: e.target.value})}
-                                        className='w-full border-0 px-4 py-2 text-gray-400' 
-                                        placeholder='confirm your password' />
+                                    <div className="flex">
+                                        <input 
+                                            type={ cpDisplay ? 'text' : 'password' } 
+                                            value={confirmPassword.value}
+                                            onChange={(e) => setConfirmPassword({...confirmPassword, value: e.target.value})}
+                                            className='w-full border-0 px-4 py-2 text-gray-400' 
+                                            placeholder='confirm your password' 
+                                        />
+
+                                        <span className='mx-2 p-2 my-auto text-gray-400 text-lg' onClick={() => toggleConfirmPassDisplay() }>
+                                            {
+                                                cpDisplay ? <FiEyeOff /> : <FiEye />
+                                            }
+                                        </span>
+
+                                    </div>
                                 </div>
                                 {
                                     confirmPassword.error &&

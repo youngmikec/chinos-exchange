@@ -11,7 +11,7 @@ type Props = {
 const UserLayout = ({children}: Props) =>  {
   return (
     <>
-      <div className='content-wrapper flex'>
+      <div className='content-wrapper flex justify-start'>
           <div className='flex-2 hidden min-h-screen
               sm:hidden
               md:block
@@ -20,9 +20,11 @@ const UserLayout = ({children}: Props) =>  {
               <Sidebar />
           </div>
           <div className='flex-1'>
-              <div className='mx-auto w-11/12'>
+              <div className='h-max bg-[#f8f8f8]'>
                 <Navbar />
-                { children }
+                <div className="px-6">
+                  { children }
+                </div>
               </div>
           </div>
       </div>

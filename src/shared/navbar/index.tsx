@@ -70,7 +70,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className='bg-white flex justify-between py-4 mb-4'>
+            <nav className='bg-white flex justify-between py-4 px-6 mb-4'>
                 <div className='flex justify-start w-4/12'>
                     {/* mobile view */}
                     <div className={`container flex justify-start sm:hidden md:hidden lg:hidden xl:hidden ${headPadding}`}>

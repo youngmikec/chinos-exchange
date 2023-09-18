@@ -20,6 +20,7 @@ import { AxiosResponse } from 'axios';
 import { ApiResponse, CryptoCurrency } from '../../common';
 import { RETREIVE_CRYPTO } from '../../services';
 import ReviewComp from './review';
+import WhatsappButton from '../whatsapp-btn';
 
 const HomeComp = () => {
     const [cryptos, setCryptos] = useState<CryptoCurrency[]>([]);
@@ -119,8 +120,8 @@ const HomeComp = () => {
                             </div>
 
                             <div className='text-center md:text-left lg:text-left py-4 mt-10 md:my-auto lg:my-auto'>
-                                <h1 className='text-4xl font-semibold text-[#7F7F80]'>Buy and Sell  of<br /> Crypto</h1>
-                                <p className='my-4 font-light'>Send us crypto and recieve  cash <br />at with instant payment  via your<br /> Bank account</p>
+                                <h1 className='text-4xl font-semibold text-[#121212]'>Buy and Sell your <br /> Cryptocurrency</h1>
+                                <p className='my-4 font-light text-[#7F7F80E5]'>Send us crypto and recieve cash at with instant <br />payment via your Bank account</p>
                                 <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'> 
                                     <Link to="/sign-in">let's trade</Link>
                                 </button>
@@ -135,8 +136,8 @@ const HomeComp = () => {
                             </div>
 
                             <div className='text-center md:text-left lg:text-left py-4 mt-10 md:my-auto lg:my-auto'>
-                                <h1 className='text-4xl font-semibold text-[#7F7F80]'>Redeem your <br/> Gift card </h1>
-                                <p className='my-4 font-light'>Buy and sell Giftcards from <br /> over 20 countries around the world</p>
+                                <h1 className='text-4xl font-semibold text-[#121212]'>Redeem your Gift <br/> card with ease </h1>
+                                <p className='my-4 font-light text-[#7F7F80E5]'>Unlock the World of Savings: Exchange Giftcards from <br /> 20+ Countries.</p>
                                 <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'> 
                                     <Link to="/sign-in">let's trade</Link>
                                 </button>
@@ -151,8 +152,8 @@ const HomeComp = () => {
                             </div>
 
                             <div className='text-center md:text-left lg:text-left py-4 mt-10 md:my-auto lg:my-auto'>
-                                <h1 className='text-4xl font-semibold text-[#7F7F80]'>Convert Airtime <br/> to Cash</h1>
-                                <p className='my-4 font-light'>Don’t worry we understand the frustration <br />of excess recharge.  We make it easy for you to <br /> convert airtime on your sim to cash</p>
+                                <h1 className='text-4xl font-semibold text-[#121212]'>Convert Airtime <br/> to Cash</h1>
+                                <p className='my-4 font-light text-[#7F7F80E5]'>Don’t worry we understand the frustration <br />of excess recharge.  We make it easy for you to <br /> convert airtime on your sim to cash</p>
                                 <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'> 
                                     <Link to="/sign-in">let's trade</Link>
                                 </button>
@@ -200,6 +201,9 @@ const HomeComp = () => {
             <div className='my-4'>
                 <ReviewComp />
             </div>
+
+            {/* whatsapp */}
+            <WhatsappButton />
 
             <Footer />
         </>

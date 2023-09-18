@@ -20,11 +20,15 @@ import { ApiResponse, Order, User } from '../../../common';
 import { RETREIVE_ORDERS } from '../../../services';
 import { getItem } from '../../../utils';
 import Card from '../../../shared/card';
+import { RETRIEVE_APP_REPORTS } from '../../../services/reports';
 
 const DashboardComp = () => {
     // const ordersState = useSelector((state: RootState) => state.orderState.value);
     
     const [loading, setLoading] = useState<boolean>(false);
+    const [pendingOrders, setPendingOrders] = useState<number>(0);
+    const [completedOrders, setCompletedOrders] = useState<number>(0);
+    const [declinedOrders, setDeclinedOrders] = useState<number>(0);
     const [orderRecords, setOrderRecords] = useState<Order[] | []>([]);
 
     const notify = (type: string, msg: string) => {
@@ -41,36 +45,66 @@ const DashboardComp = () => {
         }
     };
 
-    const retreiveOrders = () => {
+    // const retreiveOrders = () => {
+    //     setLoading(true);
+    //     const userDetail: User = getItem('clientD');
+    //     const queryString: string = `?createdBy=${userDetail.id}&sort=-createdAt&limit=10&populate=airtime,cryptocurrency,giftcard`;        
+    //     RETREIVE_ORDERS(queryString).then((res: AxiosResponse<ApiResponse>) => {
+    //         setLoading(false);
+    //         const { success, message, payload } = res.data;
+    //         if(success){
+    //             notify('success', `${message} ${payload.length} records found!`);
+    //             setOrderRecords(payload);
+    //         }
+    //     }).catch((err: any) => {
+    //         setLoading(false);
+    //         const { message } = err.response.data;
+    //         notify('error', message);
+    //     })
+    // }
+
+    const retrieveAppReports = () => {
         setLoading(true);
-        const userDetail: User = getItem('clientD');
-        const queryString: string = `?createdBy=${userDetail.id}&sort=-createdAt&limit=10&populate=airtime,cryptocurrency,giftcard`;        
-        RETREIVE_ORDERS(queryString).then((res: AxiosResponse<ApiResponse>) => {
+        const user = getItem('clientD');
+        RETRIEVE_APP_REPORTS(user?.id).then(res => {
+            const { message, payload } = res.data;
             setLoading(false);
-            const { success, message, payload } = res.data;
-            if(success){
-                notify('success', `${message} ${payload.length} records found!`);
-                setOrderRecords(payload);
-            }
-        }).catch((err: any) => {
+            notify('success', message);
+            setPendingOrders(payload.pendingOrders);
+            setCompletedOrders(payload.completedOrders);
+            setDeclinedOrders(payload.declinedOrders);
+            setOrderRecords(payload.recentOrders);
+            
+        }).catch(err => {
             setLoading(false);
             const { message } = err.response.data;
             notify('error', message);
-        })
+        });
+        
     }
 
     useEffect(() => {
-        retreiveOrders();
-    }, [])
+        retrieveAppReports();
+    }, []);
+
+    // useEffect(() => {
+    //     retreiveOrders();
+    // }, [])
 
 
     return (
         <>
             <div>    
                 {/* FIRST SECTION STARTS HERE */}
-                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8'>
                     <div>
-                        <DashboardCard image={image} />
+                        <DashboardCard image={image} loading={loading} status='PENDING' title='Pending transaction' value={pendingOrders} />
+                    </div>
+                    <div>
+                        <DashboardCard image={image} loading={loading} status='FAILED' title='Failed transaction' value={declinedOrders} />
+                    </div>
+                    <div>
+                        <DashboardCard image={image} loading={loading} status='COMPLETED' title='Completed transaction' value={completedOrders} />
                     </div>
 
                     {/* <div className='shadow-sm bg-white lg:h-52'></div>
@@ -174,7 +208,7 @@ const DashboardComp = () => {
                                                     }) :
 
                                                     <tr>
-                                                        <td colSpan={5} className="text-left py-3">No Users available</td>
+                                                        <td colSpan={5} className="text-center py-3">No Recent Order available</td>
                                                     </tr>
                                                 }
                                             </tbody>

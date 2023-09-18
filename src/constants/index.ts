@@ -1,6 +1,6 @@
 import { Review } from "../common";
 
-export const whatsAppUrl: string = `https://wa.me/+2348108816975`;
+export const whatsAppUrl: string = `https://wa.me/2347031625759`;
 export type Faq = {
   question: string;
   answers: string[];
@@ -8,27 +8,25 @@ export type Faq = {
 
 export const faqs: Faq[] = [
   {
-    question: "How do I get started on the website?",
+    question: "How long does it take to get paid?",
     answers: [
-      "Visit  the website chinosexchange.con and click on sign up",
-      "Put in your information as requested",
-      "Verify your email address with the link sent to you email",
+      "it all depends on the time we receive your order and",
+      "As well if your receiving bank is not having a temporary downtime. please exercise patient.",
     ],
   },
   {
-    question: "How do I get started on the website?",
+    question: "Why haven’t i received my cryptocurrency?",
     answers: [
-      "Visit  the website chinosexchange.con and click on sign up",
-      "Put in your information as requested",
-      "Verify your email address with the link sent to you email",
+      "Your wallet will be successfully credited once the transaction meets the minimum required network confirmation specified by the our system. ",
+      "Please note that the minimum requirement is different for each cryptocurrency",
     ],
   },
   {
-    question: "How do I get started on the website?",
+    question: "What happens if i paste  the wrong address?",
     answers: [
-      "Visit  the website chinosexchange.con and click on sign up",
-      "Put in your information as requested",
-      "Verify your email address with the link sent to you email",
+      "If you mistakenly withdraw funds to a wrong address",
+      "chinos exchange is unable to locate the receiver of your funds and provide you any further assistance.",
+      "As we initiates the withdrawal process as soon as you click [Submit]",
     ],
   },
 ];
