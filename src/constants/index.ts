@@ -10,23 +10,19 @@ export const faqs: Faq[] = [
   {
     question: "How long does it take to get paid?",
     answers: [
-      "it all depends on the time we receive your order and",
-      "As well if your receiving bank is not having a temporary downtime. please exercise patient.",
+      "it all depends on the time we receive your order and As well if your receiving bank is not having a temporary downtime. please exercise patient.",
     ],
   },
   {
     question: "Why haven’t i received my cryptocurrency?",
     answers: [
-      "Your wallet will be successfully credited once the transaction meets the minimum required network confirmation specified by the our system. ",
-      "Please note that the minimum requirement is different for each cryptocurrency",
+      "Your wallet will be successfully credited once the transaction meets the minimum required network confirmation specified by the our system. Please note that the minimum requirement is different for each cryptocurrency",
     ],
   },
   {
     question: "What happens if i paste  the wrong address?",
     answers: [
-      "If you mistakenly withdraw funds to a wrong address",
-      "chinos exchange is unable to locate the receiver of your funds and provide you any further assistance.",
-      "As we initiates the withdrawal process as soon as you click [Submit]",
+      "If you mistakenly withdraw funds to a wrong address chinos exchange is unable to locate the receiver of your funds and provide you any further assistance. As we initiates the withdrawal process as soon as you click [Submit]",
     ],
   },
 ];

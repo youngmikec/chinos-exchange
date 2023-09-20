@@ -124,7 +124,7 @@ const JoinUs = () => {
                 <div className="mx-auto w-9/12 my-12">
                     <p className="text-[#7F7F80] text-xl text-center font-semibold my-8">Our Market Growth Numbers</p>
                     {/* market Cards */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 mg:grid-cols-3 lg:grid-cols-3">
+                    <div className="grid grid-cols-3 flex-wrap sm:grid-cols-3 mg:grid-cols-3 lg:grid-cols-3">
                         {
                             marketNumbers.length > 0 &&
                             marketNumbers.map((item: MarketNumber, key: number) => {

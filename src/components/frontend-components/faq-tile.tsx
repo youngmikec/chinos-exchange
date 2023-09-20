@@ -32,16 +32,16 @@ const FaqTitle = ({ question, answers }: Props) => {
                 {
                   isDisplay && 
                   <div>
-                      <ol className=' text-gray-700 text-sm px-4' type='i'>
+                      <div className=' text-gray-700 text-sm list-none'>
                         {
                           answers.length > 0 && 
                           answers.map((item: string, idx: number) => {
                             return (
-                              <li key={idx} className='my-4'>{idx + 1}. {item}</li>
+                              <p key={idx} className='my-4'>{item}</p>
                             )
                           })
                         }
-                      </ol>
+                      </div>
                   </div>
                 }
             </div>

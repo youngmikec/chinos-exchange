@@ -27,8 +27,8 @@ const Navbar = () => {
                     </div>
                     <div className='pt-3'>
                         <ul className='list-none inline-flex'>
-                            <li className='mx-4 text-white font-semibold hover:border-b-2 hover:border-b-white'><Link to="/">Home</Link></li>
-                            <li className='mx-4 text-white font-semibold hover:border-b-2 hover:border-b-white'>
+                            <li className='mx-2 sm:mx-2 md:mx-2 lg:mx-4 text-white sm:text-xs font-semibold hover:border-b-2 hover:border-b-white'><Link to="/">Home</Link></li>
+                            <li className='mx-2 sm:mx-2 md:mx-2 lg:mx-4 text-white sm:text-xs font-semibold hover:border-b-2 hover:border-b-white'>
                                 <div
                                     className="relative mx-1 pt-0 pb-2 group  mb-1 md:mb-0"
                                     id="button_pm">
@@ -71,9 +71,9 @@ const Navbar = () => {
                                     </ul>
                                 </div>
                             </li>
-                            <li className='mx-4 text-white font-semibold hover:border-b-2 hover:border-b-white'><Link to="/about-us">About Us</Link></li>
-                            <li className='mx-4 text-white font-semibold hover:border-b-2 hover:border-b-white'><Link to="/contact-us">Contact Us</Link></li>
-                            <li className='mx-4 text-white font-semibold hover:border-b-2 hover:border-b-white'><Link to="/faqs">Faqs</Link></li>
+                            <li className='mx-2 sm:mx-2 md:mx-2 lg:mx-4 text-white sm:text-xs font-semibold hover:border-b-2 hover:border-b-white'><Link to="/about-us">About Us</Link></li>
+                            <li className='mx-2 sm:mx-2 md:mx-2 lg:mx-4 text-white sm:text-xs font-semibold hover:border-b-2 hover:border-b-white'><Link to="/contact-us">Contact Us</Link></li>
+                            <li className='mx-2 sm:mx-2 md:mx-2 lg:mx-4 text-white sm:text-xs font-semibold hover:border-b-2 hover:border-b-white'><Link to="/faqs">Faqs</Link></li>
                         </ul>
                     </div>
 

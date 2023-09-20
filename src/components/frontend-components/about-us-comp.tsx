@@ -37,30 +37,30 @@ const AboutUsComp = () => {
 
         <div className='flex w-screen bg-ellipse flex-col  overflow-hidden'>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 py-8 w-10/12 mx-auto mb-32 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 py-8 w-11/12 mx-auto mb-32 gap-6">
 
-              <div className="py-4 ">
+              <div className="py-4">
                 <div className="about-bg2 w-full flex justify-center items-center py-28 sm:py-20">
                   <img src={logo} alt="" height="200px" className='mt-5 mx-auto small-icon object-fill' />
                 </div>
               </div>
 
-              <div className='md:px-24 sm:px-8 flex'>
-                <div className='text-left  flex flex-col self-center my-auto w-full'>
-                  <h3 className='text-black text-lg font-bold mt-2 mb-8 px-8'>Vision & Mission</h3>
-                  <p className='font-light px-8 text-gray-700 mb-8'>
-                    Introducing chinosexchange, where trust meets innovation in the world of Giftcard and crypto trading. 
-                    With a steadfast commitment to excellence, we are revolutionizing the way you buy and sell Giftcards and cryptocurrency. 
-                    Our unwavering dedication to providing top-notch service has not only set a new standard but also established us as the most reputable 
-                    and trusted Giftcard trading entity not only in Africa but also across borders
-                  </p>
-                  <p className='font-light px-8 text-gray-700 mb-8'>
-                    At Chinosexchange, trust is not just a word; it's a cornerstone of our philosophy. 
-                    We understand the importance of reliability and transparency when it comes to financial services. 
-                    That's why we go above and beyond to ensure every transaction is seamless, secure, and meets the highest industry standards
-                  </p>
-                </div>
-              </div> 
+              <div className='text-left w-full'>
+                <h3 className='text-black text-sm sm:text-sm md:text-lg font-bold mt-2 mb-4 px-8'>Vision & Mission</h3>
+                <p className='font-light px-4 text-justify text-gray-700 mb-4'>
+                  Introducing chinosexchange, where trust meets innovation in the world of Giftcard and crypto trading. 
+                  With a steadfast commitment to excellence, we are revolutionizing the way you buy and sell Giftcards and cryptocurrency. 
+                  Our unwavering dedication to providing top-notch service has not only set a new standard but also established us as the most reputable 
+                  and trusted Giftcard trading entity not only in Africa but also across borders
+                </p>
+                <p className='font-light px-4 text-justify text-gray-700 mb-4'>
+                  At Chinosexchange, trust is not just a word; it's a cornerstone of our philosophy. 
+                  We understand the importance of reliability and transparency when it comes to financial services. 
+                  That's why we go above and beyond to ensure every transaction is seamless, secure, and meets the highest industry standards
+                </p>
+              </div>
+              {/* <div className='md:px-4 sm:px-8 flex'>
+              </div>  */}
 
             </div>
 

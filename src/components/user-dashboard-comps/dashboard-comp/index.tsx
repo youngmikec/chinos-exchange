@@ -128,14 +128,24 @@ const DashboardComp = () => {
                         >
                             <div>
                                 <ServiceCard
-                                    title="Airtime to Cash"
-                                    subTitle='Convert your airtime to cash'
-                                    link='/airtime'
-                                    linkText='Convert'
-                                    img={airtime}
+                                    title="Sell Crypto"
+                                    subTitle='Sell your crypto currency'
+                                    link='/sell-crypto'
+                                    linkText='Sell'
+                                    img={sell}
                                 />
+
                             </div>
 
+                            <div>
+                                <ServiceCard
+                                    title="Buy Crypto"
+                                    subTitle='Buy your crypto currency'
+                                    link='/buy-crypto'
+                                    linkText='Buy'
+                                    img={crypto}
+                                />
+                            </div> 
 
                             <div>
                                 <ServiceCard
@@ -146,27 +156,18 @@ const DashboardComp = () => {
                                     img={trade}
                                 />
                                 
-                            </div>  
+                            </div>    
+                             
 
                             <div>
                                 <ServiceCard
-                                    title="Buy Crypto"
-                                    subTitle='Buy your crypto currency'
-                                    link='/buy-crypto'
-                                    linkText='Buy'
-                                    img={crypto}
+                                    title="Airtime to Cash"
+                                    subTitle='Convert your airtime to cash'
+                                    link='/airtime'
+                                    linkText='Convert'
+                                    img={airtime}
                                 />
-                            </div>   
-                            <div>
-                                <ServiceCard
-                                    title="Sell Crypto"
-                                    subTitle='Sell your crypto currency'
-                                    link='/sell-crypto'
-                                    linkText='Sell'
-                                    img={sell}
-                                />
-
-                            </div>                            
+                            </div>                           
 
 
                         </div>
