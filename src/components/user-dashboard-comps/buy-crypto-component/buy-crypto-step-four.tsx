@@ -1,10 +1,15 @@
 import React, { useState, useRef } from 'react';
 import { AxiosResponse } from 'axios';
+import { BsWhatsapp } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { ToastContainer, toast } from "react-toastify";
+
+
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
+import { whatsAppUrl } from '../../../constants';
 import { ApiResponse } from '../../../common';
 import { RootState } from '../../../store';
 import { APPEND_TO_BUY_GIFTCARD_ORDER } from '../../../store/orders';
@@ -128,6 +133,15 @@ const BuyCryptoStepFour = ({ changeStep }: Props) => {
                         { loading ? 'Proccessing' : 'Finish' }
                     </button>
                 </div>
+
+                <a href={whatsAppUrl} target='_blank'>
+                    <div className='flex justify-center gap-3 text-[#8652A4] cursor-pointer'>
+                        <span className='my-auto'>
+                            <BsWhatsapp />
+                        </span>
+                        <span>Chat with us on whatsaapp</span>
+                    </div>
+                </a>
             </div>
         </>
     )

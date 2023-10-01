@@ -120,10 +120,10 @@ const DashboardComp = () => {
                     <div>
                         <h3 className='text-[#7F7F80] font-semibold my-12'>What we offer</h3>
 
-                        <div className='grid grid-cols-1 space-y-2
-                            sm:grid-cols-2  sm:space-x-2 sm:space-y-3
-                            md:grid-cols-2  md:space-x-2 md:space-y-3
-                            lg:grid-cols-4  lg:space-x-2 lg:space-y-0
+                        <div className='grid grid-cols-1 gap-4
+                            sm:grid-cols-2  
+                            md:grid-cols-2  
+                            lg:grid-cols-4  
                             ' 
                         >
                             <div>

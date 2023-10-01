@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { BsWhatsapp } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
+
+import { whatsAppUrl } from '../../../constants';
 import { RootState } from '../../../store';
 import { APPEND_TO_BUY_CRYPTO_ORDER } from '../../../store/orders';
 
@@ -87,7 +92,7 @@ const BuyCryptoStepTwo = ({ changeStep }: Props) => {
                 </div>
             </div>
             <div className='my-4'>
-                <label htmlFor="amountReceivable" className='text-[#7F7F80] text-sm'>You will receive {amountReceivable.value}$ worth of { cryptoName } </label>
+                <label htmlFor="amountReceivable" className='text-[#7F7F80] text-sm'>You will receive ${amountReceivable.value} worth of { cryptoName } </label>
                 <div className='border-2 border-gray-100 rounded-md mt-2'>
                     <input 
                     type="number" 
@@ -98,7 +103,7 @@ const BuyCryptoStepTwo = ({ changeStep }: Props) => {
                     value={amountReceivable.value}
                 />
                 </div>
-                <p className="text-sm text-[#7F7F80] "> Minimuim we sell is 1,000</p>
+                <p className="text-sm text-[#7F7F80] "> Minimuim we sell is 1,000 (NGN)</p>
             </div>
 
 
@@ -111,6 +116,15 @@ const BuyCryptoStepTwo = ({ changeStep }: Props) => {
                     }
                 }>Submit</button>
             </div>
+
+            <a href={whatsAppUrl} target='_blank'>
+                <div className='flex justify-center gap-3 text-[#8652A4] cursor-pointer'>
+                    <span className='my-auto'>
+                        <BsWhatsapp />
+                    </span>
+                    <span>Chat with us on whatsaapp</span>
+                </div>
+            </a>
         </div>
     </>
     )

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { BsWhatsapp } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 
+import { whatsAppUrl } from '../../../constants';
 import { CryptoCurrency } from '../../../common';
 import { APPEND_TO_BUY_CRYPTO_ORDER } from '../../../store/orders';
 
@@ -165,6 +168,15 @@ const BuyCryptoStepOne = ({ changeStep, cryptos }: Props) => {
                     }
                 }>Proceed</button>
             </div>
+
+            <a href={whatsAppUrl} target='_blank'>
+                <div className='flex justify-center gap-3 text-[#8652A4] cursor-pointer'>
+                    <span className='my-auto'>
+                        <BsWhatsapp />
+                    </span>
+                    <span>Chat with us on whatsaapp</span>
+                </div>
+            </a>
         </div>
     </>
     )
