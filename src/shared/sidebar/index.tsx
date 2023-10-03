@@ -1,4 +1,6 @@
 import React from 'react';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Link, useLocation } from 'react-router-dom';
 import { AiOutlineSetting, AiOutlineDollar } from 'react-icons/ai';
 import { RiDashboardFill } from 'react-icons/ri';
@@ -12,18 +14,48 @@ type Props = {
     sidebarMenus?: any[]
 }
 
-const Sidebar = ({sidebarMenus}: Props) => {
-    const location = useLocation();
-    const { pathname } = location;
+const notify = (type: string, msg: string) => {
+    if (type === "success") {
+      toast.success(msg, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
 
-    const handleLogout = () => {
+    if (type === "error") {
+      toast.error(msg, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+};
+
+export const handleLogout = (msg:string = '') => {
+    if(msg !== ''){
+        notify('success', msg);
+        setTimeout(() => {
+            localStorage.removeItem("auth");
+            localStorage.removeItem("clientId");
+            localStorage.removeItem("clientID");
+            localStorage.removeItem("clientD");
+            localStorage.removeItem("clientToken");
+            window.location.href = "/sign-in";
+        }, 1500)
+    }else {
         localStorage.removeItem("auth");
         localStorage.removeItem("clientId");
         localStorage.removeItem("clientID");
         localStorage.removeItem("clientD");
         localStorage.removeItem("clientToken");
         window.location.href = "/sign-in";
-    };
+    }
+};
+
+const Sidebar = ({sidebarMenus}: Props) => {
+    const location = useLocation();
+    const { pathname } = location;
+
+    const logout = () => {
+        handleLogout('Logged Out')
+    }
 
     return (
         <>
@@ -114,7 +146,7 @@ const Sidebar = ({sidebarMenus}: Props) => {
                     <li 
                         className={"cursor-pointer my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white" }
                         title="account"
-                        onClick={() => handleLogout()}
+                        onClick={() => logout()}
                     >
                         <div className='flex justify-start'>
                             <div><span><CgLogOff className='text-xl'/></span></div>
@@ -126,6 +158,8 @@ const Sidebar = ({sidebarMenus}: Props) => {
                     
                 </ul>
             </div>
+
+            <ToastContainer />
         </>
     )
 }
