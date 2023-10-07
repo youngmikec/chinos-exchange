@@ -124,7 +124,7 @@ const ContactUsComp = () => {
                     <div className='py-4 w-full my-8 '>
                         <div className='mt-8'>
                             <h3 className='text-5xl font-bold mt-8 mb-4 text-white text-center'>We’re Available 24/7 to Attend <br /> To Our Customer</h3>
-                            <p className='text-sm font-thin text-center w-3/4 mt-4 mb-6 mx-auto text-white'>Get answers to any question or inquiry you might have</p>
+                            <p className='text-sm font-semibold text-center w-3/4 mt-4 mb-6 mx-auto text-white'>Get answers to any question or inquiry you might have</p>
                             <img src={coin} alt="" className=' my-8 mx-auto animate-pulse duration-75'  />
                         </div>
                     </div>

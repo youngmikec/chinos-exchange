@@ -50,8 +50,8 @@ const HomeComp = () => {
                     <div className='py-4 w-full relative'>
                         <h3 className='text-5xl font-bold my-8 text-white'>The Fastest Way To Buy, <br/> Sell And Trade Crypto </h3>
                         <div className='w-3/4 my-8'>
-                            <p className='text-sm font-thin text-justify my-2 text-white'>Join over 100,000 users across the globe to trade</p> 
-                            <p className='text-sm font-thin text-justify my-2 text-white'>your digital asset on a fast and secured platform</p>   
+                            <p className='text-sm font-semibold text-justify my-2 text-white'>Join over 100,000 users across the globe to trade</p> 
+                            <p className='text-sm font-semibold text-justify my-2 text-white'>your digital asset on a fast and secured platform</p>   
                         </div>
 
                         <div className='my-8'>
