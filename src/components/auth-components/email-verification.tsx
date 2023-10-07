@@ -71,7 +71,7 @@ const EmailVerificationComp = () => {
                     <div className='text-center my-10'>
                         <h1 className='text-4xl font-bold mb-4'>Email Verification</h1>
                         <p className='text-gray-400 my-4 text-sm'>Let's verify your email</p>
-                        <p className='text-gray-400 my-4 text-sm'>A six digit code has been sent to your email.</p>
+                        <p className='text-gray-400 my-4 text-sm'>A five digit code has been sent to your email.</p>
                     </div> 
 
                     <div className='my-6'>

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { Airtime } from '../../../common';
-import { RootState } from '../../../store';
+import { isValidPhoneNumber } from '../../../helpers';
 import { APPEND_TO_AIRTIME_ORDER } from '../../../store/orders';
 
 type Props = {
@@ -18,6 +21,21 @@ const AirtimeStepOne = ({ changeStep, product }: Props) => {
     const [receivable, setReceivable] = useState<{value: number, error: boolean}>({value: 0, error: false});
     const [percentage, setPercentage] = useState<{value: number, error: boolean}>({value: 0, error: false});
     const [senderPhone, setSenderPhone] = useState<{value: string, error: boolean}>({value: '', error: false});
+    
+    
+    const notify = (type: string, msg: string) => {
+        if (type === "success") {
+          toast.success(msg, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+    
+        if (type === "error") {
+          toast.error(msg, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+    };
 
     const inputCheck = (): boolean => {
         let isValid: boolean = true;
@@ -43,6 +61,11 @@ const AirtimeStepOne = ({ changeStep, product }: Props) => {
             isValid = false;
             setSenderPhone({...senderPhone, error: true});
         }else{
+            if(isValidPhoneNumber(senderPhone.value)){
+                isValid = false;
+                setSenderPhone({...senderPhone, error: true});
+                notify('error', 'Phone number is not Valid');
+            }
             setSenderPhone({...senderPhone, error: false})
         }
         return isValid;
@@ -142,6 +165,7 @@ const AirtimeStepOne = ({ changeStep, product }: Props) => {
                     }>Proceed</button>
                 </div>
             </div>
+            <ToastContainer />
         </>
     )
 }
