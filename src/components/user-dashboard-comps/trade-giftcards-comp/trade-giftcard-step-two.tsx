@@ -102,7 +102,7 @@ const TradeGiftcardStepTwo = ({changeStep, changeStatus}: Props) => {
                 </div>
 
                 <div className='my-4'>
-                    <label htmlFor="accountNumber" className='text-[#7F7F80] text-sm'>Kindly upload a proof your transaction</label>
+                    <label htmlFor="accountNumber" className='text-[#7F7F80] text-sm'>Kindly upload the picture of the card together with the receipt</label>
                     <div className={`border-2 ${proofImage.error ? 'border-red-500' : 'border-gray-100'} rounded-md mt-2 h-32 w-full flex justify-center`}>
                         {
                             proofImage.value ? 
