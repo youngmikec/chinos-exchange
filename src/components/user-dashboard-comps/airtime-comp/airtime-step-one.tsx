@@ -118,11 +118,11 @@ const AirtimeStepOne = ({ changeStep, product }: Props) => {
                     </div>
                 </div>
                 <div className='my-4'>
-                    <label htmlFor="amount" className='text-[#7F7F80] text-sm'>Amount</label>
+                    <label htmlFor="amount" className='text-[#7F7F80] text-sm'>Amount in (NGN)</label>
                     <div className='border-2 border-gray-100 rounded-md mt-2'>
                         <input 
                             type="number" 
-                            placeholder='Enter amount you want to sell' 
+                            placeholder='Enter amount you want to sell'
                             name="amount" 
                             value={amount.value}
                             onChange={(e) => setAmount({...amount, value: parseInt(e.target.value)})}

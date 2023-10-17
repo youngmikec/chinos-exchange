@@ -41,7 +41,7 @@ const SellCryptoComp = () => {
 
     const retreiveCryptos = () => {
         setLoading(true);
-        const queryString: string = `?sort=name`;
+        const queryString: string = `?sort=name&status=ACTIVE`;
         RETREIVE_CRYPTO(queryString).then((res: AxiosResponse<ApiResponse>) => {
             setLoading(false);
             const { payload } = res.data;
@@ -132,7 +132,7 @@ const SellCryptoComp = () => {
                                         <img src={item?.cryptoImage} width="25px" height="25px" className="rounded-full mx-2 inline-flex" alt="crypto" />
                                         <p className='text-[#7F7F80] font-thin inline'><strong>{item?.shortName}</strong></p>
                                     </div>
-                                    <div><p className='text-[#8652A4] font-thin text-sm'><strong>{item?.rate}/$</strong></p></div>
+                                    <div><p className='text-[#8652A4] font-thin text-sm'><strong>{item?.sellingRate}/$</strong></p></div>
                                 </div>
                                 }) :
 

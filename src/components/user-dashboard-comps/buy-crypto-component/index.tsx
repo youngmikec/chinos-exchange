@@ -43,7 +43,7 @@ const BuyCryptoComp = () => {
 
     const retreiveCryptos = () => {
         setLoading(true);
-        const queryString: string = `?sort=name`;
+        const queryString: string = `?sort=name&status=ACTIVE`;
         RETREIVE_CRYPTO(queryString).then((res: AxiosResponse<ApiResponse>) => {
             setLoading(false);
             const { message, payload } = res.data;

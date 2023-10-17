@@ -51,7 +51,7 @@ const AirtimeComp = () => {
 
     const retreiveAirtimeRecords = () => {
         setLoading(true);
-        const queryString: string = `?sort=name`;
+        const queryString: string = `?sort=name&status=ACTIVE`;
         RETREIVE_AIRTIME(queryString).then((res: AxiosResponse<ApiResponse>) => {
             setLoading(false);
             const { payload } = res.data;
@@ -94,9 +94,9 @@ const AirtimeComp = () => {
                                                     setSelectedAirtime(item)
                                                     dispatch(APPEND_TO_AIRTIME_ORDER({ airtime: item }))
                                                 }}
-                                                className='border-2 border-gray-100 text-center rounded-md relative mx-4 p-1 lg:px-4 lg:py-2'
+                                                className='border-2 border-gray-100 text-center rounded-md relative mx-auto p-1 lg:px-4 lg:py-2'
                                             >
-                                            <img src={item?.networkImage} className="text-center justify-center" alt={item?.shortName} width="70px" height="50px" />
+                                                <img src={item?.networkImage} className="text-center" alt={item?.shortName} width="50px" height="50px" />
                                             {
                                                 selectedAirtime && selectedAirtime.id === item.id && 
                                                 <AiFillCheckCircle className='text-[#8652A4] absolute top-0 right-0' />

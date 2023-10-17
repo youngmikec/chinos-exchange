@@ -9,7 +9,7 @@ export const copyTextToClipboard = async (text: string) => {
 
 export const isValidPhoneNumber = (phoneNumber: string): boolean => {
   // Define a regex pattern for a valid 11-digit phone number
-  const regex = /^(070|080|081|090|091)[0-9]{8}$/;
+  const regex = /^(070|080|08|090|091)[0-9]{8}$/;
 
   // Use the test method to check if the phoneNumber matches the pattern
   return regex.test(phoneNumber);

@@ -21,17 +21,36 @@ import { ApiResponse, CryptoCurrency } from '../../common';
 import { RETREIVE_CRYPTO } from '../../services';
 import ReviewComp from './review';
 import WhatsappButton from '../whatsapp-btn';
+import AppTable, { TableHeader } from '../../shared/app-table';
 
 const HomeComp = () => {
     const [cryptos, setCryptos] = useState<CryptoCurrency[]>([]);
+    const [tableRows, setTableRows] = useState<any[]>([]);
+
+    const tableHeaders: TableHeader[] = [
+        { key: 'sn', value: 'S/N' },
+        { key: 'image', value: 'Image' },
+        { key: 'name', value: 'Name' },
+        { key: 'shortName', value: 'Short Name' },
+        { key: 'rate', value: 'Rate' },
+    ];
 
     const retrieveCryptos = () => {
-        const query: string = `?sort=-name`;
+        const query: string = `?sort=-name&status=ACTIVE`;
         RETREIVE_CRYPTO(query)
         .then((res: AxiosResponse<ApiResponse>) => {
             const { message, payload } = res.data;
-            console.log('success', message);
             setCryptos(payload);
+            const mappedDate = payload.map((item: CryptoCurrency, idx: number) => {
+                return {
+                    sn: idx + 1,
+                    image: <img src={item?.cryptoImage } width="25px" height="25px" alt="crypto" />,
+                    name: item?.name,
+                    shortName: item?.shortName,
+                    rate: item?.rate,
+                }
+            });
+            setTableRows(mappedDate);
         })
         .catch((err: any) => {
             const { message } = err.response.data;
@@ -74,40 +93,13 @@ const HomeComp = () => {
                 </div>
 
                 <div className='my-8 flex justify-center w:11/12'>
-                    <div className='overflow-x-scroll'>
-                        <table className='table w-full'>
-                            <thead>
-                                <tr className='border-spacing-y-4'>
-                                    <th>#</th>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Short Name</th>
-                                    <th>Rate</th>
-                                </tr>
-                            </thead>
-                            
-                            <tbody className='text-[#7F7F80]'>
-                                {
-                                    cryptos.length > 0 ?
-                                    cryptos.map((item: CryptoCurrency, i: number) => {
-                                        return <tr className='border-top-2' key={item.code}>
-                                            <td className='text-left py-3'>{ i + 1}</td>
-                                            <td className="text-center py-3">
-                                                <img src={item?.cryptoImage } width="25px" height="25px" alt="crypto" />
-                                            </td>
-                                            <td className="text-left py-3">{item?.name}</td>
-                                            <td className="text-left py-3">{item?.shortName}</td>
-                                            <td className="text-left py-3">{ item?.rate}/$</td>
-                                        </tr>
-                                    }) : 
-                                        <tr>
-                                            <td colSpan={7} className="text-center py-3">No Crypto Record available</td>
-                                        </tr>
-                                }
-                                
-                                
-                            </tbody>
-                        </table>
+                    <div>
+                        <AppTable 
+                            tableHeaders={tableHeaders} 
+                            tableRows={tableRows} 
+                            showSearch={false} 
+                            className='w-[350px] sm:w-[450px] md:w-[600px] lg:w-[800px]'
+                        />
                     </div>
                 </div>
 

@@ -16,14 +16,14 @@ const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
     const [selectedNetwork, setSelectedNetwork] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [amount, setAmount] = useState<{value: number, error: boolean}>({value: 0, error: false});
     const [receivable, setReceivable] = useState<{value: number, error: boolean}>({value: 0, error: false});
-    const [rate, setRate] = useState<number | undefined>(0);
+    const [sellingRate, setSellingRate] = useState<number | undefined>(0);
     const [networks, setNetworks] = useState<any[] | any>([]);
 
     const dispatch = useDispatch();
 
     const getNetworks = (id: string) => {
         const currentCrypto: CryptoCurrency | undefined = cryptos?.find((item) => item.id === id);
-        setRate(currentCrypto?.rate);
+        setSellingRate(currentCrypto?.sellingRate);
         setCryptoName(currentCrypto?.shortName);
         setNetworks(currentCrypto?.networks);
     }
@@ -67,7 +67,7 @@ const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
                 network: selectedNetwork.value,
                 orderType: "SELL_CRYPTO",
                 amountReceivable: receivable.value,
-                rate
+                rate: sellingRate
             };
             dispatch(APPEND_TO_SELL_CRYPTO_ORDER(data))
             changeStep(2)
@@ -77,7 +77,7 @@ const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
 
     const calculateReceivable = (id: string) => {
         const crypto: CryptoCurrency | any = cryptos && cryptos.find(item => item.id === id);
-        const total: number = !Number.isNaN(amount.value * crypto.rate) ? (amount.value * crypto.rate) : 0;
+        const total: number = !Number.isNaN(amount.value * crypto.sellingRate) ? (amount.value * crypto.sellingRate) : 0;
         setReceivable({value: total, error: false});
     }
 
@@ -156,7 +156,7 @@ const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
                 </div>
 
                 <div className='my-4'>
-                    <label htmlFor="receivable" className='text-[#7F7F80] text-sm'>Rate is {!Number.isNaN(rate) ? rate : 0} /$. You will receive in NGN</label>
+                    <label htmlFor="receivable" className='text-[#7F7F80] text-sm'>Rate is {!Number.isNaN(sellingRate) ? sellingRate : 0} /$. You will receive in NGN</label>
                     <div className='border-2 border-gray-100 rounded-md mt-2'>
                         <input 
                             type="number" 

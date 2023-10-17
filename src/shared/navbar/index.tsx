@@ -114,7 +114,7 @@ const Navbar = () => {
                 </div>
 
                 <div className={`
-                    absolute left-0 top-0 bottom-0 h-full
+                    fixed left-0 top-0 -bottom-1 h-full
                  bg-white text-left w-8/12 px-8 py-4 z-100
                     ${showSideBar ? 'block' : 'hidden'}
                  `} style={customeStyle.sidebar}>
