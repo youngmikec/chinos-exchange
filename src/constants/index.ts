@@ -10,7 +10,7 @@ export const faqs: Faq[] = [
   {
     question: "How long does it take to get paid?",
     answers: [
-      "it all depends on the time we receive your order and As well if your receiving bank is not having a temporary downtime. please exercise patient.",
+      "It all depends on the time we receive your order and as well as if your receiving bank is not having a temporary downtime. Please exercise patient.",
     ],
   },
   {

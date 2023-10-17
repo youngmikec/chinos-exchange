@@ -32,7 +32,8 @@ const HomeComp = () => {
         { key: 'image', value: 'Image' },
         { key: 'name', value: 'Name' },
         { key: 'shortName', value: 'Short Name' },
-        { key: 'rate', value: 'Rate' },
+        { key: 'rate', value: 'Buy Rate' },
+        { key: 'sellingRate', value: 'Selling Rate' },
     ];
 
     const retrieveCryptos = () => {
@@ -48,6 +49,7 @@ const HomeComp = () => {
                     name: item?.name,
                     shortName: item?.shortName,
                     rate: item?.rate,
+                    sellingRate: item?.sellingRate,
                 }
             });
             setTableRows(mappedDate);
