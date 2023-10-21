@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getItem } from '../utils';
-import { handleLogout } from '../shared/sidebar';
+import { handleLogout } from '../shared/logout-comp';
 
 export const BASE_URL: any = process.env.REACT_APP_BASE_URL;
 

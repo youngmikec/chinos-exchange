@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 //  icons
 import{CiSearch} from 'react-icons/ci';
@@ -15,23 +16,33 @@ import { AiOutlineDollar, AiOutlineSetting } from 'react-icons/ai';
 import './style.css';
 
 // logo
-import profile from '../../assets/images/arash.png';
+import defaultProfileImg from '../../assets/images/arash.png';
 import { whatsAppUrl } from "../../constants";
 import { IoCardOutline, IoCopyOutline } from "react-icons/io5";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 import { User } from "../../common";
 import { getItem } from "../../utils";
+import AppLoader from "../../components/app-loader";
+import { OpenLogoutModal } from "../../store/modal/logout-modal";
 
 
-const Navbar = () => {
-    const [userProfile, setUserProfile] = useState<User | null>(null);
+type Props = {
+    profile: User | null;
+    loading: boolean;
+}
 
+
+const Navbar = ({ profile, loading}: Props) => {
     const location = useLocation();
     const { pathname } = location;
-    const[ toggle, setToggle] = useState<boolean>(true);
+    const dispatch = useDispatch();
+
     const headPadding: string = 'pt-0';
-    const [showSideBar, setShowSidebar] = useState<boolean>(false);
+
     const [search, setSearch] = useState('');
+    const[ toggle, setToggle] = useState<boolean>(true);
+    const [userProfile, setUserProfile] = useState<User | null>(null);
+    const [showSideBar, setShowSidebar] = useState<boolean>(false);
 
     const openSidebar = () => {
         setShowSidebar(true);
@@ -42,16 +53,10 @@ const Navbar = () => {
     const customeStyle = {
         sidebar: {zIndex: 60, left: '-1rem', paddingRight: '1rem', height: '100vh'}
     }
-
-
-    const handleLogout = () => {
-        localStorage.removeItem("auth");
-        localStorage.removeItem("clientId");
-        localStorage.removeItem("clientID");
-        localStorage.removeItem("clientD");
-        localStorage.removeItem("clientToken");
-        window.location.href = "/sign-in";
+    const openModal = () => {
+        dispatch(OpenLogoutModal());
     }
+
 
 
     useEffect(()=>{
@@ -107,9 +112,18 @@ const Navbar = () => {
                         <CiBellOn className='inline-flex text-xl font-semibold my-auto text-[#7F7F80]'/>
                     </div>
                     <div className="inline-flex rounded-full bg-[#b1bbdf]">
-                        <Link to="/account">
-                            <img src={ userProfile?.profileImage ? userProfile.profileImage : profile } alt="profile" className='' width='40px' height='40px'  />
-                        </Link>
+                        {
+                            loading ? <AppLoader color="black" /> :
+                            <Link to="/account">
+                                <img 
+                                    src={profile?.profileImage ? profile.profileImage : defaultProfileImg } 
+                                    alt="profile" 
+                                    className='rounded-full object-cover w-[40px] h-[40px]' 
+                                    width='100%' 
+                                    height='40px'  
+                                />
+                            </Link>
+                        }
                     </div>
                 </div>
 
@@ -207,7 +221,7 @@ const Navbar = () => {
                                 <li 
                                     className={`cursor-pointer my-6 py-3 px-4 text-center rounded-md hover:bg-[#8652A4] hover:text-white` }
                                     title="log out"
-                                    onClick={() => handleLogout()}
+                                    onClick={() => openModal()}
                                 >
                                     <div className='flex justify-start'>
                                         <div><span><CgLogOff className='text-xl'/></span></div>

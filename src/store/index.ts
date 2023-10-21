@@ -4,6 +4,9 @@ import buyCryptoReducer from './orders/buy-crypto-order';
 import buyGiftcardReducer from "./orders/buy-giftcard-order";
 import sellCryptoReducer from './orders/sell-crypto-order';
 import userProfileReducer from './user';
+import profileReducer from './profile';
+import logotModalReducer from "./modal/logout-modal";
+
 
 import ordersReducer from './orders/orders';
 
@@ -15,7 +18,9 @@ export const store = configureStore({
         BuyGiftcardOrderSlice: buyGiftcardReducer,
         BuyCryptoOrderSlice: buyCryptoReducer,
         SellCryptoOrderSlice: sellCryptoReducer,
-        userProfile: userProfileReducer
+        userProfile: userProfileReducer,
+        profileState: profileReducer,
+        logoutModal: logotModalReducer,
     }
 })
 

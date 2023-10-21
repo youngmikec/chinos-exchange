@@ -1,14 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ToastContainer, toast } from "react-toastify";
+import { useDispatch, useSelector } from 'react-redux';
 import "react-toastify/dist/ReactToastify.css";
 import { AxiosResponse } from 'axios';
 
+import './style.css';
 import { ApiResponse } from '../../../common';
 import profile from '../../../assets/images/arash.png';
 import { RETRIEVE_PROFILE, UPDATE_PROFILE } from '../../../services';
 import { setItem } from '../../../utils';
+import { RootState } from '../../../store';
+import { SET_PROFILE_DATA } from '../../../store/profile';
 
 const AccountProfile = () => {
+    const userProfile = useSelector((state: RootState) => state.profileState.value);
+    const dispatch = useDispatch();
+
     const fileRef: any = useRef<HTMLButtonElement>(null)
     const [email, setEmail] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
@@ -65,6 +72,8 @@ const AccountProfile = () => {
                 setProfile(payload);
                 setItem('clientD', payload);
                 notify('success', message);
+                dispatch(SET_PROFILE_DATA(null));
+                dispatch(SET_PROFILE_DATA(payload));
             }
         }).catch(err => {
             setUpdating(false);
@@ -91,25 +100,9 @@ const AccountProfile = () => {
         setProfileImage(payload.profileImage);
     }
 
-    const retreiveProfile = () => {
-        setLoading(true);
-        RETRIEVE_PROFILE().then((res: AxiosResponse<ApiResponse>) => {
-            setLoading(false);
-            const { success, message, payload } = res.data;
-            if(success){
-                notify('success', `${message}`);
-                setProfile(payload);
-            }
-        }).catch((err: any) => {
-            setLoading(false);
-            const { message } = err.response.data;
-            notify('error', message);
-        })
-    }
-
     useEffect(() => {
-        retreiveProfile();
-    }, [])
+        userProfile && setProfile(userProfile);
+    }, [userProfile])
 
     return (
         <>
@@ -118,7 +111,7 @@ const AccountProfile = () => {
                     <div className='flex justify-start'>
                         <div className='mx-3'>
                             <div className="rounded-full bg-[#b1bbdf] p-1">
-                                <img src={profileImage || profile} className="rounded-full" alt="profile" width='80px' height='80px'  />
+                                <img src={profileImage || profile} className="circular-image"  />
                             </div>
                         </div>
 
