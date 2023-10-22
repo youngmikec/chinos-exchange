@@ -20,6 +20,7 @@ import { RETREIVE_ORDERS } from '../../../services';
 import { getItem } from '../../../utils';
 import Card from '../../../shared/card';
 import { RETRIEVE_APP_REPORTS } from '../../../services/reports';
+import AppTable, { TableHeader } from '../../../shared/app-table';
 
 const DashboardComp = () => {
     // const ordersState = useSelector((state: RootState) => state.orderState.value);
@@ -29,6 +30,16 @@ const DashboardComp = () => {
     const [completedOrders, setCompletedOrders] = useState<number>(0);
     const [declinedOrders, setDeclinedOrders] = useState<number>(0);
     const [orderRecords, setOrderRecords] = useState<Order[] | []>([]);
+    const [tableRows, setTableRows] = useState<any[]>([]);
+
+    const tableHeaders: TableHeader[] = [
+        { key: 'sn', value: 'S/N' },
+        { key: 'date', value: 'Date' },
+        { key: 'type', value: 'Order Type' },
+        { key: 'amount', value: 'Amount' },
+        { key: 'receivable', value: 'Receivable Amount' },
+        { key: 'status', value: 'Status' },
+    ];
 
     const notify = (type: string, msg: string) => {
         if (type === "success") {
@@ -73,6 +84,20 @@ const DashboardComp = () => {
             setCompletedOrders(payload.completedOrders);
             setDeclinedOrders(payload.declinedOrders);
             setOrderRecords(payload.recentOrders);
+            const mappedDate = payload.recentOrders.map((item: Order, idx: number) => {
+                return {
+                    sn: idx + 1,
+                    date: moment(item?.createdAt).format("MM-DD-YYYY"),
+                    type: item?.orderType,
+                    amount: item?.amount,
+                    receivable: item?.amountReceivable,
+                    status: <span className={
+                        (item.status === "COMPLETED") ? 'text-[#2CE71C]' : 'text-[#1cd9e7]'
+                    
+                    }>{ item.status }</span>,
+                }
+            });
+            setTableRows(mappedDate);
             
         }).catch(err => {
             setLoading(false);
@@ -177,45 +202,11 @@ const DashboardComp = () => {
                             </div>
 
                             <div>
-                                <Card type='sm'>
-                                    <div className='overflow-x-scroll p-4'>
-                                        <table className='table table-auto w-full mx-auto border-spacing-y-4'>
-                                            <thead className=''>
-                                                <tr className='border-spacing-y-4'>
-                                                    <th className='table-caption text-left'>#</th>
-                                                    <th>Date</th>
-                                                    <th>Type</th>
-                                                    <th>Amount</th>
-                                                    <th>Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {   orderRecords && orderRecords.length > 0 ?
-                                                    orderRecords.map((item: Order, idx: number) => {
-                                                        return <tr key={idx} className='my-4'>
-                                                        <td className="text-left border-spacing-y-4">{ idx + 1 }</td>
-                                                        <td className="text-left py-3">{ moment(item?.createdAt).format("DD-MM-YYYY") }</td>
-                                                        <td className="text-left py-3">{ item?.orderType }</td>
-                                                        <td className="text-left py-3"><span className='line-through'>N</span>{ item?.amountReceivable } </td>
-                                                        <td className="text-left py-3">
-                                                            <span className={
-                                                                (item.status === "COMPLETED") ? 'text-[#2CE71C]' : 'text-[#1cd9e7]'
-                                                            
-                                                            }>{ item.status }</span>
-                                                        </td>
-
-                                                    </tr>
-                                                    }) :
-
-                                                    <tr>
-                                                        <td colSpan={5} className="text-center py-3">No Recent Order available</td>
-                                                    </tr>
-                                                }
-                                            </tbody>
-
-                                        </table>
-                                    </div>
-                                </Card>
+                                <AppTable 
+                                    tableHeaders={tableHeaders} 
+                                    tableRows={tableRows} 
+                                    showSearch={false} 
+                                />
                             </div>
                         </section>
 

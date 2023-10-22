@@ -22,7 +22,7 @@ export type Order = {
     walletAddress: string;
     platform: string;
     airtime: Airtime;
-    cyptocurrency: CryptoCurrency;
+    cryptocurrency: CryptoCurrency;
     giftcard: GiftCard;
     createdBy: User;
     createdAt: Date;
