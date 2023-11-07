@@ -20,20 +20,21 @@ const SignInComp = () => {
   
     const [loading, setLoading] = useState<boolean>(false);
     const [pDisplay, setPDisplay] = useState<boolean>(false);
-    const [email, setEmail] = useState<{value: string, error: boolean}>({value: '', error: false});
-    const [password, setPassword] = useState<{value: string, error: boolean}>({value: '', error: false});
+    const [email, setEmail] = useState<{value: string, error: boolean, msg: string}>({value: '', error: false, msg: ''});
+    const [password, setPassword] = useState<{value: string, error: boolean, msg: string}>({value: '', error: false, msg: ''});
 
     const inputCheck = (): boolean => {
         let isValid: boolean = true;
         if(email.value === '' || undefined || null){
             isValid = false;
-            setEmail({...email, error: true});
+            setEmail({...email, error: true, msg: 'email field is empty'});
         }else{
-            setEmail({...email, error: false});
+            setEmail({...email, error: false})
         }
+
         if(password.value === '' || undefined || null){
             isValid = false;
-            setPassword({...password, error: true});
+            setPassword({...password, error: true, msg: 'password field is empty'});
         }else{
             setPassword({...password, error: false})
         }
@@ -107,10 +108,14 @@ const SignInComp = () => {
                                 type="email" 
                                 value={email.value}
                                 onChange={(e) => setEmail({...email, value: e.target.value})}
-                                className='w-full border-0 px-4 py-2 text-gray-400'
-                                placeholder='please enter your email'
+                                className='w-full border-0 px-4 py-2 text-gray-400' 
+                                placeholder='please enter your email' 
                             />
                         </div>
+                        {
+                            email.error &&
+                            <label htmlFor="email" className='text-red-400'>{email.msg}</label>
+                        }
                     </div>
 
                     <div className='my-10'>
@@ -131,6 +136,10 @@ const SignInComp = () => {
                                 </span>
                             </div>
                         </div>
+                        {
+                            password.error &&
+                            <label htmlFor="password" className='text-red-400'>{password.msg}</label>
+                        }
                     </div>
 
                     <div className="flex justify-between my-4">

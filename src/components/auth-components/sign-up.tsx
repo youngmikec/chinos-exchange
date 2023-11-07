@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -24,11 +24,12 @@ const SignUpComp = () => {
     const [pDisplay, setPDisplay] = useState<boolean>(false);
     const [cpDisplay, setCPDisplay] = useState<boolean>(false);
     const [isDefault, setIsDefault] = useState<boolean>(true);
+    const [isStrongPassword, setIsStrongPassword] = useState<boolean>(false);
     const [firstName, setFirstName] = useState<{value: string, error: boolean, msg: string}>({value: '', error: false, msg: ''});
     const [lastName, setLastName] = useState<{value: string, error: boolean, msg: string}>({value: '', error: false, msg: ''});
-    const [email, setEmail] = useState<{value: string, error: boolean, msg: string}>({value: '', error: false, msg: ''});
     const [phone, setPhone] = useState<{value: string, error: boolean, msg: string}>({value: '', error: false, msg: ''});
     const [country, setCountry] = useState<{value: string, error: boolean, msg: string}>({value: '', error: false, msg: ''});
+    const [email, setEmail] = useState<{value: string, error: boolean, msg: string}>({value: '', error: false, msg: ''});
     const [password, setPassword] = useState<{value: string, error: boolean, msg: string}>({value: '', error: false, msg: ''});
     const [confirmPassword, setConfirmPassword] = useState<{value: string, error: boolean, msg: string}>({value: '', error: false, msg: ''});
 
@@ -91,6 +92,22 @@ const SignUpComp = () => {
         return isValid;
     }
 
+    const validatePassword = (password: string): boolean => {
+        const strongRegex = new RegExp(
+          "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
+        );
+        return strongRegex.test(password);
+    }
+
+    const handlePasswordChange = (e: any) => {
+        const newPassword = e.target.value;
+        setPassword({...password, value: newPassword});
+        const isValidPassword: boolean = validatePassword(newPassword);
+        if(isValidPassword){
+            setIsStrongPassword(isValidPassword);
+        }
+    };
+
     const inputCheck = () => {
         return (firstStageCheck() && secondStageCheck()) ? true : false;
     }
@@ -140,6 +157,23 @@ const SignUpComp = () => {
     const toggleConfirmPassDisplay = () => {
         setCPDisplay(!cpDisplay);
     }
+
+    useEffect(() => {
+        if(password.value === '' || undefined || null){
+            setPassword({...password, error: true, msg: 'password field is empty'});
+        }else{
+            setPassword({...password, error: false})
+        }
+        setIsStrongPassword(validatePassword(password.value))
+    }, [password.value]);
+
+    useEffect(() => {
+        if(confirmPassword.value === '' || undefined || null){
+            setConfirmPassword({...confirmPassword, error: true, msg: 'confirm password field is empty'});
+        }else{
+            setConfirmPassword({...confirmPassword, error: false})
+        }
+    }, [confirmPassword.value]);
 
     return (
         <>
@@ -308,7 +342,7 @@ const SignUpComp = () => {
                                         <input 
                                             type={ pDisplay ? 'text' : 'password' } 
                                             value={password.value}
-                                            onChange={(e) => setPassword({...password, value: e.target.value})}
+                                            onChange={handlePasswordChange}
                                             className='w-full border-none px-4 py-2 text-gray-400 grow' 
                                             placeholder='please enter your password' 
                                         />
@@ -322,6 +356,14 @@ const SignUpComp = () => {
                                 {
                                     password.error &&
                                     <label htmlFor="password" className='text-red-400'>{password.msg}</label>
+                                }
+                                {   isStrongPassword ? (
+                                        <p className='text-green-500'>Strong password!</p>
+                                    ) : (
+                                        <p className='text-red-400'>
+                                        Password must contain at least 8 characters, including an uppercase letter, a number, and a special character.
+                                        </p>
+                                    )
                                 }
                             </div>
 

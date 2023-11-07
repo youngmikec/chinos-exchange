@@ -79,30 +79,30 @@ const DashboardComp = () => {
         RETRIEVE_APP_REPORTS(user?.id).then(res => {
             const { message, payload } = res.data;
             setLoading(false);
-            notify('success', message);
+            // notify('success', message);
             setPendingOrders(payload.pendingOrders);
             setCompletedOrders(payload.completedOrders);
             setDeclinedOrders(payload.declinedOrders);
             setOrderRecords(payload.recentOrders);
-            const mappedDate = payload.recentOrders.map((item: Order, idx: number) => {
-                return {
-                    sn: idx + 1,
-                    date: moment(item?.createdAt).format("MM-DD-YYYY"),
-                    type: item?.orderType,
-                    amount: item?.amount,
-                    receivable: item?.amountReceivable,
-                    status: <span className={
-                        (item.status === "COMPLETED") ? 'text-[#2CE71C]' : 'text-[#1cd9e7]'
+            // const mappedDate = payload.recentOrders.map((item: Order, idx: number) => {
+            //     return {
+            //         sn: idx + 1,
+            //         date: moment(item?.createdAt).format("MM-DD-YYYY"),
+            //         type: item?.orderType,
+            //         amount: item?.amount,
+            //         receivable: item?.amountReceivable,
+            //         status: <span className={
+            //             (item.status === "COMPLETED") ? 'text-[#2CE71C]' : 'text-[#1cd9e7]'
                     
-                    }>{ item.status }</span>,
-                }
-            });
-            setTableRows(mappedDate);
+            //         }>{ item.status }</span>,
+            //     }
+            // });
+            // setTableRows(mappedDate);
             
         }).catch(err => {
             setLoading(false);
             const { message } = err.response.data;
-            notify('error', message);
+            // notify('error', message);
         });
         
     }
@@ -118,7 +118,7 @@ const DashboardComp = () => {
 
     return (
         <>
-            <div>    
+            {/* <div>     */}
                 {/* FIRST SECTION STARTS HERE */}
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8'>
                     <div>
@@ -142,7 +142,7 @@ const DashboardComp = () => {
                 <section>
 
                     <div>
-                        <h3 className='text-[#7F7F80] font-semibold my-12'>What we offer</h3>
+                        <h3 className='text-[#7F7F80] text-2xl font-semibold my-12'>What we offer</h3>
 
                         <div className='grid grid-cols-1 gap-4
                             sm:grid-cols-2  
@@ -196,24 +196,63 @@ const DashboardComp = () => {
 
                         </div>
 
-                        <section>
-                            <div className='my-8'>
-                                <h4 className='text-[#7F7F80] font-semibold'>Recent Transactions</h4>
-                            </div>
-
-                            <div>
-                                <AppTable 
-                                    tableHeaders={tableHeaders} 
-                                    tableRows={tableRows} 
-                                    showSearch={false} 
-                                />
-                            </div>
-                        </section>
-
                     </div>
                 </section>
                 {/* service card */}
-            </div>
+
+                <section>
+                    <div className='my-8'>
+                        <h4 className='text-[#7F7F80] text-2xl font-semibold'>Recent Transactions</h4>
+                    </div>
+
+                    {/* <AppTable 
+                        tableHeaders={tableHeaders} 
+                        tableRows={tableRows} 
+                        showSearch={false} 
+                    /> */}
+                    <div>
+                    <Card type='sm'>
+                        <div className='overflow-x-scroll p-4'>
+                            <table className='table table-auto w-full mx-auto border-spacing-y-4'>
+                                <thead className=''>
+                                    <tr className='border-spacing-y-4'>
+                                        <th className='table-caption text-left'>#</th>
+                                        <th>Date</th>
+                                        <th>Type</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {   orderRecords && orderRecords.length > 0 ?
+                                        orderRecords.map((item: Order, idx: number) => {
+                                            return <tr key={idx} className='my-4'>
+                                            <td className="text-left border-spacing-y-4">{ idx + 1 }</td>
+                                            <td className="text-left py-3">{ moment(item?.createdAt).format("DD-MM-YYYY") }</td>
+                                            <td className="text-left py-3">{ item?.orderType }</td>
+                                            <td className="text-left py-3"><span className='line-through'>N</span>{ item?.amountReceivable } </td>
+                                            <td className="text-left py-3">
+                                                <span className={
+                                                    (item.status === "COMPLETED") ? 'text-[#2CE71C]' : 'text-[#1cd9e7]'
+
+                                                }>{ item.status }</span>
+                                            </td>
+
+                                        </tr>
+                                        }) :
+
+                                        <tr>
+                                            <td colSpan={5} className="text-center py-3">No Recent Order available</td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </Card>
+                    </div>
+                </section>
+            {/* </div> */}
 
             <ToastContainer />
         </>

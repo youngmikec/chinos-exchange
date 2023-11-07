@@ -35,6 +35,7 @@ const AppTable = ({ tableHeaders, tableRows, showSearch, className }: Props) => 
     useEffect(() => {
         if(tableRows) setTableRecords(tableRows);
     }, [tableRows]);
+    
     return (
         <>
             <div className={`relative overflow-x-auto shadow-md sm:rounded-lg ${className ? className : ''}`}>

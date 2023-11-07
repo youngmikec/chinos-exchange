@@ -33,15 +33,16 @@ const DashboardCard = ({image, status, title, value, loading}: Props) => {
 
   return (
     <>
+        {/* w-10/12 sm:w-full md:w-full lg:w-full */}
         <div>
-            <div className='w-full py-4 px-6 text-white' style={style}>
-                <p className='text-white text-xl'>{ title }</p> 
+            <div className='w-full py-4 px-4 sm:px-4 md:px-6 lg:px-5 text-white' style={style}>
+                <p className='text-white text-lg sm:text-lg md:text-xl lg:text-xl'>{ title }</p> 
                 <div className='my-4'>
                     <div className='flex gap-6'>
-                        <span className='text-xl my-auto'>Total:</span> 
+                        <span className='text-sm sm:text-lg md:text-xl lg:text-xl my-auto'>Total:</span> 
                         {
                             !loading &&
-                            <span className='text-4xl'>{ value }</span>
+                            <span className='text-xl sm:text-xl md:text-4xl lg:text-4xl'>{ value }</span>
                         }
                         {
                             loading && <SpinningCircles fontSize={3} color='#ffffff' />

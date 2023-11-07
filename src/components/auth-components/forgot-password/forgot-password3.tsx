@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -23,6 +23,7 @@ const ForgotPassword3 = ({ changeStep }: Prop) => {
   // states
   const [loading, setLoading] = useState<boolean>(false);
   const [pDisplay, setPDisplay] = useState<boolean>(false);
+  const [isStrongPassword, setIsStrongPassword] = useState<boolean>(false);
   const [password, setPassword] = useState<{value: string, error: boolean, msg: string}>({value: '', error: false, msg: ''});
   const [confirmPassword, setConfirmPassword] = useState<{value: string, error: boolean, msg: string}>({value: '', error: false, msg: ''});
 
@@ -70,6 +71,22 @@ const ForgotPassword3 = ({ changeStep }: Prop) => {
       }
   };
 
+  const validatePassword = (password: string): boolean => {
+    const strongRegex = new RegExp(
+      "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
+    );
+    return strongRegex.test(password);
+  }
+
+  const handlePasswordChange = (e: any) => {
+    const newPassword = e.target.value;
+    setPassword({...password, value: newPassword});
+    const isValidPassword: boolean = validatePassword(newPassword);
+    if(isValidPassword){
+        setIsStrongPassword(isValidPassword);
+    }
+};
+
   const handleChangePassword = () => {
     if(inputCheck()){
           setLoading(true);
@@ -87,6 +104,16 @@ const ForgotPassword3 = ({ changeStep }: Prop) => {
           })
       }
   }
+
+
+  useEffect(() => {
+    if(password.value === '' || undefined || null){
+        setPassword({...password, error: true, msg: 'password field is empty'});
+    }else{
+        setPassword({...password, error: false})
+    }
+    setIsStrongPassword(validatePassword(password.value))
+  }, [password.value]);
 
   return (
     <>
@@ -115,7 +142,7 @@ const ForgotPassword3 = ({ changeStep }: Prop) => {
           <div className='text-center my-20 md:my-10 lg:my-10'>
               <h1 className='text-3xl font-bold mb-4'>New Password</h1>
               <p className='text-gray-400 my-4 text-sm'>Please input new password</p>
-          </div> 
+          </div>
 
           <div className='my-10'>
               <label htmlFor="password" className='font-bold text-gray-400'>PASSWORD</label>
@@ -124,7 +151,7 @@ const ForgotPassword3 = ({ changeStep }: Prop) => {
                       <input 
                           type={ pDisplay ? 'text' : 'password' } 
                           value={password.value}
-                          onChange={(e) => setPassword({...password, value: e.target.value})}
+                          onChange={handlePasswordChange}
                           className='w-full border-none px-4 py-2 text-gray-400 grow' 
                           placeholder='please enter your new password' 
                       />
@@ -138,6 +165,14 @@ const ForgotPassword3 = ({ changeStep }: Prop) => {
               {
                 password.error &&
                 <label htmlFor="password" className='text-red-400'>{password.msg}</label>
+              }
+              {   isStrongPassword ? (
+                    <p className='text-green-500'>Strong password!</p>
+                  ) : (
+                    <p className='text-red-400'>
+                      Password must contain at least 8 characters, including an uppercase letter, a number, and a special character.
+                    </p>
+                  )
               }
           </div>
 
