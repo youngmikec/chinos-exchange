@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { AxiosResponse } from 'axios';
 
 
-import { ApiResponse } from '../../../common';
+import { Airtime, ApiResponse } from '../../../common';
 import { CREATE_ORDER } from '../../../services';
 import { RootState } from '../../../store';
 import { APPEND_TO_AIRTIME_ORDER } from '../../../store/orders';
@@ -14,9 +14,10 @@ import { APPEND_TO_AIRTIME_ORDER } from '../../../store/orders';
 type Props = {
     changeStep: (data: number) => any,
     changeStatus: (data: string) => any,
+    product: Airtime | null,
 }
 
-const AirtimeStepThree = ({ changeStep, changeStatus }: Props) => {
+const AirtimeStepThree = ({ changeStep, changeStatus, product }: Props) => {
     const dispatch = useDispatch();
     const airtimeOrderState = useSelector((state: RootState) => state.AirtimeOrderSlice.value);
 
@@ -96,6 +97,12 @@ const AirtimeStepThree = ({ changeStep, changeStatus }: Props) => {
     return (
         <>
             <div className='w-full'>
+                {
+                    product &&
+                    <div className='my-4'>
+                        <p className='font-semibold'>Kindly send {airtimeOrderState?.amount} airtime to {product?.txnNetwork} network {product?.txnNetworkNumber}</p>
+                    </div>
+                }
                 <div className='my-4'>
                     <label htmlFor="accountNumber" className='text-[#7F7F80] text-sm'>Kindly upload a proof your transaction</label>
                     <div className='border-2 border-gray-100 rounded-md mt-2 h-32 w-full flex justify-center'>

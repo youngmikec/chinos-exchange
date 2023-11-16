@@ -119,7 +119,7 @@ const AirtimeComp = () => {
                         }
                         {
                             step === 3 && 
-                            <AirtimeStepThree changeStep={setStep} changeStatus={setStatus} />
+                            <AirtimeStepThree changeStep={setStep} changeStatus={setStatus} product={selectedAirtime} />
                         }
                         {
                             step === 4 && 

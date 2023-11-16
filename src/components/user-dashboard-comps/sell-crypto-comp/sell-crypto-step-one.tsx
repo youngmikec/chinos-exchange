@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { CryptoCurrency } from '../../../common';
@@ -21,11 +21,16 @@ const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
 
     const dispatch = useDispatch();
 
-    const getNetworks = (id: string) => {
+    const getNetworks = (id: string): number => {
         const currentCrypto: CryptoCurrency | undefined = cryptos?.find((item) => item.id === id);
-        setSellingRate(currentCrypto?.sellingRate);
-        setCryptoName(currentCrypto?.shortName);
-        setNetworks(currentCrypto?.networks);
+        if(currentCrypto){
+            setSellingRate(currentCrypto?.sellingRate);
+            setCryptoName(currentCrypto?.shortName);
+            setNetworks(currentCrypto?.networks);
+            return currentCrypto?.sellingRate
+        }else{
+            return 0
+        }
     }
 
     const inputCheck = (): boolean => {
@@ -75,22 +80,20 @@ const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
         setLoading(false);
     }
 
-    const calculateReceivable = (id: string) => {
-        const crypto: CryptoCurrency | any = cryptos && cryptos.find(item => item.id === id);
-        const total: number = !Number.isNaN(amount.value * crypto.sellingRate) ? (amount.value * crypto.sellingRate) : 0;
-        setReceivable({value: total, error: false});
+    const useCalculateReceivable = (id: string, amount: number) => {
+        const result = useMemo(() => {
+            const sellingRate: number = getNetworks(id);
+            const total: number = !Number.isNaN(amount * sellingRate) ? (amount * sellingRate) : 0;
+            return total;
+        }, [id, amount]);
+    
+        useEffect(() => {
+            setReceivable({value: result, error: false});
+        }, [result]);
     }
 
-
-    useEffect(() => {
-        if(selectedCrypto.value) {
-            calculateReceivable(selectedCrypto.value);
-        }
-    }, [selectedCrypto.value, amount.value]);
-
+    useCalculateReceivable(selectedCrypto.value, amount.value);
     
- 
-
     return (
         <>
             <div className='w-full'>
@@ -103,7 +106,6 @@ const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
                             className='w-full px-4 py-2'
                             onChange={(e) => {
                                 setSelectedCrypto({...selectedCrypto, value: e.target.value});
-                                getNetworks(e.target.value)
                             }}
                         >
                             <option value="">select crypto</option>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,6 +17,7 @@ const AirtimeStepOne = ({ changeStep, product }: Props) => {
 
     const [rate, setRate] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(false);
+    const [networkInfo, setNetworkInfo] = useState<string>('');
     const [amount, setAmount] = useState<{value: number, error: boolean}>({value: 0, error: false});
     const [receivable, setReceivable] = useState<{value: number, error: boolean}>({value: 0, error: false});
     const [percentage, setPercentage] = useState<{value: number, error: boolean}>({value: 0, error: false});
@@ -84,21 +85,35 @@ const AirtimeStepOne = ({ changeStep, product }: Props) => {
         }
     }
 
+    const useReceivableCalculator = (product: Airtime | null, percentage: any, amount: any) => {      
+        useEffect(() => {
+            if (receivable) {
+                setReceivable(receivable);
+            }
+        }, [receivable]);
+        
+        useMemo(() => {
+            if (product) {
+                const discount = (percentage.value / 100) * amount.value;
+                const total = amount.value - discount;
+                setReceivable({ ...percentage, value: total });
+            }
+        }, [product, percentage.value, amount.value]);
+        
+        return receivable;
+    };
+
+    const result: any = useReceivableCalculator(product, percentage, amount)
+    
+
     useEffect(() => {
         if(product) {
             setRate(product.rate);
             setPercentage({...percentage, value: product.rate});
+            setNetworkInfo(`${product?.txnNetwork} ${product?.txnNetworkNumber}`)
             dispatch(APPEND_TO_AIRTIME_ORDER({ airtime: product }))
         }
     }, [product]);
-    
-    useEffect(() => {
-        if(product) {
-            const discount: number = (percentage.value /100) * amount.value; 
-            const total: number = amount.value - discount;
-            setReceivable({...percentage, value: total});
-        }
-    }, [percentage.value, amount.value]);
     
     return (
         <>
@@ -130,6 +145,21 @@ const AirtimeStepOne = ({ changeStep, product }: Props) => {
                         />
                     </div>
                 </div>
+                {
+                    product &&
+                    <div className='my-4'>
+                        <label htmlFor="percentage" className='text-[#7F7F80] text-sm'>Network to Send To</label>
+                        <div className='border-2 border-gray-100 rounded-md mt-2'>
+                            <input 
+                                type="text" 
+                                name='networkInfo' 
+                                disabled={true} 
+                                value={networkInfo}
+                                className='w-full px-4 py-2'
+                            />
+                        </div>
+                    </div>
+                }
                 <div className='my-4'>
                     <label htmlFor="percentage" className='text-[#7F7F80] text-sm'>Percentage</label>
                     <div className='border-2 border-gray-100 rounded-md mt-2'>

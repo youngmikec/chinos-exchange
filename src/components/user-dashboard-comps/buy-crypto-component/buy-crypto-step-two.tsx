@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { BsWhatsapp } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -42,10 +42,6 @@ const BuyCryptoStepTwo = ({ changeStep }: Props) => {
         return isValid;
     }
 
-    const calcReceivable = (data: number): number => {
-        const num = data / rate;
-        return parseFloat(num.toFixed(2));
-    }
 
     const handleProcceede = () => {
         if(inputCheck()){
@@ -58,14 +54,22 @@ const BuyCryptoStepTwo = ({ changeStep }: Props) => {
         }
     }
 
+    const useCalculateReceivable = (rate: number, amount: number) => {
+        const receivable: number = useMemo(() => {
+            if(rate && amount){
+                const num = amount / rate;
+                return parseFloat(num.toFixed(2));
+            }else{
+                return 0;
+            }
+        }, [rate, amount]);
 
-    useEffect(() => {
-        if(rate) {
-            const total: number = calcReceivable(amount.value);
-            setAmountReceivable({value: total, error: false});
-        }
-    }, [rate, amount.value]);
- 
+        useEffect(() => {
+            setAmountReceivable({value: receivable, error: false});
+        }, [receivable]);
+    }
+
+    useCalculateReceivable(rate, amount.value);
 
     useEffect(() => {
         buyCryptoState?.rate && setRate(buyCryptoState.rate);
@@ -86,7 +90,6 @@ const BuyCryptoStepTwo = ({ changeStep }: Props) => {
                         value={amount.value}
                         onChange={(e) => {
                             setAmount({...amount, value: parseInt(e.target.value)})
-                            setAmountReceivable({...amountReceivable, value: calcReceivable(parseInt(e.target.value))})
                         }}
                     />
                 </div>

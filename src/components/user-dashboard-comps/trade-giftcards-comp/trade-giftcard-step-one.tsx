@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GiftCard } from '../../../common/giftcard';
 import { RootState } from '../../../store';
@@ -16,6 +16,7 @@ const TradeGiftcardStepOne = ({ changeStep, giftcards }: Props) => {
     const [receivable, setReceivable] = useState<{value: number, error: boolean}>({value: 0, error: false});
     const [cardType, setCardType] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [giftcard, setGiftcard] = useState<{value: string, error: boolean}>({value: '', error: false});
+    const [rate, setRate] = useState<number>(0);
 
     const inputCheck = (): boolean => {
         let isValid: boolean = true;
@@ -60,18 +61,31 @@ const TradeGiftcardStepOne = ({ changeStep, giftcards }: Props) => {
         }
     }
 
-    const calculateReceivable = (id: string) => {
-        const card: GiftCard | any = giftcards && giftcards.find(item => item.id === id);
-        const total: number = !Number.isNaN(amount.value * card.rate) ? (amount.value * card.rate) : 0;
-        setReceivable({value: total, error: false});
+    const calculateReceivable = (id: string, amount: number): number => {
+        const card: GiftCard | undefined = giftcards && giftcards.find(item => item.id === id);
+        if(card){
+            const rate: number = card.rate;
+            setRate(rate);
+            const total: number = !Number.isNaN(amount * rate) ? (amount * rate) : 0;
+            return total;
+        }else {
+            return 0
+        }
     }
 
+    const useCalculateReceivable = (id: string, amount: number) => {
+        const result = useMemo(() => {
+            const total: number =  calculateReceivable(id, amount);
+            return total;
+        }, [id, amount])
 
-    useEffect(() => {
-        if(giftcard.value) {
-            calculateReceivable(giftcard.value);
-        }
-    }, [giftcard.value, amount.value]);
+        useEffect(() => {
+            setReceivable({value: result, error: false});
+        }, [result])
+    }
+
+    useCalculateReceivable(giftcard.value, amount.value)
+
  
     return (
         <>
@@ -103,7 +117,6 @@ const TradeGiftcardStepOne = ({ changeStep, giftcards }: Props) => {
                             className={`w-full px-4 py-2 ${giftcard.error ? 'border-2 border-red' : ""}`}
                             onChange={(e) => {
                                 setGiftcard({...giftcard, value: e.target.value})
-                                calculateReceivable(e.target.value)
                             }}
                         >
                             <option value="">Choose Giftcard</option>
@@ -130,14 +143,13 @@ const TradeGiftcardStepOne = ({ changeStep, giftcards }: Props) => {
                             value={amount.value}
                             onChange={(e) => {
                                 setAmount({...amount, value: parseInt(e.target.value)})
-                                calculateReceivable(giftcard.value);
                             }}
                         />
                     </div>
                 </div>
 
                 <div className='my-4'>
-                    <label htmlFor="amountReceivalble" className='text-[#7F7F80] text-sm'>Receiving Amount in NGN</label>
+                    <label htmlFor="amountReceivalble" className='text-[#7F7F80] text-sm'>Receiving Amount in NGN at {rate}/$</label>
                     <div className='border-2 border-gray-100 rounded-md mt-2'>
                         <input 
                             type="text"
