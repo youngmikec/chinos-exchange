@@ -7,8 +7,9 @@ import './style.css';
 
 //icons and images
 import coin from '../../assets/images/hompage_coin.png';
-import phoneCoins from '../../assets/images/phone-coin.svg'
-import giftcards from '../../assets/images/giftcards.svg'
+import userPhone from '../../assets/images/user-phone.png';
+import userDashboard from '../../assets/images/user-dashboard.png';
+import airtimePhone from '../../assets/images/hand-with-phone.png';
 import phone from '../../assets/images/phone.png'
 import icon from '../../assets/images/customer-satisfaction.png'
 import networks from '../../assets/images/networks.svg';
@@ -89,12 +90,16 @@ const HomeComp = () => {
             </HeroSection>
 
             <div className="overflow-hidden">
-                <div className="text-center mx-auto my-16">
-                    <h3 className='text-gray-400 font-extrabold text-2xl'>Our Current Market Rate</h3>
-                    <p className='text-gray-400 font-light text-sm mx-auto'>For our most trading cryptocurrency</p>
+                <div className="text-center mx-auto w-3/12 my-16">
+                    <h3 className='text-gray-500 font-extrabold text-3xl'>Your Gateway to Crypto Wealth</h3>
+                    <p className='text-gray-500 font-light text-sm mx-auto'>
+                        Dive into a seamless world of financial innovation with our one-stop crypto platform. 
+                        Buy and sell cryptocurrencies effortlessly, exchange giftcards for instant cash, and convert unused airtime into valuable currency. 
+                        At Chinos Exchange, we're redefining convenience in the digital economy, making every transaction a gateway to financial empowerment.
+                    </p>
                 </div>
 
-                <div className='my-8 flex justify-center w:11/12'>
+                {/* <div className='my-8 flex justify-center w:11/12'>
                     <div>
                         <AppTable 
                             tableHeaders={tableHeaders} 
@@ -103,65 +108,64 @@ const HomeComp = () => {
                             className='w-[350px] sm:w-[450px] md:w-[600px] lg:w-[800px]'
                         />
                     </div>
-                </div>
+                </div> */}
 
 
-                <div className="bg-ellipse">
-                    <div className="mx-auto w-10/12 bg-white rounded-md shadow-lg my-6 py-6 border-t-2 border-[#BA68C8]">
+                <div className="">
+                    <div className="mx-auto w-10/12 phone-vector-bg rounded-md shadow-lg my-6 py-6 border-t-2 border-[#FF3E1D]">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-                            <div className="px-0 md:px-3 lg:px-3 w-11/12 md:w-full lg:w-full">
-                                <img src={phoneCoins} alt="phoneCoins" />
-                            </div>
-
-                            <div className='text-center md:text-left lg:text-left py-4 mt-10 md:my-auto lg:my-auto'>
-                                <h1 className='text-4xl font-semibold text-[#121212]'>Buy and Sell your <br /> Cryptocurrency</h1>
+                            <div className='mx-auto w-10/12 text-center md:text-left lg:text-left py-4 mt-10 md:my-auto lg:my-auto'>
+                                <h1 className='text-5xl font-bold text-gray-700'>Buy and Sell your <br /> Cryptocurrency</h1>
                                 <p className='my-4 font-light text-[#7F7F80E5]'>Send us crypto and recieve cash at with instant <br />payment via your Bank account</p>
-                                <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'> 
+                                <p className='text-[#8652A4] font-[Poppins] font-bold rounded-md my-4 py-4 capitalize'> 
                                     <Link to="/sign-in">let's trade</Link>
-                                </button>
+                                </p>
+                            </div>
+
+                            <div className="px-0 md:px-3 lg:px-3 w-11/12 md:w-full lg:w-full">
+                                <img src={userPhone} alt="phoneCoins" className='mb-0' />
                             </div>
                         </div>
                     </div>
 
-                    <div className="mx-auto w-10/12 bg-white rounded-md shadow-lg my-6 py-6 border-t-2 border-[#FE0808]">
+                    <div className="mx-auto w-10/12 giftcard-vector-bg rounded-md shadow-lg my-6 py-6 border-t-2 border-[#3FAFFF]">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                             <div className="px-0 md:px-3 lg:px-3 w-11/12 md:w-full lg:w-full">
-                                <img src={giftcards} alt="giftcards" />
+                                <img src={userDashboard} alt="giftcards" />
                             </div>
 
                             <div className='text-center md:text-left lg:text-left py-4 mt-10 md:my-auto lg:my-auto'>
-                                <h1 className='text-4xl font-semibold text-[#121212]'>Redeem your Gift <br/> card with ease </h1>
+                                <h1 className='text-5xl font-bold text-gray-700'>Redeem your Gift <br/> card with ease </h1>
                                 <p className='my-4 font-light text-[#7F7F80E5]'>Unlock the World of Savings: Exchange Giftcards from <br /> 20+ Countries.</p>
-                                <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'> 
+                                <p className='text-[#8652A4] font-[Poppins] font-bold rounded-md my-4 py-4 capitalize'> 
                                     <Link to="/sign-in">let's trade</Link>
-                                </button>
+                                </p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="mx-auto w-10/12 bg-white rounded-md shadow-lg my-6 py-6 border-t-2 border-[#1B24FA]">
+                    <div className="mx-auto w-10/12 airtime-vector-bg rounded-md shadow-lg my-6 py-6 border-t-2 border-[#8652A4]">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                             <div className="px-0 md:px-3 lg:px-3 w-11/12 md:w-full lg:w-full">
-                                <img src={networks} alt="networks" />
+                                <img src={airtimePhone} alt="networks" />
                             </div>
 
                             <div className='text-center md:text-left lg:text-left py-4 mt-10 md:my-auto lg:my-auto'>
-                                <h1 className='text-4xl font-semibold text-[#121212]'>Convert Airtime <br/> to Cash</h1>
+                                <h1 className='text-5xl font-bold text-gray-700'>Convert Airtime <br/> to Cash</h1>
                                 <p className='my-4 font-light text-[#7F7F80E5]'>Don’t worry we understand the frustration <br />of excess recharge.  We make it easy for you to <br /> convert airtime on your sim to cash</p>
-                                <button className='bg-[#8652A4] text-white font-bold rounded-md my-4 py-4 px-16 capitalize'> 
+                                <p className='text-[#8652A4] font-[Poppins] font-bold rounded-md my-4 py-4 capitalize'> 
                                     <Link to="/sign-in">let's trade</Link>
-                                </button>
+                                </p>
                             </div>
                         </div>
                     </div>
-
 
                 </div>
 
 
                 <div className='flex flex-col w-screen mt-16'>
                     <div className='text-center'>
-                        <h2 className=' font-bold text-black text-xl mb-2 capitalize text-[#7F7F80] '>what Makes Us Different</h2>
+                        <h2 className='text-gray-700 font-bold text-xl mb-2 capitalize'>what Makes Us Different</h2>
                         <p className='text-sm text-gray-600 font-light'>There'are million reasons to use chinos Exchange platform </p>
                     </div>
 

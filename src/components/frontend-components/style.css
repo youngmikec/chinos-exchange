@@ -62,6 +62,24 @@
   height: inherit;
 }
 
+.phone-vector-bg {
+  border-radius: 5px;
+  background: linear-gradient(178deg, #FFF -10.98%, rgba(240, 168, 168, 0.00) 97.98%);
+  box-shadow: 0px 4px 34px 0px rgba(0, 0, 0, 0.05);
+}
+
+.giftcard-vector-bg {
+  border-radius: 5px;
+  background: linear-gradient(181deg, #D9EFFF 40.86%, rgba(255, 255, 255, 0.00) 99.9%);
+  box-shadow: 0px 4px 34px 0px rgba(0, 0, 0, 0.08);
+}
+
+.airtime-vector-bg {
+  border-radius: 5px;
+  background: linear-gradient(172deg, rgba(134, 82, 164, 0.00) 12.95%, rgba(134, 82, 164, 0.60) 143.44%);
+  box-shadow: 0px 4px 34px 0px rgba(0, 0, 0, 0.08);
+}
+
 .vector-bg1 {
   background-image: url("../../assets/icons/vector1.png");
   background-repeat: no-repeat;
