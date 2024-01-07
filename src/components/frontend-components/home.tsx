@@ -90,12 +90,12 @@ const HomeComp = () => {
             </HeroSection>
 
             <div className="overflow-hidden">
-                <div className="text-center mx-auto w-3/12 my-16">
+                <div className="text-center mx-auto w-5/12 my-16">
                     <h3 className='text-gray-500 font-extrabold text-3xl'>Your Gateway to Crypto Wealth</h3>
-                    <p className='text-gray-500 font-light text-sm mx-auto'>
+                    <p className='text-gray-500 text-lg mx-auto'>
                         Dive into a seamless world of financial innovation with our one-stop crypto platform. 
                         Buy and sell cryptocurrencies effortlessly, exchange giftcards for instant cash, and convert unused airtime into valuable currency. 
-                        At Chinos Exchange, we're redefining convenience in the digital economy, making every transaction a gateway to financial empowerment.
+                        At <span className="text-[#8652A4] font-bold">Chinos Exchange</span>, we're redefining convenience in the digital economy, making every transaction a gateway to financial empowerment.
                     </p>
                 </div>
 
@@ -112,23 +112,23 @@ const HomeComp = () => {
 
 
                 <div className="">
-                    <div className="mx-auto w-10/12 phone-vector-bg rounded-md shadow-lg my-6 py-6 border-t-2 border-[#FF3E1D]">
+                    <div className="mx-auto w-10/12 phone-vector-bg rounded-md shadow-lg my-8 pt-10 border-t-2 border-[#FF3E1D]">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                             <div className='mx-auto w-10/12 text-center md:text-left lg:text-left py-4 mt-10 md:my-auto lg:my-auto'>
                                 <h1 className='text-5xl font-bold text-gray-700'>Buy and Sell your <br /> Cryptocurrency</h1>
-                                <p className='my-4 font-light text-[#7F7F80E5]'>Send us crypto and recieve cash at with instant <br />payment via your Bank account</p>
+                                <p className='my-4 font-light text-xl text-[#7F7F80E5]'>Send us crypto and recieve cash at with instant <br />payment via your Bank account</p>
                                 <p className='text-[#8652A4] font-[Poppins] font-bold rounded-md my-4 py-4 capitalize'> 
                                     <Link to="/sign-in">let's trade</Link>
                                 </p>
                             </div>
 
-                            <div className="px-0 md:px-3 lg:px-3 w-11/12 md:w-full lg:w-full">
+                            <div className="px-0 md:px-3 lg:px-3 w-11/12 md:w-full lg:w-full ">
                                 <img src={userPhone} alt="phoneCoins" className='mb-0' />
                             </div>
                         </div>
                     </div>
 
-                    <div className="mx-auto w-10/12 giftcard-vector-bg rounded-md shadow-lg my-6 py-6 border-t-2 border-[#3FAFFF]">
+                    <div className="mx-auto w-10/12 giftcard-vector-bg rounded-md shadow-lg my-6 pt-10 border-t-2 border-[#3FAFFF]">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                             <div className="px-0 md:px-3 lg:px-3 w-11/12 md:w-full lg:w-full">
                                 <img src={userDashboard} alt="giftcards" />
@@ -136,7 +136,7 @@ const HomeComp = () => {
 
                             <div className='text-center md:text-left lg:text-left py-4 mt-10 md:my-auto lg:my-auto'>
                                 <h1 className='text-5xl font-bold text-gray-700'>Redeem your Gift <br/> card with ease </h1>
-                                <p className='my-4 font-light text-[#7F7F80E5]'>Unlock the World of Savings: Exchange Giftcards from <br /> 20+ Countries.</p>
+                                <p className='my-4 font-light text-xl text-[#7F7F80E5]'>Unlock the World of Savings: Exchange Giftcards from <br /> 20+ Countries.</p>
                                 <p className='text-[#8652A4] font-[Poppins] font-bold rounded-md my-4 py-4 capitalize'> 
                                     <Link to="/sign-in">let's trade</Link>
                                 </p>
@@ -144,7 +144,7 @@ const HomeComp = () => {
                         </div>
                     </div>
 
-                    <div className="mx-auto w-10/12 airtime-vector-bg rounded-md shadow-lg my-6 py-6 border-t-2 border-[#8652A4]">
+                    <div className="mx-auto w-10/12 airtime-vector-bg rounded-md shadow-lg my-6 pt-10 border-t-2 border-[#8652A4]">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                             <div className="px-0 md:px-3 lg:px-3 w-11/12 md:w-full lg:w-full">
                                 <img src={airtimePhone} alt="networks" />
@@ -152,7 +152,7 @@ const HomeComp = () => {
 
                             <div className='text-center md:text-left lg:text-left py-4 mt-10 md:my-auto lg:my-auto'>
                                 <h1 className='text-5xl font-bold text-gray-700'>Convert Airtime <br/> to Cash</h1>
-                                <p className='my-4 font-light text-[#7F7F80E5]'>Don’t worry we understand the frustration <br />of excess recharge.  We make it easy for you to <br /> convert airtime on your sim to cash</p>
+                                <p className='my-4 font-light text-xl text-[#7F7F80E5]'>Don’t worry we understand the frustration <br />of excess recharge.  We make it easy for you to <br /> convert airtime on your sim to cash</p>
                                 <p className='text-[#8652A4] font-[Poppins] font-bold rounded-md my-4 py-4 capitalize'> 
                                     <Link to="/sign-in">let's trade</Link>
                                 </p>
