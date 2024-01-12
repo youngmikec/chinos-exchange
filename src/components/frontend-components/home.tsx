@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FaArrowRight } from "react-icons/fa";
+
 
 
 // style
@@ -78,7 +80,7 @@ const HomeComp = () => {
 
                         <div className='my-8'>
                             <button className='rounded-lg mt-4 mb-8 text-white bg-[#FFAB2E] py-4 px-7 hover:bg-white hover:text-[#FFAB2E]'>
-                                <Link to="/sign-in">Let's Trade</Link>
+                                <Link to="/sign-in">Let's Trade </Link>
                             </button>
                         </div>
                         <img src={coin} alt="" className='hidden sm:hidden md:block lg:block absolute right-0 bottom-0 '  />
@@ -116,9 +118,9 @@ const HomeComp = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                             <div className='mx-auto w-10/12 text-center md:text-left lg:text-left py-4 mt-10 md:my-auto lg:my-auto'>
                                 <h1 className='text-3xl sm:text-3xl md:text-5xl lg:text-5xl font-bold text-gray-700'>Buy and Sell your <br /> Cryptocurrency</h1>
-                                <p className='my-4 font-light text-xl text-[#7F7F80E5]'>Send us crypto and recieve cash at with instant <br />payment via your Bank account</p>
+                                <p className='my-4 font-light text-xl text-[#7F7F80E5]'>Send us crypto and recieve cash with instant <br />payment via your Bank account</p>
                                 <p className='text-[#8652A4] font-[Poppins] font-bold rounded-md my-4 py-4 capitalize'> 
-                                    <Link to="/sign-in">let's trade</Link>
+                                    <Link to="/sign-in" className="flex justify-start gap-4 hover:gap-6 ease-in ease-out delay-100 md:text-xl lg:text-xl font-semibold">Let's trade <FaArrowRight className="my-auto" /></Link>
                                 </p>
                             </div>
 
@@ -134,7 +136,7 @@ const HomeComp = () => {
                                 <h1 className='text-3xl sm:text-3xl md:text-5xl lg:text-5xl font-bold text-gray-700'>Redeem your Gift <br/> card with ease </h1>
                                 <p className='my-4 font-light text-xl text-[#7F7F80E5]'>Unlock the World of Savings: Exchange Giftcards from <br /> 20+ Countries.</p>
                                 <p className='text-[#8652A4] font-[Poppins] font-bold rounded-md my-4 py-4 capitalize'> 
-                                    <Link to="/sign-in">let's trade</Link>
+                                    <Link to="/sign-in" className="flex justify-start gap-4 hover:gap-6 ease-in ease-out delay-100 md:text-xl lg:text-xl font-semibold">Let's trade <FaArrowRight className="my-auto" /></Link>
                                 </p>
                             </div>
 
@@ -150,7 +152,7 @@ const HomeComp = () => {
                                 <h1 className='text-3xl sm:text-3xl md:text-5xl lg:text-5xl font-bold text-gray-700'>Convert Airtime <br/> to Cash</h1>
                                 <p className='my-4 font-light text-xl text-[#7F7F80E5]'>Don’t worry we understand the frustration <br />of excess recharge.  We make it easy for you to <br /> convert airtime on your sim to cash</p>
                                 <p className='text-[#8652A4] font-[Poppins] font-bold rounded-md my-4 py-4 capitalize'> 
-                                    <Link to="/sign-in">let's trade</Link>
+                                    <Link to="/sign-in" className="flex justify-start gap-4 hover:gap-6 ease-in ease-out delay-100 md:text-xl lg:text-xl font-semibold">Let's trade  <FaArrowRight className="my-auto" /></Link>
                                 </p>
                             </div>
 
