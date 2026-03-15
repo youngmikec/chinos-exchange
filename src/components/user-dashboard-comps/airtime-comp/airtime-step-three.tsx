@@ -108,7 +108,7 @@ const AirtimeStepThree = ({ changeStep, changeStatus, product }: Props) => {
                     <div className='border-2 border-gray-100 rounded-md mt-2 h-32 w-full flex justify-center'>
                         {
                             imageString ? 
-                            <img src={imageString} alt="uploaded image" /> :
+                            <img src={imageString} alt="uploaded" /> :
                             <button className='text-center text-[#7F7F80]' onClick={() => openFile()}>
                                 + <br /> Choose file
                             </button>

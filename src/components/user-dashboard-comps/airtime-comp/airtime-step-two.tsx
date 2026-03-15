@@ -18,7 +18,6 @@ type Props = {
 const AirtimeStepTwo = ({ changeStep }: Props) => {
     const dispatch = useDispatch();
 
-    const [loading, setLoading] = useState<boolean>(false);
     const [verifying, setVerifying] = useState<boolean>(false);
     const [banks, setBanks] = useState<Bank[]>([]);
     const [selectedBank, setSelectedBank] = useState<Bank | null>(null);
@@ -64,7 +63,6 @@ const AirtimeStepTwo = ({ changeStep }: Props) => {
     }
 
     const handleProcceede = () => {
-        setLoading(true);
         if(inputCheck()){
             const data = { 
                 bankName: bankName.value, 
@@ -85,16 +83,12 @@ const AirtimeStepTwo = ({ changeStep }: Props) => {
 
     const retrieveBanks = () => {
         const queryString: string = `?sort=name`;
-        setLoading(true);
         RETREIVE_BANKS(queryString).then((res: AxiosResponse<ApiResponse>) => {
-            const { message, success, payload } = res.data;
+            const { success, payload } = res.data;
             if(success){
-                setLoading(false);
                 setBanks(payload);
-                console.log('message', message);
             }
         }).catch((err: any) => {
-            setLoading(false);
             console.log(err);
         })
     }
@@ -105,7 +99,7 @@ const AirtimeStepTwo = ({ changeStep }: Props) => {
             VERIFY_ACCOUNT_NUMBER(bank.bankCode, accountNumber).then(res => {
                 setVerifying(false);
                 const { data } = res;
-                const { status, message } = data;
+                const { status } = data;
                 if(status){
                     setAccountName({...accountName, value: data.account_name})
                     notify('success', data.account_name);

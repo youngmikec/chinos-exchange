@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { GiftCard } from '../../../common/giftcard';
-import { RootState } from '../../../store';
 import { APPEND_TO_BUY_GIFTCARD_ORDER } from '../../../store/orders';
 
 type Props = {

@@ -22,7 +22,7 @@ const StepHeader = ({ title, info, steps, step, changeStep }: Props) => {
             ((idx + 1) === step) ? item.isActive = true : item.isActive = false;
         })
         setStepArray(steps);
-    }, [step]);
+    }, [step, steps]);
 
     return (
         <>

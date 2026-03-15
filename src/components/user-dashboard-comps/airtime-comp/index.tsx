@@ -19,7 +19,6 @@ import { APPEND_TO_AIRTIME_ORDER } from '../../../store/orders';
 const AirtimeComp = () => {
     const dispatch = useDispatch();
     // states
-    const [loading, setLoading] = useState<boolean>(false);
     const [airtimeRecords, setAirtimeRecords] = useState<Airtime[]>([])
     const [step, setStep] = useState<number>(1);
     const [status, setStatus ] = useState<string>('error')
@@ -50,14 +49,11 @@ const AirtimeComp = () => {
 
 
     const retreiveAirtimeRecords = () => {
-        setLoading(true);
         const queryString: string = `?sort=name&status=ACTIVE`;
         RETREIVE_AIRTIME(queryString).then((res: AxiosResponse<ApiResponse>) => {
-            setLoading(false);
             const { payload } = res.data;
             setAirtimeRecords(payload);
         }).catch(err => {
-            setLoading(false);
             console.log(err);
         })
     }

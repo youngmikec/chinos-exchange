@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from "react-icons/fa";
 
@@ -14,58 +13,53 @@ import userDashboard from '../../assets/images/user-dashboard.png';
 import airtimePhone from '../../assets/images/hand-with-phone.png';
 import phone from '../../assets/images/phone.png'
 import icon from '../../assets/images/customer-satisfaction.png'
-import networks from '../../assets/images/networks.svg';
 // components
 import HeroSection from '../../shared/users-frontend/hero-section';
 import JoinUs from '../../shared/users-frontend/join-us';
 import Footer from '../../shared/users-frontend/footer';
-import { AxiosResponse } from 'axios';
-import { ApiResponse, CryptoCurrency } from '../../common';
-import { RETREIVE_CRYPTO } from '../../services';
 import ReviewComp from './review';
 import WhatsappButton from '../whatsapp-btn';
-import AppTable, { TableHeader } from '../../shared/app-table';
 
 const HomeComp = () => {
-    const [cryptos, setCryptos] = useState<CryptoCurrency[]>([]);
-    const [tableRows, setTableRows] = useState<any[]>([]);
+    // const [cryptos, setCryptos] = useState<CryptoCurrency[]>([]);
+    // const [tableRows, setTableRows] = useState<any[]>([]);
 
-    const tableHeaders: TableHeader[] = [
-        { key: 'sn', value: 'S/N' },
-        { key: 'image', value: 'Image' },
-        { key: 'name', value: 'Name' },
-        { key: 'shortName', value: 'Short Name' },
-        { key: 'rate', value: 'Buy Rate' },
-        { key: 'sellingRate', value: 'Selling Rate' },
-    ];
+    // const tableHeaders: TableHeader[] = [
+    //     { key: 'sn', value: 'S/N' },
+    //     { key: 'image', value: 'Image' },
+    //     { key: 'name', value: 'Name' },
+    //     { key: 'shortName', value: 'Short Name' },
+    //     { key: 'rate', value: 'Buy Rate' },
+    //     { key: 'sellingRate', value: 'Selling Rate' },
+    // ];
 
-    const retrieveCryptos = () => {
-        const query: string = `?sort=-name&status=ACTIVE`;
-        RETREIVE_CRYPTO(query)
-        .then((res: AxiosResponse<ApiResponse>) => {
-            const { message, payload } = res.data;
-            setCryptos(payload);
-            const mappedDate = payload.map((item: CryptoCurrency, idx: number) => {
-                return {
-                    sn: idx + 1,
-                    image: <img src={item?.cryptoImage } width="25px" height="25px" alt="crypto" />,
-                    name: item?.name,
-                    shortName: item?.shortName,
-                    rate: item?.rate,
-                    sellingRate: item?.sellingRate,
-                }
-            });
-            setTableRows(mappedDate);
-        })
-        .catch((err: any) => {
-            const { message } = err.response.data;
-            console.log('error', message);
-        });
-    };
+    // const retrieveCryptos = () => {
+    //     const query: string = `?sort=-name&status=ACTIVE`;
+    //     RETREIVE_CRYPTO(query)
+    //     .then((res: AxiosResponse<ApiResponse>) => {
+    //         const { payload } = res.data;
+    //         setCryptos(payload);
+    //         const mappedDate = payload.map((item: CryptoCurrency, idx: number) => {
+    //             return {
+    //                 sn: idx + 1,
+    //                 image: <img src={item?.cryptoImage } width="25px" height="25px" alt="crypto" />,
+    //                 name: item?.name,
+    //                 shortName: item?.shortName,
+    //                 rate: item?.rate,
+    //                 sellingRate: item?.sellingRate,
+    //             }
+    //         });
+    //         setTableRows(mappedDate);
+    //     })
+    //     .catch((err: any) => {
+    //         const { message } = err.response.data;
+    //         console.log('error', message);
+    //     });
+    // };
 
-    useEffect(() => {
-        retrieveCryptos();
-    }, []);
+    // useEffect(() => {
+    //     retrieveCryptos();
+    // }, []);
 
     return (
         <>

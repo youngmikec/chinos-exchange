@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { BsWhatsapp } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 
@@ -14,7 +13,6 @@ type Props = {
 }
 
 const BuyCryptoStepOne = ({ changeStep, cryptos }: Props) => {
-    const [loading, setLoading] = useState<boolean>(false);
     const [cryptoName, setCryptoName] = useState<string | undefined>('');
     const [selectedCrypto, setSelectedCrypto] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [selectedNetwork, setSelectedNetwork] = useState<{value: string, error: boolean}>({value: '', error: false});
@@ -63,7 +61,6 @@ const BuyCryptoStepOne = ({ changeStep, cryptos }: Props) => {
     }
 
     const handleProcceede = () => {
-        setLoading(true);
         if(inputCheck()){
             const data = {
                 cryptocurrency: selectedCrypto.value, 
@@ -77,7 +74,6 @@ const BuyCryptoStepOne = ({ changeStep, cryptos }: Props) => {
             dispatch(APPEND_TO_BUY_CRYPTO_ORDER(data))
             changeStep(2)
         }
-        setLoading(false);
     }
 
     return (
@@ -169,7 +165,7 @@ const BuyCryptoStepOne = ({ changeStep, cryptos }: Props) => {
                 }>Proceed</button>
             </div>
 
-            <a href={whatsAppUrl} target='_blank'>
+            <a href={whatsAppUrl} target='_blank' rel="noreferrer">
                 <div className='flex justify-center gap-3 text-[#8652A4] cursor-pointer'>
                     <span className='my-auto'>
                         <BsWhatsapp />

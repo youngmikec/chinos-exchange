@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AxiosResponse } from 'axios';
 import { APPEND_TO_SELL_CRYPTO_ORDER } from '../../../store/orders';
@@ -11,7 +11,7 @@ import { ApiResponse } from '../../../common';
 
 type Props = {
     changeStep: (data: number) => any,
-    changeStatus: (data: string) => any,
+    changeStatus?: (data: string) => any,
 }
 
 const SellCryptoStepFour = ({ changeStep, changeStatus }: Props) => {
@@ -95,14 +95,14 @@ const SellCryptoStepFour = ({ changeStep, changeStatus }: Props) => {
                 if(success){
                     setLoading(false);
                     notify('success', message);
-                    changeStatus('success')
+                    changeStatus && changeStatus('success')
                     changeStep(5);
                 }
             }).catch((err: any) => {
                 setLoading(false);
                 const { message } = err.response.data;
                 notify('error', message);
-                changeStatus('error');
+                changeStatus && changeStatus('error');
             })
         }
     }

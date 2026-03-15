@@ -18,7 +18,6 @@ import { AiFillLeftCircle } from 'react-icons/ai';
 
 
 const SignUpComp = () => {
-    const url: any = process.env.REACT_APP_BASE_URL || '';
     const [loading, setLoading] = useState<boolean>(false);
 
     const [pDisplay, setPDisplay] = useState<boolean>(false);
@@ -165,7 +164,7 @@ const SignUpComp = () => {
             setPassword({...password, error: false})
         }
         setIsStrongPassword(validatePassword(password.value))
-    }, [password.value]);
+    }, [password]);
 
     useEffect(() => {
         if(confirmPassword.value === '' || undefined || null){
@@ -173,7 +172,7 @@ const SignUpComp = () => {
         }else{
             setConfirmPassword({...confirmPassword, error: false})
         }
-    }, [confirmPassword.value]);
+    }, [confirmPassword]);
 
     return (
         <>

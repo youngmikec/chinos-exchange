@@ -1,9 +1,8 @@
 import React, { useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { ToastContainer, toast } from "react-toastify";
+import { useDispatch } from 'react-redux';
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { RootState } from '../../../store';
 import { APPEND_TO_BUY_GIFTCARD_ORDER } from '../../../store/orders';
 
 type Props = {
@@ -72,11 +71,13 @@ const TradeGiftcardStepTwo = ({changeStep, changeStatus}: Props) => {
 
     const handleProcceede = () => {
         if(inputCheck()){
+            setLoading(true);
             const data = { 
                 cardNumber: cardNumber?.value,
                 proofImage: proofImage.value
             };
             dispatch(APPEND_TO_BUY_GIFTCARD_ORDER(data))
+            setTimeout(() => setLoading(true), 1000);
             changeStep(3)
         }
     }

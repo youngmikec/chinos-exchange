@@ -10,8 +10,8 @@ type Props = {
 }
 
 const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
-    const [loading, setLoading] = useState<boolean>(false);
-    const [cryptoName, setCryptoName] = useState<string | undefined>('');
+    // const [loading, setLoading] = useState<boolean>(false);
+    // const [cryptoName, setCryptoName] = useState<string | undefined>('');
     const [selectedCrypto, setSelectedCrypto] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [selectedNetwork, setSelectedNetwork] = useState<{value: string, error: boolean}>({value: '', error: false});
     const [amount, setAmount] = useState<{value: number, error: boolean}>({value: 0, error: false});
@@ -25,7 +25,7 @@ const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
         const currentCrypto: CryptoCurrency | undefined = cryptos?.find((item) => item.id === id);
         if(currentCrypto){
             setSellingRate(currentCrypto?.sellingRate);
-            setCryptoName(currentCrypto?.shortName);
+            // setCryptoName(currentCrypto?.shortName);
             setNetworks(currentCrypto?.networks);
             return currentCrypto?.sellingRate
         }else{
@@ -64,7 +64,6 @@ const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
     }
 
     const handleProcceed = () => {
-        setLoading(true);
         if(inputCheck()){
             const data = { 
                 amount: amount.value,
@@ -77,7 +76,6 @@ const SellCryptoStepOne = ({ changeStep, cryptos }: Props) => {
             dispatch(APPEND_TO_SELL_CRYPTO_ORDER(data))
             changeStep(2)
         }
-        setLoading(false);
     }
 
     const useCalculateReceivable = (id: string, amount: number) => {

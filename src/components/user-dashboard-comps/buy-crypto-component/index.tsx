@@ -16,7 +16,6 @@ import { ApiResponse, CryptoCurrency, Step } from '../../../common';
 
 const BuyCryptoComp = () => {
     const [step, setStep] = useState<number>(1);
-    const [loading, setLoading] = useState<boolean>(false);
     const [cryptoRecords, setCryptoRecords] = useState<CryptoCurrency[]>([])
 
     const steps: Step[] = [
@@ -42,15 +41,12 @@ const BuyCryptoComp = () => {
     }
 
     const retreiveCryptos = () => {
-        setLoading(true);
         const queryString: string = `?sort=name&status=ACTIVE`;
         RETREIVE_CRYPTO(queryString).then((res: AxiosResponse<ApiResponse>) => {
-            setLoading(false);
             const { message, payload } = res.data;
             setCryptoRecords(payload);
             console.log(message)
         }).catch(err => {
-            setLoading(false);
             console.log(err);
         })
 

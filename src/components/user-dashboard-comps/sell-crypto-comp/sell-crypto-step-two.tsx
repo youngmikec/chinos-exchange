@@ -57,7 +57,7 @@ const SellCryptoStepTwo = ({ changeStep, cryptos }: Props) => {
 
     useEffect(() => {
         selectCrypto(sellCryptoState?.cryptocurrency);
-    }, [sellCryptoState]);
+    });
 
     useEffect(() => {
         if(textRef.current){

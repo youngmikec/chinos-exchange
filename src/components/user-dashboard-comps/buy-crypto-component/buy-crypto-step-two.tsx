@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { BsWhatsapp } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 
@@ -120,7 +119,7 @@ const BuyCryptoStepTwo = ({ changeStep }: Props) => {
                 }>Submit</button>
             </div>
 
-            <a href={whatsAppUrl} target='_blank'>
+            <a href={whatsAppUrl} target='_blank' rel="noreferrer">
                 <div className='flex justify-center gap-3 text-[#8652A4] cursor-pointer'>
                     <span className='my-auto'>
                         <BsWhatsapp />

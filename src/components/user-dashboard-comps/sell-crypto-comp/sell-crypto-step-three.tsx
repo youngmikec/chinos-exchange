@@ -14,7 +14,6 @@ const SellCryptoStepThree = ({ changeStep }: Props) => {
     const dispatch = useDispatch();
 
     const [banks, setBanks] = useState<Bank[]>([]);
-    const [loading, setLoading] = useState<boolean>(false);
     const [bankName, setBankName] = useState<{value: string, error: boolean}>({value: '', error: false})
     const [accountName, setAccountName] = useState<{value: string, error: boolean}>({value: '', error: false})
     const [accountNumber, setAccountNumber] = useState<{value: string, error: boolean}>({value: '', error: false})
@@ -56,16 +55,13 @@ const SellCryptoStepThree = ({ changeStep }: Props) => {
 
     const retrieveBanks = () => {
         const queryString: string = `?sort=name`;
-        setLoading(true);
         RETREIVE_BANKS(queryString).then((res: AxiosResponse<ApiResponse>) => {
             const { message, success, payload } = res.data;
             if(success){
-                setLoading(false);
                 setBanks(payload);
                 console.log('message', message);
             }
         }).catch((err: any) => {
-            setLoading(false);
             console.log(err);
         })
     }
@@ -112,12 +108,7 @@ const SellCryptoStepThree = ({ changeStep }: Props) => {
                         />
                     </div>
                 </div>
-                {/* <div className='my-4'>
-                    <label htmlFor="confirmAccountNumber" className='text-[#7F7F80] text-sm'>Confirm Account Number</label>
-                    <div className='border-2 border-gray-100 rounded-md mt-2'>
-                        <input type="text" name="confirmAccountNumber" className={`w-full px-4 py-2 ${bankName.error ? 'border-2 border-red' : ""}`}/>
-                    </div>
-                </div> */}
+          
                 <div className='my-4'>
                     <label htmlFor="accountNumber" className='text-[#7F7F80] text-sm'>Account Number</label>
                     <div className='border-2 border-gray-100 rounded-md mt-2'>

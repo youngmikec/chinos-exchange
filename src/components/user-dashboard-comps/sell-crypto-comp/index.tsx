@@ -12,6 +12,7 @@ import SellCryptoStepThree from './sell-crypto-step-three';
 import SellCryptoStepTwo from './sell-crypto-step-two';
 
 const SellCryptoComp = () => {
+    
     const steps: Step[] = [
         {
             title: 'Choose asset',
@@ -35,19 +36,14 @@ const SellCryptoComp = () => {
     }
 
     const [step, setStep] = useState<number>(1);
-    const [status, setStatus ] = useState<string>('error');
-    const [loading, setLoading] = useState<boolean>(false);
     const [cryptoRecords, setCryptoRecords] = useState<CryptoCurrency[]>([])
 
     const retreiveCryptos = () => {
-        setLoading(true);
         const queryString: string = `?sort=name&status=ACTIVE`;
         RETREIVE_CRYPTO(queryString).then((res: AxiosResponse<ApiResponse>) => {
-            setLoading(false);
             const { payload } = res.data;
             setCryptoRecords(payload);
         }).catch(err => {
-            setLoading(false);
             console.log(err);
         })
 
@@ -99,7 +95,7 @@ const SellCryptoComp = () => {
 
                         {
                             step === 4 && 
-                            <SellCryptoStepFour changeStep={setStep} changeStatus={setStatus} />
+                            <SellCryptoStepFour changeStep={setStep} />
                         }
 
                         {

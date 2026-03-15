@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -21,9 +20,6 @@ const TradeGiftcardStepFour = ({ changeStep, status }: Props) => {
         dispatch(CLEAR_AIRTIME_ORDER());
     }
 
-    useEffect(() => {
-        console.log( { giftcardOrderState });
-    }, [])
 
     return (
         <>

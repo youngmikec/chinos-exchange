@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -20,10 +19,6 @@ const AirtimeStepFour = ({ changeStep, status }: Props) => {
     const clearState = () => {
         dispatch(CLEAR_AIRTIME_ORDER());
     }
-
-    useEffect(() => {
-        console.log( { airtimeOrderState });
-    }, [])
 
     return (
         <>

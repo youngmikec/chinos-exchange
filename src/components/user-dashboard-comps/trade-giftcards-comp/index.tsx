@@ -38,22 +38,18 @@ const TradeGiftCardsComp = () => {
 
     //states
     const [step, setStep] = useState<number>(1);
-    const [loading, setLoading] = useState<boolean>(true);
     const [status, setStatus ] = useState<string>('error');
     const [giftcards, setGiftcards] = useState<GiftCard[]>([]);
 
     const retreiveGiftCards = () => {
-        setLoading(true);
         RETREIVE_GIFTCARD().then((res: AxiosResponse<ApiResponse>) => {
             const { message, success, payload } = res.data;
             if(success){
-                setLoading(false);
                 console.log(message);
                 setGiftcards(payload);
             }
         }).catch(err => {
             const { message } = err.resposne.data;
-            setLoading(false);
             console.log(message);
         })
     }

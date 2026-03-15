@@ -1,4 +1,4 @@
-import React, { ReactNode, useState, useEffect } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AxiosResponse } from 'axios';
 
@@ -25,7 +25,7 @@ const UserLayout = ({children}: Props) =>  {
     setLoadingProfile(true);
     RETRIEVE_PROFILE().then((res: AxiosResponse<ApiResponse>) => {
         setLoadingProfile(false);
-        const { success, message, payload } = res.data;
+        const { success, payload } = res.data;
         if(success){
             setProfile(payload);
             dispatch(SET_PROFILE_DATA(payload))
@@ -33,12 +33,12 @@ const UserLayout = ({children}: Props) =>  {
     }).catch((err: any) => {
         setLoadingProfile(false);
         const { message } = err.response.data;
+        console.log(message);
     })
-}
+  }
 
-  useEffect(() => {
-    userProfile ? setProfile(userProfile) : retreiveProfile()
-  }, []);
+  userProfile ? setProfile(userProfile) : retreiveProfile()
+
 
   return (
     <>
