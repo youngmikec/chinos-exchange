@@ -64,19 +64,31 @@
 
 .phone-vector-bg {
   border-radius: 5px;
-  background: linear-gradient(178deg, #fde4e0 -10.98%, rgba(240, 168, 168, 0.00) 97.98%);
+  background: linear-gradient(
+    178deg,
+    #fde4e0 -10.98%,
+    rgba(240, 168, 168, 0) 97.98%
+  );
   box-shadow: 0px 4px 34px 0px rgba(0, 0, 0, 0.05);
 }
 
 .giftcard-vector-bg {
   border-radius: 5px;
-  background: linear-gradient(181deg, #D9EFFF 40.86%, rgba(255, 255, 255, 0.00) 99.9%);
+  background: linear-gradient(
+    181deg,
+    #d9efff 40.86%,
+    rgba(255, 255, 255, 0) 99.9%
+  );
   box-shadow: 0px 4px 34px 0px rgba(0, 0, 0, 0.08);
 }
 
 .airtime-vector-bg {
   border-radius: 5px;
-  background: linear-gradient(172deg, rgba(134, 82, 164, 0.00) 12.95%, rgba(134, 82, 164, 0.60) 143.44%);
+  background: linear-gradient(
+    172deg,
+    rgba(134, 82, 164, 0) 12.95%,
+    rgba(134, 82, 164, 0.6) 143.44%
+  );
   box-shadow: 0px 4px 34px 0px rgba(0, 0, 0, 0.08);
 }
 

@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AxiosResponse } from 'axios';
 
@@ -37,7 +37,9 @@ const UserLayout = ({children}: Props) =>  {
     })
   }
 
-  userProfile ? setProfile(userProfile) : retreiveProfile()
+  useEffect(() => {
+    retreiveProfile();
+  });
 
 
   return (

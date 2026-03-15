@@ -1,34 +1,29 @@
-.navbar{
-    position: sticky;
+.navbar {
+  position: sticky;
 }
-.search{
-    
-   position: relative;
-   margin-top: -18px; 
-}
-
-.inp-search::placeholder{
-    margin-left: 32px;
-    
+.search {
+  position: relative;
+  margin-top: -18px;
 }
 
-.inp-search{
-    margin-left: 55%;
-    background: rgba(252, 254, 255, 0.7);
-    border: 0.3px solid rgba(18, 18, 18, 0.6);
-
+.inp-search::placeholder {
+  margin-left: 32px;
 }
 
-
-.icon-notification{
-   margin-left: 280px;   
+.inp-search {
+  margin-left: 55%;
+  background: rgba(252, 254, 255, 0.7);
+  border: 0.3px solid rgba(18, 18, 18, 0.6);
 }
 
-#icon{
-    margin-left: 235px;
+.icon-notification {
+  margin-left: 280px;
 }
 
+#icon {
+  margin-left: 235px;
+}
 
-.inp-search{
-    width: 434px;
+.inp-search {
+  width: 434px;
 }
