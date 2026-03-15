@@ -1,5 +1,4 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { AxiosResponse } from 'axios';
 
 import './style.css';
@@ -7,9 +6,10 @@ import Navbar from '../navbar';
 import Sidebar from '../sidebar';
 import { ApiResponse, User } from '../../common';
 import { RootState } from '../../store';
-import { RETRIEVE_PROFILE } from '../../services';
 import { SET_PROFILE_DATA } from '../../store/profile';
+import { RETRIEVE_PROFILE } from '../../services';
 import LogoutComp from '../logout-comp';
+import { useDispatch, useSelector } from 'react-redux';
 
 type Props = {
     children: ReactNode
@@ -21,25 +21,28 @@ const UserLayout = ({children}: Props) =>  {
   const [loadingProfile, setLoadingProfile] = useState(false);
   const [profile, setProfile] = useState<User | null>(null)
 
-  const retreiveProfile = () => {
-    setLoadingProfile(true);
-    RETRIEVE_PROFILE().then((res: AxiosResponse<ApiResponse>) => {
-        setLoadingProfile(false);
-        const { success, payload } = res.data;
-        if(success){
+  
+  useEffect(() => {
+    const retreiveProfile = () => {
+      setLoadingProfile(true);
+      RETRIEVE_PROFILE().then((res: AxiosResponse<ApiResponse>) => {
+          setLoadingProfile(false);
+          const { success, payload } = res.data;
+          if(success){
             setProfile(payload);
             dispatch(SET_PROFILE_DATA(payload))
-        }
-    }).catch((err: any) => {
-        setLoadingProfile(false);
-        const { message } = err.response.data;
-        console.log(message);
-    })
-  }
+          }
+      }).catch((err: any) => {
+          setLoadingProfile(false);
+          const { message } = err.response.data;
+          console.log(message);
+      })
+    }
 
-  useEffect(() => {
-    retreiveProfile();
-  });
+    if (!userProfile) {
+      retreiveProfile();
+    }
+  }, [userProfile, dispatch]);
 
 
   return (
@@ -54,7 +57,7 @@ const UserLayout = ({children}: Props) =>  {
           </div>
           <div className='flex-1'>
               <div className='h-max bg-[#f8f8f8]'>
-                <Navbar profile={profile} loading={loadingProfile} />
+                <Navbar profile={userProfile || profile} loading={loadingProfile} />
                 <div className="px-6">
                   { children }
                 </div>
